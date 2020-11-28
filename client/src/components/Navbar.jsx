@@ -1,9 +1,10 @@
-import '../style/style.css'
+import React from 'react';
+import '../style/style.css';
 
-function Navbar() {
+function Navbar () {
   return (
     <>
-    <p>Navbar rendered!</p>
+      <p>Navbar rendered!</p>
     </>
   );
 }

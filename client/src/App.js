@@ -1,3 +1,4 @@
+import React from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import './style/style.css';
@@ -11,22 +12,22 @@ import FourOFour from './components/404';
 import './services/api';
 
 
-function App() {
+function App () {
   return (
     <Router>
       <Navbar/>
       <div className="content">
-      <Switch>
-        <Route exact path='/'> {/* If user visits root, redict to homepage */}
-          <Homepage />
-        </Route>
-        <Route exact path='/404'> {/* Specify 404 route */}
-          <FourOFour />
-        </Route>
-        <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-          <FourOFour />
-        </Route>
-      </Switch>
+        <Switch>
+          <Route exact path='/'> {/* If user visits root, redict to homepage */}
+            <Homepage />
+          </Route>
+          <Route exact path='/404'> {/* Specify 404 route */}
+            <FourOFour />
+          </Route>
+          <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
+            <FourOFour />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );

@@ -1,9 +1,10 @@
-import '../style/style.css'
+import React from 'react';
+import '../style/style.css';
 
-function Homepage() {
+function Homepage () {
   return (
     <>
-    <p>Homepage rendered!</p>
+      <p>Homepage rendered!</p>
     </>
   );
 }

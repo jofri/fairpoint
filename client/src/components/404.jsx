@@ -1,9 +1,10 @@
-import '../style/style.css'
+import React from 'react';
+import '../style/style.css';
 
-function FourOFour() {
+function FourOFour () {
   return (
     <>
-    <h2>404 - Page not found</h2>
+      <h2>404 - Page not found</h2>
     </>
   );
 }
