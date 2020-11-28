@@ -1,0 +1,31 @@
+{
+  "name": "front-pages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jofri/front-pages.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jofri/front-pages/issues"
+  },
+  "homepage": "https://github.com/jofri/front-pages#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "eslint-plugin-json": "^2.1.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.17",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-plugin-react": "^7.21.5"
+  }
+}
