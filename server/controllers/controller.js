@@ -1,55 +1,36 @@
-
-
 // Import model
-const Sample = require('../models/Sample-model');
+const Article = require('../models/Article');
+const User = require('../models/User');
+const Story = require('../models/Story');
 
-
-// Get all documents
-exports.get = async (req, res) => {
-
-  // Find all documents and send back to client
-  Sample.find({}, (err, data) => {
-    if (data === null) res.status(404).send('404'); // If not found, send 404
-    else res.status(200).json(data); // Else if found, send all documents back
-  });
-
-};
-
-// Post document
-exports.post = async (req, res) => {
-
+exports.createStory = async (req, res) => {
   try {
-
-    // Destruct client request data
-    const { title, body} = req.body;
-
-    //Store broadcast data in object
-    const document = {
-      title: title,
-      body: body
-    };
-
-    //Store document in DB using Mongoose
-    await Sample.create(document);
-
-    // Send document back to client
-    res.status(200).json(document);
-
+    console.log(req.body);
+    const story = await Story.create(req.body);
+    res.status(201).send(story);
   } catch (error) {
     console.log(error);
     res.sendStatus(400);
   }
-
 };
 
 
-// Delete document
-exports.delete = async (req, res) => {
-  try {
-    // Delete document from DB using Mongoose
-    await Sample.deleteOne({title: req.body.title});
 
+exports.createUser = async (req, res) => {
+  try {
+    console.log(req.body);
+    await User.create(req.body);
   } catch (error) {
+    console.log(error);
+    res.sendStatus(400);
+  }
+};
+
+exports.createArticle = async (req, res) => {
+  try {
+    console.log(req.body);
+    await Article.create(req.body);
+  } catch (err) {
     console.log(error);
     res.sendStatus(400);
   }
