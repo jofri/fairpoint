@@ -1,0 +1,17 @@
+.test{
+  background-color: var(--color-darkgrey);
+  font-size: var(--headfont);
+}
+
+.test > p {
+  color: var(--color-white);
+}
+
+.test2 {
+  background-color: var(--color-lightgrey);
+  font-size: calc(var(--headfont)*2);
+}
+
+.test2 > p {
+  color: var(--color-white);
+}
