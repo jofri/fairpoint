@@ -1,0 +1,8 @@
+.content {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.NavBar {
+    display: none;
+}

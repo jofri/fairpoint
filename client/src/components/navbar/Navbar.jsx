@@ -1,7 +1,7 @@
 import React from 'react';
 // import '../style/style.css';
 import './Navbar.css';
-import Loader from './Loader';
+// import Loader from '../loader/Loader.jsx';
 
 
 
@@ -14,7 +14,7 @@ function Navbar () {
       <div className="test2">
         <p>styling test</p>
       </div>
-      <Loader />
+      {/* <Loader /> */}
     </>
   );
 }

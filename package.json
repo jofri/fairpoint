@@ -21,7 +21,7 @@
     "dotenv": "^8.2.0",
     "eslint-plugin-json": "^2.1.2",
     "express": "^4.17.1",
-    "mongoose": "^5.10.17",
+    "mongoose": "^5.10.18",
     "nodemon": "^2.0.6"
   },
   "devDependencies": {
