@@ -13,7 +13,9 @@ const Story = new Schema({
     link: { type: String},
     image: { type: String},
     source: { type: String},
-    time: { type: String}
+    time: { type: String},
+    stance: {type: Number},
+    category: { type: String}
   }],
   timestamp: { type: Date, default: Date.now}
 });

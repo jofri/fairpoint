@@ -8,6 +8,8 @@ const Article = new Schema({
   image: { type: String},
   source: { type: String},
   time: { type: String},
+  stance: {type: Number},
+  category: { type: String}
 });
 
 
