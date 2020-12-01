@@ -1,5 +1,5 @@
 exports.login = (req, res) => {
-  res.redirect('/dashboard');
+  res.redirect('/');
 };
 
 exports.logout = (req, res) => {

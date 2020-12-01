@@ -8,13 +8,13 @@ const googleClientSecret = config.clientSecret;
 const User = require('./server/models/User');
 
 passport.serializeUser((user, done) => {
-  console.log('user', user);
-  done(null, user.id);
+  done(null, user.googleId);
 });
 
 passport.deserializeUser(async (id, done) => {
-  const user = await User.findById(id);
-  done(null, user[0].id);
+  const googleid = id;
+  const user = await User.find({googleId: `${googleid}`});
+  done(null, `${user.googleId}`);
 });
 
 passport.use(
@@ -34,8 +34,8 @@ passport.use(
 
       const user = await User.create({
         googleId: profile.id,
-        name: profile.displayName,
-        email: profile._json.emil
+        username: profile.displayName,
+        email: profile._json.email
       });
 
       done(null, user);
