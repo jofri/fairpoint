@@ -4,3 +4,10 @@
     flex-direction: column;
     align-items: center;
 }
+
+.profileRow {
+    width: 100vw;
+    height: 12vh; 
+}
+
+/* HARD CODED HEIGHT */

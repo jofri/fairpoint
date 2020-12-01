@@ -55,3 +55,8 @@
 .SocialButton {
     margin-right: 3vw;
 }
+
+.StoryAttribute {
+     text-decoration:none;
+     color: inherit;
+}

@@ -4,13 +4,14 @@ import './profile.css';
 
 
 function Profile () {
+
+
   return (
     <div className="ProfileWrapper">
-      <div><p>ROW HOLD</p></div>
-      <div><p>ROW HOLD</p></div>
-      <div><p>ROW HOLD</p></div>
-      <div><p>ROW HOLD</p></div>
-      <div><p>ROW HOLD</p></div>
+      <div className="profileRow"><p>ROW HOLD</p><hr></hr></div>
+      <div className="profileRow"><p>ROW HOLD</p><hr></hr></div>
+      <div className="profileRow"><p>ROW HOLD</p><hr></hr></div>
+      <div className="profileRow"><p>ROW HOLD</p><hr></hr></div>
     </div>
   );
 }
