@@ -7,4 +7,4 @@ module.exports = (app) => {
       target: 'http://localhost:4000'
     })
   );
-}
+};

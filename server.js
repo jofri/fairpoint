@@ -4,10 +4,11 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const path = require('path');
-const router = require('./server/routers/router');
+const apiRouter = require('./server/routers/router');
+const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
-const newsScraper = require('./server/scrapers/index');
-const categoriesScraper = require('./server/scrapers/categories');
+// const newsScraper = require('./server/scrapers/index');
+// const categoriesScraper = require('./server/scrapers/categories');
 
 
 // If app is in dev mode
@@ -21,12 +22,10 @@ if (process.env.NODE_ENV !== 'production') {
 // Parse API requests as JSON
 app.use(express.json());
 // For api requests, rout them through router file
-app.use(router);
 
 //login middleware
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const authRouter = require('./server/routers/auth_router');
 const config = require('./config');
 
 app.use(
@@ -35,9 +34,11 @@ app.use(
     keys: [config.cookieKey]
   })
 );
-
+  
 app.use(passport.initialize());
 app.use(passport.session());
+  
+app.use('/api', apiRouter);
 app.use('/auth', authRouter);
 
 // Serve static files (index.html) from from build folder
@@ -47,29 +48,29 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-newsScraper();
-setInterval(() => {
-  newsScraper();
-  console.log('called in server');
-}, 300000);
+// newsScraper();
+// setInterval(() => {
+//   newsScraper();
+//   console.log('called in server');
+// }, 300000);
 
-categoriesScraper('World');
-categoriesScraper('Business');
-categoriesScraper('Technology');
-categoriesScraper('Entertainment');
-categoriesScraper('Sports');
-categoriesScraper('Science');
-categoriesScraper('Health');
+// categoriesScraper('World');
+// categoriesScraper('Business');
+// categoriesScraper('Technology');
+// categoriesScraper('Entertainment');
+// categoriesScraper('Sports');
+// categoriesScraper('Science');
+// categoriesScraper('Health');
 
-setInterval(() => {
-  categoriesScraper('World');
-  categoriesScraper('Business');
-  categoriesScraper('Technology');
-  categoriesScraper('Entertainment');
-  categoriesScraper('Sports');
-  categoriesScraper('Science');
-  categoriesScraper('Health');
-}, 1800000);
+// setInterval(() => {
+//   categoriesScraper('World');
+//   categoriesScraper('Business');
+//   categoriesScraper('Technology');
+//   categoriesScraper('Entertainment');
+//   categoriesScraper('Sports');
+//   categoriesScraper('Science');
+//   categoriesScraper('Health');
+// }, 1800000);
 
 // Connect to MongoDB and listen for new requests
 http.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars

@@ -1,5 +1,7 @@
+const User = require('../models/User');
+
 exports.login = (req, res) => {
-  res.redirect('/dashboard');
+  res.redirect('/');
 };
 
 exports.logout = (req, res) => {
@@ -7,7 +9,13 @@ exports.logout = (req, res) => {
   res.redirect('/');
 };
 
-exports.currentUser = (req, res) => {
-  console.log(req.user);
-  res.send(req.user);
+exports.currentUser = async (req, res) => {
+  console.log('🔥 In Auth controller',req.user);
+  if (!req.user) {
+    return res.sendStatus(402);
+  } else {
+    const googleid = await req.user;
+    const userData = await User.findOne({googleId: `${googleid}`});
+    res.send(userData);
+  }
 };

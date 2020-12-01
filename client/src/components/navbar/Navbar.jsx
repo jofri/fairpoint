@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 /* Using react-burger-menu plugin for menu functionality */
 import { slide as Menu } from 'react-burger-menu';
 import './hamburger-style.css';
+import './Navbar.css';
 
 function Navbar () {
 
