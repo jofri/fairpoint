@@ -16,41 +16,49 @@ const categoriesScraper = async (category) => {
 
   let categoryhash;
   let categoryModel;
-
+  let plural;
 
   switch (category) {
 
   case 'World':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pIUWlnQVAB';
     categoryModel = World;
+    plural = 'worlds';
     break;
   case 'Business':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Business;
+    plural = 'businesses';
     break;
   case 'Technology':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Technology;
+    plural = 'technologies';
     break;
   case 'Entertainment':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Entertainment;
+    plural = 'entertainments';
     break;
   case 'Sports':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Sports;
+    plural = 'sports';
     break;
   case 'Science':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Science;
+    plural = 'sciences';
     break;
   case 'Health':
     categoryhash = 'CAAqIQgKIhtDQkFTRGdvSUwyMHZNR3QwTlRFU0FtVnVLQUFQAQ';
     categoryModel = Health;
+    plural = 'health';
     break;
   default:
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pIUWlnQVAB';
     categoryModel = World;
+    plural = 'worlds';
     break;
   }
 
@@ -101,7 +109,7 @@ const categoriesScraper = async (category) => {
         useFindAndModify: false,
         useCreateIndex: true,
       });
-      conn.dropCollection(category);
+      conn.dropCollection(plural);
     } catch (err) {
       console.log('Scraping failed', err);
     }
