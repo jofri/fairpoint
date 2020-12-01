@@ -1,9 +1,12 @@
 import React from 'react';
+import Tabs from './tabs/Tabs';
+import Feed from './feed/Feed';
 
 function NewsFeed () {
   return (
     <>
-      <h2>404 - Page not found</h2>
+      <Tabs />
+      <Feed />
     </>
   );
 }

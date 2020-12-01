@@ -1,0 +1,16 @@
+.LoginWrapper {
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.googleButton {
+    width: 60%;
+}
+
+.SignInText {
+    font-size: 18px;
+}

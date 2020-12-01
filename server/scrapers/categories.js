@@ -1,9 +1,57 @@
 const scraper = require('./googlescrape');
-const Story = require('../models/Story');
+const Business = require('../models/Business');
+const Entertainment= require('../models/Entertainment');
+const Health= require('../models/Health');
+const Science= require('../models/Science');
+const Sports= require('../models/Sports');
+const Technology= require('../models/Technology');
+const World= require('../models/World');
 const mongoose = require('mongoose');
 const stance = require('./stance');
 
-const newsScraper = async () => {
+const categoriesScraper = async (category) => {
+  console.log('category', category);
+
+  let categoryhash;
+  let categoryModel;
+
+
+  switch (category) {
+
+  case 'World':
+    categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pIUWlnQVAB';
+    categoryModel = World;
+    break;
+  case 'Business':
+    categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pIUWlnQVAB';
+    categoryModel = Business;
+    break;
+  case 'Technology':
+    categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pIUWlnQVAB';
+    categoryModel = Technology;
+    break;
+  case 'Entertainment':
+    categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtVnVHZ0pIUWlnQVAB';
+    categoryModel = Entertainment;
+    break;
+  case 'Sports':
+    categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pIUWlnQVAB';
+    categoryModel = Sports;
+    break;
+  case 'Science':
+    categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pIUWlnQVAB';
+    categoryModel = Science;
+    break;
+  case 'Health':
+    categoryhash = 'CAAqIQgKIhtDQkFTRGdvSUwyMHZNR3QwTlRFU0FtVnVLQUFQAQ';
+    categoryModel = Health;
+    break;
+  default:
+    console.log('category', category);
+    categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pIUWlnQVAB';
+    categoryModel = World;
+    break;
+  }
 
   async function getarticles (story) {
     const articles = await scraper({
@@ -24,9 +72,10 @@ const newsScraper = async () => {
 
   (async () => {
     const db = { stories: [] };
+    console.log(`https://news.google.com/rss/topics/${categoryhash}?hl=en-GB&gl=GB&ceid=GB%3Aen`);
     try {
       let feed = await parser.parseURL(
-        'https://news.google.com/rss?hl=en-GB&gl=GB&ceid=GB:en'
+        `https://news.google.com/rss/topics/${categoryhash}?hl=en-GB&gl=GB&ceid=GB%3Aen`
       );
       for (let i = 0; i < feed.items.length; i++) {
         const item = feed.items[i];
@@ -52,7 +101,7 @@ const newsScraper = async () => {
         useFindAndModify: false,
         useCreateIndex: true,
       });
-      conn.dropCollection('stories');
+      conn.dropCollection(category);
     } catch (err) {
       console.log('Scraping failed', err);
     }
@@ -69,7 +118,7 @@ const newsScraper = async () => {
         }
       }
 
-      await Story.create(db.stories[i]);
+      await categoryModel.create(db.stories[i]);
     }
 
     console.log('Finished');
@@ -77,4 +126,4 @@ const newsScraper = async () => {
 
 };
 
-module.exports = newsScraper;
+module.exports = categoriesScraper;

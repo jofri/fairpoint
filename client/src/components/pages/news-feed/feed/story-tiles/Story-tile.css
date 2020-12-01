@@ -1,0 +1,33 @@
+
+
+.Story-tile-container {
+  justify-content: space-between;
+  align-items: center;
+
+  /* Make it a flex-item */
+  display: flex;
+
+  background-color: #e7e7e7;
+  width: 100vw;
+  height: 18vh;
+  border: 1px solid black;
+  display: flex;
+
+}
+
+.Story-tile-container img {
+  width: 28vw;
+  height: 12vh;
+  border-radius: 20%;
+  margin-right: 5vw;
+
+}
+
+.Story-tile-container h2 {
+  padding-left: 5vw;
+  font-family: Helvetica;
+  font-size: 2rem;
+
+}
+
+
