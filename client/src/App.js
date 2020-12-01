@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Carrot, pantry } from 'carrot-js';
+
 //*API service
 import {getUser} from './services/api';
 import './services/stories-api';
@@ -13,25 +14,29 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
-
+import Login from './components/pages/login/login';
 
 import './App.css';
 
 
 function App () {
   
-  //**set user login info */
+  //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
+  const [loginstatus, setLoginstatus] = useState(false);
 
   useEffect (() => {
     getUser()
       .then((userInfo) => setLoginUser(userInfo))
+      .then(()=> setLoginstatus(true))
       .catch(err => console.log(err));
   }, []);
 
-  console.log('in app.js', loginUser);
+  //TODO: Create logout button: change loginstatus into false again
 
-  if (loginUser) {
+  
+  if (loginstatus === true) {
+    console.log('login', loginUser);
     return (
       <Carrot value={pantry}>
         <Router>
@@ -66,12 +71,16 @@ function App () {
       </Carrot>
     );
   } else {
+    console.log('logout', loginUser);
     return (
       <Carrot value={pantry}>
         <Router>
           <Navbar />
           <div className="content">
             <Switch>
+              <Route exact path='/login'>
+                <Login />
+              </Route>
               <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
                 <NewsFeed />
               </Route>
