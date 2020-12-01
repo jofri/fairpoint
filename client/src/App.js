@@ -5,8 +5,11 @@ import './style/style.css';
 
 import NewsFeed from './components/pages/news-feed/News-feed';
 import NewsStory from './components/pages/news-story/News-story';
+import Login from './components/pages/login/login';
 import Navbar from './components/navbar/Navbar';
 import FourOFour from './components/helpers/404';
+import Profile from './components/pages/Profile/profile';
+
 
 
 // Import template API services file
@@ -26,6 +29,12 @@ function App () {
           </Route>
           <Route exact path='/story'>
             <NewsStory />
+          </Route>
+          <Route exact path='/login'>
+            <Login />
+          </Route>
+          <Route exact path='/profile'>
+            <Profile></Profile>
           </Route>
           <Route exact path='/404'> {/* Specify 404 route */}
             <FourOFour />

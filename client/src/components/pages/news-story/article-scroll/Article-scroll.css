@@ -3,17 +3,21 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     height: 22vh;
     justify-content: space-between;
     align-items: center;
     margin: 3px auto;
-    scroll-snap-type: x mandatory;
+    width: 100vw;
+      scroll-snap-type: x mandatory;  
 }
 
 .ArticleTile {
     width: 100vw;
     background-color: green;
     margin: 1px 1vw;
+    scroll-snap-align: start;
 }
+
+/* Slider Stuff Element etc */
