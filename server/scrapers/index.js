@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const stance = require('./stance');
 
 const newsScraper = async () => {
+  console.log('Start Headline');
+  console.time('Headline');
 
   async function getarticles (story) {
     const articles = await scraper({
@@ -39,7 +41,7 @@ const newsScraper = async () => {
         itemobj.links = links;
         itemobj.story = story[0] === '_' ? false : true;
         if (itemobj.story === true) {
-          console.log(item.title);
+          // console.log(item.title);
           itemobj.articles = await getarticles(story);
         } else {
           itemobj.articles = [];
@@ -58,21 +60,21 @@ const newsScraper = async () => {
     }
 
     for (let i = 0; i< db.stories.length; i++) {
-      console.log('insideforloop');
+      // console.log('insideforloop');
       for (let j = 0; j < db.stories[i].articles.length; j++) {
         if (stance[db.stories[i].articles[j].source]) {
           db.stories[i].articles[j].stance = stance[db.stories[i].articles[j].source];
-          console.log('on list: ', db.stories[i].articles[j].source);
+          // console.log('on list: ', db.stories[i].articles[j].source);
         } else {
           db.stories[i].articles[j].stance = 11;
-          console.log('NOT on list: ', db.stories[i].articles[j].source);
+          // console.log('NOT on list: ', db.stories[i].articles[j].source);
         }
       }
 
       await Story.create(db.stories[i]);
     }
-
-    console.log('Finished');
+    console.timeEnd('Headline');
+    console.log('Finished Headlines');
   })();
 
 };

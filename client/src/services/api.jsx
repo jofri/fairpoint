@@ -6,7 +6,7 @@ fetch('/api/get')
 const URL = '/api/';
 
 async function createUser (data) {
-  const createUser = await fetch(URL + '/newuser', {
+  await fetch(URL + '/newuser', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
