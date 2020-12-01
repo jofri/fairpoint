@@ -7,6 +7,7 @@ import NewsStory from './components/pages/news-story/News-story';
 import Navbar from './components/navbar/Navbar';
 import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
+import Donate from './components/pages/donate/Donate';
 
 
 
@@ -17,9 +18,7 @@ import Profile from './components/pages/Profile/profile';
 function App () {
   return (
     <Router>
-      <div className="NavBar">
-        <Navbar />
-      </div>
+      <Navbar />
       <div className="content">
         <Switch>
           <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
@@ -31,6 +30,9 @@ function App () {
           {/* <Route exact path='/login'>
             <Login />
           </Route> */}
+          <Route exact path='/donate'>
+            <Donate></Donate>
+          </Route>
           <Route exact path='/profile'>
             <Profile></Profile>
           </Route>
