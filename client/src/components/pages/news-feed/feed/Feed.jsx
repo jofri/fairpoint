@@ -12,8 +12,6 @@ function Feed () {
     pick('stories', setStories);
   }, []);
 
-
-
   return (
     <>
       <div className="Feed-container">
