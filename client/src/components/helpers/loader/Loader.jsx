@@ -1,6 +1,7 @@
 import React from 'react';
 import './Loader.css';
-function loader (props) {
+
+function Loader () {
   return (
     <>
       <div className="spin-wrapper">
@@ -14,5 +15,6 @@ function loader (props) {
     </>
   );
 }
-export default loader;
+
+export default Loader;
 

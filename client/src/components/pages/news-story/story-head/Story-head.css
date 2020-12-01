@@ -1,0 +1,24 @@
+.StoryHeadWrapper {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    height: 33vh;
+    align-items: center;
+}
+
+.StoryHeadImage {
+    width: 100%;
+}
+
+.StoryHeadTitle {
+    font-size: 18px;
+    text-align: center;
+    margin: 2px;
+}
+
+.StoryHeadInfo {
+    display: inline;
+    font-size: 15px;
+    color: black;
+    margin: 2px;
+}
