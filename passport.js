@@ -12,9 +12,8 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-  const googleid = id;
-  const user = await User.find({googleId: `${googleid}`});
-  done(null, `${user.googleId}`);
+  const user = await User.findOne({ googleId: id });
+  done(null, user.googleId);
 });
 
 passport.use(

@@ -1,11 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import './style/style.css';
 
 // import NewsFeed from './components/pages/news-feed/News-feed';
 // import NewsStory from './components/pages/news-story/News-story';
-// import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navbar/Navbar';
 import Analytics from './components/pages/analytics/Analytics';
 // import FourOFour from './components/helpers/404';
 
@@ -17,7 +16,7 @@ import './services/api';
 function App () {
   return (
     <Router>
-      {/* <Navbar/> */}
+      <Navbar/>
       <div className="content">
         <Switch>
           <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
