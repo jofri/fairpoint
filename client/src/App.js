@@ -1,11 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import './style/style.css';
 
 import NewsFeed from './components/pages/news-feed/News-feed';
 import NewsStory from './components/pages/news-story/News-story';
-import Navbar from './components/navbar';
+import Navbar from './components/navbar/Navbar';
 import FourOFour from './components/helpers/404';
 
 

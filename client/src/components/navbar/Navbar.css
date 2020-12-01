@@ -1,17 +1,39 @@
-.test{
-  background-color: var(--color-darkgrey);
-  font-size: var(--headfont);
+/* Header */
+
+header {
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 15px 3%; */
+  background-color: rgb(255, 0, 51);
+
+  /* Make it a flex-item */
+  display: flex;
+
+  /* Make header fixed */
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 7vh;
 }
 
-.test > p {
-  color: var(--color-white);
-}
+  .logo-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    padding-left: 10px;
+  }
 
-.test2 {
-  background-color: var(--color-lightgrey);
-  font-size: calc(var(--headfont)*2);
-}
+  .menu-container {
+      display: flex;
+      padding-right: 20px;
+    }
 
-.test2 > p {
-  color: var(--color-white);
-}
+    .profile-icon {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+    }
+
+
+
