@@ -1,11 +1,10 @@
 import React from 'react';
 
-
 function NewsFeed () {
   return (
-    <div>
-      <h1>NEWS Feed WORKS</h1>
-    </div>
+    <>
+      <h2>404 - Page not found</h2>
+    </>
   );
 }
 

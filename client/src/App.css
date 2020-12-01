@@ -1,8 +1,5 @@
-.content {
-    height: 100vh;
-    overflow: hidden;
-}
+/* Container w/ all content */
 
-.NavBar {
-    display: none;
+.content {
+  margin-top: 7vh;
 }

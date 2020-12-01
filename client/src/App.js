@@ -1,11 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import './style/style.css';
 
 import NewsFeed from './components/pages/news-feed/News-feed';
 import NewsStory from './components/pages/news-story/News-story';
-import Login from './components/pages/login/login';
 import Navbar from './components/navbar/Navbar';
 import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
@@ -30,9 +28,9 @@ function App () {
           <Route exact path='/story'>
             <NewsStory />
           </Route>
-          <Route exact path='/login'>
+          {/* <Route exact path='/login'>
             <Login />
-          </Route>
+          </Route> */}
           <Route exact path='/profile'>
             <Profile></Profile>
           </Route>

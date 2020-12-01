@@ -1,14 +1,13 @@
-
-// Import express router & controller file
 const router = require('express').Router();
 const controller = require('../controllers/controller');
 
+router.get('/api/getUser/:googleid', controller.getUser);
+router.get('/api/getStories', controller.getStories);
+router.get('/api/getArticle/:articleid', controller.getArticle);
 
-// Route that invokes get function in controller
-router.get('/api/get', controller.get);
-// Route that invokes post function in controller
-router.post('/api/post', controller.post);
-// Route that invokes delete function in controller
-router.delete('/api/delete', controller.delete);
+router.post('/api/newstories', controller.createStory);
+router.post('/api/newuser', controller.createUser);
+router.post('/api/newarticle', controller.createArticle);
+
 
 module.exports = router;
