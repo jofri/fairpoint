@@ -1,0 +1,62 @@
+.ArticleTileWrapper {
+    background-color: lightblue;
+    /* margin: 1px; */
+    /* margin-right: 20px; */
+    min-width: 100vw;
+    position: relative;
+    display: block;
+}
+
+.RowOne {
+    display: flex;
+
+}
+
+.RowTwo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.TextOne {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    background-color: lightgreen;
+}
+
+.ArticleTileImage {
+    border-radius: 10%;
+    margin: 2.5%;
+    width: 100px;
+    height: 100px;
+
+}
+
+.ArticleTileTitle {
+    background-color: lightcoral;
+    align-self: flex-start;
+    margin-right: 4%;
+}
+
+.ArticleTileSource {
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    font-size: 12px;
+}
+
+.ArticleTileTime {
+    font-size: 12px;
+    margin: 1%;
+}
+
+.SocialButton {
+    margin-right: 3vw;
+}
+
+.StoryAttribute {
+     text-decoration:none;
+     color: inherit;
+}

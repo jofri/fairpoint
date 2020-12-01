@@ -1,0 +1,52 @@
+.ProfileWrapper {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileRow {
+    width: 100vw;
+    /* height: 12vh;  */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: auto 100px;
+    /* background-color: cadetblue; */
+    width: 93vw;
+    margin: 2vh auto;
+}
+
+.profileColumn {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    align-self: start;
+    /* background-color: blue; */
+    align-items: flex-start;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 100vw;
+
+}
+
+ h5 {
+    font-size: 20px;
+    align-self: flex-start;
+}
+
+hr {
+    color: black;
+    border: black solid 1px;
+    width: 95vw;
+}
+
+/* HARD CODED HEIGHT */
+
+.AvatarName {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: space-between;
+    width: 35%;
+}
