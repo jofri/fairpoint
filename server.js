@@ -6,7 +6,7 @@ const http = require('http').createServer(app);
 const path = require('path');
 const router = require('./server/routers/router');
 const mongoose = require('mongoose');
-const newsScraper = require('./server/scrapers/index');
+//const newsScraper = require('./server/scrapers/index');
 
 
 // If app is in dev mode
