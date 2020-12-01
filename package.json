@@ -18,15 +18,20 @@
   },
   "homepage": "https://github.com/jofri/front-pages#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",
     "eslint-plugin-json": "^2.1.2",
     "express": "^4.17.1",
     "mongoose": "^5.10.17",
-    "nodemon": "^2.0.6",
-    "rss-parser": "^3.9.0",
-    "cheerio": "^1.0.0-rc.3",
     "node-fetch": "^2.6.0",
-    "puppeteer": "^3.2.0"
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-twitter": "^1.0.4",
+    "puppeteer": "^3.2.0",
+    "rss-parser": "^3.9.0"
   },
   "devDependencies": {
     "eslint": "^7.13.0",
