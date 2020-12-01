@@ -3,7 +3,6 @@
 header {
   justify-content: space-between;
   align-items: center;
-  /* padding: 15px 3%; */
   background-color: rgb(255, 0, 51);
 
   /* Make it a flex-item */

@@ -30,19 +30,19 @@ function Navbar () {
       <div className="menu-container">
         <img className="profile-icon" src={guest} alt="" />
         <Menu right>
-          <a id="home" className="menu-item" href="/"><img src={home} alt="" />Home</a>
-          <a id="home" className="menu-item" href="/"><img src={home} alt="" />Newsletter</a>
-          <a id="home" className="menu-item" href="/"><img src={home} alt="" />Donate</a>
-          <a id="profile" className="menu-item" href="/profile"><img src={profile} alt="" />Profile</a>
-          <a id="log-out" className="menu-item" href="/log-out"><img src={logOut} alt="" />Log out</a>
+          <a className="menu-item" href="/"><img src={home} alt="" />Home</a>
+          <a className="menu-item" href="/"><img src={home} alt="" />Newsletter</a>
+          <a className="menu-item" href="/"><img src={home} alt="" />Donate</a>
+          <a className="menu-item" href="/"><img src={profile} alt="" />Profile</a>
+          <a className="menu-item" href="/"><img src={logOut} alt="" />Log out</a>
           <br></br>
-          <a id="log-out" className="menu-item" href="/log-out"><img src={logOut} alt="" />UK</a>
-          <a id="log-out" className="menu-item" href="/log-out"><img src={logOut} alt="" />BUSINESS</a>
-          <a id="log-out" className="menu-item" href="/log-out"><img src={logOut} alt="" />TECH</a>
-          <a id="log-out" className="menu-item" href="/log-out"><img src={logOut} alt="" />ENTERTAINMENT</a>
-          <a id="log-out" className="menu-item" href="/log-out"><img src={logOut} alt="" />SCIENCE</a>
-          <a id="log-out" className="menu-item" href="/log-out"><img src={logOut} alt="" />SPORTS</a>
-          <a id="log-out" className="menu-item" href="/log-out"><img src={logOut} alt="" />HEALTH</a>
+          <a className="menu-item" href="/uk"><img src={logOut} alt="" />UK</a>
+          <a className="menu-item" href="/business"><img src={logOut} alt="" />BUSINESS</a>
+          <a className="menu-item" href="/tech"><img src={logOut} alt="" />TECH</a>
+          <a className="menu-item" href="/entertainment"><img src={logOut} alt="" />ENTERTAINMENT</a>
+          <a className="menu-item" href="/science"><img src={logOut} alt="" />SCIENCE</a>
+          <a className="menu-item" href="/sports"><img src={logOut} alt="" />SPORTS</a>
+          <a className="menu-item" href="/health"><img src={logOut} alt="" />HEALTH</a>
         </Menu>
       </div>
 
