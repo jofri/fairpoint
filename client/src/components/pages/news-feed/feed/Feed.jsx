@@ -1,8 +1,9 @@
 import React from 'react';
-import StoryTile from './story-tiles/Story-tile';
+import HeadStory from './story-tiles/HeadStory';
 import { useEffect, useState } from 'react';
 import { pick } from 'carrot-js';
 import './Feed.css';
+import SubStory from './sub-story/SubStory';
 
 function Feed () {
 
@@ -12,12 +13,15 @@ function Feed () {
     pick('stories', setStories);
   }, []);
 
+  const renderSubStories = stories.map((story) => {
+    return (<SubStory key=""></SubStory>);
+  });
+
   return (
     <>
       <div className="Feed-container">
-
-        {stories.map(story => <StoryTile story={story} key=""/>)}
-
+        <HeadStory story={stories[0]} key=""/>)
+        <div>{renderSubStories}</div>
       </div>
     </>
   );
