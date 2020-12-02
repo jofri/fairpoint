@@ -7,8 +7,8 @@ const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
-const newsScraper = require('./server/scrapers/index');
-const categoriesScraper = require('./server/scrapers/categories');
+// const newsScraper = require('./server/scrapers/index');
+// const categoriesScraper = require('./server/scrapers/categories');
 
 
 // If app is in dev mode
@@ -48,29 +48,29 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-newsScraper();
-setInterval(() => {
-  newsScraper();
-  console.log('called in server');
-}, 300000);
+// newsScraper();
+// setInterval(() => {
+//   newsScraper();
+//   console.log('called in server');
+// }, 300000);
 
-categoriesScraper('World');
-categoriesScraper('Business');
-categoriesScraper('Technology');
-categoriesScraper('Entertainment');
-categoriesScraper('Sports');
-categoriesScraper('Science');
-categoriesScraper('Health');
+// categoriesScraper('World');
+// categoriesScraper('Business');
+// categoriesScraper('Technology');
+// categoriesScraper('Entertainment');
+// categoriesScraper('Sports');
+// categoriesScraper('Science');
+// categoriesScraper('Health');
 
-setInterval(() => {
-  categoriesScraper('World');
-  categoriesScraper('Business');
-  categoriesScraper('Technology');
-  categoriesScraper('Entertainment');
-  categoriesScraper('Sports');
-  categoriesScraper('Science');
-  categoriesScraper('Health');
-}, 1800000);
+// setInterval(() => {
+//   categoriesScraper('World');
+//   categoriesScraper('Business');
+//   categoriesScraper('Technology');
+//   categoriesScraper('Entertainment');
+//   categoriesScraper('Sports');
+//   categoriesScraper('Science');
+//   categoriesScraper('Health');
+// }, 1800000);
 
 // Connect to MongoDB and listen for new requests
 http.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars
