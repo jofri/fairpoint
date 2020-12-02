@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Bar} from 'react-chartjs-2';
-
+import './Bar.css';
 
 function Barchart () {
 
@@ -15,7 +15,7 @@ function Barchart () {
           // backgroundColor: [
           //   'rgba(75, 192, 192, 0.6'
           // ],
-          borderWidth: 4
+          borderWidth: 400
         }
       ]
     });
