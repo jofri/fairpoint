@@ -20,7 +20,7 @@ import './App.css';
 
 
 function App () {
-  
+
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
   const [loginstatus, setLoginstatus] = useState(false);
@@ -34,7 +34,7 @@ function App () {
 
   //TODO: Create logout button: change loginstatus into false again
 
-  
+
   if (loginstatus === true) {
     console.log('login', loginUser);
     return (
