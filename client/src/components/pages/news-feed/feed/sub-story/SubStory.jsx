@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 // import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 // import Typography from '@material-ui/core/Typography';
-import HolderImage from '../story-tiles/HolderImage.jpg';
+//import HolderImage from '../story-tiles/HolderImage.jpg';
 
 const useStyles = makeStyles({
   root: {
@@ -50,9 +50,9 @@ export default function SubStory (props) {
       <CardActionArea className={classes.actionArea}>
         <CardContent>
           <div className={classes.rowOne}>
-            <h3>Keir Starmer faces shadow cabinet split on support for Brexit deal!</h3>
-            <img src={HolderImage} alt="Holder Text" className={classes.image}></img>
-          </div> 
+            <h3>{props.story.headline}</h3>
+            <img src={props.story.image} alt="News Img" className={classes.image}></img>
+          </div>
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.cardActions}>

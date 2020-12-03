@@ -7,7 +7,6 @@ import CardActions from '@material-ui/core/CardActions';
 // import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import HolderImage from './HolderImage.jpg';
 
 const useStyles = makeStyles({
   root: {
@@ -50,19 +49,17 @@ export default function HeadStory (props) {
   return (
     <Card className={classes.root}>
       <CardActionArea className={classes.actionArea}>
-        <>
-          <img src={HolderImage} alt="Holder Text" className={classes.headlineImage}/> 
-        </>
+        <img src={props.story.image.replace('h100', 'h300').replace('w100', 'w500')} alt="Holder Text" className={classes.headlineImage}/>
         <Typography gutterBottom variant="h5" component="h2" className={classes.headlineText}>
-           Boris orders Barnies to respect UKs fundamental Brexit aims Were taking back Control
+          {props.story.headline}
         </Typography>
       </CardActionArea>
       <CardActions className={classes.cardActionsHead}>
         <Button size="small" color="primary" className={classes.button}>
-          Share
+          Read story
         </Button>
         <Button size="small" color="primary" className={classes.button}>
-          Learn More
+          Share
         </Button>
       </CardActions>
     </Card>
