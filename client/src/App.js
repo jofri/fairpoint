@@ -4,7 +4,6 @@ import { Carrot, pantry } from 'carrot-js';
 
 //*API service
 import {getUser} from './services/api';
-import './services/stories-api';
 
 //*Components
 import NewsFeed from './components/pages/news-feed/News-feed';

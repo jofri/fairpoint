@@ -48,7 +48,7 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-newsScraper();
+/* newsScraper();
 setInterval(() => {
   newsScraper();
   console.log('called in server');
@@ -70,7 +70,7 @@ setInterval(() => {
   categoriesScraper('Sports');
   categoriesScraper('Science');
   categoriesScraper('Health');
-}, 1800000);
+}, 1800000); */
 
 // Connect to MongoDB and listen for new requests
 http.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars
