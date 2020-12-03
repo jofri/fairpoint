@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     width: '30%',
     height: '100%',
     borderRadius: '5%',
+    marginLeft: '2vw',
   },
   rowOne: {
     display: 'flex',
@@ -35,6 +36,9 @@ const useStyles = makeStyles({
     alignItems: 'center',
     alignContent: 'center',
     justifyContent: 'flex-end',
+  },
+  button: {
+    fontSize: 12,
   }
 });
 
@@ -52,10 +56,10 @@ export default function SubStory (props) {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" className={classes.button}>
                     Share
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" className={classes.button}>
                     Learn More
         </Button>
       </CardActions>

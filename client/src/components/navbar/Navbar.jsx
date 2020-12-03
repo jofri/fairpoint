@@ -23,6 +23,8 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import LogoBrain from './logoBrain.svg';
 import './Navbar.css';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
+import SettingsIcon from '@material-ui/icons/Settings';
+import SportsTennisIcon from '@material-ui/icons/SportsTennis';
 
 
 const menuWidth = '45vw';
@@ -164,6 +166,7 @@ export default function NavBar (props) {
         <List>
           {['Analytics', 'Settings'].map((text, index) => (
             <ListItem button key={text}>
+              <SettingsIcon></SettingsIcon>
               <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
             </ListItem>
           ))}
@@ -172,7 +175,7 @@ export default function NavBar (props) {
         <List>
           {['UK', 'Business', 'Tech', 'Entertainment', 'Science', 'Sports', 'Health'].map((text, index) => (
             <ListItem button key={text}>
-              {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
+              <SportsTennisIcon></SportsTennisIcon>
               <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700'}}>{text}</Typography>} style={{fontSize: 20,}}/>
             </ListItem>
           ))}
