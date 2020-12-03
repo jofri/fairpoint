@@ -9,6 +9,7 @@ function Feed () {
 
   const [stories, setStories] = useState([]);
 
+
   useEffect( () => {
     pick('stories', setStories);
   }, []);

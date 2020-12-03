@@ -1,6 +1,13 @@
 const Article = require('../models/Article');
 const User = require('../models/User');
 const Story = require('../models/Story');
+const Business = require('../models/Business');
+const Sports = require('../models/Sports');
+const Entertainment  = require('../models/Entertainment');
+const Health = require('../models/Health');
+const Science = require('../models/Science');
+const Technology = require('../models/Technology');
+const World = require('../models/World');
 
 //*GET controllers
 exports.getUser = async (req, res) => {
@@ -11,6 +18,41 @@ exports.getUser = async (req, res) => {
 
 exports.getStories = async (req, res) => {
   const result = await Story.find({});
+  res.status(200).send(result);
+};
+
+exports.getBusiness = async (req, res) => {
+  const result = await Business.find({});
+  res.status(200).send(result);
+};
+
+exports.getSports = async (req, res) => {
+  const result = await Sports.find({});
+  res.status(200).send(result);
+};
+
+exports.getEntertainment = async (req, res) => {
+  const result = await Entertainment.find({});
+  res.status(200).send(result);
+};
+
+exports.getHealth = async (req, res) => {
+  const result = await Health.find({});
+  res.status(200).send(result);
+};
+
+exports.getScience = async (req, res) => {
+  const result = await Science.find({});
+  res.status(200).send(result);
+};
+
+exports.getTechnology = async (req, res) => {
+  const result = await Technology.find({});
+  res.status(200).send(result);
+};
+
+exports.getWorld = async (req, res) => {
+  const result = await World.find({});
   res.status(200).send(result);
 };
 

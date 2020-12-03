@@ -20,8 +20,8 @@ import './App.css';
 
 
 function App () {
-  
-  //**set user login info */
+
+  //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
 
   useEffect (() => {
@@ -32,8 +32,9 @@ function App () {
 
   console.log('in app.js', loginUser);
 
-  if (loginUser) {
-    console.log(' LOGIN RENDER');
+
+  if (loginUser === true) {
+    console.log('login', loginUser);
     return (
       <Carrot value={pantry}>
         <Router>
