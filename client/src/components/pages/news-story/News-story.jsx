@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ArticleScroll from './article-scroll/Article-scroll';
 import StoryHead from './story-head/Story-head';
 import './News-story.css';
+import Divider from '@material-ui/core/Divider';
 
 //USING EXAMPLE JSON 
 import example from '../../../example.json';
@@ -30,7 +31,9 @@ function NewsStory () {
       <div className="ArticleStoryWrap">
         <StoryHead firstArticle={firstArticle} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="StoryHead"></StoryHead>
         <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
+        <Divider></Divider>
         <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
+        <Divider></Divider>
         <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
       </div>
       {menuState && <div className="MenuPopUp">

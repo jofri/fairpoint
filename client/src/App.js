@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Carrot, pantry } from 'carrot-js';
-
 //*API service
 import {getUser} from './services/api';
 import './services/stories-api';
@@ -14,7 +13,9 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
+import CategoryTabs from './components/navbar/CategoryTabs';
 import Login from './components/pages/login/login';
+
 
 import './App.css';
 
@@ -24,6 +25,7 @@ function App () {
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
   const [loginstatus, setLoginstatus] = useState(false);
+  
 
   useEffect (() => {
     getUser()
@@ -32,7 +34,7 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
-  //TODO: Create logout button: change loginstatus into false again
+  console.log('in app.js', loginUser);
 
 
   if (loginstatus === true) {
@@ -44,6 +46,7 @@ function App () {
           <div className="content">
             <Switch>
               <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+                <CategoryTabs></CategoryTabs>
                 <NewsFeed />
               </Route>
               <Route exact path='/story'>
@@ -71,17 +74,18 @@ function App () {
       </Carrot>
     );
   } else {
-    console.log('logout', loginUser);
+    console.log('NOT LOGIN RENDER');
     return (
       <Carrot value={pantry}>
         <Router>
           <Navbar />
           <div className="content">
             <Switch>
-              <Route exact path='/login'>
+              <Route exact path="/login">
                 <Login />
               </Route>
               <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+                <CategoryTabs></CategoryTabs>
                 <NewsFeed />
               </Route>
               <Route exact path='/story'>
