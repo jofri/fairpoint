@@ -1,3 +1,7 @@
 .DS_Store
 node_modules/
 .env
+.vscode/
+package-lock.json
+merge.sh
+config.js

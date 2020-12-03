@@ -1,0 +1,22 @@
+
+
+.Tabs-link-div {
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(199, 199, 199);
+
+  font-style: italic;
+
+  display: flex;
+  position: fixed;
+
+  width: 100vw;
+  height: 3vh;
+}
+
+
+.Tabs-link-div a {
+  color: black;
+  text-decoration: none;
+
+}

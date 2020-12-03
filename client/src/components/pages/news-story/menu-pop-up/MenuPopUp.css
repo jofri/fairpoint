@@ -1,0 +1,19 @@
+.MenuPopUpWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: red; */
+    margin: 1% 5%;
+    height: 80%;
+    
+}
+
+.CloseButtonMenuPopUp {
+    position: absolute;
+    display: block;
+    right: 3%;
+    top: 3%;
+    background-color: lightcoral;
+    border-radius: 5%;
+}

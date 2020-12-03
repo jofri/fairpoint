@@ -1,7 +1,11 @@
 
-  fetch('/api/get')
+function getUser () {
+  return fetch('/auth/current-user')
     .then(response => response.json())
-    .then(data => console.log('Template data recived form API:', data));
+    .catch(error => console.log('in here', error));
+}
 
 
-
+export {
+  getUser
+};

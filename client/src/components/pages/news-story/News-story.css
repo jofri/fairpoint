@@ -1,0 +1,17 @@
+/* .ArticleStoryWrap {
+    position: absolute;
+}  */
+
+.MenuPopUp {
+    position: absolute;
+    top: 30vh;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    text-align: center;
+    background-color: bisque;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 5%;
+}
