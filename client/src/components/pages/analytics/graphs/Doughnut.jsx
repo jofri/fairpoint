@@ -1,8 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import {Doughnut} from 'react-chartjs-2';
+import './Doughnut.css';
 
 
-function Doughnutchart () {
+function Doughnutchart (props) {
+
+  // console.log('inDoughnutchart', props);
+
+  let dataset = [];
+  for (let i = 0; i < props.loginUser.article.length; i++) {
+    let datapair = {};
+    datapair.stance = props.loginUser.article[i].stance;
+    datapair.source = props.loginUser.article[i].source;
+    dataset.push(datapair);
+  }
+
+  // console.log('inDoughnutchart', dataset);
+
+  let labeldata = {};
+
+  for (let i = 0; i < dataset.length; i++) {
+    const source = dataset[i].source;
+    // console.log(source);
+    if (source in labeldata) {
+      labeldata[source] += 1;
+    } else {
+      labeldata[source] = 1;
+    }
+  }
+
+
+  // console.log(labeldata);
+
 
   const [chartData, setChartData] = useState({});
   const doughnutchart = () => {
@@ -31,7 +60,8 @@ function Doughnutchart () {
     legend: {
       position: 'right',
       labels: {
-        boxWidth: 10
+        boxWidth: 10,
+        fontSize: 13
       }
     }
   };

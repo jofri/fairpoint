@@ -1,4 +1,64 @@
-h1{
+h2{
   color: var(--color-black);
-  font-size: 30px;
+  font-size: var(--headfont);
+  align-items: center;
+}
+
+
+.totalsummary-wrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.polarchart-container {
+  border-width: 1px;
+  border-color: black;
+  padding: 10px;
+  background-color: var(--color-white);
+}
+
+.doughnutchart-container {
+  border-width: 1px;
+  border-color: black;
+  padding: 10px;
+  background-color: var(--color-white);
+}
+
+.radarchart-container {
+  border-width: 1px;
+  border-color: black;
+  padding: 10px;
+}
+
+.chartjs-size-monitor{
+ position: relative !important;
+}
+
+.higthleftcolor{
+  background-color: #E11F1C;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lowleftcolor{
+  background-color: #faaead;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hightrightcolor{
+  background-color: #0195DF;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lowrightcolor{
+  background-color: #a9e2ff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
