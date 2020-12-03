@@ -41,7 +41,7 @@ const newsScraper = async () => {
         itemobj.links = links;
         itemobj.story = story[0] === '_' ? false : true;
         if (itemobj.story === true) {
-          // console.log(item.title);
+          console.log(item.title);
           itemobj.articles = await getarticles(story);
         } else {
           itemobj.articles = [];
@@ -54,7 +54,7 @@ const newsScraper = async () => {
         useFindAndModify: false,
         useCreateIndex: true,
       });
-      conn.dropCollection('stories');
+      await conn.dropCollection('stories');
     } catch (err) {
       console.log('Scraping failed', err);
     }

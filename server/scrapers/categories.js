@@ -109,7 +109,7 @@ const categoriesScraper = async (category) => {
         useFindAndModify: false,
         useCreateIndex: true,
       });
-      conn.dropCollection(plural);
+      await conn.dropCollection(plural);
     } catch (err) {
       console.log('Scraping failed', err);
     }
