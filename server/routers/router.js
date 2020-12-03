@@ -15,6 +15,7 @@ router.get('/getWorld', controller.getWorld);
 router.post('/newstories', controller.createStory);
 router.post('/newuser', controller.createUser);
 router.post('/newarticle', controller.createArticle);
+router.post('/saveUserlog/:googleid', controller.saveArticleUserlog);
 
 
 module.exports = router;

@@ -2,7 +2,7 @@ import React, {useState, useEffect}  from 'react';
 import {Radar} from 'react-chartjs-2';
 
 
-function Radarchart () {
+function Radarchart (props) {
 
   const [chartData, setChartData] = useState({});
 
@@ -27,7 +27,8 @@ function Radarchart () {
       display: false,
       position: 'right',
       labels: {
-        boxWidth: 10
+        boxWidth: 10,
+        fontSize: 13
       }
     }
   };

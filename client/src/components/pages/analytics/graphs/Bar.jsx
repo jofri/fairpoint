@@ -12,10 +12,15 @@ function Barchart () {
         {
           label: 'No. of aritcles per day',
           data: [32, 45, 12, 20, 10, 15, 35],
-          // backgroundColor: [
-          //   'rgba(75, 192, 192, 0.6'
-          // ],
-          borderWidth: 400
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6'
+          ]
         }
       ]
     });

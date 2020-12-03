@@ -1,60 +1,179 @@
-import React, {useState} from 'react';
-// import React from 'react';
-import './Analytics.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel';
+// import React,{useState, useEffect} from 'react';
+// // import React from 'react';
+// import './Analytics.css';
 
-import Loader from '../../helpers/loader/Loader';
-// import Linechart from './graphs/Linechart';
-import Doughnut from '../analytics/graphs/Doughnut';
-import Radar from '../analytics/graphs/Radar';
-import Bar from '../analytics/graphs/Bar';
-import Polar from '../analytics/graphs/Polararea';
+// // import GraphSlider from './GraphSlider';
+// // import Linechart from './graphs/Linechart';
+// // import Bar from '../analytics/graphs/Bar';
+// import Loader from '../../helpers/loader/Loader';
+// import Doughnut from '../analytics/graphs/Doughnut';
+// import Radar from '../analytics/graphs/Radar';
+// import Polar from '../analytics/graphs/Polararea';
 
-//**Bootstrap ver */
-function Analytics (props) {
+// function Analytics (props) {
 
-  const [index, setIndex] = useState(0);
+//   const [userData, setUserdata] = useState([]);
+//   const [stanceData, setStanceData] = useState({});
+//   // const [stancestate, setStanceState] = useState({});
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
+//   const getDataset =  () => {
+//     let dataset = [];
 
-  console.log('props',props.loginUser);
+//     for (let i = 0; i < props.loginUser.article.length; i++) {
+//       let datapair = {};
+//       datapair.stance = props.loginUser.article[i].stance;
+//       datapair.source = props.loginUser.article[i].source;
+//       dataset.push(datapair);
+//     }
+
+//     return dataset;
+//   };
+
+//   useEffect(() => {
+//     const userdataset = getDataset();
+//     setUserdata(userdataset);
+//   }, [props]);
+  
+//   console.log('userData', userData);
+
+
+//   const getStanceData = () => {
+//     let userstanceData = {};
+
+//     for (let i = 0; i < userData.length; i++) {
+//       if (userData[i].stance === 10) {
+//         let stance = 'Right';
+//         userstanceData[stance] = userstanceData[stance] ? userstanceData[stance] + 1: 1;
+//       } else if (userData[i].stance === 1) {
+//         let stance = 'Left';
+//         userstanceData[stance] = userstanceData[stance] ? userstanceData[stance] + 1: 1;
+//       } else if (userData[i].stance === 5) {
+//         let stance = 'Middle';
+//         userstanceData[stance] = userstanceData[stance] ? userstanceData[stance] + 1: 1;
+//       } else if (userData[i].stance === 11) {
+//         let stance = 'Not defined';
+//         userstanceData[stance] = userstanceData[stance] ? userstanceData[stance] + 1: 1;
+//       }
+//     }
+
+//     return userstanceData;
+//   };
+
+
+
+//   const calcStance = () => {
+//     const rightArticle = stanceData.Right;
+//     const leftArticle = stanceData.Left;
+
+//     const rightstance =( rightArticle / (rightArticle + leftArticle));
+//     const leftstance = (leftArticle / (rightArticle + leftArticle));
+
+//     let userstanceAttributes = {};
+//     let userstance = '';
+//     if (rightstance > 0.5) {
+//       userstance = 'lowright';
+//       userstanceAttributes.userstance = userstance;
+//       userstanceAttributes.opacity = rightstance;
+//       return userstanceAttributes;
+//     } else if (rightstance > 0.8) {
+//       userstance = 'highright';
+//       console.log('highright', rightstance);
+//       userstanceAttributes.userstance = userstance;
+//       userstanceAttributes.opacity = rightstance;
+//       return userstanceAttributes;
+//     } else if (leftstance > 0.5) {
+//       userstance = 'lowleft';
+//       userstanceAttributes.userstance = 'lowleft';
+//       userstanceAttributes.opacity = leftstance;
+//       return userstanceAttributes;
+//     } else if (leftstance > 0.8) {
+//       userstance = 'hightleft';
+//       userstanceAttributes.userstance = userstance;
+//       userstanceAttributes.opacity = leftstance;
+//       return userstanceAttributes;
+//     } 
+//     else {
+//       userstanceAttributes.userstance = 'middle';
+//       userstanceAttributes.opacity = 0;
+//       console.log(userstanceAttributes);
+//       return userstanceAttributes;
+//     }
+//   };
+
     
-  return !props ? <Loader /> : (
-    <>
-      <div className="analytics-wrapper">
-        <h2>Total Summary</h2>
-        <div className="total-summary-container">
-          <Carousel activeIndex={index} onSelect={handleSelect}>
-            <Carousel.Item>
-              <div className="polar-chart">
-                <Polar />
-              </div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <div className="doughnut-chart">
-                <Doughnut />
-              </div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <div className="radar-chart">
-                <Radar />
-              </div>
-            </Carousel.Item>
-          </Carousel>
-        </div> 
-        <h2>Daily Summary</h2>
-        <div className="daily-summary-container">
-          {/* //FIXME: THIS is ugly....... */}
-          <div className="bar-chart">
-            <Bar />
-          </div>
-        </div>
-      </div>  
-    </>
-  );
-}
+//   useEffect(() => {
+//     const stancedataset = getStanceData();
+//     setStanceData(stancedataset);
+//   },[userData]);
 
-export default Analytics;
+//    useEffect(() => {
+
+//     const result = calcStance();
+//     setStanceData(stancedataset);
+//   },[userData]);
+
+//   // const result = calcStance();
+//   // console.log(result);
+  
+//   // const defineBackground = () => {
+//   //   if (props.loginUser.article.length > 30) {
+//   //     const userstanceAttributes = calcStance();
+//   //     console.log(userstanceAttributes);
+
+//   //     let divclassname = {};
+//   //     let divclassAttributes = {};
+
+//   //     switch (userstanceAttributes.userstance) {
+//   //     case 'lowright':
+//   //       divclassAttributes.divclassname = 'lowrightcolor';
+//   //       divclassAttributes.opacity = userstanceAttributes.opacity;
+//   //       return divclassAttributes; 
+//   //       // break;
+//   //     case 'highright':
+//   //       divclassAttributes.divclassname = 'hightrightcolor';
+//   //       return divclassname; 
+//   //       // break;
+//   //     case 'lowleft':
+//   //       divclassAttributes.divclassname = 'lowleftcolor';
+//   //       divclassAttributes.opacity = userstanceAttributes.opacity;
+//   //       return divclassAttributes; 
+//   //       // break;
+//   //     case 'highleft':
+//   //       divclassAttributes.divclassname = 'higthleftcolor';
+//   //       divclassAttributes.opacity = userstanceAttributes.opacity;
+//   //       return divclassAttributes; 
+//   //       // break;
+//   //     default:  
+//   //       divclassAttributes.divclassname = 'middlecolor';
+//   //       divclassAttributes.opacity = userstanceAttributes.opacity;
+//   //       return divclassAttributes; 
+//   //     }      
+//   //   }
+//   // };
+
+//   // useEffect(() => {
+//   //   setStanceState(defineBackground());
+//   // }, [stanceData]);
+
+//   // console.log(stancestate);
+
+//   return props ? 
+//     // <div className={"totalsummary-wrapper"}>
+//     <div >
+//       <div >
+//         <h2>Summary</h2>
+//         <div className='polarchart-container'>
+//           <Polar loginUser={props.loginUser} />
+//         </div>
+//         <div className='doughnutchart-container'>
+//           <Doughnut loginUser={props.loginUser}/>
+//         </div>
+//         <div className='radarchart-container'>
+//           <Radar loginUser={props.loginUser}/>
+//         </div>
+//       </div>
+//     </div>
+//     : <Loader/>;
+// }
+
+// export default Analytics;

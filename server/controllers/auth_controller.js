@@ -10,7 +10,7 @@ exports.logout = (req, res) => {
 };
 
 exports.currentUser = async (req, res) => {
-  console.log('🔥 In Auth controller',req.user);
+  console.log('🔥 In Auth controller',req);
   if (!req.user) {
     return res.sendStatus(402);
   } else {

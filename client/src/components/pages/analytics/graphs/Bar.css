@@ -1,11 +1,8 @@
-/* .barchart-container{
+.barchart-container{
   display: flex;
-  width: 100%;
+  width: 90%;
   height: 100%;
-} */
-
-.Polarchart-container > canvas{
-  display: flex;
-  width: 100% !important;
-  height: 100% !important;
+  /* justify-content: center; */
+  align-items: center;
 }
+

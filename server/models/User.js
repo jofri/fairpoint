@@ -6,8 +6,15 @@ const User = new Schema({
   googleId: { type: String},
   email: { type: String},
   article: [{
-    _id: {type: String},
-    timestamp: { type: Date, default: Date.now}
+    title: { type: String},
+    subtitle: { type: String},
+    link: { type: String},
+    image: { type: String},
+    source: { type: String},
+    time: { type: String},
+    stance: {type: Number},
+    category: { type: String},
+    date: { type: Date, default: Date.now, required: true }
   }]
 });
 
