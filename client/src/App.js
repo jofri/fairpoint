@@ -18,6 +18,7 @@ import Login from './components/pages/login/login';
 
 
 import './App.css';
+import NavBarTransparent from './components/navbar/NavbarTransparent';
 
 
 function App () {
@@ -42,34 +43,32 @@ function App () {
     return (
       <Carrot value={pantry}>
         <Router>
-          <Navbar />
-          <div className="content">
-            <Switch>
-              <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-                <CategoryTabs></CategoryTabs>
-                <NewsFeed />
-              </Route>
-              <Route exact path='/story'>
-                <NewsStory />
-              </Route>
-              <Route exact path='/donate'>
-                <Donate></Donate>
-              </Route>
-              <Route exact path='/profile'>
-                <Profile></Profile>
-              </Route>
-              <Route exact path='/analytics'>
-                <Analytics loginUser = {
-                  loginUser}/>
-              </Route>
-              <Route exact path='/404'> {/* Specify 404 route */}
-                <FourOFour />
-              </Route>
-              <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-                <FourOFour />
-              </Route>
-            </Switch>
-          </div>
+          <Switch>
+            <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+              <CategoryTabs></CategoryTabs>
+              <NewsFeed />
+            </Route>
+            <Route exact path='/story'>
+              <NavBarTransparent></NavBarTransparent>
+              <NewsStory />
+            </Route>
+            <Route exact path='/donate'>
+              <Donate></Donate>
+            </Route>
+            <Route exact path='/profile'>
+              <Profile></Profile>
+            </Route>
+            <Route exact path='/analytics'>
+              <Analytics loginUser = {
+                loginUser}/>
+            </Route>
+            <Route exact path='/404'> {/* Specify 404 route */}
+              <FourOFour />
+            </Route>
+            <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
+              <FourOFour />
+            </Route>
+          </Switch>
         </Router>
       </Carrot>
     );
@@ -78,33 +77,36 @@ function App () {
     return (
       <Carrot value={pantry}>
         <Router>
-          <Navbar />
-          <div className="content">
-            <Switch>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+          <Switch>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+              <Navbar />
+              <div className="content">
                 <CategoryTabs></CategoryTabs>
                 <NewsFeed />
-              </Route>
-              <Route exact path='/story'>
-                <NewsStory />
-              </Route>
-              <Route exact path='/donate'>
-                <Donate></Donate>
-              </Route>
-              <Route exact path='/profile'>
+              </div>
+            </Route>
+            <Route exact path='/story'>
+              <NewsStory />
+            </Route>
+            <Route exact path='/donate'>
+              <Donate></Donate>
+            </Route>
+            <Route exact path='/profile'>
+              <Navbar />
+              <div className="content">
                 <Profile></Profile>
-              </Route>
-              <Route exact path='/404'> {/* Specify 404 route */}
-                <FourOFour />
-              </Route>
-              <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-                <FourOFour />
-              </Route>
-            </Switch>
-          </div>
+              </div>
+            </Route>
+            <Route exact path='/404'> {/* Specify 404 route */}
+              <FourOFour />
+            </Route>
+            <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
+              <FourOFour />
+            </Route>
+          </Switch>
         </Router>
       </Carrot>
     );

@@ -1,11 +1,13 @@
 .ArticleTileWrapper {
-    background-color: lightblue;
+    /* background-color: lightblue; */
     /* margin: 1px; */
     /* margin-right: 20px; */
     min-width: 95vw;
     position: relative;
-    display: block;
-    margin-left: 4vw;
+    display: flex;
+    margin-left: 3vw;
+    flex-direction: column;
+
 }
 
 .RowOne {
@@ -17,6 +19,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    /* background-color: red; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 .TextOne {
@@ -24,7 +31,7 @@
     flex-direction: column;
     justify-content: center;
     align-content: flex-start;
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
 }
 
 .ArticleTileImage {
@@ -36,16 +43,17 @@
 }
 
 .ArticleTileTitle {
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
     align-self: center;
     margin-right: 4%;
 }
 
 .ArticleTileSource {
     position: absolute;
-    top: 3%;
-    left: 2%;
+    top: 5%;
+    left: 1%;
     font-size: 12px;
+    font-weight: 700;
 }
 
 .ArticleTileTime {
@@ -55,9 +63,15 @@
 
 .SocialButton {
     margin-right: 3vw;
+    display: none;
 }
 
 .StoryAttribute {
      text-decoration:none;
      color: inherit;
+}
+
+.ArticleTileCardWrapper {
+    margin-left: 1vw;
+    margin-right: 1vw;
 }

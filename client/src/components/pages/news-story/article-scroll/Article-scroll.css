@@ -1,11 +1,11 @@
 .ArticleScrollWrapper {
-    background-color: lightsalmon;
+    /* background-color: lightsalmon; */
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    height: 22vh;
+    height: 21vh;
     justify-content: space-between;
     align-items: center;
     margin: 3px auto;
@@ -15,7 +15,7 @@
 
 .ArticleTile {
     width: 100vw;
-    background-color: green;
+    /* background-color: green; */
     margin: 1px 1vw;
     scroll-snap-align: start;
 }

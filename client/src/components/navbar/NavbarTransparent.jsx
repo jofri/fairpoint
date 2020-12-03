@@ -17,14 +17,15 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 // import MailIcon from '@material-ui/icons/Mail';
-import Slide from '@material-ui/core/Slide';
+// import Slide from '@material-ui/core/Slide';
 import Avatar from '@material-ui/core/Avatar';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import LogoBrain from './logoBrain.svg';
+// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import './Navbar.css';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import SettingsIcon from '@material-ui/icons/Settings';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 // import SportsTennisIcon from '@material-ui/icons/SportsTennis';
+import ShareIcon from '@material-ui/icons/Share';
 
 
 const menuWidth = '45vw';
@@ -37,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-      background: 'red',
     }),
   },
   title: {
@@ -47,12 +47,31 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
   },
   menubutton: {
-    height: '5vh',
-    width: '5vw',
-    color: '#364f6b',
+    color: 'white',
+    justifySelf: 'flex-end',
   },
-  hide: {
-    display: 'none',
+  open: {
+    backgroundColor: 'black',
+    opacity: 0.5,
+    justifySelf: 'flex-end',
+  },
+  arrowBackIcon: {
+    color: 'white',
+    justifyContent: 'flex-start',
+  },
+  toolbar: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'space-between',
+    width: '95%',
+    backgroundColor: 'transparent',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  shareIcon: {
+    backgroundColor: 'black',
+    opacity: 0.5,
+    margin: '2vw',
   },
   drawer: {
     width: menuWidth,
@@ -61,12 +80,20 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: menuWidth,
   },
+  shareIconPic: {
+    color: 'white',
+  },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
+  },
+  backButton: {
+    backgroundColor: 'black',
+    opacity: 0.5,
+    justifySelf: 'flex-start'
   },
   content: {
     flexGrow: 1,
@@ -86,18 +113,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function HideOnScroll (props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+// function HideOnScroll (props) {
+//   const { children, window } = props;
+//   const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
+//   return (
+//     <Slide appear={false} direction="down" in={!trigger}>
+//       {children}
+//     </Slide>
+//   );
+// }
 
-export default function NavBar (props) {
+export default function NavBarTransparent (props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -114,32 +141,32 @@ export default function NavBar (props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar)}
-          style={{ background: '#FAF9F8' }}
-        >
-          <Toolbar>
-            <a href="/">
-              <img src={LogoBrain} alt="logo" className="NavBarLogo"/>
-            </a>
-            <Typography variant="h6" noWrap className={classes.title}>
-            Anchored News
-            </Typography>
+      <AppBar
+        position="fixed"
+        className={clsx(classes.appBar)}
+        style={{ background: 'transparent' }}
+        elevation={0}
+      >
+        <Toolbar className={classes.toolbar}>
+          <IconButton className={classes.backButton}>
+            <ArrowBackIcon className={classes.arrowBackIcon}></ArrowBackIcon>
+          </IconButton>
+          <div>
+            <IconButton className={classes.shareIcon}>
+              <ShareIcon className={classes.shareIconPic}></ShareIcon>
+            </IconButton>
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="end"
               onClick={handleDrawerOpen}
-              className={clsx(open && classes.hide)}
+              className={classes.open}
             >
-              <MenuIcon className={classes.menubutton}/>
+              <MenuIcon className={classes.menubutton} />
             </IconButton>
-          </Toolbar>
-          <div className="NavBarColorLine"></div>
-        </AppBar>
-      </HideOnScroll>
+          </div>
+        </Toolbar>
+      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -171,9 +198,9 @@ export default function NavBar (props) {
             </ListItem>
           ))}
         </List>
-        <Divider/>
+        <Divider />
         <List>
-          {['Donate','About Us', 'Terms & Conditions','Logout'].map((text, index) => (
+          {['Donate', 'About Us', 'Terms & Conditions', 'Logout'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon><LogoutIcon></LogoutIcon></ListItemIcon>
               <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />

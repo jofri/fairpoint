@@ -1,7 +1,31 @@
 import React from 'react';
-import './MenuPopUp.css';
+// import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  iconButton: {
+    position: 'absolute',
+    top: '3%',
+    right: '3%',
+  },
+  menuWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '80%',
+  },
+  closeIcon: {
+    width: '5vw',
+    height: '5vw'
+  }
+}));
+
 
 function MenuPopUp (props) {
+  const classes = useStyles();
 
   const CloseBox = () => {
     props.setMenuState(false);
@@ -9,18 +33,22 @@ function MenuPopUp (props) {
 
 
   return (
-    <div className="MenuPopUpWrapper">
+    <div className={classes.menuWrapper}>
       <div className="SelectedStoryDetailsWrap">
-        <button onClick={CloseBox} className="CloseButtonMenuPopUp">X</button>
-        {/* <h1>MENU POP UP! lalalaal</h1> */}
+        <IconButton onClick={CloseBox} className={classes.iconButton}>
+          <CloseIcon className={classes.closeIcon}></CloseIcon>
+        </IconButton>
         <h3>{props.selectedStory.source}</h3>
         <h2>{props.selectedStory.title}</h2>
       </div>
+      {/* <Divider className={classes.}></Divider> */}
       <div className="SocialMediaIconsWrap">
-        <h1>HOLDER SOCIAL MEDIA</h1>
+        <h1>HOLDER SOCIAL </h1>
       </div>
     </div>
   );
 }
 
 export default MenuPopUp;
+
+
