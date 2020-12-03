@@ -27,7 +27,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 // import SportsTennisIcon from '@material-ui/icons/SportsTennis';
 
 
-const menuWidth = '45vw';
+const menuWidth = '43vw';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,11 +55,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
   drawer: {
-    width: menuWidth,
+    // width: menuWidth,//???
     flexShrink: 0,
   },
   drawerPaper: {
     width: menuWidth,
+    overflow: 'hidden',
   },
   drawerHeader: {
     display: 'flex',
@@ -67,23 +68,25 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
+    // backgroundColor: 'red',
+    height: '8.5vh'
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginRight: -menuWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: 0,
-  },
+  // content: {
+  //   flexGrow: 1,
+  //   padding: theme.spacing(3),
+  //   transition: theme.transitions.create('margin', {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.leavingScreen,
+  //   }),
+  //   marginRight: -menuWidth,
+  // },
+  // contentShift: {
+  //   transition: theme.transitions.create('margin', {
+  //     easing: theme.transitions.easing.easeOut,
+  //     duration: theme.transitions.duration.enteringScreen,
+  //   }),
+  //   marginRight: 0,
+  // },
 }));
 
 function HideOnScroll (props) {
@@ -151,7 +154,7 @@ export default function NavBar (props) {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon style={{fontSize: 25}} />}
           </IconButton>
         </div>
         <Divider />
@@ -164,9 +167,9 @@ export default function NavBar (props) {
           ))}
         </List>
         <List>
-          {['Analytics', 'Settings'].map((text, index) => (
+          {['Profile', 'Analytics'].map((text, index) => (
             <ListItem button key={text}>
-              <SettingsIcon></SettingsIcon>
+              <ListItemIcon><SettingsIcon style={{fontSize: 20}}></SettingsIcon></ListItemIcon>
               <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
             </ListItem>
           ))}
@@ -175,7 +178,7 @@ export default function NavBar (props) {
         <List>
           {['Donate','About Us', 'Terms & Conditions','Logout'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon><LogoutIcon></LogoutIcon></ListItemIcon>
+              <ListItemIcon><LogoutIcon style={{ fontSize: 20 }}></LogoutIcon></ListItemIcon>
               <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
             </ListItem>
           ))}

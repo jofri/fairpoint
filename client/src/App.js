@@ -12,12 +12,11 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
-/* import CategoryTabs from './components/navbar/CategoryTabs';
-import Login from './components/pages/login/login'; */
 
 
 import './App.css';
-// import NavBarTransparent from './components/navbar/NavbarTransparent';
+import NavBarTransparent from './components/navbar/NavbarTransparent';
+import CategoryTabs from './components/navbar/CategoryTabs';
 
 
 function App () {
@@ -40,36 +39,44 @@ function App () {
   //   console.log('logged in');
   return (
     <Router>
-      <Navbar />
-      <div className="content">
-        <Switch>
-          <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+      <Switch>
+        <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+          <Navbar />
+          <div className="content">
+            <CategoryTabs></CategoryTabs>
             <NewsFeed />
-          </Route>
-          <Route exact path='/story'>
-            <NewsStory />
-          </Route>
-          <Route exact path='/donate'>
+          </div>
+        </Route>
+        <Route exact path='/story'>
+          <NavBarTransparent></NavBarTransparent>
+          <NewsStory />
+        </Route>
+        <Route exact path='/donate'>
+          <Navbar />
+          <div className="content">
             <Donate></Donate>
-          </Route>
-          <Route exact path='/profile'>
+          </div>
+        </Route>
+        <Route exact path='/profile'>
+          <Navbar />
+          <div className="content">
             <Profile></Profile>
+          </div>
+        </Route>
+        {loginUser && loginUser._id
+          ? <Route exact path='/analytics' >
+            <Analytics loginUser = {
+              loginUser ? loginUser : <Loader />}/>
           </Route>
-          {loginUser && loginUser._id
-            ? <Route exact path='/analytics' >
-              <Analytics loginUser = {
-                loginUser ? loginUser : <Loader />}/>
-            </Route>
-            : null}
-          {/* TODO: make an alert or redirect   */}
-          <Route exact path='/404'> {/* Specify 404 route */}
-            <FourOFour />
-          </Route>
-          <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-            <FourOFour />
-          </Route>
-        </Switch>
-      </div>
+          : null}
+        {/* TODO: make an alert or redirect   */}
+        <Route exact path='/404'> {/* Specify 404 route */}
+          <FourOFour />
+        </Route>
+        <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
+          <FourOFour />
+        </Route>
+      </Switch>
     </Router>
   );
 }
