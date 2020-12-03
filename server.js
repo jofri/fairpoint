@@ -7,7 +7,7 @@ const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
-// const newsScraper = require('./server/scrapers/index');
+const newsScraper = require('./server/scrapers/index');
 // const categoriesScraper = require('./server/scrapers/categories');
 
 
@@ -48,11 +48,11 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-// newsScraper();
-// setInterval(() => {
-//   newsScraper();
-//   console.log('called in server');
-// }, 300000);
+newsScraper();
+setInterval(() => {
+  newsScraper();
+  console.log('called in server');
+}, 300000);
 
 // categoriesScraper('World');
 // categoriesScraper('Business');
