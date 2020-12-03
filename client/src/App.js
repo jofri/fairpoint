@@ -38,40 +38,38 @@ function App () {
   // if (loginUser && loginUser._id) {
   //   console.log('logged in');
   return (
-    <Carrot value={pantry}>
-      <Router>
-        <Navbar />
-        <div className="content">
-          <Switch>
-            <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-              <NewsFeed />
+    <Router>
+      <Navbar />
+      <div className="content">
+        <Switch>
+          <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+            <NewsFeed />
+          </Route>
+          <Route exact path='/story'>
+            <NewsStory />
+          </Route>
+          <Route exact path='/donate'>
+            <Donate></Donate>
+          </Route>
+          <Route exact path='/profile'>
+            <Profile></Profile>
+          </Route>
+          {loginUser && loginUser._id
+            ? <Route exact path='/analytics' >
+              <Analytics loginUser = {
+                loginUser ? loginUser : <Loader />}/>
             </Route>
-            <Route exact path='/story'>
-              <NewsStory />
-            </Route>
-            <Route exact path='/donate'>
-              <Donate></Donate>
-            </Route>
-            <Route exact path='/profile'>
-              <Profile></Profile>
-            </Route>
-            {loginUser && loginUser._id
-              ? <Route exact path='/analytics' >
-                <Analytics loginUser = {
-                  loginUser ? loginUser : <Loader />}/>
-              </Route>
-              : null}
-            {/* TODO: make an alert or redirect   */}
-            <Route exact path='/404'> {/* Specify 404 route */}
-              <FourOFour />
-            </Route>
-            <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-              <FourOFour />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </Carrot>
+            : null}
+          {/* TODO: make an alert or redirect   */}
+          <Route exact path='/404'> {/* Specify 404 route */}
+            <FourOFour />
+          </Route>
+          <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
+            <FourOFour />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
