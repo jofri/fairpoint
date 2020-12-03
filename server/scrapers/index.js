@@ -48,7 +48,7 @@ const newsScraper = async () => {
         }
         db.stories.push(itemobj);
       }
-      const conn = await mongoose.createConnection('mongodb://localhost:27017/front_pages_db', {
+      const conn = await mongoose.createConnection(process.env.MONGO_DB, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
