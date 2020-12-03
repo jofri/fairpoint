@@ -1,6 +1,8 @@
 import React from 'react';
 import './Article-tile.css';
 import Card from '@material-ui/core/Card';
+import IconButton from '@material-ui/core/IconButton';
+import ShareIcon from '@material-ui/icons/Share';
 
 
 function ArticleTile (props) {
@@ -16,8 +18,7 @@ function ArticleTile (props) {
   };
 
   return (
-    <Card>
-
+    <Card className="ArticleTileCardWrapper">
       <div className="ArticleTileWrapper">
         <p className="ArticleTileSource">{props.article.source}</p>
         <a href={link} className="StoryAttribute">
@@ -31,7 +32,9 @@ function ArticleTile (props) {
         </a>
         <div className="RowTwo">
           <p className="ArticleTileTime">{props.article.time}</p>
-          <button onClick={ShareClick} className="SocialButton">Social</button>
+          <IconButton onClick={ShareClick}>
+            <ShareIcon></ShareIcon>
+          </IconButton>
         </div>
       </div>
     </Card>

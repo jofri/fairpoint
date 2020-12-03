@@ -17,6 +17,7 @@ import Login from './components/pages/login/login'; */
 
 
 import './App.css';
+// import NavBarTransparent from './components/navbar/NavbarTransparent';
 
 
 function App () {

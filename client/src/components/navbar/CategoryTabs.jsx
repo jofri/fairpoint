@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import SwipeableViews from 'react-swipeable-views';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -14,8 +15,8 @@ function TabPanel (props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -35,16 +36,15 @@ TabPanel.propTypes = {
 
 function selectedProps (index) {
   return {
-    id: `scrollable-force-tab-${index}`,
-    'aria-controls': `scrollable-force-tabpanel-${index}`,
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    width: '100%',
     backgroundColor: theme.palette.background.paper,
+    width: '100vw',
   },
   Tab: {
     fontSize: 13,
@@ -56,10 +56,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CategoryTabs () {
   const classes = useStyles();
+  const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleChangeIndex = (index) => {
+    setValue(index);
   };
 
   return (
@@ -68,12 +73,10 @@ export default function CategoryTabs () {
         <Tabs
           value={value}
           onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
           variant="scrollable"
           scrollButtons="on"
-          //   indicatorColor="primary"
-          //   textColor="primary"
-          //   aria-label="scrollable force tabs example"
-          //   inkBarStyle={{ background: 'blue' }}
           classes={{
             indicator: classes.indicator
           }}
@@ -83,10 +86,39 @@ export default function CategoryTabs () {
           <Tab label="Entertainment" {...selectedProps(2)} className={classes.Tab} />
           <Tab label="Tech" {...selectedProps(3)} className={classes.Tab} />
           <Tab label="Science" {...selectedProps(4)} className={classes.Tab} />
-          <Tab label="Sport" {...selectedProps(5)} className={classes.Tab}  />
+          <Tab label="Sport" {...selectedProps(5)} className={classes.Tab} />
           <Tab label="Health" {...selectedProps(6)} className={classes.Tab} />
         </Tabs>
       </AppBar>
+      <SwipeableViews
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+      >
+        <TabPanel value={value} index={0} dir={theme.direction}>
+                    Item One
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+                    Item Two
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
+                    Item Three
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={theme.direction}>
+            Four
+        </TabPanel>
+        <TabPanel value={value} index={4} dir={theme.direction}>
+            Five
+        </TabPanel>
+        <TabPanel value={value} index={5} dir={theme.direction}>
+                    Six
+        </TabPanel>
+        <TabPanel value={value} index={6} dir={theme.direction}>
+                    Seven
+        </TabPanel>
+      </SwipeableViews>
     </div>
   );
 }
+
+//NEED TO PASS STATE TO TAB PANELS!!!!
