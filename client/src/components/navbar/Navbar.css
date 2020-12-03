@@ -1,14 +1,10 @@
 /* Header */
 
-header {
+/* header {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(255, 0, 51);
-
-  /* Make it a flex-item */
   display: flex;
-
-  /* Make header fixed */
   position: fixed;
   top: 0;
   width: 100vw;
@@ -32,7 +28,22 @@ header {
       width: 1.5rem;
       height: 1.5rem;
       border-radius: 50%;
-    }
+    } */
+
+    /* NAVBAR 2.0 BELOW */ 
+
+.NavBarLogo {
+  height: 8vh;
+  width: 8vw;
+  margin-right: 2vw;
+
+}
+
+.NavBarColorLine {
+  height: 0.5vh;
+  width: 100%;
+ background-image: linear-gradient(to right, #e11f1c, rgb(160, 87, 160) , #0195df);
+}
 
 
 

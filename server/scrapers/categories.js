@@ -67,7 +67,7 @@ const categoriesScraper = async (category) => {
       searchTerm: story,
       prettyURLs: false,
       timeframe: '5d',
-      puppeteerArgs: []
+      puppeteerArgs: ['--single-process', '--no-zygote', '--no-sandbox']
     });
     return articles;
   }

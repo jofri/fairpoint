@@ -1,7 +1,8 @@
 import React from 'react';
-import StoryTile from './story-tiles/Story-tile';
+import HeadStory from './story-tiles/HeadStory';
 import { useEffect, useState } from 'react';
 import './Feed.css';
+import SubStory from './sub-story/SubStory';
 
 function Feed () {
 
@@ -15,35 +16,15 @@ function Feed () {
       .then(data => setStories(data));
   }, []);
 
+  const renderSubStories = stories.map((story) => {
+    return (<SubStory key=""></SubStory>);
+  });
+
   return (
     <>
       <div className="Feed-container">
-
-        {stories.map(story => {
-          // Create standard story object
-          let image = 'https://icon-library.com/images/news-icon-free/news-icon-free-7.jpg';
-          let storyObj = {
-            headline: 'No title',
-            image: image,
-          };
-          // If it's a Google story object, set image of first article as image
-          if (story.story === true) {
-            if (story.articles[0].image) image = story.articles[0].image;
-            storyObj = {
-              headline: story.title,
-              image: image,
-            };
-          }
-          // If it's just an article, keep template image but set headline
-          if (story.story === false) {
-            storyObj = {
-              headline: story.title,
-            };
-          }
-          // Render a StoryTile per story object
-          return <StoryTile story={storyObj} key={story._id}/>;
-        })}
-
+        <HeadStory story={stories[0]} key=""/>)
+        <div>{renderSubStories}</div>
       </div>
     </>
   );

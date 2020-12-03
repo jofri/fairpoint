@@ -2,9 +2,10 @@
     background-color: lightblue;
     /* margin: 1px; */
     /* margin-right: 20px; */
-    min-width: 100vw;
+    min-width: 95vw;
     position: relative;
     display: block;
+    margin-left: 4vw;
 }
 
 .RowOne {
@@ -36,7 +37,7 @@
 
 .ArticleTileTitle {
     background-color: lightcoral;
-    align-self: flex-start;
+    align-self: center;
     margin-right: 4%;
 }
 
