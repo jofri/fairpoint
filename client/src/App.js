@@ -14,6 +14,7 @@ import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
 import CategoryTabs from './components/navbar/CategoryTabs';
+import Login from './components/pages/login/login';
 
 
 import './App.css';
@@ -23,17 +24,20 @@ function App () {
 
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
+  const [loginstatus, setLoginstatus] = useState(false);
+  
 
   useEffect (() => {
     getUser()
       .then((userInfo) => setLoginUser(userInfo))
+      .then(()=> setLoginstatus(true))
       .catch(err => console.log(err));
   }, []);
 
   console.log('in app.js', loginUser);
 
 
-  if (loginUser === true) {
+  if (loginstatus === true) {
     console.log('login', loginUser);
     return (
       <Carrot value={pantry}>
@@ -77,6 +81,9 @@ function App () {
           <Navbar />
           <div className="content">
             <Switch>
+              <Route exact path="/login">
+                <Login />
+              </Route>
               <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
                 <CategoryTabs></CategoryTabs>
                 <NewsFeed />
