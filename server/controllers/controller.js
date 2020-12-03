@@ -95,3 +95,20 @@ exports.createArticle = async (req, res) => {
     res.sendStatus(400);
   }
 };
+
+
+//* Just for mockup : don't use this for actual app
+// exports.saveArticleUserlog = async (req, res) => {
+//   try {
+//     console.log('req', req);
+    
+//     const userId = req.params.googleid;
+//     const update = {article: req.body};
+//     const filter = {googleId: `${userId}`};
+//     const newArticle = await User.findOneAndUpdate(filter, {$addToSet: update});
+//     res.status(201).send(newArticle);
+//   } catch {
+//     console.log(error);
+//     res.sendStatus(400);
+//   }
+// };

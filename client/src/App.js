@@ -5,6 +5,7 @@ import { Carrot, pantry } from 'carrot-js';
 import {getUser} from './services/api';
 
 //*Components
+import Loader from './components/helpers/loader/Loader';
 import NewsFeed from './components/pages/news-feed/News-feed';
 import NewsStory from './components/pages/news-story/News-story';
 import Navbar from './components/navbar/Navbar';
@@ -28,87 +29,55 @@ function App () {
 
   useEffect (() => {
     getUser()
-      .then((userInfo) => setLoginUser(userInfo))
-      .then(()=> setLoginstatus(true))
+      .then((userInfo) => {
+        setLoginUser(userInfo);
+        console.log('userInfo', userInfo);
+      })
       .catch(err => console.log(err));
   }, []);
 
-  console.log('in app.js', loginUser);
 
-
-  if (loginstatus === true) {
-    console.log('login', loginUser);
-    return (
-      <Carrot value={pantry}>
-        <Router>
-          <Navbar />
-          <div className="content">
-            <Switch>
-              <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-                <CategoryTabs></CategoryTabs>
-                <NewsFeed />
-              </Route>
-              <Route exact path='/story'>
-                <NewsStory />
-              </Route>
-              <Route exact path='/donate'>
-                <Donate></Donate>
-              </Route>
-              <Route exact path='/profile'>
-                <Profile></Profile>
-              </Route>
-              <Route exact path='/analytics'>
+  // if (loginUser && loginUser._id) {
+  //   console.log('logged in');
+  return (
+    <Carrot value={pantry}>
+      <Router>
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
+              <NewsFeed />
+            </Route>
+            <Route exact path='/story'>
+              <NewsStory />
+            </Route>
+            <Route exact path='/donate'>
+              <Donate></Donate>
+            </Route>
+            <Route exact path='/profile'>
+              <Profile></Profile>
+            </Route>
+            {loginUser && loginUser._id 
+              ? <Route exact path='/analytics' >
                 <Analytics loginUser = {
-                  loginUser}/>
-              </Route>
-              <Route exact path='/404'> {/* Specify 404 route */}
-                <FourOFour />
-              </Route>
-              <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-                <FourOFour />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </Carrot>
-    );
-  } else {
-    console.log('NOT LOGIN RENDER');
-    return (
-      <Carrot value={pantry}>
-        <Router>
-          <Navbar />
-          <div className="content">
-            <Switch>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-                <CategoryTabs></CategoryTabs>
-                <NewsFeed />
-              </Route>
-              <Route exact path='/story'>
-                <NewsStory />
-              </Route>
-              <Route exact path='/donate'>
-                <Donate></Donate>
-              </Route>
-              <Route exact path='/profile'>
-                <Profile></Profile>
-              </Route>
-              <Route exact path='/404'> {/* Specify 404 route */}
-                <FourOFour />
-              </Route>
-              <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-                <FourOFour />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-      </Carrot>
-    );
-  }
+                  loginUser ? loginUser : <Loader />}/> 
+              </Route> 
+              : null} 
+            {/* TODO: make an alert or redirect   */}
+            <Route exact path='/404'> {/* Specify 404 route */}
+              <FourOFour />
+            </Route>
+            <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
+              <FourOFour />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Carrot>
+  );
+} 
 
-}
+
+
 
 export default App;

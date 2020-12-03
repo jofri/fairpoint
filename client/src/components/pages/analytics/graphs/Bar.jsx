@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Bar} from 'react-chartjs-2';
-
+import './Bar.css';
 
 function Barchart () {
 
@@ -12,10 +12,15 @@ function Barchart () {
         {
           label: 'No. of aritcles per day',
           data: [32, 45, 12, 20, 10, 15, 35],
-          // backgroundColor: [
-          //   'rgba(75, 192, 192, 0.6'
-          // ],
-          borderWidth: 4
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6',
+            'rgba(75, 192, 192, 0.6'
+          ]
         }
       ]
     });

@@ -17,4 +17,8 @@ router.post('/newuser', controller.createUser);
 router.post('/newarticle', controller.createArticle);
 
 
+//* Just for mockup : don't use this for actual app
+// router.post('/saveUserlog/:googleid', controller.saveArticleUserlog);
+
+
 module.exports = router;

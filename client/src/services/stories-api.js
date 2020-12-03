@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 /* eslint-disable no-irregular-whitespace */
+>>>>>>> 4d43d7215a4ed84dd38421b10cbc4c1dfdad02af
 import { plant } from 'carrot-js';
 
 const stories = [
