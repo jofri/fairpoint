@@ -26,12 +26,11 @@ app.use(express.json());
 //login middleware
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const config = require('./config');
 
 app.use(
   cookieSession({
     maxAge: 1000 * 60 * 60 * 24 * 30, // 1month
-    keys: [config.cookieKey]
+    keys: [process.env.COOKIE_KEY]
   })
 );
 
