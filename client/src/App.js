@@ -12,8 +12,8 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
-/* import CategoryTabs from './components/navbar/CategoryTabs';
-import Login from './components/pages/login/login'; */
+import CategoryTabs from './components/navbar/CategoryTabs';
+//import Login from './components/pages/login/login';
 
 
 import './App.css';
@@ -24,6 +24,9 @@ function App () {
 
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
+  const [stories, setStories] = useState([]);
+
+  const [clickedStory, setClickedStory] = useState({});
 
 
   useEffect (() => {
@@ -33,6 +36,8 @@ function App () {
         console.log('userInfo', userInfo);
       })
       .catch(err => console.log(err));
+
+    console.log('clicked', clickedStory);
   }, []);
 
 
@@ -44,10 +49,11 @@ function App () {
       <div className="content">
         <Switch>
           <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-            <NewsFeed />
+            <CategoryTabs></CategoryTabs>
+            <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories}/>
           </Route>
           <Route exact path='/story'>
-            <NewsStory />
+            <NewsStory clickedStory={clickedStory}/>
           </Route>
           <Route exact path='/donate'>
             <Donate></Donate>

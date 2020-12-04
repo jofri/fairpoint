@@ -2,11 +2,11 @@ import React from 'react';
 // import Tabs from './tabs/Tabs';
 import Feed from './feed/Feed';
 
-function NewsFeed () {
+function NewsFeed (props) {
   return (
     <>
       {/* <Tabs /> */}
-      <Feed />
+      <Feed setClickedStory={props.setClickedStory} stories={props.stories} setStories={props.setStories}/>
     </>
   );
 }

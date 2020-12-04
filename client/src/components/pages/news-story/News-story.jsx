@@ -5,46 +5,27 @@ import './News-story.css';
 import Divider from '@material-ui/core/Divider';
 // import { makeStyles } from '@material-ui/core/styles';
 
-//USING EXAMPLE JSON 
-import example from '../../../example.json';
+
 import MenuPopUp from './menu-pop-up/MenuPopUp';
 import Card from '@material-ui/core/Card';
- 
-// const useStyles = makeStyles(() => ({
-//   cardPopup : {
-//     zIndex: 10,
-//     opacity: 1,
-//   },
-// }));
 
 
-function NewsStory () {
+function NewsStory (props) {
   // const classes = useStyles();
   const [menuState, setMenuState] = useState(false);
   const [selectedStory, setSelectedStory] = useState({});
-  console.log(menuState, selectedStory, 'HOLDER');
 
-
-  //   const [NewsStory, setNewsStory] = useState([]);
-  console.log(example.stories[0].articles); //ARTICLES ARRAY
-  console.log(example.stories[0].title);
-  console.log(example.stories[0].pubDate);
-  console.log(example.stories[0].contentSnippet);
-
-  const firstArticle = example.stories[0].articles[0];
-  //   example.stories[0].articles.shift();
-  const articles = example.stories[0].articles;
 
   return (
     <div>
       <div className="ArticleStoryWrap">
-        <StoryHead firstArticle={firstArticle} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="StoryHead"></StoryHead>
+        <StoryHead story={props.clickedStory} articleThumbnail={props.clickedStory.articles[0].image || 'https://icon-library.com/images/news-icon-free/news-icon-free-7.jpg'} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="StoryHead"></StoryHead>
         <Divider></Divider>
-        <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 1)} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
         <Divider></Divider>
-        <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === (5 || 11))} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
         <Divider></Divider>
-        <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 10)} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="ArticleScroll"></ArticleScroll>
       </div>
       {menuState &&
         <div className="NewsStoryBlackScreen">
@@ -52,7 +33,7 @@ function NewsStory () {
             <MenuPopUp setMenuState={setMenuState} selectedStory={selectedStory}></MenuPopUp>
           </Card>
         </div>}
-    </div>  
+    </div>
   );
 }
 

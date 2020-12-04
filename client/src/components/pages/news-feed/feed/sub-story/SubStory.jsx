@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 // import Typography from '@material-ui/core/Typography';
 //import HolderImage from '../story-tiles/HolderImage.jpg';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -42,16 +43,26 @@ const useStyles = makeStyles({
   }
 });
 
+
+
 export default function SubStory (props) {
   const classes = useStyles();
 
+  // Import useHistory for redirect functionality
+  const history = useHistory();
+
+  const clickHandler = () => {
+    props.setClickedStory(props.story);
+    history.push('/story');
+  };
+
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={clickHandler}>
       <CardActionArea className={classes.actionArea}>
         <CardContent>
           <div className={classes.rowOne}>
-            <h3>{props.story.headline}</h3>
-            <img src={props.story.image} alt="News Img" className={classes.image}></img>
+            <h3>{props.story.title}</h3>
+            <img src={props.articleThumbnail} alt="News Img" className={classes.image}></img>
           </div>
         </CardContent>
       </CardActionArea>
