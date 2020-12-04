@@ -192,9 +192,7 @@ function Analytics (props) {
     setInterestData(interests);
     setMostInterestData(sortedInterestItems);
     
-    
     const publishers = publisherDictionary(userdataset);
-    // console.log(publishers);
     let items = Object.keys(publishers).map(function (key) {
       return [key, publishers[key]];
     });

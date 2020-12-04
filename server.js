@@ -1,4 +1,7 @@
 
+// Give development environment access to .env file
+require('dotenv').config();
+
 // Import dependencies
 const express = require('express');
 const app = express();
@@ -7,15 +10,12 @@ const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
-// const newsScraper = require('./server/scrapers/index');
+//const newsScraper = require('./server/scrapers/index');
 // const categoriesScraper = require('./server/scrapers/categories');
 
 
-// If app is in dev mode
+// If app is in dev mode, inform developer to use React's localhost port when testing server
 if (process.env.NODE_ENV !== 'production') {
-  // Replace process.env variables with variables in .env file
-  require('dotenv').config();
-  // Inform developer to use React's localhost port when testing server
   app.get('/', (req, res) => res.status(200).send(`Looks like you are in development mode: Back-end is now listening on port ${process.env.PORT}. Please start front-end server and use while testing the app (http://localhost:3000)`));
 }
 
@@ -26,12 +26,11 @@ app.use(express.json());
 //login middleware
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const config = require('./config');
 
 app.use(
   cookieSession({
     maxAge: 1000 * 60 * 60 * 24 * 30, // 1month
-    keys: [config.cookieKey]
+    keys: [process.env.COOKIE_KEY]
   })
 );
 
@@ -48,11 +47,11 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-// newsScraper();
-// setInterval(() => {
-//   newsScraper();
-//   console.log('called in server');
-// }, 300000);
+/* newsScraper();
+setInterval(() => {
+  newsScraper();
+  console.log('called in server');
+}, 300000); */
 
 // categoriesScraper('World');
 // categoriesScraper('Business');

@@ -1,9 +1,18 @@
 .StoryHeadWrapper {
-    background-color: red;
+    /* background-color: pink; */
     display: flex;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
     flex-direction: column;
     height: 33vh;
     align-items: center;
+    justify-content: space-between;
+}
+
+.StoryHeadCardWrapper {
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .StoryHeadImage {
@@ -11,14 +20,22 @@
 }
 
 .StoryHeadTitle {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     margin: 2px;
 }
 
 .StoryHeadInfo {
     display: inline;
-    font-size: 15px;
+    font-size: 12px;
     color: black;
     margin: 2px;
+}
+
+.StoryHeadTextWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
 }

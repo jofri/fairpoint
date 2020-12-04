@@ -4,17 +4,14 @@ import './Doughnut.css';
 
 
 function Doughnutchart (props) {
-
   const publisherLabel = [];
   const publisherPie = [];
-  // console.log('inDoughnutchart', props);
+
   for (let i = 0; i < props.publisherData.length; i++) {
     publisherLabel.push(props.publisherData[i][0]);
     publisherPie.push(props.publisherData[i][1]);
   }
 
-  // console.log(publisherLabel);
-  // console.log(publisherPie);
   const [chartData, setChartData] = useState({});
   const doughnutchart = () => {
     setChartData({

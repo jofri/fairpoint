@@ -41,20 +41,20 @@ const newsScraper = async () => {
         itemobj.links = links;
         itemobj.story = story[0] === '_' ? false : true;
         if (itemobj.story === true) {
-          // console.log(item.title);
+          console.log(item.title);
           itemobj.articles = await getarticles(story);
         } else {
           itemobj.articles = [];
         }
         db.stories.push(itemobj);
       }
-      const conn = await mongoose.createConnection('mongodb://localhost:27017/front_pages_db', {
+      const conn = await mongoose.createConnection(process.env.MONGO_DB, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
         useCreateIndex: true,
       });
-      conn.dropCollection('stories');
+      await conn.dropCollection('stories');
     } catch (err) {
       console.log('Scraping failed', err);
     }

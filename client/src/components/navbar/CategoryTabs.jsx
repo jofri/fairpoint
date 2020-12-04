@@ -14,8 +14,8 @@ function TabPanel (props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -35,16 +35,15 @@ TabPanel.propTypes = {
 
 function selectedProps (index) {
   return {
-    id: `scrollable-force-tab-${index}`,
-    'aria-controls': `scrollable-force-tabpanel-${index}`,
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    width: '100%',
     backgroundColor: theme.palette.background.paper,
+    width: '100vw',
   },
   Tab: {
     fontSize: 13,
@@ -62,18 +61,18 @@ export default function CategoryTabs () {
     setValue(newValue);
   };
 
+
+
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
           onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
           variant="scrollable"
           scrollButtons="on"
-          //   indicatorColor="primary"
-          //   textColor="primary"
-          //   aria-label="scrollable force tabs example"
-          //   inkBarStyle={{ background: 'blue' }}
           classes={{
             indicator: classes.indicator
           }}
@@ -83,10 +82,12 @@ export default function CategoryTabs () {
           <Tab label="Entertainment" {...selectedProps(2)} className={classes.Tab} />
           <Tab label="Tech" {...selectedProps(3)} className={classes.Tab} />
           <Tab label="Science" {...selectedProps(4)} className={classes.Tab} />
-          <Tab label="Sport" {...selectedProps(5)} className={classes.Tab}  />
+          <Tab label="Sport" {...selectedProps(5)} className={classes.Tab} />
           <Tab label="Health" {...selectedProps(6)} className={classes.Tab} />
         </Tabs>
       </AppBar>
+
     </div>
   );
 }
+

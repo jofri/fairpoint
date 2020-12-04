@@ -1,26 +1,21 @@
 import React from 'react';
 import './Article-tile.css';
 import Card from '@material-ui/core/Card';
+import IconButton from '@material-ui/core/IconButton';
+import ShareIcon from '@material-ui/icons/Share';
 
 
 function ArticleTile (props) {
-//   console.log(props.article.image,'ARTICLE TILE IMAGE');
-  //   console.log(props.article.source,'ARTICLE TILE SOURCE');
-  //   console.log(props.article.link,'ARTICLE TILE LINK');
-  const link = props.article.link;
 
   const ShareClick = () => {
-    console.log(props.article, 'CLICK!');
     props.setMenuState(true);
-    props.setSelectedStory(props.article);
   };
 
   return (
-    <Card>
-
+    <Card className="ArticleTileCardWrapper">
       <div className="ArticleTileWrapper">
         <p className="ArticleTileSource">{props.article.source}</p>
-        <a href={link} className="StoryAttribute">
+        <a href={props.article.link} target="_blank" rel="noreferrer noopener" className="StoryAttribute">
           <div className="RowOne">
             <div className="TextOne">
               <h2 className="ArticleTileTitle">{props.article.title}</h2>
@@ -31,7 +26,9 @@ function ArticleTile (props) {
         </a>
         <div className="RowTwo">
           <p className="ArticleTileTime">{props.article.time}</p>
-          <button onClick={ShareClick} className="SocialButton">Social</button>
+          <IconButton onClick={ShareClick}>
+            <ShareIcon style={{fontSize: 18,}}></ShareIcon>
+          </IconButton>
         </div>
       </div>
     </Card>

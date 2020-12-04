@@ -1,9 +1,12 @@
 import React from 'react';
+import Navbar from '../navbar/Navbar';
 
 function FourOFour () {
   return (
     <>
-      <h2>404 - Page not found</h2>
+      <Navbar />
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      <h1>404 - Page not found</h1>
     </>
   );
 }
