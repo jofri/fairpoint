@@ -1,50 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import {Doughnut} from 'react-chartjs-2';
+import './Doughnut.css';
 
 
-function Doughnutchart () {
+function Doughnutchart (props) {
+  const publisherLabel = [];
+  const publisherPie = [];
+
+  for (let i = 0; i < props.publisherData.length; i++) {
+    publisherLabel.push(props.publisherData[i][0]);
+    publisherPie.push(props.publisherData[i][1]);
+  }
 
   const [chartData, setChartData] = useState({});
   const doughnutchart = () => {
     setChartData({
-      labels: ['Guardian', 'Newsweek', 'BBC', 'Newyork Times', 'Daily Mail'],
+      labels: publisherLabel,
       datasets: [
         {
-          data: [30, 20, 15, 5, 10],
+          data: publisherPie,
           backgroundColor: [
-            '#F7464A',
-            '#46BFBD',
-            '#FDB45C',
-            '#949FB1',
-            '#5e75a8']
+            '#F18188',
+            '#EB8EB5',
+            '#CEA4DB',
+            '#9DBDF0',
+            '#64D3ED',
+            '#48E3D4',
+            '#70EDAD',
+            '#AEF184',
+            '#EFEE69']
         }
       ],
-      borderWidth: 0.5
+      borderWidth: 0
     });
   };
 
   const options = {
+    responsive: true,
+    maintainAspectRatio: false,
     title:{
       display: true,
-      text: 'No. of articles per publisher'
+      text: 'Top 10 most read publisher',
+      fontSize: 15
     },
     legend: {
-      position: 'right',
+      position: 'bottom',
       labels: {
-        boxWidth: 10
+        boxWidth: 10,
+        fontSize: 11
       }
-    }
+    },
+    cutoutPercentage: 40,
+    borderWidth: 1
   };
 
   useEffect(() => {
     doughnutchart();
-  }, []);
+  }, [props]);
 
   return (
     <>
-      <div className="barchart-container">
-        <Doughnut data={chartData} options={options}/>
-      </div>
+      <Doughnut data={chartData} options={options}/>
     </>
   );
 }

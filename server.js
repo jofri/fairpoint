@@ -1,27 +1,27 @@
 
+// Give development environment access to .env file
+require('dotenv').config();
+
 // Import dependencies
 const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
+const https = require('https');
 const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
 const newsScraper = require('./server/scrapers/index');
-// const categoriesScraper = require('./server/scrapers/categories');
+const categoriesScraper = require('./server/scrapers/categories');
 
 
-// If app is in dev mode
+// If app is in dev mode, inform developer to use React's localhost port when testing server
 if (process.env.NODE_ENV !== 'production') {
-  // Replace process.env variables with variables in .env file
-  require('dotenv').config();
-  // Inform developer to use React's localhost port when testing server
   app.get('/', (req, res) => res.status(200).send(`Looks like you are in development mode: Back-end is now listening on port ${process.env.PORT}. Please start front-end server and use while testing the app (http://localhost:3000)`));
 }
 
 // Parse API requests as JSON
 app.use(express.json());
-// For api requests, rout them through router file
 
 //login middleware
 const cookieSession = require('cookie-session');
@@ -47,11 +47,18 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-newsScraper();
+// Ping Heroku server every 5 min to prevent sleep
+setInterval( () => {
+  https.get('https://front-pages-dev.herokuapp.com/');
+  console.log('Heroku server ping sent');
+}, 300000);
+
+
+// newsScraper();
 setInterval(() => {
   newsScraper();
   console.log('called in server');
-}, 300000);
+}, 480000);
 
 // categoriesScraper('World');
 // categoriesScraper('Business');
@@ -61,15 +68,15 @@ setInterval(() => {
 // categoriesScraper('Science');
 // categoriesScraper('Health');
 
-// setInterval(() => {
-//   categoriesScraper('World');
-//   categoriesScraper('Business');
-//   categoriesScraper('Technology');
-//   categoriesScraper('Entertainment');
-//   categoriesScraper('Sports');
-//   categoriesScraper('Science');
-//   categoriesScraper('Health');
-// }, 1800000);
+setInterval(() => {
+  categoriesScraper('World');
+  categoriesScraper('Business');
+  categoriesScraper('Technology');
+  categoriesScraper('Entertainment');
+  categoriesScraper('Sports');
+  categoriesScraper('Science');
+  categoriesScraper('Health');
+}, 1800000);
 
 // Connect to MongoDB and listen for new requests
 http.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars
