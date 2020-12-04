@@ -68,10 +68,7 @@ export default function SubStory (props) {
       </CardActionArea>
       <CardActions className={classes.cardActions}>
         <Button size="small" color="primary" className={classes.button}>
-                    Share
-        </Button>
-        <Button size="small" color="primary" className={classes.button}>
-                    Learn More
+                    Read story
         </Button>
       </CardActions>
     </Card>

@@ -69,9 +69,6 @@ export default function HeadStory (props) {
         <Button size="small" color="primary" className={classes.button}>
           Read story
         </Button>
-        <Button size="small" color="primary" className={classes.button}>
-          Share
-        </Button>
       </CardActions>
     </Card>
   );
