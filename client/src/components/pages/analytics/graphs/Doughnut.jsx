@@ -5,32 +5,7 @@ import './Doughnut.css';
 
 function Doughnutchart (props) {
 
-  // console.log('inDoughnutchart', props);
-
-  let dataset = [];
-  for (let i = 0; i < props.loginUser.article.length; i++) {
-    let datapair = {};
-    datapair.stance = props.loginUser.article[i].stance;
-    datapair.source = props.loginUser.article[i].source;
-    dataset.push(datapair);
-  }
-
-  // console.log('inDoughnutchart', dataset);
-
-  let labeldata = {};
-
-  for (let i = 0; i < dataset.length; i++) {
-    const source = dataset[i].source;
-    // console.log(source);
-    if (source in labeldata) {
-      labeldata[source] += 1;
-    } else {
-      labeldata[source] = 1;
-    }
-  }
-
-
-  // console.log(labeldata);
+  console.log('inDoughnutchart', props);
 
 
   const [chartData, setChartData] = useState({});
@@ -72,9 +47,7 @@ function Doughnutchart (props) {
 
   return (
     <>
-      <div className="barchart-container">
-        <Doughnut data={chartData} options={options}/>
-      </div>
+      <Doughnut data={chartData} options={options}/>
     </>
   );
 }

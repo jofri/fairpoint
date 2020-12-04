@@ -13,8 +13,8 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
-import CategoryTabs from './components/navbar/CategoryTabs';
-import Login from './components/pages/login/login';
+// import CategoryTabs from './components/navbar/CategoryTabs';
+// import Login from './components/pages/login/login';
 
 
 import './App.css';
@@ -24,8 +24,6 @@ function App () {
 
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
-  const [loginstatus, setLoginstatus] = useState(false);
-  
 
   useEffect (() => {
     getUser()

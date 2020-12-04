@@ -19,6 +19,8 @@ function Radarchart (props) {
   };
 
   const options = {
+    responsive: true,
+    mainAspectRatio: true,
     title:{
       display: true,
       text: 'Your Interest'
@@ -29,6 +31,14 @@ function Radarchart (props) {
       labels: {
         boxWidth: 10,
         fontSize: 13
+      },
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top:0,
+          bottom:0
+        }
       }
     }
   };
@@ -39,9 +49,7 @@ function Radarchart (props) {
 
   return (
     <>
-      <div className="barchart-container">
-        <Radar data={chartData} options={options}/>
-      </div>
+      <Radar data={chartData} options={options}/>
     </>
   );
 }
