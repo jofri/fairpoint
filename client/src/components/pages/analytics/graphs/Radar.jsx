@@ -4,15 +4,26 @@ import {Radar} from 'react-chartjs-2';
 
 function Radarchart (props) {
 
+  console.log('in Radar',props);
+
   const [chartData, setChartData] = useState({});
 
   const radarchart = () => {
+
+
+    const labeldata = Object.keys(props.interestData);
+    const radardata = Object.values(props.interestData);
+
+    console.log(labeldata);
+    console.log(radardata);
+
+
     setChartData({
-      labels: ['BUSINESS', 'TECH','ENTERTAINMENT', 'SCIENCE', 'SPORTS', 'HEALTH'],
+      labels: labeldata,
       datasets: [
         {
           label: 'Categories',
-          data: [10, 20, 5, 30, 10, 10],
+          data: radardata,
         }
       ]
     });
@@ -45,7 +56,7 @@ function Radarchart (props) {
 
   useEffect(() => {
     radarchart();
-  }, []);
+  }, [props]);
 
   return (
     <>

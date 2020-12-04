@@ -37,7 +37,7 @@ function Polarchart (props) {
           label: 'Stance',
           data: piedata ,
           backgroundColor: [
-            '#3fc1c9',
+            'rgb(1, 149, 223)',
             '#fc5185',
             '#c4c4c4',
             '#eeeeee'
@@ -50,9 +50,11 @@ function Polarchart (props) {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     title:{
       display: true,
-      text: 'Political stance'
+      text: 'Political stance',
+      fontSize: 15
     },
     legend: {
       position: 'right',

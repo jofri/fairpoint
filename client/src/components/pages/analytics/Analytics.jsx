@@ -17,6 +17,8 @@ function Analytics (props) {
   const [userData, setUserdata] = useState([]);
   const [stanceData, setStanceData] = useState({});
   const [publisherData, setPublisherData] = useState([]);
+  const [interestData, setInterestData] = useState({});
+  const [mostInterestData, setMostInterestData] = useState([]);
 
   const getDataset =  () => {
     let dataset = [];
@@ -83,7 +85,6 @@ function Analytics (props) {
 
 
   const defineBackground = () => {
-
     const userAttributes = {};
     userAttributes.userstance = stanceData.userstance;
     userAttributes.opacity = stanceData.opacity;
@@ -112,7 +113,6 @@ function Analytics (props) {
   const backgroundAttribute = defineBackground();
 
   const publisherDictionary = (userdataset) => {
-    console.log(userdataset);
     let dataset = [];
     for (let i = 0; i < userdataset.length; i++) {
       let datapair = {};
@@ -135,6 +135,41 @@ function Analytics (props) {
     return labeldata;
   };
 
+  const getInterestDictionary = (userdataset) => {
+   
+    const interestsData = {};
+
+    for (let i = 0; i < userdataset.length; i++) {
+      if (userdataset[i].category === 'businesses') {
+        let categoryName = 'businesses';
+        interestsData[categoryName] = interestsData[categoryName]? interestsData[categoryName] + 1: 1;
+      } else if (userdataset[i].category === 'entertainments') {
+        let categoryName = 'entertainments';
+        interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
+      } else if (userdataset[i].category === 'health') {
+        let categoryName = 'health';
+        interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
+      } else if (userdataset[i].category === 'sciences') {
+        let categoryName = 'sciences';
+        interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
+      } else if (userdataset[i].category === 'sports') {
+        let categoryName = 'sports'; 
+        interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
+      } else if (userdataset[i].category === 'technologies') {
+        let categoryName = 'technologies';
+        interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
+      } else if (userdataset[i].category === 'worlds') {
+        let categoryName = 'worlds';
+        interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
+      } else if (userdataset[i].category === 'uk') {
+        let categoryName = 'headline';
+        interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
+      }
+    }
+    
+    return interestsData;
+  };
+
   useEffect(() => {
     const userdataset = getDataset();
     setUserdata(userdataset);
@@ -143,17 +178,35 @@ function Analytics (props) {
       setStanceData(calcStance(userdataset));
     }
 
+    const interests = getInterestDictionary(props.loginUser.article);
+    console.log(interests);
+
+    let sortedInterestItems = Object.keys(interests).map(function (key) {
+      return [key, interests[key]];
+    });
+    
+    sortedInterestItems.sort(function (first, second) {
+      return second[1] - first[1];
+    });
+  
+    setInterestData(interests);
+    setMostInterestData(sortedInterestItems);
+    
+    
     const publishers = publisherDictionary(userdataset);
-    console.log(publishers);
+    // console.log(publishers);
     let items = Object.keys(publishers).map(function (key) {
       return [key, publishers[key]];
     });
-
+    
     items.sort(function (first, second) {
       return second[1] - first[1];
     });
     setPublisherData(items.slice(0,10));
   }, []);
+  
+  console.log(mostInterestData);
+
 
   return props ? 
     <div className='totalsummary-wrapper'  style={backgroundAttribute}>
@@ -163,12 +216,13 @@ function Analytics (props) {
         <Polar loginUser={props.loginUser} userData={userData} setUserdata={setUserdata}/>
         <h3>Your reading habits are {stanceData.userstance}</h3>
       </div>
+      <div className='radarchart-container'>
+        <Radar loginUser={props.loginUser} interestData={interestData} setInterestData={setInterestData}/>
+        <h3>Your main interest is { mostInterestData.length ===0 ? null : mostInterestData[0][0]} </h3>
+      </div>
       <div className='doughnutchart-container'>
         <Doughnut loginUser={props.loginUser} publisherData={publisherData} setPublisherData={setPublisherData}/>
         <h3>Your favourite publisher is {publisherData.length === 0 ? null : publisherData[0][0]}</h3>
-      </div>
-      <div className='radarchart-container'>
-        <Radar loginUser={props.loginUser}/>
       </div>
     </div>
     : <Loader/>;

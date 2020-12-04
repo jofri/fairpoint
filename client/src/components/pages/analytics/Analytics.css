@@ -22,48 +22,64 @@ h3{
   padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  border-radius: 10px;
+  height: 100%;
 }
 
 .polarchart-container {
   display: flex;
   flex-direction: column;
-  border-width: 1px;
-  border-color: black;
   padding: 10px;
-  background-color: var(--color-white);
+  background-color: white;
   flex: 0.6;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .doughnutchart-container {
   display: flex;
   flex-direction: column;
-  border-width: 1px;
-  border-color: black;
   padding: 10px;
-  background-color: var(--color-white);
-  flex: 0.6;
+  background-color: white;
+  flex: 0.8;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .radarchart-container {
   display: flex;
-  border-width: 1px;
-  border-color: black;
+  flex-direction: column;
   padding: 10px;
-  background-color: var(--color-white);
-  flex: 0.6;
+  background-color: white;
+  flex: 0.8;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-.chartjs-size-monitor{
- position: relative !important;
- display: flex !important;
+/* .chartjs-size-monitor{
+  display: flex;
+  width: 100% !important;
+  height: 100% !important;
+} */
+
+canvas {
+  display: flex;
+  width: 100% !important;
+}
+
+.polarchart-container > canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.doughnutchart-container > canvas {
+  width: 100% !important;
+  height: 90% !important;
 }
 
 /* .highleftcolor{
