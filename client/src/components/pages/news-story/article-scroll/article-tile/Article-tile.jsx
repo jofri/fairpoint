@@ -33,7 +33,7 @@ function ArticleTile (props) {
         <div className="RowTwo">
           <p className="ArticleTileTime">{props.article.time}</p>
           <IconButton onClick={ShareClick}>
-            <ShareIcon></ShareIcon>
+            <ShareIcon style={{fontSize: 18,}}></ShareIcon>
           </IconButton>
         </div>
       </div>
