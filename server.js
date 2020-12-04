@@ -37,17 +37,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Google route auth file
-//const googleAuthFile = require('./google20e3de55faaddedd.html');
-app.get('/google20e3de55faaddedd.html', (req, res)=>{
-  console.log('console', req.body, req.headers);
-  try {
-    res.send('google-site-verification: google20e3de55faaddedd.html');
-  } catch (err) {
-    console.log(err);
-    res.send(err);
-  }
-});
+
 
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
