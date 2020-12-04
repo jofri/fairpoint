@@ -1,64 +1,116 @@
-h2{
+h1 {
   color: var(--color-black);
   font-size: var(--headfont);
   align-items: center;
+  padding-bottom: 20px;
 }
 
+h2{
+  color: var(--color-black);
+  font-size: var(--midfont);
+  padding-bottom: 10px;
+}
+
+h3{
+  color: var(--color-black);
+  font-size: calc(var(--midfont));
+  align-items: center;
+  padding-top: 20px;
+}
 
 .totalsummary-wrapper {
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .polarchart-container {
-  border-width: 1px;
-  border-color: black;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
-  background-color: var(--color-white);
+  background-color: white;
+  flex: 0.6;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .doughnutchart-container {
-  border-width: 1px;
-  border-color: black;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
-  background-color: var(--color-white);
+  background-color: white;
+  flex: 0.8;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .radarchart-container {
-  border-width: 1px;
-  border-color: black;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
+  background-color: white;
+  flex: 0.8;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-.chartjs-size-monitor{
- position: relative !important;
+canvas {
+  display: flex;
+  width: 100% !important;
 }
 
-.higthleftcolor{
-  background-color: #E11F1C;
+.polarchart-container > canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.doughnutchart-container > canvas {
+  width: 100% !important;
+  height: 90% !important;
+}
+
+.chartjs-render-monitor {
+  animation: chartjs-render-animation 0.001s;
+}
+
+/* .highleftcolor{
+  background-color: rgb(225, 31, 28);
   padding: 10px;
   display: flex;
   flex-direction: column;
 }
 
 .lowleftcolor{
-  background-color: #faaead;
+  background-color: rgb(250, 174, 173, 0.5369);
   padding: 10px;
   display: flex;
   flex-direction: column;
 }
 
-.hightrightcolor{
-  background-color: #0195DF;
+.highrightcolor{
+  background-color: rgb(1, 149, 223);
   padding: 10px;
   display: flex;
   flex-direction: column;
 }
 
 .lowrightcolor{
-  background-color: #a9e2ff;
+  background-color: rgb(168, 226, 255);
   padding: 10px;
   display: flex;
   flex-direction: column;
 }
+
+.middlecolor {
+  background-color: var(--color-lightgrey);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+} */

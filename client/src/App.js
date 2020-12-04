@@ -24,7 +24,6 @@ function App () {
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
   const [stories, setStories] = useState([]);
-
   const [clickedStory, setClickedStory] = useState({});
 
 
@@ -37,8 +36,6 @@ function App () {
   }, []);
 
 
-  // if (loginUser && loginUser._id) {
-  //   console.log('logged in');
   return (
     <Router>
       <Switch>
@@ -81,6 +78,7 @@ function App () {
     </Router>
   );
 }
+
 
 
 
