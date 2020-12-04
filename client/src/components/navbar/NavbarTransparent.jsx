@@ -25,7 +25,9 @@ import LogoutIcon from '@material-ui/icons/ExitToApp';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 // import SportsTennisIcon from '@material-ui/icons/SportsTennis';
-import ShareIcon from '@material-ui/icons/Share';
+//import ShareIcon from '@material-ui/icons/Share';
+import { useHistory } from 'react-router-dom';
+
 
 
 const menuWidth = '45vw';
@@ -113,22 +115,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// function HideOnScroll (props) {
-//   const { children, window } = props;
-//   const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
-//   return (
-//     <Slide appear={false} direction="down" in={!trigger}>
-//       {children}
-//     </Slide>
-//   );
-// }
 
 export default function NavBarTransparent (props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  let history = useHistory();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -148,13 +141,13 @@ export default function NavBarTransparent (props) {
         elevation={0}
       >
         <Toolbar className={classes.toolbar}>
-          <IconButton className={classes.backButton}>
+          <IconButton className={classes.backButton} onClick={history.goBack}>
             <ArrowBackIcon className={classes.arrowBackIcon}></ArrowBackIcon>
           </IconButton>
           <div>
-            <IconButton className={classes.shareIcon}>
+            {/* <IconButton className={classes.shareIcon}>
               <ShareIcon className={classes.shareIconPic}></ShareIcon>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               color="inherit"
               aria-label="open drawer"

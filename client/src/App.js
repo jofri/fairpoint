@@ -23,13 +23,15 @@ function App () {
 
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
+  const [stories, setStories] = useState([]);
+
+  const [clickedStory, setClickedStory] = useState({});
 
 
   useEffect (() => {
     getUser()
       .then((userInfo) => {
         setLoginUser(userInfo);
-        console.log('userInfo', userInfo);
       })
       .catch(err => console.log(err));
   }, []);
@@ -44,12 +46,11 @@ function App () {
           <Navbar />
           <div className="content">
             <CategoryTabs></CategoryTabs>
-            <NewsFeed />
+            <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories} />
           </div>
         </Route>
         <Route exact path='/story'>
-          <NavBarTransparent></NavBarTransparent>
-          <NewsStory />
+          {clickedStory._id ? <><NavBarTransparent></NavBarTransparent><NewsStory clickedStory={clickedStory} /></> : <FourOFour />}
         </Route>
         <Route exact path='/donate'>
           <Navbar />

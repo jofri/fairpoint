@@ -11,11 +11,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkIcon from '@material-ui/icons/Link';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
-//USING EXAMPLE JSON 
-import example from '../../../example.json';
-// import MenuPopUp from './menu-pop-up/MenuPopUp';
-// import Card from '@material-ui/core/Card';
- 
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: '80vw',
@@ -63,10 +59,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function NewsStory () {
+function NewsStory (props) {
   const [menuState, setMenuState] = useState(false);
-  const [selectedStory, setSelectedStory] = useState({});
-  console.log(menuState, selectedStory, 'HOLDER');
   const classes = useStyles();
 
 
@@ -75,36 +69,26 @@ function NewsStory () {
   };
 
 
-  //   const [NewsStory, setNewsStory] = useState([]);
-  console.log(example.stories[0].articles); //ARTICLES ARRAY
-  console.log(example.stories[0].title);
-  console.log(example.stories[0].pubDate);
-  console.log(example.stories[0].contentSnippet);
 
-  const firstArticle = example.stories[0].articles[0];
-  //   example.stories[0].articles.shift();
-  const articles = example.stories[0].articles;
-
-  
 
   return (
     <div>
       <div className="ArticleStoryWrap">
-        <StoryHead firstArticle={firstArticle} setMenuState={setMenuState} setSelectedStory={setSelectedStory} className="StoryHead"></StoryHead>
+        <StoryHead story={props.clickedStory} articleThumbnail={props.clickedStory.articles[0].image || 'https://icon-library.com/images/news-icon-free/news-icon-free-7.jpg'} setMenuState={setMenuState} className="StoryHead"></StoryHead>
         {/* <Divider></Divider> */}
-        <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} scrollColor={'#E11F1C'}></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 1)} setMenuState={setMenuState} scrollColor={'#E11F1C'}></ArticleScroll>
         {/* <Divider></Divider> */}
-        <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} scrollColor={'rgb(160, 87, 160)'}></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === (5 || 11))} setMenuState={setMenuState} scrollColor={'rgb(160, 87, 160)'}></ArticleScroll>
         {/* <Divider></Divider> */}
-        <ArticleScroll articles={articles} setMenuState={setMenuState} setSelectedStory={setSelectedStory} scrollColor={ '#0195DF'}></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 10)} setMenuState={setMenuState} scrollColor={ '#0195DF'}></ArticleScroll>
       </div>
       <Modal
         open={menuState}
         onClose={handleClose}
       >
         <div className={classes.paper}>
-          <span><h3 className={classes.sourceText}>{selectedStory.source}</h3>
-            <h1>{selectedStory.title}</h1></span>
+          <span><h3 className={classes.sourceText}>{props.clickedStory.source}</h3>
+            <h1>{props.clickedStory.title}</h1></span>
           <Divider className={classes.divider}></Divider>
           <div className={classes.bottomContainer}>
             <h2 className={classes.bottomText}>Share this via:</h2>
@@ -113,7 +97,7 @@ function NewsStory () {
                 <TwitterIcon className={classes.icons}></TwitterIcon>
               </IconButton>
               <IconButton style={{ backgroundColor: '#4267B2', color: 'white'}}>
-                <FacebookIcon className={classes.icons}></FacebookIcon>         
+                <FacebookIcon className={classes.icons}></FacebookIcon>
               </IconButton>
               <IconButton style={{ backgroundColor: 'grey', color: 'white' }}>
                 <LinkIcon className={classes.icons}></LinkIcon>
@@ -122,7 +106,7 @@ function NewsStory () {
           </div>
         </div>
       </Modal>
-    </div>  
+    </div>
   );
 }
 
