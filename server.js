@@ -6,6 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
+const https = require('https');
 const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
@@ -21,7 +22,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Parse API requests as JSON
 app.use(express.json());
-// For api requests, rout them through router file
 
 //login middleware
 const cookieSession = require('cookie-session');
@@ -46,6 +46,13 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
+
+// Ping Heroku server every 5 min to prevent sleep
+setInterval( () => {
+  https.get('https://front-pages-dev.herokuapp.com/');
+  console.log('Heroku server ping sent');
+}, 300000);
+
 
 // newsScraper();
 setInterval(() => {
