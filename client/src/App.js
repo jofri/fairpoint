@@ -36,7 +36,7 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
-  console.log(loginUser);
+
 
   return (
     <Router>
@@ -49,7 +49,7 @@ function App () {
           </div>
         </Route>
         <Route exact path='/story'>
-          {clickedStory._id ? <><NavBarTransparent></NavBarTransparent><NewsStory clickedStory={clickedStory} /></> : <FourOFour />}
+          {clickedStory._id ? <><NavBarTransparent></NavBarTransparent><NewsStory clickedStory={clickedStory} /></> : <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories} />}
         </Route>
         <Route exact path='/donate'>
           <Navbar />

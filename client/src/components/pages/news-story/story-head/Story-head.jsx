@@ -2,6 +2,7 @@ import React from 'react';
 import './Story-head.css';
 import Card from '@material-ui/core/Card';
 
+
 function StoryHead (props) {
 
   return (

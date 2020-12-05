@@ -13,7 +13,6 @@ function getStories () {
 
 async function saveArticle (articleInfo) {
   try {
-    console.log(articleInfo);
     fetch('/api/newarticle', {
       method: 'POST',
       headers: {
