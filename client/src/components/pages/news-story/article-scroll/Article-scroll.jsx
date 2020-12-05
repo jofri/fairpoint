@@ -3,15 +3,14 @@ import './Article-scroll.css';
 import ArticleTile from './article-tile/Article-tile';
 
 function ArticleScroll (props) {
-
   let scrollColor = props.scrollColor;
   const renderArticles = props.articles.map((article) => {
     return (
       <div className="ArticleTile" key={article.title}>
         <ArticleTile 
-          article={article}
-          setMenuState={props.setMenuState}
-          setSelectedStory={props.setSelectedStory}/>
+          article={article} 
+          setMenuState={props.setMenuState} 
+          setClickedArticle={props.setClickedArticle}/>
       </div>);
   });
 

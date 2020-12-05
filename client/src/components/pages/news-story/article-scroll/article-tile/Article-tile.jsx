@@ -9,6 +9,7 @@ import {saveArticle} from '../../../../../services/api';
 function ArticleTile (props) {
 
   const ShareClick = () => {
+    props.setClickedArticle(props.article);
     props.setMenuState(true);
   };
 
@@ -26,7 +27,7 @@ function ArticleTile (props) {
             <div className="TextOne">
               <h2 className="ArticleTileTitle">{props.article.title}</h2>
             </div>
-            <img src={props.article.image} alt={props.article.subtitle} className="ArticleTileImage"></img>
+            <img src={props.article.image.replace('-rw', '')} alt={props.article.subtitle} className="ArticleTileImage"></img>
           </div>
           {/* <p>{props.article.subtitle}</p> */}
         </a>
@@ -43,3 +44,5 @@ function ArticleTile (props) {
 }
 
 export default ArticleTile;
+
+
