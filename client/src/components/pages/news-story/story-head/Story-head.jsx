@@ -7,7 +7,7 @@ function StoryHead (props) {
   return (
     <Card className="StoryHeadCardWrapper">
       <div className="StoryHeadWrapper">
-        <img src={props.articleThumbnail.replace('h100', 'h300').replace('w100', 'w500')} alt="Newsimage" className="StoryHeadImage"></img>
+        <img src={props.articleThumbnail.replace('h100', 'h300').replace('w100', 'w500').replace('-rw', '')} alt="Newsimage" className="StoryHeadImage"></img>
         <div className="StoryHeadTextWrap">
           <h2 className="StoryHeadTitle">{props.story.title}</h2>
         </div>
