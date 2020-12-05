@@ -7,11 +7,6 @@ function Doughnutchart (props) {
   const publisherLabel = [];
   const publisherPie = [];
 
-  for (let i = 0; i < props.publisherData.length; i++) {
-    publisherLabel.push(props.publisherData[i][0]);
-    publisherPie.push(props.publisherData[i][1]);
-  }
-
   const [chartData, setChartData] = useState({});
   const doughnutchart = () => {
     setChartData({
@@ -55,6 +50,10 @@ function Doughnutchart (props) {
   };
 
   useEffect(() => {
+    for (let i = 0; i < props.publisherData.length; i++) {
+      publisherLabel.push(props.publisherData[i][0]);
+      publisherPie.push(props.publisherData[i][1]);
+    }
     doughnutchart();
   }, [props]);
 

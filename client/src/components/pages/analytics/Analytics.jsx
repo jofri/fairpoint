@@ -1,10 +1,6 @@
 import React,{useState, useEffect} from 'react';
-// import React from 'react';
 import './Analytics.css';
 
-// import GraphSlider from './GraphSlider';
-// import Linechart from './graphs/Linechart';
-// import Bar from '../analytics/graphs/Bar';
 import Loader from '../../helpers/loader/Loader';
 import Doughnut from '../analytics/graphs/Doughnut';
 import Radar from '../analytics/graphs/Radar';
@@ -161,10 +157,11 @@ function Analytics (props) {
       } else if (userdataset[i].category === 'worlds') {
         let categoryName = 'worlds';
         interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-      } else if (userdataset[i].category === 'uk') {
-        let categoryName = 'headline';
-        interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-      }
+      } 
+      // else if (userdataset[i].category === 'uk') {
+      //   let categoryName = 'headline';
+      //   interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
+      // }
     }
     
     return interestsData;
