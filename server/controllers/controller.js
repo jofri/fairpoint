@@ -87,9 +87,20 @@ exports.createUser = async (req, res) => {
 
 exports.createArticle = async (req, res) => {
   try {
-    console.log(req.body);
-    const newarticle = await Article.create(req.body);
-    res.status(201).send(newarticle);
+    const {title, subtitle, link, source, stance} = await req.body;
+
+    const uniqueLink = await Article.findOne({link: `${link}`});
+    // console.log('req.body', req.body);
+    console.log('uniqueLink', uniqueLink);
+
+    if (!uniqueLink) {
+      const newarticle = await Article.create({title, subtitle, link, source, stance});
+      res.status(201).send(newarticle);
+    } else {
+      uniqueLink.clicked ++;
+      const response = await uniqueLink.save();
+      res.status(200).send(response);
+    }
   } catch (err) {
     console.log(error);
     res.sendStatus(400);
@@ -98,17 +109,17 @@ exports.createArticle = async (req, res) => {
 
 
 //* Just for mockup : don't use this for actual app
-exports.saveArticleUserlog = async (req, res) => {
-  try {
-    console.log('req', req);
+// exports.saveArticleUserlog = async (req, res) => {
+//   try {
+//     console.log('req', req);
     
-    const userId = req.params.googleid;
-    const update = {article: req.body};
-    const filter = {googleId: `${userId}`};
-    const newArticle = await User.findOneAndUpdate(filter, {$addToSet: update});
-    res.status(201).send(newArticle);
-  } catch {
-    console.log(error);
-    res.sendStatus(400);
-  }
-};
+//     const userId = req.params.googleid;
+//     const update = {article: req.body};
+//     const filter = {googleId: `${userId}`};
+//     const newArticle = await User.findOneAndUpdate(filter, {$addToSet: update});
+//     res.status(201).send(newArticle);
+//   } catch {
+//     console.log(error);
+//     res.sendStatus(400);
+//   }
+// };
