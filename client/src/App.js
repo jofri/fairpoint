@@ -15,7 +15,7 @@ import Analytics from './components/pages/analytics/Analytics';
 
 
 import './App.css';
-import NavBarUnauth from './components/navbar/NavBarUnauth';
+// import NavBarUnauth from './components/navbar/NavBarUnauth';
 import NavBarTransparent from './components/navbar/NavbarTransparent';
 import CategoryTabs from './components/navbar/CategoryTabs';
 
@@ -42,7 +42,7 @@ function App () {
     <Router>
       <Switch>
         <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-          {loginUser && loginUser._id ? <Navbar></Navbar> : <NavBarUnauth></NavBarUnauth>}
+          <Navbar></Navbar>
           <div className="content">
             <CategoryTabs></CategoryTabs>
             <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories} />
