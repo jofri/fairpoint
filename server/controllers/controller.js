@@ -107,8 +107,21 @@ exports.createArticle = async (req, res) => {
   }
 };
 
+exports.createUserHistory = async (req, res) => {
+  try {
+    console.log('in create user history',req.body);
+    const {userId, articleId} = await req.body;
+    const filter = {googleId: `${userId}`};
+    const update = {_id: articleId};
+    const newArticle = await User.findOneAndUpdate(filter, {'$set': {'article': update}});
+    res.status(201).send(newArticle); 
+  } catch (err) {
+    console.log('err', err);
+    res.sendStatus(500);
+  }
+};
 
-//* Just for mockup : don't use this for actual app
+
 // exports.saveArticleUserlog = async (req, res) => {
 //   try {
 //     console.log('req', req);

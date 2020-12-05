@@ -10,7 +10,8 @@ function ArticleScroll (props) {
         <ArticleTile 
           article={article} 
           setMenuState={props.setMenuState} 
-          setClickedArticle={props.setClickedArticle}/>
+          setClickedArticle={props.setClickedArticle}
+          loginUser = {props.loginUser}/>
       </div>);
   });
 
