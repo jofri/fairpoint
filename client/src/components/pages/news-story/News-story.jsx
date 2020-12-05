@@ -63,26 +63,23 @@ function NewsStory (props) {
   const [menuState, setMenuState] = useState(false);
   const [clickedArticle, setClickedArticle] = useState({});
   const classes = useStyles();
-  
-  console.log(clickedArticle, 'CLICKED ARTICLE');
+
 
   const handleClose = () => {
     setMenuState(false);
   };
 
 
-  console.log(clickedArticle, 'CLICKED');
-
   return (
     <div>
       <div className="ArticleStoryWrap">
         <StoryHead story={props.clickedStory} articleThumbnail={props.clickedStory.articles[0].image || 'https://icon-library.com/images/news-icon-free/news-icon-free-7.jpg'} setMenuState={setMenuState} className="StoryHead"></StoryHead>
         {/* <Divider></Divider> */}
-        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 1)} setClickedArticle={setClickedArticle} setMenuState={setMenuState} loginUser={props.loginUser} scrollColor={'#E11F1C'}></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 1)} setClickedArticle={setClickedArticle} setMenuState={setMenuState} loginUser={props.loginUser} setLoginUser={props.setLoginUser} scrollColor={'#E11F1C'}></ArticleScroll>
         {/* <Divider></Divider> */}
-        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === (5 || 11))} setClickedArticle={setClickedArticle} setMenuState={setMenuState} loginUser={props.loginUser} scrollColor={'rgb(160, 87, 160)'}></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === (5 || 11))} setClickedArticle={setClickedArticle} setMenuState={setMenuState} loginUser={props.loginUser} setLoginUser={props.setLoginUser} scrollColor={'rgb(160, 87, 160)'}></ArticleScroll>
         {/* <Divider></Divider> */}
-        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 10)} setClickedArticle={setClickedArticle} setMenuState={setMenuState} loginUser={props.loginUser} scrollColor={ '#0195DF'}></ArticleScroll>
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 10)} setClickedArticle={setClickedArticle} setMenuState={setMenuState} loginUser={props.loginUser} setLoginUser={props.setLoginUser} scrollColor={ '#0195DF'}></ArticleScroll>
       </div>
       <Modal
         open={menuState}

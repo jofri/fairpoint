@@ -11,7 +11,9 @@ function ArticleScroll (props) {
           article={article} 
           setMenuState={props.setMenuState} 
           setClickedArticle={props.setClickedArticle}
-          loginUser = {props.loginUser}/>
+          loginUser = {props.loginUser}
+          setLoginUser = {props.setLoginUser}
+        />
       </div>);
   });
 

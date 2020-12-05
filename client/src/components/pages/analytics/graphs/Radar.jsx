@@ -4,8 +4,6 @@ import {Radar} from 'react-chartjs-2';
 
 function Radarchart (props) {
 
-  console.log('in Radar',props);
-
   const [chartData, setChartData] = useState({});
 
   const radarchart = () => {
@@ -13,9 +11,6 @@ function Radarchart (props) {
 
     const labeldata = Object.keys(props.interestData);
     const radardata = Object.values(props.interestData);
-
-    console.log(labeldata);
-    console.log(radardata);
 
 
     setChartData({

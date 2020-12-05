@@ -8,7 +8,6 @@ import Polar from '../analytics/graphs/Polararea';
 
 function Analytics (props) {
 
-  console.log(props);
 
   const [userData, setUserdata] = useState([]);
   const [stanceData, setStanceData] = useState({});
@@ -53,7 +52,7 @@ function Analytics (props) {
 
   const calcStance = (userdataset) => {
     const userStanceDictonary = getStanceDictionary(userdataset);
-    
+
     const rightArticle = userStanceDictonary.Right;
     const leftArticle = userStanceDictonary.Left;
 
@@ -100,12 +99,12 @@ function Analytics (props) {
     case 'centre-left':
       style = {backgroundColor: `rgb(225, 31, 28 ${userAttributes.opacity})`};
       return style;
-    default:  
+    default:
       style = {backgroundColor: 'rgb(238, 238, 238)'};
       return style;
-    }      
+    }
   };
-  
+
   const backgroundAttribute = defineBackground();
 
   const publisherDictionary = (userdataset) => {
@@ -116,12 +115,12 @@ function Analytics (props) {
       datapair.source = userdataset[i].source;
       dataset.push(datapair);
     }
-  
+
     let labeldata = {};
-  
+
     for (let i = 0; i < dataset.length; i++) {
       const source = dataset[i].source;
-    
+
       if (source in labeldata) {
         labeldata[source] += 1;
       } else {
@@ -132,7 +131,7 @@ function Analytics (props) {
   };
 
   const getInterestDictionary = (userdataset) => {
-   
+
     const interestsData = {};
 
     for (let i = 0; i < userdataset.length; i++) {
@@ -149,7 +148,7 @@ function Analytics (props) {
         let categoryName = 'sciences';
         interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
       } else if (userdataset[i].category === 'sports') {
-        let categoryName = 'sports'; 
+        let categoryName = 'sports';
         interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
       } else if (userdataset[i].category === 'technologies') {
         let categoryName = 'technologies';
@@ -157,13 +156,13 @@ function Analytics (props) {
       } else if (userdataset[i].category === 'worlds') {
         let categoryName = 'worlds';
         interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-      } 
+      }
       // else if (userdataset[i].category === 'uk') {
       //   let categoryName = 'headline';
       //   interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
       // }
     }
-    
+
     return interestsData;
   };
 
@@ -176,34 +175,32 @@ function Analytics (props) {
     }
 
     const interests = getInterestDictionary(props.loginUser.article);
-    console.log(interests);
 
     let sortedInterestItems = Object.keys(interests).map(function (key) {
       return [key, interests[key]];
     });
-    
+
     sortedInterestItems.sort(function (first, second) {
       return second[1] - first[1];
     });
-  
+
     setInterestData(interests);
     setMostInterestData(sortedInterestItems);
-    
+
     const publishers = publisherDictionary(userdataset);
     let items = Object.keys(publishers).map(function (key) {
       return [key, publishers[key]];
     });
-    
+
     items.sort(function (first, second) {
       return second[1] - first[1];
     });
     setPublisherData(items.slice(0,10));
   }, []);
-  
-  console.log(mostInterestData);
 
 
-  return props ? 
+
+  return props ?
     <div className='totalsummary-wrapper'  style={backgroundAttribute}>
       <h1>Summary</h1>
       <h2>You have read a total of {userData.length} articles so far</h2>

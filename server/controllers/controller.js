@@ -109,11 +109,11 @@ exports.createArticle = async (req, res) => {
 
 exports.createUserHistory = async (req, res) => {
   try {
-    console.log('in create user history',req.body);
     const {userId, articleId} = await req.body;
     const filter = {googleId: `${userId}`};
     const update = {_id: articleId};
-    const newArticle = await User.findOneAndUpdate(filter, {'$set': {'article': update}});
+    //FIXME: Do not save duplicated article info in user history 
+    const newArticle = await User.findOneAndUpdate(filter, {'$push': {'article': update}});
     res.status(201).send(newArticle); 
   } catch (err) {
     console.log('err', err);

@@ -18,16 +18,15 @@ function ArticleTile (props) {
       .then((res) => res.json())
       .then(res => {
         const articleId = res._id;
-        console.log('articleId',articleId);
-
         const existingArticle = props.loginUser.article.filter(el => el._id === articleId);
-        console.log('existingArticle', existingArticle);
 
         if (existingArticle.length === 0) {
-          console.log('in article tile',props.loginUser);
-          createUserHistory(props.loginUser.googleId, articleId);
+          createUserHistory(props.loginUser.googleId, articleId)
+            .then((res) => res.json())
+            .then(res => props.setLoginUser(res)); 
         }
-      }); 
+      });
+      
   }
   
 
