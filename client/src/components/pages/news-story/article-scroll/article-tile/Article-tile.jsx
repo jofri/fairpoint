@@ -8,6 +8,7 @@ import ShareIcon from '@material-ui/icons/Share';
 function ArticleTile (props) {
 
   const ShareClick = () => {
+    props.setClickedArticle(props.article);
     props.setMenuState(true);
   };
 
@@ -36,3 +37,5 @@ function ArticleTile (props) {
 }
 
 export default ArticleTile;
+
+

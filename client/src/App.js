@@ -15,6 +15,7 @@ import Analytics from './components/pages/analytics/Analytics';
 
 
 import './App.css';
+import NavBarUnauth from './components/navbar/NavBarUnauth';
 import NavBarTransparent from './components/navbar/NavbarTransparent';
 import CategoryTabs from './components/navbar/CategoryTabs';
 
@@ -36,6 +37,7 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
+  console.log(loginUser);
 
   // if (loginUser && loginUser._id) {
   //   console.log('logged in');
@@ -43,7 +45,7 @@ function App () {
     <Router>
       <Switch>
         <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-          <Navbar />
+          {loginUser && loginUser._id ? <Navbar></Navbar> : <NavBarUnauth></NavBarUnauth>}
           <div className="content">
             <CategoryTabs></CategoryTabs>
             <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories} />
