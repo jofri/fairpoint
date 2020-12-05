@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import './Feed.css';
 import SubStory from './sub-story/SubStory';
 import { getStories } from '../../../../services/api';
+import brainSquare from '../../../../assets/placeholder_brain_square.png';
 
 function Feed (props) {
 
@@ -50,7 +51,7 @@ function Feed (props) {
         {props.stories.map( (story, i) => {
           // Render a HeadStory from first object in stories array
           if (i === 0) {
-            let articleImg = 'https://icon-library.com/images/news-icon-free/news-icon-free-7.jpg';
+            let articleImg = brainSquare;
             if (story.articles[0]) articleImg = story.articles[0].image;
             return <HeadStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
           }
@@ -60,7 +61,7 @@ function Feed (props) {
         {props.stories.map((story, i) => {
           // Render a StoryTile per story object (exept first object)
           if (i === 0) {return false;}
-          let articleImg = 'https://icon-library.com/images/news-icon-free/news-icon-free-7.jpg';
+          let articleImg = brainSquare;
           if (story.articles[0]) articleImg = story.articles[0].image;
           return <SubStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key={story._id}/>;
         })};
