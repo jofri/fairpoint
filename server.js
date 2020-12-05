@@ -10,8 +10,8 @@ const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
-const newsScraper = require('./server/scrapers/index');
-const categoriesScraper = require('./server/scrapers/categories');
+// const newsScraper = require('./server/scrapers/index');
+// const categoriesScraper = require('./server/scrapers/categories');
 
 
 // If app is in dev mode, inform developer to use React's localhost port when testing server
@@ -48,10 +48,10 @@ app.get('*', function (req, res) {
 });
 
 // newsScraper();
-setInterval(() => {
-  newsScraper();
-  console.log('called in server');
-}, 480000);
+// setInterval(() => {
+//   newsScraper();
+//   console.log('called in server');
+// }, 480000);
 
 // categoriesScraper('World');
 // categoriesScraper('Business');
@@ -61,15 +61,15 @@ setInterval(() => {
 // categoriesScraper('Science');
 // categoriesScraper('Health');
 
-setInterval(() => {
-  categoriesScraper('World');
-  categoriesScraper('Business');
-  categoriesScraper('Technology');
-  categoriesScraper('Entertainment');
-  categoriesScraper('Sports');
-  categoriesScraper('Science');
-  categoriesScraper('Health');
-}, 1800000);
+// setInterval(() => {
+//   categoriesScraper('World');
+//   categoriesScraper('Business');
+//   categoriesScraper('Technology');
+//   categoriesScraper('Entertainment');
+//   categoriesScraper('Sports');
+//   categoriesScraper('Science');
+//   categoriesScraper('Health');
+// }, 1800000);
 
 // Connect to MongoDB and listen for new requests
 http.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars

@@ -6,8 +6,15 @@ function ArticleScroll (props) {
 
   let scrollColor = props.scrollColor;
   const renderArticles = props.articles.map((article) => {
-    return (<div className="ArticleTile" key={article.title}><ArticleTile article={article} setMenuState={props.setMenuState} setSelectedStory={props.setSelectedStory}/></div>);
+    return (
+      <div className="ArticleTile" key={article.title}>
+        <ArticleTile 
+          article={article}
+          setMenuState={props.setMenuState}
+          setSelectedStory={props.setSelectedStory}/>
+      </div>);
   });
+
 
   return (
     <div className="ArticleScrollWrapper" style={{backgroundColor: scrollColor}}>
