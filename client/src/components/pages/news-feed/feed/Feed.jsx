@@ -4,14 +4,26 @@ import { useEffect } from 'react';
 import './Feed.css';
 import SubStory from './sub-story/SubStory';
 import { getStories } from '../../../../services/api';
+import LoadingSkeleton from './LoadingSkeleton';
 
 function Feed (props) {
 
   // Get top/uk stories from backend
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect( async () => {
-    props.setStories(await getStories());
+
+  const [storyLoaded, setStoryLoaded] = React.useState(false);
+
+  useEffect(() => {
+    async function loadedStories () {
+      setStoryLoaded(false);
+      const response = await getStories();
+      props.setStories(response);
+      setStoryLoaded(true);
+    }
+    loadedStories();
   }, []);
+
+  console.log(props.stories,storyLoaded, 'HI THERE');
 
 
   /*  function convertStory (story) {
@@ -44,7 +56,7 @@ function Feed (props) {
 
   return (
     <>
-      <div className="Feed-container">
+      {storyLoaded ? <div className="Feed-container">
 
 
         {props.stories.map( (story, i) => {
@@ -66,7 +78,7 @@ function Feed (props) {
         })};
 
 
-      </div>
+      </div> : <div className="Feed-container"><LoadingSkeleton></LoadingSkeleton></div>}
     </>
   );
 }

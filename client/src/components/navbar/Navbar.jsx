@@ -33,10 +33,6 @@ import InfoIcon from '@material-ui/icons/Info';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
-// import {  Link } from 'react-router-dom';
-
-
-
 
 const menuWidth = '55vw';
 
@@ -68,10 +64,6 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     flexShrink: 0,
   },
-  drawerPaper: {
-    width: menuWidth,
-    overflow: 'hidden',
-  },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
@@ -82,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     width: menuWidth,
+    overflow: 'hidden',
   },
   fullList: {
     width: 'auto',
@@ -109,11 +102,8 @@ function HideOnScroll (props) {
   );
 }
 
-
-
 export default function NavBar (props) {
   const classes = useStyles();
-  // const theme = useTheme();
   const [state, setState] = React.useState({
     right: false,
   });
@@ -124,7 +114,6 @@ export default function NavBar (props) {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 

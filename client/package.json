@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.1",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.2.0",
@@ -19,8 +20,8 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
-    "react-swipeable-views": "^0.13.9",
     "react-slick": "^0.27.13",
+    "react-swipeable-views": "^0.13.9",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
