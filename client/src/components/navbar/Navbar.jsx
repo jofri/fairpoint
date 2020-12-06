@@ -32,6 +32,9 @@ import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import InfoIcon from '@material-ui/icons/Info';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
+import HomeIcon from '@material-ui/icons/Home';
+// import {  Link } from 'react-router-dom';
+
 
 
 
@@ -135,37 +138,48 @@ export default function NavBar (props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button key="profile">
+        <ListItem button component="a" key="profile" href="/profile">
           <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
           <ListItemText classes={{primary: classes.listItemTextMain}} primary="Edward Chan" />
         </ListItem>
       </List>
       <Divider />
       <List>
-        <ListItem button key="Analytics">
+        {/* HARD CODE ANALYTICS! */}
+        <ListItem button key="home" component="a" href="/"> 
+          <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
+        </ListItem>
+      </List>
+      <List>
+        {/* HARD CODE ANALYTICS! */}
+        <ListItem button key="Analytics"> 
           <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
         </ListItem>
       </List>
       <List>
-        <ListItem button key="Donate">
+        <ListItem button component="a" key="Donate" href="/donate">
           <ListItemIcon><LoyaltyIcon style={{ fontSize: iconSize }}></LoyaltyIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Donate" />
         </ListItem>
       </List>
       <List>
+        {/* ABOUT US EMPTY ATM */}
         <ListItem button key="About us">
           <ListItemIcon><InfoIcon style={{ fontSize: iconSize }}></InfoIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="About us" />
         </ListItem>
       </List>
       <List>
+        {/* T&C ALSO EMPTY */}
         <ListItem button key="Terms & Conditions">
           <ListItemIcon><DescriptionOutlinedIcon style={{fontSize: iconSize}}></DescriptionOutlinedIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Terms & Conditions" />
         </ListItem>
       </List>
       <List>
+        {/* FOR SOOYEON! */}
         <ListItem button key="Log Out">
           <ListItemIcon><LogoutIcon style={{ fontSize: iconSize }}></LogoutIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Log Out" />
