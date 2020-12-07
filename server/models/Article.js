@@ -5,11 +5,9 @@ const Article = new Schema({
   title: { type: String},
   subtitle: { type: String},
   link: { type: String},
-  image: { type: String},
   source: { type: String},
-  time: { type: String},
   stance: {type: Number},
-  category: { type: String}
+  clicked: {type: Number, default: 1}
 });
 
 

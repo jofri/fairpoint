@@ -11,8 +11,35 @@ function getStories () {
     .catch(err => console.log(err));
 }
 
+async function saveArticle (articleInfo) {
+  try {
+    fetch('/api/newarticle', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: articleInfo.title,
+        subtitle: articleInfo.subtitle,
+        link: articleInfo.link,
+        // image: articleInfo.image,
+        source: articleInfo.source,
+        // time: articleInfo.time,
+        stance: articleInfo.stance
+      })
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+// function saveUserArticle() {
+// }
+// saveUserArticle
 
 export {
   getUser,
-  getStories
+  getStories,
+  saveArticle
 };

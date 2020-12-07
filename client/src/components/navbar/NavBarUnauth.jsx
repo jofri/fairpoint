@@ -31,9 +31,9 @@ import LogoBrain from './logoBrain.svg';
 import './Navbar.css';
 import Backdrop from '@material-ui/core/Backdrop';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import FacebookSignIn from '../../assets/facebookButton.png';
 import GoogleSignIn from '../../assets/googleButton.png';
-import TwitterSignIn from '../../assets/twitterButton.png';
+/* import FacebookSignIn from '../../assets/facebookButton.png';
+import TwitterSignIn from '../../assets/twitterButton.png'; */
 
 
 
@@ -115,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
   facebook: {
     borderRadius: '4%',
     width: '87%',
-  }, 
+  },
   buttonBase: {
     width: 'fit-content',
   }
@@ -136,6 +136,7 @@ export default function NavBar (props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -148,14 +149,15 @@ export default function NavBar (props) {
     handleOpen();
   };
 
-  const facebookClick = () => {
+  /* const facebookClick = () => {
     console.log('FB');
   };
   const twitterClick = () => {
     console.log('TW');
-  };
+  }; */
   const googleClick = () => {
-    console.log('GOOGLE');
+    // Opens google auth window
+    window.open('/auth/google', '_self');
   };
 
   return (
@@ -172,9 +174,9 @@ export default function NavBar (props) {
               <img src={LogoBrain} alt="logo" className="NavBarLogo" />
             </a>
             <Typography variant="h6" noWrap className={classes.title}>
-                            Anchored News UnAuth
+                            Anchored News
             </Typography>
-            <Button color="primary" style={{fontSize: 14,}} onClick={handleSignIn}>
+            <Button color="primary" style={{fontSize: 14, border: '1px solid #0195DF'}} onClick={handleSignIn}>
                           Sign In
             </Button>
           </Toolbar>
@@ -195,8 +197,17 @@ export default function NavBar (props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <div className={classes.buttonHolder}>
-              <h1>Login with the Following Methods:</h1>
+              <h1>Login</h1>
               <ButtonBase
+                className={classes.buttonBase}
+                focusRipple
+                onClick={googleClick}>
+                <img src={GoogleSignIn} alt="google" className={classes.google}></img>
+              </ButtonBase>
+              <ButtonBase />
+              <ButtonBase />
+
+              {/*  <ButtonBase
                 className={classes.buttonBase}
                 focusRipple
                 onClick={facebookClick}>
@@ -207,13 +218,7 @@ export default function NavBar (props) {
                 focusRipple
                 onClick={twitterClick}>
                 <img src={TwitterSignIn} alt="twitter" className={classes.google}></img>
-              </ButtonBase>
-              <ButtonBase
-                className={classes.buttonBase}
-                focusRipple
-                onClick={googleClick}>
-                <img src={GoogleSignIn} alt="google" className={classes.google}></img>
-              </ButtonBase>
+              </ButtonBase> */}
             </div>
           </div>
         </Fade>

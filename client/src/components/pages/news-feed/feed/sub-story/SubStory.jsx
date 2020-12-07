@@ -53,7 +53,8 @@ export default function SubStory (props) {
 
   const clickHandler = () => {
     props.setClickedStory(props.story);
-    history.push('/story');
+    if (props.story.story) history.push('/story');
+    else window.open(props.story.links[0]);
   };
 
   return (
