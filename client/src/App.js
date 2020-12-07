@@ -48,7 +48,7 @@ function App () {
           </div>
         </Route>
         <Route exact path='/story'>
-          {clickedStory._id ? <><NavBarTransparent></NavBarTransparent><NewsStory clickedStory={clickedStory} loginUser={loginUser} setLoginUser={setLoginUser}/></> : <FourOFour />}
+          {clickedStory._id ? <><NavBarTransparent></NavBarTransparent><NewsStory clickedStory={clickedStory} /></> : <FourOFour />}
         </Route>
         <Route exact path='/donate'>
           <Navbar />
