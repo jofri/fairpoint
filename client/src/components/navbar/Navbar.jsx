@@ -33,6 +33,8 @@ import InfoIcon from '@material-ui/icons/Info';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
+import { Link } from 'react-router-dom';
+
 
 const menuWidth = '55vw';
 
@@ -127,7 +129,7 @@ export default function NavBar (props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button component="a" key="profile" href="/profile">
+        <ListItem button component={Link} to="/profile"  key="profile">
           <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
           <ListItemText classes={{primary: classes.listItemTextMain}} primary="Edward Chan" />
         </ListItem>
@@ -135,27 +137,27 @@ export default function NavBar (props) {
       <Divider />
       <List>
         {/* HARD CODE ANALYTICS! */}
-        <ListItem button key="home" component="a" href="/"> 
+        <ListItem button key="home" component={Link} to="/" > 
           <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
         </ListItem>
       </List>
       <List>
         {/* HARD CODE ANALYTICS! */}
-        <ListItem button key="Analytics"> 
+        <ListItem button key="Analytics" component={Link} to="/analytics" > 
           <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
         </ListItem>
       </List>
       <List>
-        <ListItem button component="a" key="Donate" href="/donate">
+        <ListItem button key="Donate" component={Link} to="/donate" >
           <ListItemIcon><LoyaltyIcon style={{ fontSize: iconSize }}></LoyaltyIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Donate" />
         </ListItem>
       </List>
       <List>
         {/* ABOUT US EMPTY ATM */}
-        <ListItem button key="About us">
+        <ListItem button key="About us" component={Link} to="/about" >
           <ListItemIcon><InfoIcon style={{ fontSize: iconSize }}></InfoIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="About us" />
         </ListItem>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //*API service
-import {getUser} from './services/api';
+import { getUser } from './services/api';
 
 //*Components
 import Loader from './components/helpers/loader/Loader';
@@ -44,6 +44,8 @@ function App () {
       })
       .catch(err => console.log(err));
   }, []);
+
+  console.log(loginUser, 'LOGIN USER');
 
   return (
     /* Sets background color corresponding to user stance */
