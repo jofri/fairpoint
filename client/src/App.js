@@ -29,6 +29,13 @@ function App () {
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
   const [stories, setStories] = useState([]);
+  // const [business, setBusiness] = useState([]);
+  // const [entertainment, setEntertainment] = useState([]);
+  // const [health, setHealth] = useState([]);
+  // const [science, setScience] = useState([]);
+  // const [sports, setSports] = useState([]);
+  // const [technology, setTechnology] = useState([]);
+  // const [world, setWorld] = useState([]);
   const [clickedStory, setClickedStory] = useState({});
 
   useEffect (() => {
@@ -71,12 +78,9 @@ function App () {
                 <Profile></Profile>
               </div>
             </Route>
-            {loginUser && loginUser._id
-              ? <Route exact path='/analytics' >
-                <Analytics loginUser = {
-                  loginUser ? loginUser : <Loader />}/>
-              </Route>
-              : null}
+            <Route exact path='/analytics' >
+              {loginUser && loginUser._id ? <><Navbar /><Analytics loginUser = {loginUser ? loginUser : <Loader />}/></> : <FourOFour/>}
+            </Route>
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}
               <FourOFour />

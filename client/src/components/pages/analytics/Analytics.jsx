@@ -19,10 +19,10 @@ function Analytics (props) {
   const getDataset =  () => {
     let dataset = [];
 
-    for (let i = 0; i < props.mockArticles.article.length; i++) {
+    for (let i = 0; i < props.loginUser.article.length; i++) {
       let datapair = {};
-      datapair.stance = props.mockArticles.article[i].stance;
-      datapair.source = props.mockArticles.article[i].source;
+      datapair.stance = props.loginUser.article[i].stance;
+      datapair.source = props.loginUser.article[i].source;
       dataset.push(datapair);
     }
 
@@ -146,7 +146,7 @@ function Analytics (props) {
       setStanceData(calcStance(userdataset));
     }
 
-    const interests = getInterestDictionary(props.mockArticles.article);
+    const interests = getInterestDictionary(props.loginUser.article);
 
     let sortedInterestItems = Object.keys(interests).map(function (key) {
       return [key, interests[key]];
@@ -177,15 +177,15 @@ function Analytics (props) {
       <h1>Summary</h1>
       <h2>You have read a total of {userData.length} articles so far</h2>
       <div className='polarchart-container'>
-        <Polar loginUser={props.mockArticles} userData={userData} setUserdata={setUserdata}/>
+        <Polar loginUser={props.loginUser} userData={userData} setUserdata={setUserdata}/>
         <h3>Your reading habits are {stanceData.userstance}</h3>
       </div>
       <div className='radarchart-container'>
-        <Radar loginUser={props.mockArticles} interestData={interestData} setInterestData={setInterestData}/>
+        <Radar loginUser={props.loginUser} interestData={interestData} setInterestData={setInterestData}/>
         <h3>Your main interest is { mostInterestData.length ===0 ? null : mostInterestData[0][0]} </h3>
       </div>
       <div className='doughnutchart-container'>
-        <Doughnut loginUser={props.mockArticles} publisherData={publisherData} setPublisherData={setPublisherData}/>
+        <Doughnut loginUser={props.loginUser} publisherData={publisherData} setPublisherData={setPublisherData}/>
         <h3>Your favourite publisher is {publisherData.length === 0 ? null : publisherData[0][0]}</h3>
       </div>
     </div>
