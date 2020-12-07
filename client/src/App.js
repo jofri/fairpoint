@@ -39,7 +39,6 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
-
   return (
     /* Sets background color corresponding to user stance */
     <div style={{backgroundColor: backgroundCalc(mockArticles)[0]}}>
@@ -54,7 +53,11 @@ function App () {
               </div>
             </Route>
             <Route exact path='/story'>
-              {clickedStory._id ? <><NavBarTransparent></NavBarTransparent><NewsStory clickedStory={clickedStory} /></> : <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories} />}
+              {clickedStory._id ? <><NavBarTransparent></NavBarTransparent>
+                <NewsStory
+                  clickedStory={clickedStory}
+                  loginUser={loginUser}
+                  setLoginUser={setLoginUser}/></> : <FourOFour />}
             </Route>
             <Route exact path='/donate'>
               <Navbar />
@@ -68,9 +71,12 @@ function App () {
                 <Profile></Profile>
               </div>
             </Route>
-            <Route exact path='/analytics' >
-              {loginUser && loginUser._id ? <><Navbar /><Analytics mockArticles={mockArticles} loginUser = {loginUser ? loginUser : <Loader />}/></> : <FourOFour />}
-            </Route>
+            {loginUser && loginUser._id
+              ? <Route exact path='/analytics' >
+                <Analytics loginUser = {
+                  loginUser ? loginUser : <Loader />}/>
+              </Route>
+              : null}
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}
               <FourOFour />

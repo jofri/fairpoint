@@ -3,7 +3,7 @@ import './Article-tile.css';
 import Card from '@material-ui/core/Card';
 import IconButton from '@material-ui/core/IconButton';
 import ShareIcon from '@material-ui/icons/Share';
-import {saveArticle} from '../../../../../services/api';
+import {createArticle, createUserHistory} from '../../../../../services/api';
 
 
 function ArticleTile (props) {
@@ -14,7 +14,22 @@ function ArticleTile (props) {
   };
 
   function clickHandler () {
-    saveArticle(props.article);
+    createArticle(props.article)
+      .then((res) => res.json())
+      .then(res => {
+        console.log('in tile', res);
+        // const articleId = res._id;
+        const articleInfo = res;
+        console.log(props);
+        const existingArticle = props.loginUser.article.filter(el => el._id === articleInfo._id);
+
+        if (existingArticle.length === 0) {
+          createUserHistory(props.loginUser.googleId, articleInfo)
+            .then((res) => res.json())
+            .then(res => props.setLoginUser(res)); 
+        }
+      });
+      
   }
   
 

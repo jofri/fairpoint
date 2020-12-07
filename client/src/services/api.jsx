@@ -11,9 +11,9 @@ function getStories () {
     .catch(err => console.log(err));
 }
 
-async function saveArticle (articleInfo) {
+function createArticle (articleInfo) {
   try {
-    fetch('/api/newarticle', {
+    return fetch('/api/newarticle', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,12 +34,29 @@ async function saveArticle (articleInfo) {
 }
 
 
-// function saveUserArticle() {
-// }
-// saveUserArticle
+function createUserHistory (userId, articleInfo) {
+  try { 
+    return fetch('/api/createUserHistory',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId,
+        articleInfo
+      })
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
 
 export {
   getUser,
   getStories,
-  saveArticle
+  createArticle,
+  createUserHistory
 };
