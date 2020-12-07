@@ -70,7 +70,7 @@ function createArticle (articleInfo) {
 }
 
 
-function createUserHistory (userId, articleId) {
+function createUserHistory (userId, articleInfo) {
   try {
     return fetch('/api/createUserHistory',{
       method: 'POST',
@@ -79,7 +79,7 @@ function createUserHistory (userId, articleId) {
       },
       body: JSON.stringify({
         userId,
-        articleId
+        articleInfo
       })
     });
   } catch (err) {
