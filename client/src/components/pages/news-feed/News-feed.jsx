@@ -5,7 +5,10 @@ import Feed from './feed/Feed';
 function NewsFeed (props) {
   return (
     <>
-      <Feed setClickedStory={props.setClickedStory} stories={props.stories} setStories={props.setStories}/>
+      <Feed 
+        setClickedStory={props.setClickedStory} 
+        stories={props.stories} 
+        setStories={props.setStories}/>
     </>
   );
 }
