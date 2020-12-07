@@ -36,7 +36,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
 
 
-const menuWidth = '55vw';
+const menuWidth = '58vw';
 
 const useStyles = makeStyles((theme) => ({
   root: {
