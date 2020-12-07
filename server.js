@@ -55,10 +55,10 @@ setInterval( () => {
 
 
 // Start Top-line/UK news scraping
-setInterval(() => {
-  newsScraper();
-  console.log('called in server');
-}, 480000);
+// setInterval(() => {
+//   newsScraper();
+//   console.log('called in server');
+// }, 480000);
 
 
 // Set up category scraping at different life-cycles to run every 40 minutes
