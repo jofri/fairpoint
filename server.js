@@ -55,54 +55,54 @@ setInterval( () => {
 
 
 // Start Top-line/UK news scraping
-setInterval(() => {
-  newsScraper();
-  console.log('called in server');
-}, 480000);
+// setInterval(() => {
+//   newsScraper();
+//   console.log('called in server');
+// }, 480000);
 
 
 // Set up category scraping at different life-cycles to run every 40 minutes
-setTimeout(() => {
-  setInterval(() => {
-    categoriesScraper('World');
-  }, 2400000);
-}, 600000);
+// setTimeout(() => {
+//   setInterval(() => {
+//     categoriesScraper('World');
+//   }, 2400000);
+// }, 600000);
 
-setTimeout(() => {
-  setInterval(() => {
-    categoriesScraper('Business');
-  }, 2400000);
-}, 900000);
+// setTimeout(() => {
+//   setInterval(() => {
+//     categoriesScraper('Business');
+//   }, 2400000);
+// }, 900000);
 
-setTimeout(() => {
-  setInterval(() => {
-    categoriesScraper('Technology');
-  }, 2400000);
-}, 1200000);
+// setTimeout(() => {
+//   setInterval(() => {
+//     categoriesScraper('Technology');
+//   }, 2400000);
+// }, 1200000);
 
-setTimeout(() => {
-  setInterval(() => {
-    categoriesScraper('Entertainment');
-  }, 2400000);
-}, 1500000);
+// setTimeout(() => {
+//   setInterval(() => {
+//     categoriesScraper('Entertainment');
+//   }, 2400000);
+// }, 1500000);
 
-setTimeout(() => {
-  setInterval(() => {
-    categoriesScraper('Sports');
-  }, 2400000);
-}, 1800000);
+// setTimeout(() => {
+//   setInterval(() => {
+//     categoriesScraper('Sports');
+//   }, 2400000);
+// }, 1800000);
 
-setTimeout(() => {
-  setInterval(() => {
-    categoriesScraper('Science');
-  }, 2400000);
-}, 2100000);
+// setTimeout(() => {
+//   setInterval(() => {
+//     categoriesScraper('Science');
+//   }, 2400000);
+// }, 2100000);
 
-setTimeout(() => {
-  setInterval(() => {
-    categoriesScraper('Health');
-  }, 2400000);
-}, 2400000);
+// setTimeout(() => {
+//   setInterval(() => {
+//     categoriesScraper('Health');
+//   }, 2400000);
+// }, 2400000);
 
 
 

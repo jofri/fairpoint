@@ -1,7 +1,15 @@
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
+// import Button from '@material-ui/core/Button';
+// import MailIcon from '@material-ui/icons/Mail';
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import SettingsIcon from '@material-ui/icons/Settings';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import Drawer from '@material-ui/core/Drawer';
+
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,24 +18,23 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
 import Slide from '@material-ui/core/Slide';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Avatar from '@material-ui/core/Avatar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import LogoBrain from './logoBrain.svg';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import './Navbar.css';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import InfoIcon from '@material-ui/icons/Info';
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
-import SettingsIcon from '@material-ui/icons/Settings';
-// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
+import HomeIcon from '@material-ui/icons/Home';
 
-
-const menuWidth = '43vw';
+const menuWidth = '55vw';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,12 +62,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
   drawer: {
-    // width: menuWidth,//???
     flexShrink: 0,
-  },
-  drawerPaper: {
-    width: menuWidth,
-    overflow: 'hidden',
   },
   drawerHeader: {
     display: 'flex',
@@ -68,26 +70,26 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
-    // backgroundColor: 'red',
     height: '8.5vh'
   },
-  // content: {
-  //   flexGrow: 1,
-  //   padding: theme.spacing(3),
-  //   transition: theme.transitions.create('margin', {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.leavingScreen,
-  //   }),
-  //   marginRight: -menuWidth,
-  // },
-  // contentShift: {
-  //   transition: theme.transitions.create('margin', {
-  //     easing: theme.transitions.easing.easeOut,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
-  //   marginRight: 0,
-  // },
+  list: {
+    width: menuWidth,
+    overflow: 'hidden',
+  },
+  fullList: {
+    width: 'auto',
+  },
+  listItemText : {
+    fontSize: 15,
+    fontWeight: '400',
+  }, 
+  listItemTextMain: {
+    fontSize: 18,
+    fontWeight: '500',
+  }
 }));
+
+
 
 function HideOnScroll (props) {
   const { children, window } = props;
@@ -102,17 +104,78 @@ function HideOnScroll (props) {
 
 export default function NavBar (props) {
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [state, setState] = React.useState({
+    right: false,
+  });
 
+  let iconSize = 25;
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const renderDrawer = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <ListItem button component="a" key="profile" href="/profile">
+          <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
+          <ListItemText classes={{primary: classes.listItemTextMain}} primary="Edward Chan" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        {/* HARD CODE ANALYTICS! */}
+        <ListItem button key="home" component="a" href="/"> 
+          <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
+        </ListItem>
+      </List>
+      <List>
+        {/* HARD CODE ANALYTICS! */}
+        <ListItem button key="Analytics"> 
+          <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
+        </ListItem>
+      </List>
+      <List>
+        <ListItem button component="a" key="Donate" href="/donate">
+          <ListItemIcon><LoyaltyIcon style={{ fontSize: iconSize }}></LoyaltyIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Donate" />
+        </ListItem>
+      </List>
+      <List>
+        {/* ABOUT US EMPTY ATM */}
+        <ListItem button key="About us">
+          <ListItemIcon><InfoIcon style={{ fontSize: iconSize }}></InfoIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="About us" />
+        </ListItem>
+      </List>
+      <List>
+        {/* T&C ALSO EMPTY */}
+        <ListItem button key="Terms & Conditions">
+          <ListItemIcon><DescriptionOutlinedIcon style={{fontSize: iconSize}}></DescriptionOutlinedIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Terms & Conditions" />
+        </ListItem>
+      </List>
+      <List>
+        {/* FOR SOOYEON! */}
+        <ListItem button key="Log Out">
+          <ListItemIcon><LogoutIcon style={{ fontSize: iconSize }}></LogoutIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Log Out" />
+        </ListItem>
+      </List>
+    </div>
+  );
 
   return (
     <div className={classes.root}>
@@ -130,62 +193,27 @@ export default function NavBar (props) {
             <Typography variant="h6" noWrap className={classes.title}>
             Anchored News
             </Typography>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="end"
-              onClick={handleDrawerOpen}
-              className={clsx(open && classes.hide)}
-            >
-              <MenuIcon className={classes.menubutton}/>
+            <IconButton onClick={toggleDrawer('right', true)}>
+              <MenuIcon className={classes.menubutton}></MenuIcon>
             </IconButton>
           </Toolbar>
           <div className="NavBarColorLine"></div>
         </AppBar>
       </HideOnScroll>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="right"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon style={{fontSize: 25}} />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {['Edward Chan'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
-              <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
-            </ListItem>
-          ))}
-        </List>
-        <List>
-          {['Profile', 'Analytics'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon><SettingsIcon style={{fontSize: 20}}></SettingsIcon></ListItemIcon>
-              <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider/>
-        <List>
-          {['Donate','About Us', 'Terms & Conditions','Logout'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon><LogoutIcon style={{ fontSize: 20 }}></LogoutIcon></ListItemIcon>
-              <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
+      <div>
+        {['right'].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <SwipeableDrawer
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+              onOpen={toggleDrawer(anchor, true)}
+            >
+              {renderDrawer(anchor)}
+            </SwipeableDrawer>
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }
-
-//profile, logout analytics
