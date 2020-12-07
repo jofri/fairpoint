@@ -19,12 +19,12 @@ import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    width: '80vw',
+    width: '85vw',
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'absolute',
     top: '25vh',
-    left:'10vw',
+    left:'7.5vw',
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: '40vh'
+    height: '50vh'
   },
   divider: {
     width: '95%',
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
   },
   icons: {
-    fontSize: 50,
+    fontSize: 45,
   },
   bottomContainer: {
     display: 'flex',
@@ -55,8 +55,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between'
   },
   bottomText: {
-    fontSize: 16,
-    marginBottom: '2vh',
+    fontSize: 18,
+    marginBottom: '1vh',
+    marginTop: '1vh',
   },
   sourceText: {
     fontSize: 15,
@@ -72,24 +73,23 @@ const useStyles = makeStyles((theme) => ({
 function NewsStory (props) {
   const [menuState, setMenuState] = useState(false);
   const [clickedArticle, setClickedArticle] = useState({});
-
-  const [state, setState] = React.useState({
+  const [snackBarState, setSnackBarState] = useState({
     open: false,
     vertical: 'top',
     horizontal: 'center',
   });
 
-  const { vertical, horizontal, open } = state;
+  const { vertical, horizontal, open } = snackBarState;
   const classes = useStyles();
 
   const openSnack = (newState) => () => {
     console.log('CATCH',clickedArticle.link); 
     navigator.clipboard.writeText(clickedArticle.link);
-    setState({ open: true, ...newState });
+    setSnackBarState({ open: true, ...newState });
   };
 
   const handleCloseSnack = () => {
-    setState({ ...state, open: false });
+    setSnackBarState({ ...snackBarState, open: false });
   };
 
   
@@ -125,22 +125,22 @@ function NewsStory (props) {
           <div className={classes.bottomContainer}>
             <h2 className={classes.bottomText}>Share this via:</h2>
             <div className={classes.iconContainer}>
-              <IconButton style={{ backgroundColor: '#00aced', color: 'white'}}>
+              <IconButton style={{ backgroundColor: '#00aced'}}>
                 <TwitterShareButton
                   url={clickedArticle.link}
                   quote={clickedArticle.title}>
-                  <TwitterIcon size={50}></TwitterIcon>
+                  <TwitterIcon size={45}></TwitterIcon>
                 </TwitterShareButton>
               </IconButton>
-              <IconButton style={{ backgroundColor: '#3b5998', color: 'white' }}>
+              <IconButton style={{ backgroundColor: '#3b5998' }}>
                 <FacebookShareButton
                   url={clickedArticle.link}
                   quote={clickedArticle.title}
                   style={{outline: 'none'}}>
-                  <FacebookIcon size={50} />
+                  <FacebookIcon size={45} />
                 </FacebookShareButton>
               </IconButton>
-              <IconButton style={{ backgroundColor: 'grey', color: 'white', }} onClick={openSnack({ vertical: 'bottom', horizontal: 'right' })}>
+              <IconButton style={{ backgroundColor: 'grey', color: 'white'}} onClick={openSnack({ vertical: 'bottom', horizontal: 'right' })}>
                 <LinkIcon className={classes.icons}></LinkIcon>
               </IconButton>
             </div>
