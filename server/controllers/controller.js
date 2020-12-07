@@ -109,9 +109,9 @@ exports.createArticle = async (req, res) => {
 
 exports.createUserHistory = async (req, res) => {
   try {
-    const {userId, articleId} = await req.body;
+    const {userId, articleInfo} = await req.body;
     const filter = {googleId: `${userId}`};
-    const update = {_id: articleId};
+    const update = {_id: articleInfo._id, title: articleInfo.title, source: articleInfo.source, stance: articleInfo.stance};
     const newArticle = await User.findOneAndUpdate(filter, {'$push': {'article': update}}, {new: true});
     res.status(201).send(newArticle); 
   } catch (err) {
