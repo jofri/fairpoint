@@ -83,7 +83,7 @@ function NewsStory (props) {
   const classes = useStyles();
 
   const openSnack = (newState) => () => {
-    console.log('CATCH',clickedArticle.link); 
+    console.log('CATCH',clickedArticle.link);
     navigator.clipboard.writeText(clickedArticle.link);
     setSnackBarState({ open: true, ...newState });
   };
@@ -92,35 +92,30 @@ function NewsStory (props) {
     setSnackBarState({ ...snackBarState, open: false });
   };
 
-  
-  console.log(clickedArticle, 'CLICKED ARTICLE');
 
   const handleClose = () => {
     setMenuState(false);
   };
 
 
-
-  console.log(clickedArticle, 'CLICKED');
-
   return (
     <div>
       <div className="ArticleStoryWrap">
         <StoryHead story={props.clickedStory} articleThumbnail={props.clickedStory.articles[0].image || 'https://icon-library.com/images/news-icon-free/news-icon-free-7.jpg'} setMenuState={setMenuState} className="StoryHead"></StoryHead>
         {/* <Divider></Divider> */}
-        <ArticleScroll 
-          articles={props.clickedStory.articles.filter(article => article.stance === 1)} 
-          setClickedArticle={setClickedArticle} 
-          setMenuState={setMenuState} 
-          loginUser={props.loginUser} 
-          setLoginUser={props.setLoginUser} 
+        <ArticleScroll
+          articles={props.clickedStory.articles.filter(article => article.stance === 1)}
+          setClickedArticle={setClickedArticle}
+          setMenuState={setMenuState}
+          loginUser={props.loginUser}
+          setLoginUser={props.setLoginUser}
           scrollColor={'#E11F1C'}></ArticleScroll>
         {/* <Divider></Divider> */}
-        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === (5 || 11))} 
-          setClickedArticle={setClickedArticle} 
-          etMenuState={setMenuState} 
-          loginUser={props.loginUser} 
-          setLoginUser={props.setLoginUser} 
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === (5 || 11))}
+          setClickedArticle={setClickedArticle}
+          etMenuState={setMenuState}
+          loginUser={props.loginUser}
+          setLoginUser={props.setLoginUser}
           scrollColor={'rgb(160, 87, 160)'}></ArticleScroll>
         {/* <Divider></Divider> */}
         <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 10)} setClickedArticle={setClickedArticle} setMenuState={setMenuState} loginUser={props.loginUser} setLoginUser={props.setLoginUser} scrollColor={ '#0195DF'}></ArticleScroll>
@@ -162,7 +157,7 @@ function NewsStory (props) {
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleCloseSnack}
-      ><SnackbarContent message={  
+      ><SnackbarContent message={
           <h2 className={classes.SnackbarText}>Link Copied to Clipboard!</h2>
         }></SnackbarContent>
       </Snackbar>
