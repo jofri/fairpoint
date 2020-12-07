@@ -53,7 +53,7 @@ setInterval( () => {
 }, 300000);
 
 
-/*
+
 
 // Import scraper scripts
 const newsScraper = require('./server/scrapers/index');
@@ -106,7 +106,7 @@ setTimeout(() => {
   setInterval(() => {
     categoriesScraper('Health');
   }, 2400000);
-}, 2400000); */
+}, 2400000);
 
 
 
