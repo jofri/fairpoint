@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   listItemText : {
     fontSize: 15,
     fontWeight: '400',
-  }, 
+  },
   listItemTextMain: {
     fontSize: 18,
     fontWeight: '500',
@@ -137,14 +137,14 @@ export default function NavBar (props) {
       <Divider />
       <List>
         {/* HARD CODE ANALYTICS! */}
-        <ListItem button key="home" component={Link} to="/" > 
+        <ListItem button key="home" component={Link} to="/" >
           <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
         </ListItem>
       </List>
       <List>
         {/* HARD CODE ANALYTICS! */}
-        <ListItem button key="Analytics" component={Link} to="/analytics" > 
+        <ListItem button key="Analytics" component={Link} to="/analytics" >
           <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
         </ListItem>
@@ -193,7 +193,9 @@ export default function NavBar (props) {
               <img src={LogoBrain} alt="logo" className="NavBarLogo"/>
             </a>
             <Typography variant="h6" noWrap className={classes.title}>
-            Anchored News
+              <a className="brandLink" href="/">
+                  Anchored News
+              </a>
             </Typography>
             <IconButton onClick={toggleDrawer('right', true)}>
               <MenuIcon className={classes.menubutton}></MenuIcon>

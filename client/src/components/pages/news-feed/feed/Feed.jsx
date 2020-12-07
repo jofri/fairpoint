@@ -5,6 +5,7 @@ import './Feed.css';
 import SubStory from './sub-story/SubStory';
 import LoadingSkeleton from './LoadingSkeleton';
 import brainSquare from '../../../../assets/placeholder_brain_square.png';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Feed (props) {
 
@@ -12,6 +13,9 @@ function Feed (props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const [storyLoaded, setStoryLoaded] = React.useState(false);
+
+  const matches = useMediaQuery('(min-width:600px)');
+
 
   useEffect(() => {
     async function loadedStories () {
@@ -62,15 +66,27 @@ function Feed (props) {
       {storyLoaded ? <div className="Feed-container">
 
 
-        {props.stories.map( (story, i) => {
+        {matches ? props.stories.map( (story, i) => {
           // Render a HeadStory from first object in stories array
           if (i === 0) {
             let articleImg = brainSquare;
             if (story.articles[0]) articleImg = story.articles[0].image;
-            return <HeadStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
+            return <SubStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
           }
           return false;
-        })}
+        }) :
+          props.stories.map( (story, i) => {
+          // Render a HeadStory from first object in stories array
+            if (i === 0) {
+              let articleImg = brainSquare;
+              if (story.articles[0]) articleImg = story.articles[0].image;
+              return <HeadStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
+            }
+            return false;
+          })
+
+
+        }
 
         {props.stories.map((story, i) => {
           // Render a StoryTile per story object (exept first object)
