@@ -44,7 +44,10 @@ function App () {
           {loginUser && loginUser._id ? <Navbar></Navbar> : <NavBarUnauth></NavBarUnauth>}
           <div className="content">
             <CategoryTabs></CategoryTabs>
-            <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories} />
+            <NewsFeed 
+              setClickedStory={setClickedStory} 
+              stories={stories} 
+              setStories={setStories} />
           </div>
         </Route>
         <Route exact path='/story'>
