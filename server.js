@@ -106,9 +106,9 @@ setTimeout(() => {
   setInterval(() => {
     categoriesScraper('Health');
   }, 2400000);
-}, 2400000); */
+}, 2400000);
 
-
+ */
 
 // Connect to MongoDB and listen for new requests
 server.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars
