@@ -16,6 +16,6 @@ exports.currentUser = async (req, res) => {
   } else {
     const googleid = await req.user;
     const userData = await User.findOne({googleId: `${googleid}`});
-    res.send(userData);
+    res.status(200).send(userData);
   }
 };

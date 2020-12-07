@@ -107,8 +107,22 @@ exports.createArticle = async (req, res) => {
   }
 };
 
+exports.createUserHistory = async (req, res) => {
+  try {
+    const {userId, articleId} = await req.body;
+    const filter = {googleId: `${userId}`};
+    const update = {_id: articleId};
+    // Note: We use the returned json in article-title.jsx so its very important
+    // for it to be the updated state and not the pre-updated state
+    const newArticle = await User.findOneAndUpdate(filter, {'$push': {'article': update}}, {new: true});
+    res.status(201).send(newArticle); 
+  } catch (err) {
+    console.log('err', err);
+    res.sendStatus(500);
+  }
+};
 
-//* Just for mockup : don't use this for actual app
+
 // exports.saveArticleUserlog = async (req, res) => {
 //   try {
 //     console.log('req', req);
