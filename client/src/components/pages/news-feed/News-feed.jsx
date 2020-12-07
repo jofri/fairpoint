@@ -8,7 +8,8 @@ function NewsFeed (props) {
       <Feed 
         setClickedStory={props.setClickedStory} 
         stories={props.stories} 
-        setStories={props.setStories}/>
+        setStories={props.setStories}
+        setStoryApi={props.setStoryApi}/>
     </>
   );
 }
