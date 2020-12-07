@@ -11,8 +11,8 @@ const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
-// const newsScraper = require('./server/scrapers/index');
-// const categoriesScraper = require('./server/scrapers/categories');
+const newsScraper = require('./server/scrapers/index');
+const categoriesScraper = require('./server/scrapers/categories');
 
 
 // If app is in dev mode, inform developer to use React's localhost port when testing server
@@ -53,6 +53,10 @@ setInterval( () => {
   console.log('Heroku server ping sent');
 }, 300000);
 
+newsScraper();
+categoriesScraper('World');
+categoriesScraper('Business');
+categoriesScraper('Technology');
 /*
 // Start Top-line/UK news scraping
 setInterval(() => {

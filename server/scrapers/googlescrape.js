@@ -53,7 +53,8 @@ module.exports = async (config) => {
           .replace('./', 'https://news.google.com/') || false,
       image: $(this).find('figure').find('img').attr('src') || false,
       source: $(this).find('div').first().text() || false,
-      time: $(this).find('div:last-child time').text() || false
+      time: $(this).find('div:last-child time').text() || false,
+      category: config.category
     });
   }, i++);
 
