@@ -11,6 +11,42 @@ function getStories () {
     .catch(err => console.log(err));
 }
 
+function getBusiness () {
+  return fetch('/api/getBusiness')
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+function getSports () {
+  return fetch('/api/getSports')
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+function getScience () {
+  return fetch('/api/getScience')
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+function getHealth () {
+  return fetch('/api/getHealth')
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+function getEntertainment () {
+  return fetch('/api/getEntertainment')
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+function getTechnology () {
+  return fetch('/api/getTechnology')
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+function getWorld () {
+  return fetch('/api/getWorld')
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+
 function createArticle (articleInfo) {
   try {
     return fetch('/api/newarticle', {
@@ -34,8 +70,8 @@ function createArticle (articleInfo) {
 }
 
 
-function createUserHistory (userId, articleId) {
-  try { 
+function createUserHistory (userId, articleInfo) {
+  try {
     return fetch('/api/createUserHistory',{
       method: 'POST',
       headers: {
@@ -43,7 +79,7 @@ function createUserHistory (userId, articleId) {
       },
       body: JSON.stringify({
         userId,
-        articleId
+        articleInfo
       })
     });
   } catch (err) {
@@ -57,6 +93,13 @@ function createUserHistory (userId, articleId) {
 export {
   getUser,
   getStories,
+  getBusiness,
+  getSports,
+  getScience,
+  getHealth,
+  getEntertainment,
+  getTechnology,
+  getWorld,
   createArticle,
   createUserHistory
 };

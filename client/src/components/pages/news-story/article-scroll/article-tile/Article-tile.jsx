@@ -17,11 +17,14 @@ function ArticleTile (props) {
     createArticle(props.article)
       .then((res) => res.json())
       .then(res => {
-        const articleId = res._id;
-        const existingArticle = props.loginUser.article.filter(el => el._id === articleId);
+        console.log('in tile', res);
+        // const articleId = res._id;
+        const articleInfo = res;
+        console.log(props);
+        const existingArticle = props.loginUser.article.filter(el => el._id === articleInfo._id);
 
         if (existingArticle.length === 0) {
-          createUserHistory(props.loginUser.googleId, articleId)
+          createUserHistory(props.loginUser.googleId, articleInfo)
             .then((res) => res.json())
             .then(res => props.setLoginUser(res)); 
         }

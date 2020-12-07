@@ -109,11 +109,9 @@ exports.createArticle = async (req, res) => {
 
 exports.createUserHistory = async (req, res) => {
   try {
-    const {userId, articleId} = await req.body;
+    const {userId, articleInfo} = await req.body;
     const filter = {googleId: `${userId}`};
-    const update = {_id: articleId};
-    // Note: We use the returned json in article-title.jsx so its very important
-    // for it to be the updated state and not the pre-updated state
+    const update = {_id: articleInfo._id, title: articleInfo.title, source: articleInfo.source, stance: articleInfo.stance};
     const newArticle = await User.findOneAndUpdate(filter, {'$push': {'article': update}}, {new: true});
     res.status(201).send(newArticle); 
   } catch (err) {
@@ -121,19 +119,3 @@ exports.createUserHistory = async (req, res) => {
     res.sendStatus(500);
   }
 };
-
-
-// exports.saveArticleUserlog = async (req, res) => {
-//   try {
-//     console.log('req', req);
-    
-//     const userId = req.params.googleid;
-//     const update = {article: req.body};
-//     const filter = {googleId: `${userId}`};
-//     const newArticle = await User.findOneAndUpdate(filter, {$addToSet: update});
-//     res.status(201).send(newArticle);
-//   } catch {
-//     console.log(error);
-//     res.sendStatus(400);
-//   }
-// };

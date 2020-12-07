@@ -15,6 +15,7 @@ function Analytics (props) {
   const [interestData, setInterestData] = useState({});
   const [mostInterestData, setMostInterestData] = useState([]);
 
+  // Gets dataset from props and converts it into array with stance/source key value pair
   const getDataset =  () => {
     let dataset = [];
 
@@ -77,35 +78,6 @@ function Analytics (props) {
     userstanceAttributes.userstance = userstance;
     return userstanceAttributes;
   };
-
-
-  const defineBackground = () => {
-    const userAttributes = {};
-    userAttributes.userstance = stanceData.userstance;
-    userAttributes.opacity = stanceData.opacity;
-
-    let style = {};
-
-    switch (userAttributes.userstance) {
-    case 'slightly centre-right':
-      style = {backgroundColor: `rgb(168, 226, 255, ${userAttributes.opacity})`};
-      return style;
-    case 'centre-right':
-      style = {backgroundColor: `rgb(1, 149, 223, ${userAttributes.opacity})`};
-      return style;
-    case 'slightly centre-left':
-      style = {backgroundColor: `rgb(250, 174, 173, ${userAttributes.opacity})`};
-      return style;
-    case 'centre-left':
-      style = {backgroundColor: `rgb(225, 31, 28 ${userAttributes.opacity})`};
-      return style;
-    default:
-      style = {backgroundColor: 'rgb(238, 238, 238)'};
-      return style;
-    }
-  };
-
-  const backgroundAttribute = defineBackground();
 
   const publisherDictionary = (userdataset) => {
     let dataset = [];
@@ -201,7 +173,7 @@ function Analytics (props) {
 
 
   return props ?
-    <div className='totalsummary-wrapper'  style={backgroundAttribute}>
+    <div className='totalsummary-wrapper'>
       <h1>Summary</h1>
       <h2>You have read a total of {userData.length} articles so far</h2>
       <div className='polarchart-container'>
