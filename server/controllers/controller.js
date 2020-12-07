@@ -112,8 +112,9 @@ exports.createUserHistory = async (req, res) => {
     const {userId, articleId} = await req.body;
     const filter = {googleId: `${userId}`};
     const update = {_id: articleId};
-    //FIXME: Do not save duplicated article info in user history 
-    const newArticle = await User.findOneAndUpdate(filter, {'$push': {'article': update}});
+    // Note: We use the returned json in article-title.jsx so its very important
+    // for it to be the updated state and not the pre-updated state
+    const newArticle = await User.findOneAndUpdate(filter, {'$push': {'article': update}}, {new: true});
     res.status(201).send(newArticle); 
   } catch (err) {
     console.log('err', err);
