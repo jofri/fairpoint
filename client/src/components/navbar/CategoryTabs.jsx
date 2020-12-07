@@ -1,11 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import SwipeableViews from 'react-swipeable-views';
+import NewsFeed from '../pages/news-feed/News-feed';
+
+import {
+  getStories,
+  getBusiness,
+  getSports,
+  getScience,
+  getHealth,
+  getEntertainment,
+  getTechnology,
+  getWorld, } from '../../services/api';
+
+
+
 
 function TabPanel (props) {
   const { children, value, index, ...other } = props;
@@ -13,16 +28,14 @@ function TabPanel (props) {
   return (
     <div
       role="tabpanel"
-      hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+    > 
+      <Box>
+        <Typography>{children}</Typography>
+      </Box>
+  
     </div>
   );
 }
@@ -53,15 +66,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CategoryTabs () {
+export default function CategoryTabs (props) {
   const classes = useStyles();
+  const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-
+  const handleChangeIndex = (index) => {
+    setValue(index);
+  };
 
   return (
     <div className={classes.root}>
@@ -73,19 +89,47 @@ export default function CategoryTabs () {
           textColor="primary"
           variant="scrollable"
           scrollButtons="on"
-          classes={{
-            indicator: classes.indicator
-          }}
         >
           <Tab label="UK" {...selectedProps(0)} className={classes.Tab} />
           <Tab label="World" {...selectedProps(1)} className={classes.Tab} />
-          <Tab label="Entertainment" {...selectedProps(2)} className={classes.Tab} />
-          <Tab label="Tech" {...selectedProps(3)} className={classes.Tab} />
-          <Tab label="Science" {...selectedProps(4)} className={classes.Tab} />
-          <Tab label="Sport" {...selectedProps(5)} className={classes.Tab} />
-          <Tab label="Health" {...selectedProps(6)} className={classes.Tab} />
+          <Tab label="Business" {...selectedProps(2)} className={classes.Tab}/>
+          <Tab label="Entertainment" {...selectedProps(3)} className={classes.Tab}/>
+          <Tab label="Health" {...selectedProps(4)} className={classes.Tab}/>
+          <Tab label="Sports" {...selectedProps(5)} className={classes.Tab}/>
+          <Tab label="Tech" {...selectedProps(6)} className={classes.Tab}/>
+          <Tab label="Science" {...selectedProps(7)} className={classes.Tab}/>
         </Tabs>
       </AppBar>
+      <SwipeableViews
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+      >
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          <NewsFeed setClickedStory={props.setClickedStory} stories={props.stories} setStories={props.setStories} setStoryApi={getStories}></NewsFeed>
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <NewsFeed setClickedStory={props.setClickedStory} stories={props.world} setStories={props.setWorld} setStoryApi={getWorld}></NewsFeed>
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
+          <NewsFeed setClickedStory={props.setClickedStory} stories={props.business} setStories={props.setBusiness} setStoryApi={getBusiness}></NewsFeed>
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={theme.direction}>
+          <NewsFeed setClickedStory={props.setClickedStory} stories={props.entertainment} setStories={props.setEntertainment} setStoryApi={getEntertainment}></NewsFeed>
+        </TabPanel>
+        <TabPanel value={value} index={4} dir={theme.direction}>
+          <NewsFeed setClickedStory={props.setClickedStory} stories={props.health} setStories={props.setHealth} setStoryApi={getHealth}></NewsFeed>
+        </TabPanel>
+        <TabPanel value={value} index={5} dir={theme.direction}>
+          <NewsFeed setClickedStory={props.setClickedStory} stories={props.sports} setStories={props.setSports} setStoryApi={getSports}></NewsFeed>
+        </TabPanel>
+        <TabPanel value={value} index={6} dir={theme.direction}>
+          <NewsFeed setClickedStory={props.setClickedStory} stories={props.technology} setStories={props.setTechnology} setStoryApi={getTechnology}></NewsFeed>
+        </TabPanel>
+        <TabPanel value={value} index={7} dir={theme.direction}>
+          <NewsFeed setClickedStory={props.setClickedStory} stories={props.science} setStories={props.setScience} setStoryApi={getScience}></NewsFeed>
+        </TabPanel>
+      </SwipeableViews>
 
     </div>
   );

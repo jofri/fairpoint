@@ -11,8 +11,6 @@ const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
-const newsScraper = require('./server/scrapers/index');
-const categoriesScraper = require('./server/scrapers/categories');
 
 
 // If app is in dev mode
@@ -55,12 +53,17 @@ setInterval( () => {
 }, 300000);
 
 
+/*
+
+// Import scraper scripts
+const newsScraper = require('./server/scrapers/index');
+const categoriesScraper = require('./server/scrapers/categories');
+
 // Start Top-line/UK news scraping
 setInterval(() => {
   newsScraper();
   console.log('called in server');
 }, 480000);
-
 
 // Set up category scraping at different life-cycles to run every 40 minutes
 setTimeout(() => {
@@ -103,7 +106,7 @@ setTimeout(() => {
   setInterval(() => {
     categoriesScraper('Health');
   }, 2400000);
-}, 2400000);
+}, 2400000); */
 
 
 
