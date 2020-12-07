@@ -12,6 +12,8 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
+import Terms from './components/pages/terms/terms';
+import About from './components/pages/about/about';
 
 
 import './App.css';
@@ -97,6 +99,18 @@ function App () {
             </Route>
             <Route exact path='/analytics' >
               {loginUser && loginUser._id ? <><Navbar /><Analytics loginUser = {loginUser ? loginUser : <Loader />}/></> : <FourOFour/>}
+            </Route>
+            <Route exact path='/about'>
+              <Navbar></Navbar>
+              <div className="content">
+                <About></About>
+              </div>
+            </Route>
+            <Route exact path='/terms'>
+              <Navbar></Navbar>
+              <div className="content">
+                <Terms></Terms>
+              </div>
             </Route>
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}

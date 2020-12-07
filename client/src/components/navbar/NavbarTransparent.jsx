@@ -1,31 +1,34 @@
+// import SettingsIcon from '@material-ui/icons/Settings';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+// import Slide from '@material-ui/core/Slide';
+//import ShareIcon from '@material-ui/icons/Share';
+// import MailIcon from '@material-ui/icons/Mail';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import LogoutIcon from '@material-ui/icons/ExitToApp';
+// import Typography from '@material-ui/core/Typography';
+// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
+// import Drawer from '@material-ui/core/Drawer';
+
+
+
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-// import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import List from '@material-ui/core/List';
-// import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
-// import Slide from '@material-ui/core/Slide';
 import Avatar from '@material-ui/core/Avatar';
-// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import './Navbar.css';
-// import LogoutIcon from '@material-ui/icons/ExitToApp';
-// import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
-//import ShareIcon from '@material-ui/icons/Share';
 import { useHistory } from 'react-router-dom';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import AssessmentIcon from '@material-ui/icons/Assessment';
@@ -271,5 +274,3 @@ export default function NavBarTransparent (props) {
     </div>
   );
 }
-
-//profile, logout analytics
