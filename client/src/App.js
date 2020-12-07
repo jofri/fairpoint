@@ -20,7 +20,6 @@ import NavBarTransparent from './components/navbar/NavbarTransparent';
 import CategoryTabs from './components/navbar/CategoryTabs';
 
 // Set background color of app according to user stance
-import mockArticles from './mockArticles';
 import backgroundCalc from './components/helpers/backgroundCalc';
 
 
@@ -48,8 +47,8 @@ function App () {
 
   return (
     /* Sets background color corresponding to user stance */
-    <div style={{backgroundColor: backgroundCalc(mockArticles)[0]}}>
-      <div style={{backgroundColor: `rgba(255, 255, 255, ${backgroundCalc(mockArticles)[1]})`}}>
+    <div style={{backgroundColor: backgroundCalc(loginUser)[0]}}>
+      <div style={{backgroundColor: `rgba(255, 255, 255, ${backgroundCalc(loginUser)[1]})`}}>
         <Router>
           <Switch>
             <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
