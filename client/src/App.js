@@ -25,6 +25,13 @@ function App () {
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
   const [stories, setStories] = useState([]);
+  // const [business, setBusiness] = useState([]);
+  // const [entertainment, setEntertainment] = useState([]);
+  // const [health, setHealth] = useState([]);
+  // const [science, setScience] = useState([]);
+  // const [sports, setSports] = useState([]);
+  // const [technology, setTechnology] = useState([]);
+  // const [world, setWorld] = useState([]);
   const [clickedStory, setClickedStory] = useState({});
 
 
@@ -49,9 +56,9 @@ function App () {
         </Route>
         <Route exact path='/story'>
           {clickedStory._id ? <><NavBarTransparent></NavBarTransparent>
-            <NewsStory 
-              clickedStory={clickedStory} 
-              loginUser={loginUser} 
+            <NewsStory
+              clickedStory={clickedStory}
+              loginUser={loginUser}
               setLoginUser={setLoginUser}/></> : <FourOFour />}
         </Route>
         <Route exact path='/donate'>
