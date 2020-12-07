@@ -15,7 +15,6 @@ h3{
   color: var(--color-black);
   font-size: calc(var(--midfont));
   align-items: center;
-  padding-top: 20px;
 }
 
 .totalsummary-wrapper {
@@ -23,6 +22,7 @@ h3{
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-top: 8.5vh;
 }
 
 .polarchart-container {
