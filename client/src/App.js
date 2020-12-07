@@ -5,7 +5,7 @@ import {getUser} from './services/api';
 
 //*Components
 import Loader from './components/helpers/loader/Loader';
-import NewsFeed from './components/pages/news-feed/News-feed';
+// import NewsFeed from './components/pages/news-feed/News-feed';
 import NewsStory from './components/pages/news-story/News-story';
 import Navbar from './components/navbar/Navbar';
 import FourOFour from './components/helpers/404';
@@ -36,6 +36,7 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
+  console.log(loginUser);
 
   return (
     <Router>
@@ -43,8 +44,7 @@ function App () {
         <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
           {loginUser && loginUser._id ? <Navbar></Navbar> : <NavBarUnauth></NavBarUnauth>}
           <div className="content">
-            <CategoryTabs></CategoryTabs>
-            <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories} />
+            <CategoryTabs setClickedStory={setClickedStory} stories={stories} setStories={setStories}></CategoryTabs>
           </div>
         </Route>
         <Route exact path='/story'>
