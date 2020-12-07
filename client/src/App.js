@@ -5,7 +5,7 @@ import {getUser} from './services/api';
 
 //*Components
 import Loader from './components/helpers/loader/Loader';
-import NewsFeed from './components/pages/news-feed/News-feed';
+// import NewsFeed from './components/pages/news-feed/News-feed';
 import NewsStory from './components/pages/news-story/News-story';
 import Navbar from './components/navbar/Navbar';
 import FourOFour from './components/helpers/404';
@@ -28,13 +28,13 @@ function App () {
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
   const [stories, setStories] = useState([]);
-  // const [business, setBusiness] = useState([]);
-  // const [entertainment, setEntertainment] = useState([]);
-  // const [health, setHealth] = useState([]);
-  // const [science, setScience] = useState([]);
-  // const [sports, setSports] = useState([]);
-  // const [technology, setTechnology] = useState([]);
-  // const [world, setWorld] = useState([]);
+  const [world, setWorld] = useState([]);
+  const [business, setBusiness] = useState([]);
+  const [entertainment, setEntertainment] = useState([]);
+  const [health, setHealth] = useState([]);
+  const [science, setScience] = useState([]);
+  const [sports, setSports] = useState([]);
+  const [technology, setTechnology] = useState([]);
   const [clickedStory, setClickedStory] = useState({});
 
   useEffect (() => {
@@ -54,8 +54,24 @@ function App () {
             <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
               {loginUser && loginUser._id ? <Navbar></Navbar> : <NavBarUnauth></NavBarUnauth>}
               <div className="content">
-                <CategoryTabs></CategoryTabs>
-                <NewsFeed setClickedStory={setClickedStory} stories={stories} setStories={setStories} />
+                <CategoryTabs setClickedStory={setClickedStory} 
+                  stories={stories} 
+                  setStories={setStories}
+                  world={world}
+                  setWorld={setWorld}
+                  business={business}
+                  setBusiness={setBusiness}
+                  entertainment={entertainment}
+                  setEntertainment={setEntertainment}
+                  health={health}
+                  setHealth={setHealth}
+                  science={science}
+                  setScience={setScience}
+                  sports={sports}
+                  setSports={setSports}
+                  technology={technology}
+                  setTechnology={setTechnology}
+                ></CategoryTabs>
               </div>
             </Route>
             <Route exact path='/story'>

@@ -12,6 +12,7 @@ const newsScraper = async () => {
       searchTerm: story,
       prettyURLs: false,
       timeframe: '5d',
+      category: 'UK',
       puppeteerArgs: ['--single-process', '--no-zygote', '--no-sandbox']
     });
     return articles;
