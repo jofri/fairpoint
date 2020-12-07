@@ -17,8 +17,11 @@ function Feed (props) {
     async function loadedStories () {
       setStoryLoaded(false);
       const response = await getStories();
+      // console.log(response,'RESPONSE');
       props.setStories(response);
-      setStoryLoaded(true);
+      if (response) {
+        setStoryLoaded(true);
+      } ///MAYBE RENDER A NO RESPONSE PAGE??
     }
     loadedStories();
   }, []);
