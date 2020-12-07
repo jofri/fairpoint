@@ -8,6 +8,7 @@
 // import Drawer from '@material-ui/core/Drawer';
 
 import React from 'react';
+// import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -103,6 +104,9 @@ function HideOnScroll (props) {
 }
 
 export default function NavBar (props) {
+
+  console.log(props);
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -128,8 +132,8 @@ export default function NavBar (props) {
     >
       <List>
         <ListItem button component="a" key="profile" href="/profile">
-          <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
-          <ListItemText classes={{primary: classes.listItemTextMain}} primary="Edward Chan" />
+          <ListItemIcon><Avatar ></Avatar></ListItemIcon>
+          <ListItemText classes={{primary: classes.listItemTextMain}} primary={'Edward chan'} />
         </ListItem>
       </List>
       <Divider />
@@ -141,11 +145,14 @@ export default function NavBar (props) {
         </ListItem>
       </List>
       <List>
-        {/* HARD CODE ANALYTICS! */}
-        <ListItem button key="Analytics"> 
-          <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
-          <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
-        </ListItem>
+        <List button component="a" key="Analytics" href="/analytics"> 
+          {/* <Link to='/analytics'> */}
+          <ListItem button key="Analytics" > 
+            <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
+            <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
+          </ListItem>
+          {/* </Link> */}
+        </List>
       </List>
       <List>
         <ListItem button component="a" key="Donate" href="/donate">
@@ -168,8 +175,7 @@ export default function NavBar (props) {
         </ListItem>
       </List>
       <List>
-        {/* FOR SOOYEON! */}
-        <ListItem button key="Log Out">
+        <ListItem button component="a" key="Log Out" href="/auth/logout">
           <ListItemIcon><LogoutIcon style={{ fontSize: iconSize }}></LogoutIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Log Out" />
         </ListItem>

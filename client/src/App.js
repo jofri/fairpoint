@@ -52,7 +52,9 @@ function App () {
         <Router>
           <Switch>
             <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-              {loginUser && loginUser._id ? <Navbar></Navbar> : <NavBarUnauth></NavBarUnauth>}
+              {loginUser && loginUser._id ? 
+                <Navbar loginUser={loginUser} setLoginUser={setLoginUser}></Navbar> 
+                : <NavBarUnauth></NavBarUnauth>}
               <div className="content">
                 <CategoryTabs></CategoryTabs>
                 <NewsFeed 

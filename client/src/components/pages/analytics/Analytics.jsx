@@ -25,12 +25,12 @@ function Analytics (props) {
       datapair.source = props.loginUser.article[i].source;
       dataset.push(datapair);
     }
-
+    // console.log(dataset);
     return dataset;
   };
 
   const getStanceDictionary = (userdataset) => {
-    let userstanceData = {};
+    let userstanceData = {'Right': 0, 'Left': 0, 'Middle': 0, 'Not defined': 0};
 
     for (let i = 0; i < userdataset.length; i++) {
       if (userdataset[i].stance === 10) {
@@ -48,6 +48,7 @@ function Analytics (props) {
       }
     }
 
+    console.log(userstanceData);
     return userstanceData;
   };
 
@@ -142,7 +143,7 @@ function Analytics (props) {
     const userdataset = getDataset();
     setUserdata(userdataset);
 
-    if (userdataset.length > 30) {
+    if (userdataset.length > 8) {
       setStanceData(calcStance(userdataset));
     }
 
@@ -177,7 +178,7 @@ function Analytics (props) {
       <h1>Summary</h1>
       <h2>You have read a total of {userData.length} articles so far</h2>
       <div className='polarchart-container'>
-        <Polar loginUser={props.loginUser} userData={userData} setUserdata={setUserdata}/>
+        <Polar loginUser={props.loginUser} userData={userData} setUserdata={setUserdata} stanceData={stanceData} setStanceData={setStanceData}/>
         <h3>Your reading habits are {stanceData.userstance}</h3>
       </div>
       <div className='radarchart-container'>

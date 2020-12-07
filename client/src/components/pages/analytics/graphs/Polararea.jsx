@@ -6,30 +6,32 @@ import './Polararea.css';
 function Polarchart (props) {
   // console.log('inpoloarchart',props);
 
-  let stanceData = {};
-  for (let i = 0; i < props.userData.length; i++) {
-    if (props.userData[i].stance === 10) {
-      let stance = 'Right';
-      stanceData[stance] = stanceData[stance] ? stanceData[stance] + 1: 1;
-    } else if (props.userData[i].stance === 1) {
-      let stance = 'Left';
-      stanceData[stance] = stanceData[stance] ? stanceData[stance] + 1: 1;
-    } else if (props.userData[i].stance === 5) {
-      let stance = 'Middle';
-      stanceData[stance] = stanceData[stance] ? stanceData[stance] + 1: 1;
-    } else if (props.userData[i].stance === 11) {
-      let stance = 'Not defined';
-      stanceData[stance] = stanceData[stance] ? stanceData[stance] + 1: 1;
-    }
-  }
+  // let stanceData = {};
+  // for (let i = 0; i < props.userData.length; i++) {
+  //   if (props.userData[i].stance === 10) {
+  //     let stance = 'Right';
+  //     stanceData[stance] = stanceData[stance] ? stanceData[stance] + 1: 1;
+  //   } else if (props.userData[i].stance === 1) {
+  //     let stance = 'Left';
+  //     stanceData[stance] = stanceData[stance] ? stanceData[stance] + 1: 1;
+  //   } else if (props.userData[i].stance === 5) {
+  //     let stance = 'Middle';
+  //     stanceData[stance] = stanceData[stance] ? stanceData[stance] + 1: 1;
+  //   } else if (props.userData[i].stance === 11) {
+  //     let stance = 'Not defined';
+  //     stanceData[stance] = stanceData[stance] ? stanceData[stance] + 1: 1;
+  //   }
+  // }
 
-  // console.log(stanceData);
+  console.log(props);
   const [chartData, setChartData] = useState({});
   const linechart = () => {
     
     const labeldata = Object.keys(stanceData);
     const piedata = Object.values(stanceData);
-    
+    // const colorschema = [{'Right':'rgb(1, 149, 223)'}, {'Left':'#fc5185'}, {'Middle':'#c4c4c4'}, {'Undefined':'#eeeeee'}];
+    // const colorlabel = [];
+
     setChartData({
       labels: labeldata,
       datasets: [
@@ -37,8 +39,8 @@ function Polarchart (props) {
           label: 'Stance',
           data: piedata ,
           backgroundColor: [
-            'rgb(1, 149, 223)',
             '#fc5185',
+            'rgb(1, 149, 223)',
             '#c4c4c4',
             '#eeeeee'
           ],
