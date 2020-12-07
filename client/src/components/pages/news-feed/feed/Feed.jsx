@@ -27,7 +27,7 @@ function Feed (props) {
     loadedStories();
   }, []);
 
-  console.log(props.stories,storyLoaded, 'HI THERE');
+  // console.log(props.stories,storyLoaded, 'HI THERE');
 
 
   /*  function convertStory (story) {

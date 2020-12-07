@@ -18,6 +18,7 @@ function ArticleTile (props) {
       .then((res) => res.json())
       .then(res => {
         const articleId = res._id;
+        console.log(props);
         const existingArticle = props.loginUser.article.filter(el => el._id === articleId);
 
         if (existingArticle.length === 0) {
