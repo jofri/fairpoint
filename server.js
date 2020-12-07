@@ -53,7 +53,7 @@ setInterval( () => {
   console.log('Heroku server ping sent');
 }, 300000);
 
-
+/*
 // Start Top-line/UK news scraping
 setInterval(() => {
   newsScraper();
@@ -103,7 +103,7 @@ setTimeout(() => {
     categoriesScraper('Health');
   }, 2400000);
 }, 2400000);
-
+ */
 
 
 // Connect to MongoDB and listen for new requests

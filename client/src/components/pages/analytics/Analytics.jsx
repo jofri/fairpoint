@@ -15,13 +15,14 @@ function Analytics (props) {
   const [interestData, setInterestData] = useState({});
   const [mostInterestData, setMostInterestData] = useState([]);
 
+  // Gets dataset from props and converts it into array with stance/source key value pair
   const getDataset =  () => {
     let dataset = [];
 
-    for (let i = 0; i < props.loginUser.article.length; i++) {
+    for (let i = 0; i < props.mockArticles.article.length; i++) {
       let datapair = {};
-      datapair.stance = props.loginUser.article[i].stance;
-      datapair.source = props.loginUser.article[i].source;
+      datapair.stance = props.mockArticles.article[i].stance;
+      datapair.source = props.mockArticles.article[i].source;
       dataset.push(datapair);
     }
 
@@ -77,35 +78,6 @@ function Analytics (props) {
     userstanceAttributes.userstance = userstance;
     return userstanceAttributes;
   };
-
-
-  const defineBackground = () => {
-    const userAttributes = {};
-    userAttributes.userstance = stanceData.userstance;
-    userAttributes.opacity = stanceData.opacity;
-
-    let style = {};
-
-    switch (userAttributes.userstance) {
-    case 'slightly centre-right':
-      style = {backgroundColor: `rgb(168, 226, 255, ${userAttributes.opacity})`};
-      return style;
-    case 'centre-right':
-      style = {backgroundColor: `rgb(1, 149, 223, ${userAttributes.opacity})`};
-      return style;
-    case 'slightly centre-left':
-      style = {backgroundColor: `rgb(250, 174, 173, ${userAttributes.opacity})`};
-      return style;
-    case 'centre-left':
-      style = {backgroundColor: `rgb(225, 31, 28 ${userAttributes.opacity})`};
-      return style;
-    default:
-      style = {backgroundColor: 'rgb(238, 238, 238)'};
-      return style;
-    }
-  };
-
-  const backgroundAttribute = defineBackground();
 
   const publisherDictionary = (userdataset) => {
     let dataset = [];
@@ -174,7 +146,7 @@ function Analytics (props) {
       setStanceData(calcStance(userdataset));
     }
 
-    const interests = getInterestDictionary(props.loginUser.article);
+    const interests = getInterestDictionary(props.mockArticles.article);
 
     let sortedInterestItems = Object.keys(interests).map(function (key) {
       return [key, interests[key]];
@@ -201,19 +173,19 @@ function Analytics (props) {
 
 
   return props ?
-    <div className='totalsummary-wrapper'  style={backgroundAttribute}>
+    <div className='totalsummary-wrapper'>
       <h1>Summary</h1>
       <h2>You have read a total of {userData.length} articles so far</h2>
       <div className='polarchart-container'>
-        <Polar loginUser={props.loginUser} userData={userData} setUserdata={setUserdata}/>
+        <Polar loginUser={props.mockArticles} userData={userData} setUserdata={setUserdata}/>
         <h3>Your reading habits are {stanceData.userstance}</h3>
       </div>
       <div className='radarchart-container'>
-        <Radar loginUser={props.loginUser} interestData={interestData} setInterestData={setInterestData}/>
+        <Radar loginUser={props.mockArticles} interestData={interestData} setInterestData={setInterestData}/>
         <h3>Your main interest is { mostInterestData.length ===0 ? null : mostInterestData[0][0]} </h3>
       </div>
       <div className='doughnutchart-container'>
-        <Doughnut loginUser={props.loginUser} publisherData={publisherData} setPublisherData={setPublisherData}/>
+        <Doughnut loginUser={props.mockArticles} publisherData={publisherData} setPublisherData={setPublisherData}/>
         <h3>Your favourite publisher is {publisherData.length === 0 ? null : publisherData[0][0]}</h3>
       </div>
     </div>
