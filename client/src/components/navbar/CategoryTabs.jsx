@@ -119,6 +119,7 @@ export default function CategoryTabs (props) {
             setStories={props.setStories}
             setStoryApi={getStories}
             clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
           >
           </NewsFeed>
         </TabPanel>
@@ -132,6 +133,7 @@ export default function CategoryTabs (props) {
             setStories={props.setWorld}
             setStoryApi={getWorld}
             clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
           >
           </NewsFeed>
         </TabPanel>
@@ -145,6 +147,7 @@ export default function CategoryTabs (props) {
             setStories={props.setBusiness}
             setStoryApi={getBusiness}
             clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
           >
           </NewsFeed>
         </TabPanel>
@@ -158,6 +161,7 @@ export default function CategoryTabs (props) {
             setStories={props.setEntertainment}
             setStoryApi={getEntertainment}
             clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
           >
           </NewsFeed>
         </TabPanel>
@@ -171,6 +175,7 @@ export default function CategoryTabs (props) {
             setStories={props.setHealth}
             setStoryApi={getHealth}
             clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
           >
           </NewsFeed>
         </TabPanel>
@@ -184,6 +189,7 @@ export default function CategoryTabs (props) {
             setStories={props.setSports}
             setStoryApi={getSports}
             clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
           >
           </NewsFeed>
         </TabPanel>
@@ -197,6 +203,7 @@ export default function CategoryTabs (props) {
             setStories={props.setTechnology}
             setStoryApi={getTechnology}
             clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
           >
           </NewsFeed>
         </TabPanel>
@@ -210,6 +217,7 @@ export default function CategoryTabs (props) {
             setStories={props.setScience}
             setStoryApi={getScience}
             clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
           >
           </NewsFeed>
         </TabPanel>

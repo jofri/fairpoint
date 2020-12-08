@@ -51,7 +51,11 @@ export default function SubStory (props) {
   const matches = useMediaQuery('(min-width:600px)');
 
   const clickHandler = () => {
-    props.setClickedFromScroll(props.index);
+    props.setClickedFromScroll(()=> {
+      const oldArray = [...props.clickedFromScroll];
+      oldArray[props.tabIndex] = props.index;
+      return oldArray;
+    });
     props.setClickedFromSwipe(props.tabIndex);
     props.setClickedStory(props.story);
     if (props.story.story) history.push('/story');
