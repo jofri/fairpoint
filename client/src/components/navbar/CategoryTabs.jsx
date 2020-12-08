@@ -55,6 +55,7 @@ function selectedProps (index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundColor: theme.palette.background.paper,
     width: '100vw',
   },
   Tab: {
