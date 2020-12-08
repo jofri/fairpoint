@@ -110,6 +110,18 @@ function App () {
                   <Analytics loginUser = {loginUser}/></>
                 : <Loader/>}
             </Route>
+            <Route exact path='/about'>
+              <Navbar />
+              <div className="content">
+                <Profile></Profile>
+              </div>
+            </Route>
+            <Route exact path='/terms'>
+              <Navbar />
+              <div className="content">
+                <Profile></Profile>
+              </div>
+            </Route>
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}
               <FourOFour loginUser={loginUser}/>

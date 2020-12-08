@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SwipeableViews from 'react-swipeable-views';
 import NewsFeed from '../pages/news-feed/News-feed';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import {
   getStories,
@@ -64,6 +65,9 @@ const useStyles = makeStyles((theme) => ({
   indicator: {
     backgroundColor: '#0195df',
   },
+  test: {
+    backgroundColor: 'green'
+  }
 }));
 
 export default function CategoryTabs (props) {
@@ -78,6 +82,12 @@ export default function CategoryTabs (props) {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
+
+  const { window } = props;
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });  
+  console.log(trigger, 'TEST');
+ 
+
 
   return (
     <div className={classes.root}>

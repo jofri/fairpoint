@@ -39,7 +39,7 @@ import { Link } from 'react-router-dom';
 const assert = require('assert');
 
 
-const menuWidth = '55vw';
+const menuWidth = '58vw';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -99,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
 function HideOnScroll (props) {
   const { children, window } = props;
   const trigger = useScrollTrigger({ target: window ? window() : undefined });
+  console.log(trigger, 'TRIGGER NAV');
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
@@ -170,7 +171,7 @@ export default function NavBar (props) {
       </List>
       <List>
         {/* T&C ALSO EMPTY */}
-        <ListItem button key="Terms & Conditions">
+        <ListItem button key="Terms & Conditions" component={Link} to="/terms">
           <ListItemIcon><DescriptionOutlinedIcon style={{fontSize: iconSize}}></DescriptionOutlinedIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Terms & Conditions" />
         </ListItem>

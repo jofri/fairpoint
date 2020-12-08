@@ -1,10 +1,8 @@
 .StoryHeadWrapper {
     /* background-color: pink; */
     display: flex;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
     flex-direction: column;
-    height: 33vh;
+    height: 31vh;
     align-items: center;
     justify-content: space-between;
 }
@@ -16,7 +14,11 @@
 }
 
 .StoryHeadImage {
-    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+      min-width: 100%;
+  min-height: 65%;
+
 }
 
 .StoryHeadTitle {
