@@ -143,6 +143,7 @@ export default function NavBar (props) {
       </List>
       <Divider />
       <List>
+
         <ListItem button key="home" component={Link} to="/" > 
           <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
