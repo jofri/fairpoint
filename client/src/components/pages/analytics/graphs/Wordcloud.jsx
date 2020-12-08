@@ -1,8 +1,5 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import ReactWordcloud from 'react-wordcloud';
-// import 'd3-transition';
-// import { select } from 'd3-selection';
 
 function SimpleWordcloud (props) {
   const wordData = [];
@@ -13,7 +10,6 @@ function SimpleWordcloud (props) {
     wordObj.value = element[1];
     wordData.push(wordObj);
   }
-  console.log(wordData);
 
   const chartstyle = {
     width: '100%',
