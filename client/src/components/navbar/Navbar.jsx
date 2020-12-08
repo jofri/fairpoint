@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   listItemText : {
     fontSize: 15,
     fontWeight: '400',
-  }, 
+  },
   listItemTextMain: {
     fontSize: 18,
     fontWeight: '500',
@@ -197,7 +197,9 @@ export default function NavBar (props) {
               <img src={LogoBrain} alt="logo" className="NavBarLogo"/>
             </a>
             <Typography variant="h6" noWrap className={classes.title}>
-            Anchored News
+              <a className="brandLink" href="/">
+                  Anchored News
+              </a>
             </Typography>
             <IconButton onClick={toggleDrawer('right', true)}>
               <MenuIcon className={classes.menubutton}></MenuIcon>

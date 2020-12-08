@@ -174,9 +174,11 @@ export default function NavBar (props) {
               <img src={LogoBrain} alt="logo" className="NavBarLogo" />
             </a>
             <Typography variant="h6" noWrap className={classes.title}>
+              <a className="brandLink" href="/">
                             Anchored News
+              </a>
             </Typography>
-            <Button color="primary" style={{fontSize: 14, border: '1px solid #0195DF'}} onClick={handleSignIn}>
+            <Button style={{fontSize: 14, border: '1px solid #0195DF', color: 'rgb(1, 149, 223)'}} onClick={handleSignIn}>
                           Sign In
             </Button>
           </Toolbar>

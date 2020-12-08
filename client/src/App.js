@@ -61,8 +61,8 @@ function App () {
                 <Navbar loginUser={loginUser}></Navbar> 
                 : <NavBarUnauth></NavBarUnauth>}
               <div className="content">
-                <CategoryTabs setClickedStory={setClickedStory} 
-                  stories={stories} 
+                <CategoryTabs setClickedStory={setClickedStory}
+                  stories={stories}
                   setStories={setStories}
                   world={world}
                   setWorld={setWorld}

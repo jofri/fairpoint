@@ -31,11 +31,11 @@ function TabPanel (props) {
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
-    > 
+    >
       <Box>
         <Typography>{children}</Typography>
       </Box>
-  
+
     </div>
   );
 }
@@ -55,7 +55,6 @@ function selectedProps (index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
     width: '100vw',
   },
   Tab: {
