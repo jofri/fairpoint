@@ -111,7 +111,7 @@ function NewsStory (props) {
           setLoginUser={props.setLoginUser}
           scrollColor={'#E11F1C'}></ArticleScroll>
         {/* <Divider></Divider> */}
-        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === (5 || 11))}
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 5 || article.stance === 11 )}
           setClickedArticle={setClickedArticle}
           etMenuState={setMenuState}
           loginUser={props.loginUser}
