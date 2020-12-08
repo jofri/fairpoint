@@ -46,65 +46,67 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
-// // Ping Heroku server every 5 min to prevent sleep
-// setInterval( () => {
-//   serverFetch.get('https://front-pages-dev.herokuapp.com/');
-//   console.log('Heroku server ping sent');
-// }, 300000);
+// Ping Heroku server every 5 min to prevent sleep
+setInterval( () => {
+  serverFetch.get('https://front-pages-dev.herokuapp.com/');
+  console.log('Heroku server ping sent');
+}, 300000);
 
 
-// // Import scraper scripts
-// const newsScraper = require('./server/scrapers/index');
-// const categoriesScraper = require('./server/scrapers/categories');
+/*
 
-// // Start Top-line/UK news scraping
-// setInterval(() => {
-//   newsScraper();
-//   console.log('called in server');
-// }, 480000);
+// Import scraper scripts
+const newsScraper = require('./server/scrapers/index');
+const categoriesScraper = require('./server/scrapers/categories');
 
-// // Set up category scraping at different life-cycles to run every 40 minutes
-// setTimeout(() => {
-//   setInterval(() => {
-//     categoriesScraper('World');
-//   }, 2400000);
-// }, 600000);
+// Start Top-line/UK news scraping
+setInterval(() => {
+  newsScraper();
+  console.log('called in server');
+}, 480000);
 
-// setTimeout(() => {
-//   setInterval(() => {
-//     categoriesScraper('Business');
-//   }, 2400000);
-// }, 900000);
+// Set up category scraping at different life-cycles to run every 40 minutes
+setTimeout(() => {
+  setInterval(() => {
+    categoriesScraper('World');
+  }, 2400000);
+}, 600000);
 
-// setTimeout(() => {
-//   setInterval(() => {
-//     categoriesScraper('Technology');
-//   }, 2400000);
-// }, 1200000);
+setTimeout(() => {
+  setInterval(() => {
+    categoriesScraper('Business');
+  }, 2400000);
+}, 900000);
 
-// setTimeout(() => {
-//   setInterval(() => {
-//     categoriesScraper('Entertainment');
-//   }, 2400000);
-// }, 1500000);
+setTimeout(() => {
+  setInterval(() => {
+    categoriesScraper('Technology');
+  }, 2400000);
+}, 1200000);
 
-// setTimeout(() => {
-//   setInterval(() => {
-//     categoriesScraper('Sports');
-//   }, 2400000);
-// }, 1800000);
+setTimeout(() => {
+  setInterval(() => {
+    categoriesScraper('Entertainment');
+  }, 2400000);
+}, 1500000);
 
-// setTimeout(() => {
-//   setInterval(() => {
-//     categoriesScraper('Science');
-//   }, 2400000);
-// }, 2100000);
+setTimeout(() => {
+  setInterval(() => {
+    categoriesScraper('Sports');
+  }, 2400000);
+}, 1800000);
 
-// setTimeout(() => {
-//   setInterval(() => {
-//     categoriesScraper('Health');
-//   }, 2400000);
-// }, 2400000);
+setTimeout(() => {
+  setInterval(() => {
+    categoriesScraper('Science');
+  }, 2400000);
+}, 2100000);
+
+setTimeout(() => {
+  setInterval(() => {
+    categoriesScraper('Health');
+  }, 2400000);
+}, 2400000); */
 
 
 

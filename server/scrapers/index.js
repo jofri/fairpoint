@@ -1,6 +1,5 @@
 const scraper = require('./googlescrape');
 const Story = require('../models/Story');
-const mongoose = require('mongoose');
 const stance = require('./stance');
 
 const newsScraper = async () => {
@@ -49,13 +48,12 @@ const newsScraper = async () => {
         }
         db.stories.push(itemobj);
       }
-      const conn = await mongoose.createConnection(process.env.MONGO_DB, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
+
+      // Delete old collection before pushing new one
+      await Story.deleteMany({}, (err) => {
+        if (err) console.log(err);
       });
-      await conn.dropCollection('stories');
+
     } catch (err) {
       console.log('Scraping failed', err);
     }

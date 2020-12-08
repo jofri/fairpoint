@@ -40,7 +40,8 @@ function Polarchart (props) {
             '#c4c4c4',
             '#eeeeee'
           ],
-          borderWidth: 1
+          borderWidth: 1,
+          padding: 10
         }
       ]
     });
@@ -52,13 +53,15 @@ function Polarchart (props) {
     title:{
       display: true,
       text: 'Political stance',
-      fontSize: 15
+      fontSize: 15,
+      fontColor: '#3f454d'
     },
     legend: {
       position: 'right',
       labels: {
         boxWidth: 10,
-        fontSize: 13
+        fontSize: 13,
+        fontColor: '#3f454d'
       }
     }
   };

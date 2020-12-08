@@ -1,12 +1,11 @@
 const scraper = require('./googlescrape');
 const Business = require('../models/Business');
-const Entertainment= require('../models/Entertainment');
-const Health= require('../models/Health');
-const Science= require('../models/Science');
-const Sports= require('../models/Sports');
-const Technology= require('../models/Technology');
-const World= require('../models/World');
-const mongoose = require('mongoose');
+const Entertainment = require('../models/Entertainment');
+const Health = require('../models/Health');
+const Science = require('../models/Science');
+const Sports = require('../models/Sports');
+const Technology = require('../models/Technology');
+const World = require('../models/World');
 const stance = require('./stance');
 
 const categoriesScraper = async (category) => {
@@ -16,49 +15,40 @@ const categoriesScraper = async (category) => {
 
   let categoryhash;
   let categoryModel;
-  let plural;
 
   switch (category) {
 
   case 'World':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pIUWlnQVAB';
     categoryModel = World;
-    plural = 'worlds';
     break;
   case 'Business':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Business;
-    plural = 'businesses';
     break;
   case 'Technology':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Technology;
-    plural = 'technologies';
     break;
   case 'Entertainment':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Entertainment;
-    plural = 'entertainments';
     break;
   case 'Sports':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Sports;
-    plural = 'sports';
     break;
   case 'Science':
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pIUWlnQVAB';
     categoryModel = Science;
-    plural = 'sciences';
     break;
   case 'Health':
     categoryhash = 'CAAqIQgKIhtDQkFTRGdvSUwyMHZNR3QwTlRFU0FtVnVLQUFQAQ';
     categoryModel = Health;
-    plural = 'health';
     break;
   default:
     categoryhash = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pIUWlnQVAB';
     categoryModel = World;
-    plural = 'worlds';
     break;
   }
 
@@ -104,13 +94,12 @@ const categoriesScraper = async (category) => {
         }
         db.stories.push(itemobj);
       }
-      const conn = await mongoose.createConnection(process.env.MONGO_DB, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
+
+      // Delete old collection before pushing new one
+      await categoryModel.deleteMany({}, (err) => {
+        if (err) console.log(err);
       });
-      await conn.dropCollection(plural);
+
     } catch (err) {
       console.log('Scraping failed', err);
     }

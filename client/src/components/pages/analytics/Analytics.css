@@ -1,7 +1,8 @@
 h1 {
   color: var(--color-black);
   font-size: var(--headfont);
-  align-items: center;
+  /* align-items: center; */
+  text-align: left !important;
   padding-bottom: 20px;
 }
 
@@ -23,6 +24,25 @@ h3{
   flex-direction: column;
   height: 100%;
   margin-top: 8.5vh;
+}
+
+.totalsummary-wrapper > h1 {
+  align-items: left !important;
+}
+
+.total-summary{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.point-color {
+  color: #6b04da;
 }
 
 .polarchart-container {
@@ -49,10 +69,12 @@ h3{
   margin-bottom: 10px;
 }
 
-.radarchart-container {
+.wordcloud-container {
   display: flex;
+  height: 100%;
+  width: 100%;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
   background-color: white;
   flex: 0.8;
   justify-content: center;
@@ -80,37 +102,10 @@ canvas {
   animation: chartjs-render-animation 0.001s;
 }
 
-/* .highleftcolor{
-  background-color: rgb(225, 31, 28);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.lowleftcolor{
-  background-color: rgb(250, 174, 173, 0.5369);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.highrightcolor{
-  background-color: rgb(1, 149, 223);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.lowrightcolor{
-  background-color: rgb(168, 226, 255);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.middlecolor {
+.keyword-block {
   background-color: var(--color-lightgrey);
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-} */
+  border-radius: 15px;
+  margin-right: 10px;
+  margin-top: 10px;
+}

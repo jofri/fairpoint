@@ -33,7 +33,6 @@ function Feed (props) {
 
   const GenerateItem = index => {
     const story = props.stories[index];
-    // Render a StoryTile per story object (exept first object)
     let articleImg = brainSquare;
     if (story.articles[0]) articleImg = story.articles[0].image;
     if (index === 0) {
@@ -50,8 +49,7 @@ function Feed (props) {
   return (
     <>
       {storyLoaded ? <div className="Feed-container">
-
-        <Virtuoso style={{ width: '100vw', height: '100vh' }} totalCount={props.stories.length}
+        <Virtuoso style={{ width: '100vw', height: '100vh', backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', alignItems: 'center' }} totalCount={props.stories.length}
           item={GenerateItem} />
       </div> : <div className="Feed-container"><LoadingSkeleton></LoadingSkeleton></div>}
     </>

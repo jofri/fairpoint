@@ -1,9 +1,9 @@
 import React,{useState, useEffect} from 'react';
 import './Analytics.css';
 
+import Card from '@material-ui/core/Card';
 import Loader from '../../helpers/loader/Loader';
 import Doughnut from '../analytics/graphs/Doughnut';
-// import Radar from '../analytics/graphs/Radar';
 import Polar from '../analytics/graphs/Polararea';
 import Wordcloud from '../analytics/graphs/Wordcloud';
 
@@ -106,7 +106,7 @@ function Analytics (props) {
     
     let allArticleTitle =[];
     let allTitleStr = '';
-    const stopWords = ['talks','i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now'];
+    const stopWords = ['could','talks','i','me','my','myself','we','our','ours','ourselves','you','your','yours','yourself','yourselves','he','him','his','himself','she','her','hers','herself','it','its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that','these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if','or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from','up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more','most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don','should','now'];
     
     for (let i = 0; i < loginUser.article.length; i++) {
       allArticleTitle.push(loginUser.article[i].title);
@@ -166,70 +166,56 @@ function Analytics (props) {
 
   return props ?
     <div className='totalsummary-wrapper'>
-      <h1>Summary</h1>
-      <h2>You have read a total of {userData.length} articles so far</h2>
-      <div className='polarchart-container'>
-        <Polar loginUser={props.loginUser} userData={userData} setUserdata={setUserdata} stanceData={stanceData} setStanceData={setStanceData}/>
-        <h3>Your reading habits are {stanceData.userStance}</h3>
-      </div>
-      <div className='radarchart-container'>
-        <Wordcloud loginUser={props.loginUser} interestData={interestData}/>
-        <h3>Your recent main interest is {interestData.length === 0 ? null : interestData[0][0]} </h3>
-      </div>
-      <div className='doughnutchart-container'>
-        <Doughnut loginUser={props.loginUser} publisherData={publisherData} setPublisherData={setPublisherData}/>
-        <h3>Your favourite publisher is {publisherData.length === 0 ? null : publisherData[0][0]}</h3>
-      </div>
+      <Card style={{marginBottom: 10}}>
+        <div className="total-summary">
+          <h1>Summary</h1>
+          <div className="comment" style={{display: 'inline-block'}}>
+            <h2 style={{display: 'inline-block'}}>You have read a total of </h2>
+            <h2 className="point-color" style={{display: 'inline-block', marginLeft: 5, marginRight: 5}}>{' '+ userData.length + ' '}</h2>
+            <h2 style={{display: 'inline-block'}}> articles so far</h2>
+          </div>
+        </div>
+      </Card>
+      <Card style={{marginBottom: 10}}>
+        <div className='polarchart-container'>
+          <Polar 
+            loginUser={props.loginUser} 
+            userData={userData} 
+            setUserdata={setUserdata} 
+            stanceData={stanceData} 
+            setStanceData={setStanceData}/>
+          <div className="comment" style={{display: 'inline-block', marginTop: 10}}>
+            <h3 style={{display: 'inline-block'}}>Your reading habits are</h3>
+            <h3 className="point-color" style={{display: 'inline-block', marginLeft: 5}}>{stanceData.userStance}</h3>
+          </div>
+        </div>
+      </Card>
+      <Card style={{marginBottom: 10}}>
+        <div className='wordcloud-container'>
+          <h2>Your recent interests</h2>
+          <Wordcloud 
+            loginUser={props.loginUser} 
+            interestData={interestData}/>
+          <h3>The articles you clicked on most contained these words in their titles<br/>
+            <div className="keywords" style={{display: 'flex', justifyContent: 'center'}}>
+              <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[0][0]}</div>
+              <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[1][0]}</div>
+              <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[2][0]}</div>
+            </div>  
+          </h3>
+        </div>
+      </Card>
+      <Card style={{marginBottom: 10}}>
+        <div className='doughnutchart-container'>
+          <Doughnut 
+            loginUser={props.loginUser} 
+            publisherData={publisherData} 
+            setPublisherData={setPublisherData}/>
+          <h3>Your favourite publisher is {publisherData.length === 0 ? null : publisherData[0][0]}</h3>
+        </div>
+      </Card>
     </div>
     : <Loader/>;
 }
 
 export default Analytics;
-
-
-//**Category Interest radar chart data */
-// const interests = getInterestDictionary(props.loginUser.article);
-// let sortedInterestItems = Object.keys(interests).map(function (key) {
-//   return [key, interests[key]];
-// });
-// sortedInterestItems.sort(function (first, second) {
-//   return second[1] - first[1];
-// });
-// setInterestData(interests);
-// setMostInterestData(sortedInterestItems);
-
-// const getInterestDictionary = (userDataset) => {
-
-//   const interestsData = {};
-
-//   for (let i = 0; i < userDataset.length; i++) {
-//     if (userDataset[i].category === 'businesses') {
-//       let categoryName = 'businesses';
-//       interestsData[categoryName] = interestsData[categoryName]? interestsData[categoryName] + 1: 1;
-//     } else if (userDataset[i].category === 'entertainments') {
-//       let categoryName = 'entertainments';
-//       interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-//     } else if (userDataset[i].category === 'health') {
-//       let categoryName = 'health';
-//       interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-//     } else if (userDataset[i].category === 'sciences') {
-//       let categoryName = 'sciences';
-//       interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-//     } else if (userDataset[i].category === 'sports') {
-//       let categoryName = 'sports';
-//       interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-//     } else if (userDataset[i].category === 'technologies') {
-//       let categoryName = 'technologies';
-//       interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-//     } else if (userDataset[i].category === 'worlds') {
-//       let categoryName = 'worlds';
-//       interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-//     }
-//     // else if (userDataset[i].category === 'uk') {
-//     //   let categoryName = 'headline';
-//     //   interestsData[categoryName] = interestsData[categoryName] ? interestsData[categoryName] + 1: 1;
-//     // }
-//   }
-
-//   return interestsData;
-// };

@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SwipeableViews from 'react-swipeable-views';
 import NewsFeed from '../pages/news-feed/News-feed';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import {
   getStories,
@@ -55,7 +56,7 @@ function selectedProps (index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'transparent',
     width: '100vw',
   },
   Tab: {
@@ -64,6 +65,9 @@ const useStyles = makeStyles((theme) => ({
   indicator: {
     backgroundColor: '#0195df',
   },
+  test: {
+    backgroundColor: 'green'
+  }
 }));
 
 export default function CategoryTabs (props) {
@@ -78,6 +82,12 @@ export default function CategoryTabs (props) {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
+
+  const { window } = props;
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });  
+  console.log(trigger, 'TEST');
+ 
+
 
   return (
     <div className={classes.root}>
@@ -104,8 +114,9 @@ export default function CategoryTabs (props) {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
+        containerStyle={{backgroundColor:'transparent'}}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
+        <TabPanel value={value} index={0} dir={theme.direction} style={{backgroundColor:'transparent'}}>
           <NewsFeed setClickedStory={props.setClickedStory} stories={props.stories} setStories={props.setStories} setStoryApi={getStories}></NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
