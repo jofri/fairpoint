@@ -22,7 +22,6 @@
     flex-direction: column;
     align-content: flex-end;
     align-self: start;
-    /* background-color: blue; */
     align-items: flex-start;
     margin-top: 2vh;
     margin-bottom: 2vh;
@@ -51,9 +50,6 @@ hr {
     border: black solid 1px;
     width: 95vw;
 }
-
-
-/* HARD CODED HEIGHT */
 
 .AvatarName {
     display: flex;

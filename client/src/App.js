@@ -17,6 +17,7 @@ import Analytics from './components/pages/analytics/Analytics';
 import './App.css';
 import NavBarUnauth from './components/navbar/NavBarUnauth';
 import NavBarTransparent from './components/navbar/NavbarTransparent';
+import NavBarTransparentUnauth from './components/navbar/NavbarTransparentUnauth';
 import CategoryTabs from './components/navbar/CategoryTabs';
 
 // Set background color of app according to user stance
@@ -94,7 +95,7 @@ function App () {
               </div>
             </Route>
             <Route exact path='/story'>
-              {clickedStory._id ? <><NavBarTransparent></NavBarTransparent>
+              {clickedStory._id ? <>{userIsLoggedIn ? <NavBarTransparent></NavBarTransparent>:<NavBarTransparentUnauth></NavBarTransparentUnauth>}
                 <NewsStory
                   clickedStory={clickedStory}
                   loginUser={loginUser}
