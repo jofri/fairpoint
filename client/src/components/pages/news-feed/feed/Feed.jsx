@@ -3,7 +3,6 @@ import HeadStory from './story-tiles/HeadStory';
 import { useEffect } from 'react';
 import './Feed.css';
 import SubStory from './sub-story/SubStory';
-import { getStories } from '../../../../services/api';
 import LoadingSkeleton from './LoadingSkeleton';
 import brainSquare from '../../../../assets/placeholder_brain_square.png';
 
@@ -17,8 +16,8 @@ function Feed (props) {
   useEffect(() => {
     async function loadedStories () {
       setStoryLoaded(false);
-      const response = await getStories();
-      // console.log(response,'RESPONSE');
+      console.log('Fetch');
+      const response = await props.setStoryApi();
       props.setStories(response);
       if (response) {
         setStoryLoaded(true);

@@ -34,6 +34,10 @@ import InfoIcon from '@material-ui/icons/Info';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
+import { Link } from 'react-router-dom';
+
+const assert = require('assert');
+
 
 const menuWidth = '55vw';
 
@@ -104,8 +108,8 @@ function HideOnScroll (props) {
 }
 
 export default function NavBar (props) {
-
-  console.log(props);
+  //**Prop drilling check
+  assert(props.loginUser !== undefined, 'Dont render a navbar without props.loginUser!!');
 
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -121,6 +125,7 @@ export default function NavBar (props) {
     setState({ ...state, [anchor]: open });
   };
 
+
   const renderDrawer = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -131,38 +136,33 @@ export default function NavBar (props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button component="a" key="profile" href="/profile">
-          <ListItemIcon><Avatar ></Avatar></ListItemIcon>
-          <ListItemText classes={{primary: classes.listItemTextMain}} primary={'Edward chan'} />
+        <ListItem button component={Link} to="/profile"  key="profile">
+          <ListItemIcon><Avatar src={props.loginUser ? props.loginUser.photo : null}></Avatar></ListItemIcon>
+          <ListItemText classes={{primary: classes.listItemTextMain}} primary={props.loginUser ? props.loginUser.username : null} />
         </ListItem>
       </List>
       <Divider />
       <List>
-        {/* HARD CODE ANALYTICS! */}
-        <ListItem button key="home" component="a" href="/"> 
+        <ListItem button key="home" component={Link} to="/" > 
           <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
         </ListItem>
       </List>
       <List>
-        <List button component="a" key="Analytics" href="/analytics"> 
-          {/* <Link to='/analytics'> */}
-          <ListItem button key="Analytics" > 
-            <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
-            <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
-          </ListItem>
-          {/* </Link> */}
-        </List>
+        <ListItem button key="Analytics" component={Link} to="/analytics" > 
+          <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
+        </ListItem>
       </List>
       <List>
-        <ListItem button component="a" key="Donate" href="/donate">
+        <ListItem button key="Donate" component={Link} to="/donate" >
           <ListItemIcon><LoyaltyIcon style={{ fontSize: iconSize }}></LoyaltyIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Donate" />
         </ListItem>
       </List>
       <List>
         {/* ABOUT US EMPTY ATM */}
-        <ListItem button key="About us">
+        <ListItem button key="About us" component={Link} to="/about" >
           <ListItemIcon><InfoIcon style={{ fontSize: iconSize }}></InfoIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="About us" />
         </ListItem>

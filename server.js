@@ -5,25 +5,24 @@ require('dotenv').config();
 // Import dependencies
 const express = require('express');
 const app = express();
-const http = require('http').createServer(app);
-const https = require('https');
+const server = require('http').createServer(app);
+const serverFetch = require('https');
 const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
 const mongoose = require('mongoose');
-// const newsScraper = require('./server/scrapers/index');
-// const categoriesScraper = require('./server/scrapers/categories');
 
 
-// If app is in dev mode, inform developer to use React's localhost port when testing server
+// If app is in dev mode
 if (process.env.NODE_ENV !== 'production') {
+  // Inform developer to use React's localhost port when testing server
   app.get('/', (req, res) => res.status(200).send(`Looks like you are in development mode: Back-end is now listening on port ${process.env.PORT}. Please start front-end server and use while testing the app (http://localhost:3000)`));
 }
 
 // Parse API requests as JSON
 app.use(express.json());
 
-//login middleware
+// Login middleware
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 
@@ -49,17 +48,22 @@ app.get('*', function (req, res) {
 
 // Ping Heroku server every 5 min to prevent sleep
 setInterval( () => {
-  https.get('https://front-pages-dev.herokuapp.com/');
+  serverFetch.get('https://front-pages-dev.herokuapp.com/');
   console.log('Heroku server ping sent');
 }, 300000);
 
+
 /*
+
+// Import scraper scripts
+const newsScraper = require('./server/scrapers/index');
+const categoriesScraper = require('./server/scrapers/categories');
+
 // Start Top-line/UK news scraping
 setInterval(() => {
   newsScraper();
   console.log('called in server');
 }, 480000);
-
 
 // Set up category scraping at different life-cycles to run every 40 minutes
 setTimeout(() => {
@@ -102,12 +106,12 @@ setTimeout(() => {
   setInterval(() => {
     categoriesScraper('Health');
   }, 2400000);
-}, 2400000);
- */
+}, 2400000); */
+
 
 
 // Connect to MongoDB and listen for new requests
-http.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars
+server.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars
   try {
     await mongoose.connect(process.env.MONGO_DB, {
       useNewUrlParser: true,

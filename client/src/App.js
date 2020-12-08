@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //*API service
-import {getUser} from './services/api';
+import { getUser } from './services/api';
 
 //*Components
 import Loader from './components/helpers/loader/Loader';
-import NewsFeed from './components/pages/news-feed/News-feed';
+// import NewsFeed from './components/pages/news-feed/News-feed';
 import NewsStory from './components/pages/news-story/News-story';
 import Navbar from './components/navbar/Navbar';
 import FourOFour from './components/helpers/404';
@@ -28,13 +28,13 @@ function App () {
   //**Set login user info */
   const [loginUser, setLoginUser] = useState({});
   const [stories, setStories] = useState([]);
-  // const [business, setBusiness] = useState([]);
-  // const [entertainment, setEntertainment] = useState([]);
-  // const [health, setHealth] = useState([]);
-  // const [science, setScience] = useState([]);
-  // const [sports, setSports] = useState([]);
-  // const [technology, setTechnology] = useState([]);
-  // const [world, setWorld] = useState([]);
+  const [world, setWorld] = useState([]);
+  const [business, setBusiness] = useState([]);
+  const [entertainment, setEntertainment] = useState([]);
+  const [health, setHealth] = useState([]);
+  const [science, setScience] = useState([]);
+  const [sports, setSports] = useState([]);
+  const [technology, setTechnology] = useState([]);
   const [clickedStory, setClickedStory] = useState({});
 
   useEffect (() => {
@@ -45,6 +45,11 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
+  const userIsLoggedIn = 
+    loginUser !== undefined 
+    && loginUser !== {} 
+    && loginUser._id !== undefined;
+
   return (
     /* Sets background color corresponding to user stance */
     <div style={{backgroundColor: backgroundCalc(loginUser)[0]}}>
@@ -52,15 +57,28 @@ function App () {
         <Router>
           <Switch>
             <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-              {loginUser && loginUser._id ? 
-                <Navbar loginUser={loginUser} setLoginUser={setLoginUser}></Navbar> 
+              {userIsLoggedIn ? 
+                <Navbar loginUser={loginUser}></Navbar> 
                 : <NavBarUnauth></NavBarUnauth>}
               <div className="content">
-                <CategoryTabs></CategoryTabs>
-                <NewsFeed 
-                  setClickedStory={setClickedStory} 
+                <CategoryTabs setClickedStory={setClickedStory} 
                   stories={stories} 
-                  setStories={setStories} />
+                  setStories={setStories}
+                  world={world}
+                  setWorld={setWorld}
+                  business={business}
+                  setBusiness={setBusiness}
+                  entertainment={entertainment}
+                  setEntertainment={setEntertainment}
+                  health={health}
+                  setHealth={setHealth}
+                  science={science}
+                  setScience={setScience}
+                  sports={sports}
+                  setSports={setSports}
+                  technology={technology}
+                  setTechnology={setTechnology}
+                ></CategoryTabs>
               </div>
             </Route>
             <Route exact path='/story'>
@@ -68,31 +86,36 @@ function App () {
                 <NewsStory
                   clickedStory={clickedStory}
                   loginUser={loginUser}
-                  setLoginUser={setLoginUser}/></> : <FourOFour />}
+                  setLoginUser={setLoginUser}/></> : <FourOFour loginUser={loginUser}/>}
             </Route>
             <Route exact path='/donate'>
               <Navbar 
-                loginUser={loginUser}
-                setLoginUser={setLoginUser}/>
+                loginUser={loginUser}/>
               <div className="content">
                 <Donate></Donate>
               </div>
             </Route>
             <Route exact path='/profile'>
-              <Navbar />
-              <div className="content">
-                <Profile></Profile>
-              </div>
+              {userIsLoggedIn ? 
+                <Navbar loginUser={loginUser}/> 
+                : <FourOFour loginUser={loginUser}/>}
+              {userIsLoggedIn ? 
+                <div className="content">
+                  <Profile loginUser={loginUser}/></div> 
+                : <></>}
             </Route>
             <Route exact path='/analytics' >
-              {loginUser && loginUser._id ? <><Navbar /><Analytics loginUser = {loginUser ? loginUser : <Loader />}/></> : <FourOFour/>}
+              {userIsLoggedIn ? 
+                <><Navbar loginUser={loginUser}/>
+                  <Analytics loginUser = {loginUser}/></>
+                : <Loader/>}
             </Route>
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}
-              <FourOFour />
+              <FourOFour loginUser={loginUser}/>
             </Route>
             <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-              <FourOFour />
+              <FourOFour loginUser={loginUser}/>
             </Route>
           </Switch>
         </Router>
