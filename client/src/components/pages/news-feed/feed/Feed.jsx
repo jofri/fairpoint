@@ -25,9 +25,13 @@ function Feed (props) {
       props.setStories(response);
       if (response) {
         setStoryLoaded(true);
-        virtuoso.current.scrollToIndex({
-          index: props.clickedFromScroll
-        });
+        console.log('virtuoso ref', props.clickedFromSwipe);
+        console.log('props.clickedFromScroll', props.clickedFromScroll);
+        if (virtuoso !== null && virtuoso.current !== null) {
+          virtuoso.current.scrollToIndex({
+            index: props.clickedFromScroll[props.clickedFromSwipe]
+          });
+        }
       } ///MAYBE RENDER A NO RESPONSE PAGE??
     }
     loadedStories();
@@ -42,12 +46,14 @@ function Feed (props) {
         return <SubStory
           tabIndex={props.tabIndex}
           index={index}
+          clickedFromScroll={props.clickedFromScroll}
           setClickedFromSwipe={props.setClickedFromSwipe}
           setClickedFromScroll={props.setClickedFromScroll} setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
       } else {
         return <HeadStory
           tabIndex={props.tabIndex}
           index={index}
+          clickedFromScroll={props.clickedFromScroll}
           setClickedFromSwipe={props.setClickedFromSwipe}
           setClickedFromScroll={props.setClickedFromScroll} setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
       }
@@ -55,6 +61,7 @@ function Feed (props) {
       return <SubStory
         tabIndex={props.tabIndex}
         index={index}
+        clickedFromScroll={props.clickedFromScroll}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll} setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key={story._id}>{index}</SubStory>;
     }
