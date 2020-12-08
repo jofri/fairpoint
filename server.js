@@ -53,7 +53,7 @@ setInterval( () => {
 }, 300000);
 
 
-/*
+
 
 // Import scraper scripts
 const newsScraper = require('./server/scrapers/index');
@@ -108,7 +108,7 @@ setTimeout(() => {
   }, 2400000);
 }, 2400000);
 
- */
+
 
 // Connect to MongoDB and listen for new requests
 server.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars
