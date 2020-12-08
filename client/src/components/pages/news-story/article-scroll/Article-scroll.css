@@ -5,7 +5,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    height: 23vh;
+    height: 25vh;
     justify-content: space-between;
     align-items: center;
     margin: 0px auto;
@@ -16,6 +16,7 @@
 .ArticleTile {
     width: 100vw;
     /* background-color: green; */
-    margin: 1px 1vw;
+    margin: 0.1vh 0.8vw;
+    display: inline-block;
     scroll-snap-align: start;
 }

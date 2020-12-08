@@ -1,18 +1,17 @@
 .ArticleTileWrapper {
-    /* background-color: lightblue; */
-    /* margin: 1px; */
-    /* margin-right: 20px; */
     min-width: 95vw;
     position: relative;
     display: flex;
-    margin-left: 3vw;
     flex-direction: column;
+    height: 24vh;
 
 }
 
 .RowOne {
     display: flex;
-
+    /* background-color: violet; */
+    height: 18vh;
+    align-items: center;
 }
 
 .RowTwo {
@@ -24,6 +23,8 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    /* background-color: tomato; */
+    height: 6vh;
 }
 
 .TextOne {
@@ -31,34 +32,38 @@
     flex-direction: column;
     justify-content: center;
     align-content: flex-start;
+    /* background-color: yellow; */
+    padding-left: 2vw;
     /* background-color: lightgreen; */
 }
 
 .ArticleTileImage {
     border-radius: 10%;
     margin: 2.5%;
-    width: 100px;
-    height: 100px;
-
+    width: 27vw;
+    height: 27vw;
+    object-fit: cover;
 }
 
 .ArticleTileTitle {
     /* background-color: lightcoral; */
     align-self: center;
     margin-right: 4%;
+    font-size: 2.25vh;
+    max-height: 15vh;
+    padding-bottom: 1vh;
+    /* overflow: hidden; */
 }
 
 .ArticleTileSource {
-    position: absolute;
-    top: 5%;
-    left: 1%;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 2.15vh;
+    margin: 0.4vh 0vw;
+    font-weight: 600;
 }
 
 .ArticleTileTime {
-    font-size: 12px;
-    margin: 1%;
+    font-size: 2.05vh;
+    margin-left: 2%;
 }
 
 .SocialButton {
@@ -74,4 +79,5 @@
 .ArticleTileCardWrapper {
     margin-left: 1vw;
     margin-right: 1vw;
+    /* color: turquoise; */
 }
