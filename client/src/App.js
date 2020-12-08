@@ -83,20 +83,17 @@ function App () {
                   setTechnology={setTechnology}
                   setClickedFromSwipe={setClickedFromSwipe}
                   setClickedFromScroll={setClickedFromScroll}
+                  clickedFromSwipe={clickedFromSwipe}
+                  clickedFromScroll={clickedFromScroll}
                 ></CategoryTabs>
               </div>
             </Route>
             <Route exact path='/story'>
-              {clickedStory._id ? <><NavBarTransparent
-                clickedFromSwipe={clickedFromSwipe}
-                setClickedFromSwipe={setClickedFromSwipe}
-                clickedFromScroll={clickedFromScroll}
-                setClickedFromScroll={setClickedFromScroll}
-              ></NavBarTransparent>
-              <NewsStory
-                clickedStory={clickedStory}
-                loginUser={loginUser}
-                setLoginUser={setLoginUser}/></> : <FourOFour loginUser={loginUser}/>}
+              {clickedStory._id ? <><NavBarTransparent></NavBarTransparent>
+                <NewsStory
+                  clickedStory={clickedStory}
+                  loginUser={loginUser}
+                  setLoginUser={setLoginUser}/></> : <FourOFour loginUser={loginUser}/>}
             </Route>
             <Route exact path='/donate'>
               <Navbar

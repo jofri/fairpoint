@@ -14,7 +14,8 @@ function NewsFeed (props) {
         setClickedStory={props.setClickedStory}
         stories={props.stories}
         setStories={props.setStories}
-        setStoryApi={props.setStoryApi}/>
+        setStoryApi={props.setStoryApi}
+      />
     </>
   );
 }

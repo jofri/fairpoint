@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import HeadStory from './story-tiles/HeadStory';
 import { useEffect } from 'react';
 import './Feed.css';
@@ -14,9 +14,8 @@ function Feed (props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const [storyLoaded, setStoryLoaded] = React.useState(false);
-
   const matches = useMediaQuery('(min-width:600px)');
-
+  const virtuoso = useRef(null);
 
   useEffect(() => {
     async function loadedStories () {
@@ -26,6 +25,9 @@ function Feed (props) {
       props.setStories(response);
       if (response) {
         setStoryLoaded(true);
+        virtuoso.current.scrollToIndex({
+          index: props.clickedFromScroll
+        });
       } ///MAYBE RENDER A NO RESPONSE PAGE??
     }
     loadedStories();
@@ -41,14 +43,12 @@ function Feed (props) {
           tabIndex={props.tabIndex}
           index={index}
           setClickedFromSwipe={props.setClickedFromSwipe}
-
           setClickedFromScroll={props.setClickedFromScroll} setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
       } else {
         return <HeadStory
           tabIndex={props.tabIndex}
           index={index}
           setClickedFromSwipe={props.setClickedFromSwipe}
-
           setClickedFromScroll={props.setClickedFromScroll} setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
       }
     } else {
@@ -63,7 +63,7 @@ function Feed (props) {
   return (
     <>
       {storyLoaded ? <div className="Feed-container">
-        <Virtuoso style={{ width: '100vw', height: '100vh', backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', alignItems: 'center' }} totalCount={props.stories.length}
+        <Virtuoso ref={virtuoso} style={{ width: '100vw', height: '100vh', backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', alignItems: 'center' }} totalCount={props.stories.length}
           item={GenerateItem} />
       </div> : <div className="Feed-container"><LoadingSkeleton></LoadingSkeleton></div>}
     </>
