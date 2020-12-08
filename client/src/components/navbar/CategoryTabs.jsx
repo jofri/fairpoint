@@ -55,6 +55,7 @@ function selectedProps (index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundColor: 'transparent',
     width: '100vw',
   },
   Tab: {
@@ -103,8 +104,9 @@ export default function CategoryTabs (props) {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
+        containerStyle={{backgroundColor:'transparent'}}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
+        <TabPanel value={value} index={0} dir={theme.direction} style={{backgroundColor:'transparent'}}>
           <NewsFeed setClickedStory={props.setClickedStory} stories={props.stories} setStories={props.setStories} setStoryApi={getStories}></NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
