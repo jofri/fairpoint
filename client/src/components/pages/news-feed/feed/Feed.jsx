@@ -6,6 +6,7 @@ import SubStory from './sub-story/SubStory';
 import LoadingSkeleton from './LoadingSkeleton';
 import brainSquare from '../../../../assets/placeholder_brain_square.png';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Virtuoso } from 'react-virtuoso';
 
 function Feed (props) {
 
@@ -30,73 +31,26 @@ function Feed (props) {
     loadedStories();
   }, []);
 
-  // console.log(props.stories,storyLoaded, 'HI THERE');
-
-
-  /*  function convertStory (story) {
-
-    // Create standard story object
-    let image = 'https://icon-library.com/images/news-icon-free/news-icon-free-7.jpg';
-    let storyObj = {
-      headline: 'No title',
-      image: image,
-    };
-    // If it's a Google story object, set image of first article as image
-    if (story.story === true) {
-      if (story.articles[0].image)
-        image = story.articles[0].image;
-      storyObj = {
-        headline: story.title,
-        image: image,
-      };
+  const GenerateItem = index => {
+    const story = props.stories[index];
+    let articleImg = brainSquare;
+    if (story.articles[0]) articleImg = story.articles[0].image;
+    if (index === 0) {
+      if (matches) {
+        return <SubStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
+      } else {
+        return <HeadStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
+      }
+    } else {
+      return <SubStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key={story._id}>{index}</SubStory>;
     }
-    // If it's just an article, keep template image but set headline
-    if (story.story === false) {
-      storyObj = {
-        headline: story.title,
-      };
-    }
-    return storyObj;
-  } */
-
-
+  };
 
   return (
     <>
       {storyLoaded ? <div className="Feed-container">
-
-
-        {matches ? props.stories.map( (story, i) => {
-          // Render a HeadStory from first object in stories array
-          if (i === 0) {
-            let articleImg = brainSquare;
-            if (story.articles[0]) articleImg = story.articles[0].image;
-            return <SubStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
-          }
-          return false;
-        }) :
-          props.stories.map( (story, i) => {
-          // Render a HeadStory from first object in stories array
-            if (i === 0) {
-              let articleImg = brainSquare;
-              if (story.articles[0]) articleImg = story.articles[0].image;
-              return <HeadStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
-            }
-            return false;
-          })
-
-
-        }
-
-        {props.stories.map((story, i) => {
-          // Render a StoryTile per story object (exept first object)
-          if (i === 0) {return false;}
-          let articleImg = brainSquare;
-          if (story.articles[0]) articleImg = story.articles[0].image;
-          return <SubStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key={story._id}/>;
-        })};
-
-
+        <Virtuoso style={{ width: '100vw', height: '100vh', backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', alignItems: 'center' }} totalCount={props.stories.length}
+          item={GenerateItem} />
       </div> : <div className="Feed-container"><LoadingSkeleton></LoadingSkeleton></div>}
     </>
   );

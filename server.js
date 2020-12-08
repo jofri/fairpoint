@@ -59,6 +59,7 @@ setInterval( () => {
 const newsScraper = require('./server/scrapers/index');
 const categoriesScraper = require('./server/scrapers/categories');
 
+
 // Start Top-line/UK news scraping
 setInterval(() => {
   newsScraper();
@@ -107,6 +108,8 @@ setTimeout(() => {
     categoriesScraper('Health');
   }, 2400000);
 }, 2400000);
+
+
 
 
 
