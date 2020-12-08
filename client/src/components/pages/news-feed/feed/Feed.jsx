@@ -50,8 +50,7 @@ function Feed (props) {
   return (
     <>
       {storyLoaded ? <div className="Feed-container">
-
-        <Virtuoso style={{ width: '100vw', height: '100vh' }} totalCount={props.stories.length}
+        <Virtuoso style={{ width: '100vw', height: '100vh', backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', alignItems: 'center' }} totalCount={props.stories.length}
           item={GenerateItem} />
       </div> : <div className="Feed-container"><LoadingSkeleton></LoadingSkeleton></div>}
     </>
