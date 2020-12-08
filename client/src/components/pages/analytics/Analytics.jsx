@@ -6,12 +6,14 @@ import Loader from '../../helpers/loader/Loader';
 import Doughnut from '../analytics/graphs/Doughnut';
 import Polar from '../analytics/graphs/Polararea';
 import Wordcloud from '../analytics/graphs/Wordcloud';
+import AnalyticsPlaceholder from '../analytics/graphs/AnalyticsPlaceholder';
 
 function Analytics (props) {
   const [userData, setUserdata] = useState([]);
   const [stanceData, setStanceData] = useState({});
   const [publisherData, setPublisherData] = useState([]);
   const [interestData, setInterestData] = useState([]);
+  const [fontColour, setFontColour] = useState('');
 
   // Gets dataset from props and converts it into array with stance/source key value pair
   const getDataset =  () => {
@@ -163,59 +165,82 @@ function Analytics (props) {
     });
     setPublisherData(items.slice(0,10));
   }, []);
+  
+  useEffect(() => {
+    //**Set font colour
+    if (stanceData.userStance === 'slightly centre-right' 
+    || stanceData.userStance === 'centre-right') {
+      setFontColour('#0195df');
+    } else if (stanceData.userStance === 'slightly centre-left' 
+    || stanceData.userStance === 'centre-left') {
+      setFontColour('#fc5185');
+    } else {
+      setFontColour('#6b04da');
+    }
+  }, [stanceData]);
+  
 
-  return props ?
-    <div className='totalsummary-wrapper'>
-      <Card style={{marginBottom: 10}}>
-        <div className="total-summary">
-          <h1>Summary</h1>
-          <div className="comment" style={{display: 'inline-block'}}>
-            <h2 style={{display: 'inline-block'}}>You have read a total of </h2>
-            <h2 className="point-color" style={{display: 'inline-block', marginLeft: 5, marginRight: 5}}>{' '+ userData.length + ' '}</h2>
-            <h2 style={{display: 'inline-block'}}> articles so far</h2>
+  if (props.loginUser.article.length < 10) {
+    return <AnalyticsPlaceholder userData={userData}/>;
+  } else {
+    return props ?
+      <div className='totalsummary-wrapper'>
+        <div className="notice">
+          <h3>Here you can find all data pertaining to your news-habits. When you click an article from a News story, this page will update in real-time</h3>
+        </div>
+        <Card style={{marginBottom: 10, marginTop: 10, paddingTop: 10}}>
+          <div className="total-summary">
+            <div className="comment" style={{display: 'inline-block'}}>
+              <h2 style={{display: 'inline-block'}}>You have read a total of </h2>
+              <h2 style={{display: 'inline-block', marginLeft: 5, marginRight: 5, color: fontColour}}>{' '+ userData.length + ' '}</h2>
+              <h2 style={{display: 'inline-block'}}> articles so far</h2>
+            </div>
           </div>
-        </div>
-      </Card>
-      <Card style={{marginBottom: 10}}>
-        <div className='polarchart-container'>
-          <Polar 
-            loginUser={props.loginUser} 
-            userData={userData} 
-            setUserdata={setUserdata} 
-            stanceData={stanceData} 
-            setStanceData={setStanceData}/>
-          <div className="comment" style={{display: 'inline-block', marginTop: 10}}>
-            <h3 style={{display: 'inline-block'}}>Your reading habits are</h3>
-            <h3 className="point-color" style={{display: 'inline-block', marginLeft: 5}}>{stanceData.userStance}</h3>
+        </Card>
+        <Card style={{marginBottom: 10}}>
+          <div className='polarchart-container'>
+            <h1>Political Stance</h1>
+            <Polar 
+              loginUser={props.loginUser} 
+              userData={userData} 
+              setUserdata={setUserdata} 
+              stanceData={stanceData} 
+              setStanceData={setStanceData}/>
+            <div className="comment" style={{display: 'inline-block', marginTop: 10}}>
+              <h3 style={{display: 'inline-block'}}>Your reading habits are</h3>
+              <h3 style={{display: 'inline-block', marginLeft: 5, color: fontColour}}>{stanceData.userStance}</h3>
+            </div>
           </div>
-        </div>
-      </Card>
-      <Card style={{marginBottom: 10}}>
-        <div className='wordcloud-container'>
-          <h2>Your recent interests</h2>
-          <Wordcloud 
-            loginUser={props.loginUser} 
-            interestData={interestData}/>
-          <h3>The articles you clicked on most contained these words in their titles<br/>
-            <div className="keywords" style={{display: 'flex', justifyContent: 'center'}}>
-              <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[0][0]}</div>
-              <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[1][0]}</div>
-              <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[2][0]}</div>
-            </div>  
-          </h3>
-        </div>
-      </Card>
-      <Card style={{marginBottom: 10}}>
-        <div className='doughnutchart-container'>
-          <Doughnut 
-            loginUser={props.loginUser} 
-            publisherData={publisherData} 
-            setPublisherData={setPublisherData}/>
-          <h3>Your favourite publisher is {publisherData.length === 0 ? null : publisherData[0][0]}</h3>
-        </div>
-      </Card>
-    </div>
-    : <Loader/>;
+        </Card>
+        <Card style={{marginBottom: 10}}>
+          <div className='wordcloud-container'>
+            <h1>Your recent interests</h1>
+            <Wordcloud 
+              loginUser={props.loginUser} 
+              interestData={interestData}/>
+            <h3>The articles you clicked on most contained these words in their titles<br/>
+              <div className="keywords" style={{display: 'flex', justifyContent: 'center'}}>
+                <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[0][0].toUpperCase()}</div>
+                <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[1][0].toUpperCase()}</div>
+                <div className="keyword-block" style={{display: 'inline-block'}}>{interestData.length === 0 ? null : interestData[2][0].toUpperCase()}</div>
+              </div>  
+            </h3>
+          </div>
+        </Card>
+        <Card style={{marginBottom: 10}}>
+          <div className='doughnutchart-container'>
+            <h1>Top 10 most read publisher</h1>
+            <Doughnut 
+              loginUser={props.loginUser} 
+              publisherData={publisherData} 
+              setPublisherData={setPublisherData}/>
+            <h3>Your favourite publisher is {publisherData.length === 0 ? null : publisherData[0][0]}</h3>
+          </div>
+        </Card>
+      </div>
+      : <Loader/>;
+  }
+
 }
 
 export default Analytics;

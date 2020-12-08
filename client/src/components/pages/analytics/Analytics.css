@@ -2,8 +2,7 @@ h1 {
   color: var(--color-black);
   font-size: var(--headfont);
   /* align-items: center; */
-  text-align: left !important;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 h2{
@@ -16,6 +15,11 @@ h3{
   color: var(--color-black);
   font-size: calc(var(--midfont));
   align-items: center;
+}
+
+.notice {
+  display: flex;
+  padding: 10px;
 }
 
 .totalsummary-wrapper {
@@ -41,7 +45,7 @@ h3{
   padding: 10px;
 }
 
-.point-color {
+.point-colour {
   color: #6b04da;
 }
 
@@ -60,7 +64,7 @@ h3{
 .doughnutchart-container {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 15px;
   background-color: white;
   flex: 0.8;
   justify-content: center;
