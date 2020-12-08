@@ -31,22 +31,21 @@ function ArticleTile (props) {
   
 
   return (
-    <Card className="ArticleTileCardWrapper" >
+    <Card className="ArticleTileCardWrapper"  style={{marginLeft: '2.5vw'}}>
       <div className="ArticleTileWrapper">
-        <p className="ArticleTileSource">{props.article.source}</p>
         <a href={props.article.link} target="_blank" rel="noreferrer noopener" className="StoryAttribute" onClick={clickHandler}>
           <div className="RowOne">
             <div className="TextOne">
+              <p className="ArticleTileSource">{props.article.source}</p>
               <h2 className="ArticleTileTitle">{props.article.title}</h2>
             </div>
             <img src={props.article.image.replace('-rw', '')} alt={props.article.subtitle} className="ArticleTileImage"></img>
           </div>
-          {/* <p>{props.article.subtitle}</p> */}
         </a>
 
         <div className="RowTwo">
           <p className="ArticleTileTime">{props.article.time}</p>
-          <IconButton onClick={ShareClick}>
+          <IconButton onClick={ShareClick} style={{ alignSelf: 'center'}}>
             <ShareIcon style={{fontSize: 18,}}></ShareIcon>
           </IconButton>
         </div>

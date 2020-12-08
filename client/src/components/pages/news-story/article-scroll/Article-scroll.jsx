@@ -3,7 +3,7 @@ import './Article-scroll.css';
 import ArticleTile from './article-tile/Article-tile';
 
 function ArticleScroll (props) {
-  let scrollColor = props.scrollColor;
+  // let scrollColor = props.scrollColor;
   const renderArticles = props.articles.map((article) => {
     return (
       <div className="ArticleTile" key={article.title}>
@@ -19,7 +19,7 @@ function ArticleScroll (props) {
 
 
   return (
-    <div className="ArticleScrollWrapper" style={{backgroundColor: scrollColor}}>
+    <div className="ArticleScrollWrapper" style={{backgroundColor: 'transparent'}}>
       {renderArticles}
     </div>
   );
