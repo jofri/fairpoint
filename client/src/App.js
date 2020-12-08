@@ -12,8 +12,6 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
-import Terms from './components/pages/terms/terms';
-import About from './components/pages/about/about';
 
 
 import './App.css';
@@ -101,15 +99,15 @@ function App () {
               {loginUser && loginUser._id ? <><Navbar /><Analytics loginUser = {loginUser ? loginUser : <Loader />}/></> : <FourOFour/>}
             </Route>
             <Route exact path='/about'>
-              <Navbar></Navbar>
+              <Navbar />
               <div className="content">
-                <About></About>
+                <Profile></Profile>
               </div>
             </Route>
             <Route exact path='/terms'>
-              <Navbar></Navbar>
+              <Navbar />
               <div className="content">
-                <Terms></Terms>
+                <Profile></Profile>
               </div>
             </Route>
             {/* TODO: make an alert or redirect   */}
