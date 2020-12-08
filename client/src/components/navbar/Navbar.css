@@ -30,19 +30,35 @@
       border-radius: 50%;
     } */
 
-    /* NAVBAR 2.0 BELOW */ 
+    /* NAVBAR 2.0 BELOW */
 
 .NavBarLogo {
-  height: 8vh;
-  width: 8vw;
+  height: 6vh;
+  width: 6vw;
   margin-right: 2vw;
+}
 
+.brandLink {
+  text-decoration: none;
+  color: #364f6b;
 }
 
 .NavBarColorLine {
   height: 0.5vh;
   width: 100%;
  background-image: linear-gradient(to right, #e11f1c, rgb(160, 87, 160) , #0195df);
+}
+
+.MuiTab-textColorPrimary.Mui-selected {
+  color: #0195df !important;
+}
+
+.PrivateTabIndicator-colorPrimary-19 {
+  background-color: #0195df !important;
+}
+
+.makeStyles-paper-10 {
+  border: 0px !important;
 }
 
 

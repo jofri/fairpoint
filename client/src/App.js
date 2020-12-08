@@ -45,7 +45,10 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
-  console.log(loginUser, 'LOGIN USER');
+  const userIsLoggedIn = 
+    loginUser !== undefined 
+    && loginUser !== {} 
+    && loginUser._id !== undefined;
 
   return (
     /* Sets background color corresponding to user stance */
@@ -54,10 +57,12 @@ function App () {
         <Router>
           <Switch>
             <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-              {loginUser && loginUser._id ? <Navbar></Navbar> : <NavBarUnauth></NavBarUnauth>}
+              {userIsLoggedIn ? 
+                <Navbar loginUser={loginUser}></Navbar> 
+                : <NavBarUnauth></NavBarUnauth>}
               <div className="content">
-                <CategoryTabs setClickedStory={setClickedStory} 
-                  stories={stories} 
+                <CategoryTabs setClickedStory={setClickedStory}
+                  stories={stories}
                   setStories={setStories}
                   world={world}
                   setWorld={setWorld}
@@ -81,22 +86,29 @@ function App () {
                 <NewsStory
                   clickedStory={clickedStory}
                   loginUser={loginUser}
-                  setLoginUser={setLoginUser}/></> : <FourOFour />}
+                  setLoginUser={setLoginUser}/></> : <FourOFour loginUser={loginUser}/>}
             </Route>
             <Route exact path='/donate'>
-              <Navbar />
+              <Navbar 
+                loginUser={loginUser}/>
               <div className="content">
                 <Donate></Donate>
               </div>
             </Route>
             <Route exact path='/profile'>
-              <Navbar />
-              <div className="content">
-                <Profile></Profile>
-              </div>
+              {userIsLoggedIn ? 
+                <Navbar loginUser={loginUser}/> 
+                : <FourOFour loginUser={loginUser}/>}
+              {userIsLoggedIn ? 
+                <div className="content">
+                  <Profile loginUser={loginUser}/></div> 
+                : <></>}
             </Route>
             <Route exact path='/analytics' >
-              {loginUser && loginUser._id ? <><Navbar /><Analytics loginUser = {loginUser ? loginUser : <Loader />}/></> : <FourOFour/>}
+              {userIsLoggedIn ? 
+                <><Navbar loginUser={loginUser}/>
+                  <Analytics loginUser = {loginUser}/></>
+                : <Loader/>}
             </Route>
             <Route exact path='/about'>
               <Navbar />
@@ -112,10 +124,10 @@ function App () {
             </Route>
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}
-              <FourOFour />
+              <FourOFour loginUser={loginUser}/>
             </Route>
             <Route path='/'> {/* If user visits any page not specified, redirect to 404 */}
-              <FourOFour />
+              <FourOFour loginUser={loginUser}/>
             </Route>
           </Switch>
         </Router>

@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
   headlineText : {
     fontWeight: '600',
-    fontSize: '1.7rem',
+    fontSize: '1.5rem',
     width: '95%',
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -57,7 +57,7 @@ export default function HeadStory (props) {
   return (
     <Card className={classes.root} onClick={clickHandler}>
       <CardActionArea className={classes.actionArea}>
-        <img src={props.articleThumbnail.replace('h100', 'h300').replace('w100', 'w500').replace('-rw', '')} alt="Holder Text" className={classes.headlineImage}/>
+        <img src={props.articleThumbnail.replace('h100', 'h300').replace('w100', 'w600').replace('-rw', '')} alt="Holder Text" className={classes.headlineImage}/>
         <Typography gutterBottom variant="h5" component="h2" className={classes.headlineText}>
           {props.story.title}
         </Typography>

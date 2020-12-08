@@ -5,8 +5,9 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 // import CardMedia from '@material-ui/core/CardMedia';
 // import Typography from '@material-ui/core/Typography';
-//import HolderImage from '../story-tiles/HolderImage.jpg';
+// import HolderImage from '../story-tiles/HolderImage.jpg';
 import { useHistory } from 'react-router-dom';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles({
   root: {
@@ -47,6 +48,8 @@ export default function SubStory (props) {
   // Import useHistory for redirect functionality
   const history = useHistory();
 
+  const matches = useMediaQuery('(min-width:600px)');
+
   const clickHandler = () => {
     props.setClickedStory(props.story);
     if (props.story.story) history.push('/story');
@@ -59,7 +62,7 @@ export default function SubStory (props) {
         <CardContent>
           <div className={classes.rowOne}>
             <h3>{props.story.title}</h3>
-            <img src={props.articleThumbnail.replace('-rw', '')} alt="News Img" className={classes.image}></img>
+            <img src={matches ? props.articleThumbnail.replace('-rw', '').replace('h100', 'h300').replace('w100', 'w300') : props.articleThumbnail.replace('-rw', '')} alt="News Img" className={classes.image}></img>
           </div>
         </CardContent>
       </CardActionArea>

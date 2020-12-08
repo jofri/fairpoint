@@ -90,7 +90,6 @@ exports.createArticle = async (req, res) => {
     const {title, subtitle, link, source, stance} = await req.body;
 
     const uniqueLink = await Article.findOne({link: `${link}`});
-    // console.log('req.body', req.body);
     console.log('uniqueLink', uniqueLink);
 
     if (!uniqueLink) {

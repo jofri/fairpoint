@@ -32,11 +32,11 @@ function TabPanel (props) {
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
-    > 
+    >
       <Box>
         <Typography>{children}</Typography>
       </Box>
-  
+
     </div>
   );
 }
@@ -56,7 +56,7 @@ function selectedProps (index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'transparent',
     width: '100vw',
   },
   Tab: {
@@ -114,9 +114,9 @@ export default function CategoryTabs (props) {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
-        containerStyle={{height: '84.5vh', paddingTop: '0.5vh'}}
+        containerStyle={{backgroundColor:'transparent'}}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
+        <TabPanel value={value} index={0} dir={theme.direction} style={{backgroundColor:'transparent'}}>
           <NewsFeed setClickedStory={props.setClickedStory} stories={props.stories} setStories={props.setStories} setStoryApi={getStories}></NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>

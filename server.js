@@ -63,9 +63,10 @@ setInterval( () => {
 // categoriesScraper('Science');
 // categoriesScraper('Health');
 
-/*
 
+/*
 // Import scraper scripts
+
 
 // Start Top-line/UK news scraping
 setInterval(() => {
@@ -106,7 +107,9 @@ setTimeout(() => {
 setTimeout(() => {
   setInterval(() => {
   }, 2400000);
-}, 2400000); */
+}, 2400000);
+
+*/
 
 
 
