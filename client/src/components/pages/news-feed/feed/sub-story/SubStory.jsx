@@ -51,6 +51,8 @@ export default function SubStory (props) {
   const matches = useMediaQuery('(min-width:600px)');
 
   const clickHandler = () => {
+    props.setClickedFromScroll(props.index);
+    props.setClickedFromSwipe(props.tabIndex);
     props.setClickedStory(props.story);
     if (props.story.story) history.push('/story');
     else window.open(props.story.links[0]);
