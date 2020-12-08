@@ -17,10 +17,7 @@ function ArticleTile (props) {
     createArticle(props.article)
       .then((res) => res.json())
       .then(res => {
-        console.log('in tile', res);
-        // const articleId = res._id;
         const articleInfo = res;
-        console.log(props);
         const existingArticle = props.loginUser.article.filter(el => el._id === articleInfo._id);
 
         if (existingArticle.length === 0) {

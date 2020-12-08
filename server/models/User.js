@@ -6,6 +6,7 @@ const User = new Schema({
   username: { type: String},
   googleId: { type: String},
   email: { type: String},
+  photo: { type: String},
   article: [{
     _id: {type: String},
     title: {type: String},
