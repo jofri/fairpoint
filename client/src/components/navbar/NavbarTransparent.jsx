@@ -29,7 +29,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import './Navbar.css';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
@@ -159,7 +159,7 @@ export default function NavBarTransparent (props) {
     setState({ ...state, [anchor]: open });
   };
 
-  let history = useHistory();
+  // let history = useHistory();
 
   // const handleDrawerOpen = () => {
   //   setOpen(true);
@@ -220,8 +220,7 @@ export default function NavBarTransparent (props) {
         </ListItem>
       </List>
       <List>
-        {/* FOR SOOYEON! */}
-        <ListItem button key="Log Out">
+        <ListItem button component="a" key="Log Out" href="/auth/logout">
           <ListItemIcon><LogoutIcon style={{ fontSize: iconSize }}></LogoutIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Log Out" />
         </ListItem>
@@ -240,7 +239,7 @@ export default function NavBarTransparent (props) {
         elevation={0}
       >
         <Toolbar className={classes.toolbar}>
-          <IconButton className={classes.backButton} onClick={history.goBack}>
+          <IconButton className={classes.backButton} component={Link} to="/">
             <ArrowBackIcon className={classes.arrowBackIcon}></ArrowBackIcon>
           </IconButton>
           <div>

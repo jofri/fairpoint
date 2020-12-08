@@ -48,6 +48,8 @@ export default function HeadStory (props) {
   const history = useHistory();
 
   const clickHandler = () => {
+    props.setClickedFromScroll(props.index);
+    props.setClickedFromSwipe(props.tabIndex);
     props.setClickedStory(props.story);
     if (props.story.story) history.push('/story');
     else window.open(props.story.links[0]);

@@ -37,12 +37,26 @@ function Feed (props) {
     if (story.articles[0]) articleImg = story.articles[0].image;
     if (index === 0) {
       if (matches) {
-        return <SubStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
+        return <SubStory
+          tabIndex={props.tabIndex}
+          index={index}
+          setClickedFromSwipe={props.setClickedFromSwipe}
+
+          setClickedFromScroll={props.setClickedFromScroll} setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
       } else {
-        return <HeadStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
+        return <HeadStory
+          tabIndex={props.tabIndex}
+          index={index}
+          setClickedFromSwipe={props.setClickedFromSwipe}
+
+          setClickedFromScroll={props.setClickedFromScroll} setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key=""/>;
       }
     } else {
-      return <SubStory setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key={story._id}>{index}</SubStory>;
+      return <SubStory
+        tabIndex={props.tabIndex}
+        index={index}
+        setClickedFromSwipe={props.setClickedFromSwipe}
+        setClickedFromScroll={props.setClickedFromScroll} setClickedStory={props.setClickedStory} articleThumbnail={articleImg} story={story} key={story._id}>{index}</SubStory>;
     }
   };
 
