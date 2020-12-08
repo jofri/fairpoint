@@ -29,7 +29,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import './Navbar.css';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
@@ -66,8 +66,9 @@ const useStyles = makeStyles((theme) => ({
   },
   open: {
     backgroundColor: 'black',
-    opacity: 0.5,
+    opacity: 0.6,
     justifySelf: 'flex-end',
+    marginRight: '0vw'
   },
   arrowBackIcon: {
     color: 'white',
@@ -77,8 +78,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
     justifyContent: 'space-between',
-    width: '95%',
-    backgroundColor: 'transparent',
+    width: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
@@ -106,8 +106,8 @@ const useStyles = makeStyles((theme) => ({
   },
   backButton: {
     backgroundColor: 'black',
-    opacity: 0.5,
-    justifySelf: 'flex-start'
+    opacity: 0.6,
+    justifySelf: 'flex-start',
   },
   list: {
     width: menuWidth,
@@ -159,15 +159,8 @@ export default function NavBarTransparent (props) {
     setState({ ...state, [anchor]: open });
   };
 
-  // let history = useHistory();
+  let history = useHistory();
 
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
 
   const renderDrawer = (anchor) => (
     <div
@@ -181,7 +174,7 @@ export default function NavBarTransparent (props) {
       <List>
         <ListItem button component={Link} to="/profile" key="profile">
           <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
-          <ListItemText classes={{ primary: classes.listItemTextMain }} primary=" Chan" />
+          <ListItemText classes={{ primary: classes.listItemTextMain }} primary="Edward Chan" />
         </ListItem>
       </List>
       <Divider />
@@ -220,7 +213,8 @@ export default function NavBarTransparent (props) {
         </ListItem>
       </List>
       <List>
-        <ListItem button component="a" key="Log Out" href="/auth/logout">
+        {/* FOR SOOYEON! */}
+        <ListItem button key="Log Out">
           <ListItemIcon><LogoutIcon style={{ fontSize: iconSize }}></LogoutIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Log Out" />
         </ListItem>
@@ -239,13 +233,11 @@ export default function NavBarTransparent (props) {
         elevation={0}
       >
         <Toolbar className={classes.toolbar}>
-          <IconButton className={classes.backButton} component={Link} to="/">
-            <ArrowBackIcon className={classes.arrowBackIcon}></ArrowBackIcon>
+          <IconButton className={classes.backButton} onClick={history.goBack}>
+            <ArrowBackIcon className={classes.arrowBackIcon} style={{fontSize: 18}}></ArrowBackIcon>
           </IconButton>
           <div>
-            {/* <IconButton className={classes.shareIcon}>
-              <ShareIcon className={classes.shareIconPic}></ShareIcon>
-            </IconButton> */}
+        
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -253,7 +245,7 @@ export default function NavBarTransparent (props) {
               onClick={toggleDrawer('right', true)}
               className={classes.open}
             >
-              <MenuIcon className={classes.menubutton} />
+              <MenuIcon className={classes.menubutton} style={{ fontSize: 18 }} />
             </IconButton>
           </div>
         </Toolbar>

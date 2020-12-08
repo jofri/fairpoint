@@ -33,11 +33,11 @@ function Doughnutchart (props) {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    title:{
-      display: true,
-      text: 'Top 10 most read publisher',
-      fontSize: 15
-    },
+    // title:{
+    //   display: true,
+    //   text: 'Top 10 most read publisher',
+    //   fontSize: 15
+    // },
     legend: {
       position: 'bottom',
       labels: {
