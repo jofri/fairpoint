@@ -23,20 +23,21 @@ const useStyles = makeStyles((theme) => ({
 export default function CheckBox () {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    world: false,
-    business: false,
-    health: false,
-    tech: false,
-    sport: false,
-    entertainment: false,
-    science: false,
+    UK: true,
+    world: true,
+    business: true,
+    health: true,
+    tech: true,
+    sport: true,
+    entertainment: true,
+    science: true,
   });
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-  const { world, business, health, tech, sport, entertainment, science } = state;
+  const { UK, world, business, health, tech, sport, entertainment, science } = state;
   //   const error = [world, business, health].filter((v) => v).length !== 2;
 
   return (
@@ -44,6 +45,10 @@ export default function CheckBox () {
       <FormControl component="fieldset" className={classes.formControl}>
         <FormLabel component="legend">Select News to Display</FormLabel>
         <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={UK} onChange={handleChange} name="UK" />}
+            label={<Typography className={classes.formControlLabel}>UK</Typography>}
+          />
           <FormControlLabel
             control={<Checkbox checked={world} onChange={handleChange} name="world" />}
             label={<Typography className={classes.formControlLabel}>World</Typography>}

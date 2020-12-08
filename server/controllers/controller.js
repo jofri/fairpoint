@@ -119,10 +119,11 @@ exports.createUserHistory = async (req, res) => {
   }
 };
 
-exports.createUserSettings = async (req, res) => {
+exports.createUserNewsSettings = async (req, res) => {
   try {
-    console.log('req', req);
-
+    const settings = await req.body;
+    console.log('settings', settings);
+    //TODO: fix this
   } catch (error) {
     console.log('err', err);
     res.sendStatus(500);
