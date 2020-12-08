@@ -62,7 +62,6 @@ export default function SubStory (props) {
         <CardContent>
           <div className={classes.rowOne}>
             <h3>{props.story.title}</h3>
-            {console.log(props.articleThumbnail)}
             <img src={matches ? props.articleThumbnail.replace('-rw', '').replace('h100', 'h300').replace('w100', 'w300') : props.articleThumbnail.replace('-rw', '')} alt="News Img" className={classes.image}></img>
           </div>
         </CardContent>
