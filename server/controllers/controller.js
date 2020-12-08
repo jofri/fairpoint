@@ -112,8 +112,18 @@ exports.createUserHistory = async (req, res) => {
     const filter = {googleId: `${userId}`};
     const update = {_id: articleInfo._id, title: articleInfo.title, source: articleInfo.source, stance: articleInfo.stance};
     const newArticle = await User.findOneAndUpdate(filter, {'$push': {'article': update}}, {new: true});
-    res.status(201).send(newArticle); 
+    res.status(201).send(newArticle);
   } catch (err) {
+    console.log('err', err);
+    res.sendStatus(500);
+  }
+};
+
+exports.createUserSettings = async (req, res) => {
+  try {
+    console.log('req', req);
+
+  } catch (error) {
     console.log('err', err);
     res.sendStatus(500);
   }

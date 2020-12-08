@@ -7,6 +7,10 @@ const User = new Schema({
   googleId: { type: String},
   email: { type: String},
   photo: { type: String},
+  settings: {
+    newsletter: { type: String },
+    newssettings: [{ type: String }]
+  },
   article: [{
     _id: {type: String},
     title: {type: String},
@@ -14,7 +18,7 @@ const User = new Schema({
     stance: {type: Number},
     timestamp: { type: Date, default: Date.now}
   }]
-});  
+});
 
 module.exports = mongoose.model('User', User);
 
