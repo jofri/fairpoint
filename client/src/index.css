@@ -38,4 +38,14 @@ body {
 }
 
 
+@media (min-width: 1000px) {
+
+  :root {
+    font-size: 17px;
+  }
+
+}
+
+
+
 

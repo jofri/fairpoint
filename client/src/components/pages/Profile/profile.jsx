@@ -5,12 +5,16 @@ import CheckBox from './checkboxes/CheckBox';
 import CheckBoxPreferences from './checkboxes/CheckBoxPreferences';
 import Divider from '@material-ui/core/Divider';
 
-function Profile () {
-
-
+function Profile (props) {
   return (
     <div className="ProfileWrapper">
-      <div className="profileRow"><span className="AvatarName"><Avatar>H</Avatar><h4 className="ProfilePageName">Edward Chan</h4></span><p>edwardklc1993@gmail.com</p></div>
+      <div className="profileRow">
+        <span className="AvatarName">
+          <Avatar src={props.loginUser.photo}></Avatar>
+          <h4 className="ProfilePageName">{props.loginUser.username}</h4>
+        </span>
+        <p>{props.loginUser.email}</p>
+      </div>
       <Divider></Divider>
       <div className="profileRow"><h5>Objective Score</h5><h1>5</h1></div>
       <Divider></Divider>

@@ -8,6 +8,7 @@
 // import Drawer from '@material-ui/core/Drawer';
 
 import React from 'react';
+// import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -34,6 +35,8 @@ import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
+
+const assert = require('assert');
 
 
 const menuWidth = '55vw';
@@ -84,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   listItemText : {
     fontSize: 15,
     fontWeight: '400',
-  }, 
+  },
   listItemTextMain: {
     fontSize: 18,
     fontWeight: '500',
@@ -105,6 +108,9 @@ function HideOnScroll (props) {
 }
 
 export default function NavBar (props) {
+  //**Prop drilling check
+  assert(props.loginUser !== undefined, 'Dont render a navbar without props.loginUser!!');
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -119,6 +125,7 @@ export default function NavBar (props) {
     setState({ ...state, [anchor]: open });
   };
 
+
   const renderDrawer = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -130,20 +137,19 @@ export default function NavBar (props) {
     >
       <List>
         <ListItem button component={Link} to="/profile"  key="profile">
-          <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
-          <ListItemText classes={{primary: classes.listItemTextMain}} primary="Edward Chan" />
+          <ListItemIcon><Avatar src={props.loginUser ? props.loginUser.photo : null}></Avatar></ListItemIcon>
+          <ListItemText classes={{primary: classes.listItemTextMain}} primary={props.loginUser ? props.loginUser.username : null} />
         </ListItem>
       </List>
       <Divider />
       <List>
-        {/* HARD CODE ANALYTICS! */}
+
         <ListItem button key="home" component={Link} to="/" > 
           <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
         </ListItem>
       </List>
       <List>
-        {/* HARD CODE ANALYTICS! */}
         <ListItem button key="Analytics" component={Link} to="/analytics" > 
           <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
@@ -170,8 +176,7 @@ export default function NavBar (props) {
         </ListItem>
       </List>
       <List>
-        {/* FOR SOOYEON! */}
-        <ListItem button key="Log Out">
+        <ListItem button component="a" key="Log Out" href="/auth/logout">
           <ListItemIcon><LogoutIcon style={{ fontSize: iconSize }}></LogoutIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Log Out" />
         </ListItem>
@@ -193,7 +198,9 @@ export default function NavBar (props) {
               <img src={LogoBrain} alt="logo" className="NavBarLogo"/>
             </a>
             <Typography variant="h6" noWrap className={classes.title}>
-            Anchored News
+              <a className="brandLink" href="/">
+                  Anchored News
+              </a>
             </Typography>
             <IconButton onClick={toggleDrawer('right', true)}>
               <MenuIcon className={classes.menubutton}></MenuIcon>
