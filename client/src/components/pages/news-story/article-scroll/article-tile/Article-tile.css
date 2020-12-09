@@ -49,14 +49,14 @@
     /* background-color: lightcoral; */
     align-self: center;
     margin-right: 4%;
-    font-size: 2.25vh;
+    font-size: 2.2vh;
     max-height: 15vh;
     padding-bottom: 1vh;
     /* overflow: hidden; */
 }
 
 .ArticleTileSource {
-    font-size: 2.05vh;
+    font-size: 1.95vh;
     margin: 0.4vh 0vw;
     font-weight: 600;
 }

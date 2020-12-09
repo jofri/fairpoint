@@ -18,11 +18,11 @@ function Profile (props) {
           <p className="profileEmail">{props.loginUser.email}</p>
         </div>
       </Card>
-      <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh'}}></Divider>
+      {/*    <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
       <Card>
         <div className="profileRow"><h4 className="objectiveScore">Objective Score</h4><h5 className="objectiveScoreNumber">5</h5></div>
-      </Card>
-      <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh'}}></Divider>
+      </Card> */}
+      <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
       <Card>
         <div className="profileColumn">
           <h5 className="ProfileHeaderNews">Newsletter Preferences</h5>
@@ -31,7 +31,7 @@ function Profile (props) {
           </div>
         </div>
       </Card>
-      <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh'}}></Divider>
+      <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
       <Card>
         <div className="profileColumn">
           <h5 className="ProfileHeaderNews">News Settings</h5>
@@ -40,7 +40,7 @@ function Profile (props) {
           </div>
         </div>
       </Card>
-      <Divider style={{ marginTop: '0.9vh', marginBottom: '0.9vh' }}></Divider>
+      <Divider style={{ marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
     </div>
   );
 }

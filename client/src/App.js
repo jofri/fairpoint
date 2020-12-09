@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //*API service
 import { getUser } from './services/api';
+import ReactGA from 'react-ga';
 
 //*Components
 import Loader from './components/helpers/loader/Loader';
@@ -12,6 +13,8 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
+import About from './components/pages/about/about';
+import Terms from './components/pages/terms/terms';
 
 
 import './App.css';
@@ -59,6 +62,10 @@ function App () {
     loginUser !== undefined
     && loginUser !== {}
     && loginUser._id !== undefined;
+
+  // Initialize Google Analytics
+  ReactGA.initialize('UA-185114095-1');
+  ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
     /* Sets background color corresponding to user stance */
@@ -152,17 +159,17 @@ function App () {
                   <Analytics loginUser = {loginUser}/></>
                 : <Loader/>}
             </Route>
-            <Route exact path='/about'>
-              <Navbar />
-              <div className="content">
-                <Profile></Profile>
-              </div>
+            <Route exact path='/about' >
+              {userIsLoggedIn ?
+                <><Navbar loginUser={loginUser}/>
+                  <About /></>
+                : <Loader/>}
             </Route>
-            <Route exact path='/terms'>
-              <Navbar />
-              <div className="content">
-                <Profile></Profile>
-              </div>
+            <Route exact path='/terms' >
+              {userIsLoggedIn ?
+                <><Navbar loginUser={loginUser}/>
+                  <Terms /></>
+                : <Loader/>}
             </Route>
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}
