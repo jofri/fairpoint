@@ -25,7 +25,6 @@ function Feed (props) {
       if (response) {
         setStoryLoaded(true);
         if (virtuoso !== null && virtuoso.current !== null) {
-          console.log(props.tabIndex);
           virtuoso.current.scrollToIndex({
             index: props.clickedFromScroll[props.tabIndex]
           });
@@ -36,10 +35,12 @@ function Feed (props) {
   }, []);
 
   useEffect(()=>{
+    setStoryLoaded(false);
     if (virtuoso !== null && virtuoso.current !== null) {
       virtuoso.current.scrollToIndex({
         index: props.clickedFromScroll[props.tabIndex]
       });
+      setStoryLoaded(true);
     }
   },[props.tabIndex]);
 
