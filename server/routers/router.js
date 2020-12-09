@@ -15,7 +15,7 @@ router.get('/getWorld', controller.getWorld);
 router.post('/newstories', controller.createStory);
 router.post('/newuser', controller.createUser);
 router.post('/newarticle', controller.createArticle);
-router.post('/createUserHistory', controller.createUserHistory);
-
+router.post('/createUserHistory', controller.updateUserHistory);
+router.post('/updateUserNewsSettings', controller.updateUserNewsSettings);
 
 module.exports = router;

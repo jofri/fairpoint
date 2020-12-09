@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 2.7vh;
+    min-height: 91.5vh;
 }
 
 .profileRow {

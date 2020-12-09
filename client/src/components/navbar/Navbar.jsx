@@ -85,11 +85,11 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
   },
   listItemText : {
-    fontSize: 15,
+    fontSize: '5vw',
     fontWeight: '400',
   },
   listItemTextMain: {
-    fontSize: 18,
+    fontSize: '5vw',
     fontWeight: '500',
   }
 }));
@@ -117,7 +117,7 @@ export default function NavBar (props) {
     right: false,
   });
 
-  let iconSize = 25;
+  let iconSize = '5vw';
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -138,7 +138,7 @@ export default function NavBar (props) {
     >
       <List>
         <ListItem button component={Link} to="/profile"  key="profile">
-          <ListItemIcon><Avatar src={props.loginUser ? props.loginUser.photo : null}></Avatar></ListItemIcon>
+          <ListItemIcon><Avatar style={{height:'6vw', width:'6vw'}} src={props.loginUser ? props.loginUser.photo : null}></Avatar></ListItemIcon>
           <ListItemText classes={{primary: classes.listItemTextMain}} primary={props.loginUser ? props.loginUser.username : null} />
         </ListItem>
       </List>

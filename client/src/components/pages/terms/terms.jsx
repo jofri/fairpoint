@@ -1,5 +1,7 @@
 import React from 'react';
 import './Terms.css';
+import { Avatar } from '@material-ui/core';
+import brainImg from '../../../assets/placeholder_brain_square.png';
 import Card from '@material-ui/core/Card';
 
 function Terms () {
@@ -8,6 +10,7 @@ function Terms () {
       <Card>
         <div className="profileRow">
           <span className="AvatarName">
+            <Avatar src={brainImg}></Avatar>
             <h4 className="ProfilePageName">Terms and Conditions</h4>
           </span>
         </div>

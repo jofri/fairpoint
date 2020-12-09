@@ -1,15 +1,31 @@
 import React from 'react';
-import './donate.css';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+  donateBox: {
+    marginTop: '12vh',
+    display: 'flex', 
+    justifyContent: 'center',
+    marginBottom: '5vh'
+  },
+  
+  donorForm: {
+    width: '97vw',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    height: '115vh'
+  }
+  
+});
 
 function Donate () {
-//   let source = 'https://donorbox.org/widget.js';
-//   let paypal = true;
-  {/* <script src={source} paypalexpress={paypal}></script> */}
+  const classes = useStyles();
 
 
   return (
-    <div >
-      <iframe className="donorForm" title="donatePlease" allowpaymentrequest="" frameBorder="0" name="donorbox" scrolling="yes" seamless="seamless" src="https://donorbox.org/embed/anchored-news">
+    <div className={classes.donateBox}>
+      <iframe className={classes.donorForm} title="donatePlease" allowpaymentrequest="" frameBorder="0" name="donorbox" scrolling="no" seamless="seamless" src="https://donorbox.org/embed/anchored-news">
       </iframe>    
     </div>
   );
