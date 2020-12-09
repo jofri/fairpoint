@@ -106,14 +106,26 @@ exports.createArticle = async (req, res) => {
   }
 };
 
-exports.createUserHistory = async (req, res) => {
+exports.updateUserHistory = async (req, res) => {
   try {
     const {userId, articleInfo} = await req.body;
     const filter = {googleId: `${userId}`};
     const update = {_id: articleInfo._id, title: articleInfo.title, source: articleInfo.source, stance: articleInfo.stance};
     const newArticle = await User.findOneAndUpdate(filter, {'$push': {'article': update}}, {new: true});
-    res.status(201).send(newArticle); 
+    res.status(201).send(newArticle);
   } catch (err) {
+    console.log('err', err);
+    res.sendStatus(500);
+  }
+};
+
+exports.updateUserNewsSettings = async (req, res) => {
+  try {
+    const { userId, settings} = await req.body;
+    const filter = {googleId: `${userId}`};
+    const newSettings = await User.findOneAndUpdate(filter, {settings:{newssettings: settings}}, {new: true});
+    res.status(201).send(newSettings);
+  } catch (error) {
     console.log('err', err);
     res.sendStatus(500);
   }
