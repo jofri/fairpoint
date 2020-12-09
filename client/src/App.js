@@ -17,6 +17,7 @@ import Analytics from './components/pages/analytics/Analytics';
 import './App.css';
 import NavBarUnauth from './components/navbar/NavBarUnauth';
 import NavBarTransparent from './components/navbar/NavbarTransparent';
+import NavBarTransparentUnauth from './components/navbar/NavbarTransparentUnauth';
 import CategoryTabs from './components/navbar/CategoryTabs';
 
 // Set background color of app according to user stance
@@ -37,6 +38,10 @@ function App () {
   const [technology, setTechnology] = useState([]);
   const [clickedStory, setClickedStory] = useState({});
 
+  const [clickedFromSwipe, setClickedFromSwipe] = useState(0);
+  const [clickedFromScroll, setClickedFromScroll] = useState([]);
+  const [numberOfTabs, setNumberOfTabs] = useState(8);
+
   useEffect (() => {
     getUser()
       .then((userInfo) => {
@@ -45,6 +50,13 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
+<<<<<<< HEAD
+=======
+  useEffect (()=> {
+    setClickedFromScroll(new Array(numberOfTabs).fill(0));
+  }, [numberOfTabs]);
+
+>>>>>>> 7b4c47a1528dd4335958f5b833622a2ae63bb83d
   const userIsLoggedIn =
     loginUser !== undefined
     && loginUser !== {}
@@ -78,11 +90,15 @@ function App () {
                   setSports={setSports}
                   technology={technology}
                   setTechnology={setTechnology}
+                  setClickedFromSwipe={setClickedFromSwipe}
+                  setClickedFromScroll={setClickedFromScroll}
+                  clickedFromSwipe={clickedFromSwipe}
+                  clickedFromScroll={clickedFromScroll}
                 ></CategoryTabs>
               </div>
             </Route>
             <Route exact path='/story'>
-              {clickedStory._id ? <><NavBarTransparent></NavBarTransparent>
+              {clickedStory._id ? <>{userIsLoggedIn ? <NavBarTransparent></NavBarTransparent>:<NavBarTransparentUnauth></NavBarTransparentUnauth>}
                 <NewsStory
                   clickedStory={clickedStory}
                   loginUser={loginUser}
@@ -101,7 +117,7 @@ function App () {
                 : <FourOFour loginUser={loginUser}/>}
               {userIsLoggedIn ?
                 <div className="content">
-                  <Profile loginUser={loginUser}/></div>
+                  <Profile setNumberOfTabs={setNumberOfTabs} loginUser={loginUser}/></div>
                 : <></>}
             </Route>
             <Route exact path='/analytics' >
@@ -109,6 +125,18 @@ function App () {
                 <><Navbar loginUser={loginUser}/>
                   <Analytics loginUser = {loginUser}/></>
                 : <Loader/>}
+            </Route>
+            <Route exact path='/about'>
+              <Navbar />
+              <div className="content">
+                <Profile></Profile>
+              </div>
+            </Route>
+            <Route exact path='/terms'>
+              <Navbar />
+              <div className="content">
+                <Profile></Profile>
+              </div>
             </Route>
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}
