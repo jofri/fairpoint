@@ -31,7 +31,7 @@ function ArticleTile (props) {
   
 
   return (
-    <Card className="ArticleTileCardWrapper"  style={{marginLeft: '2.5vw'}}>
+    <Card className="ArticleTileCardWrapper"  style={{marginLeft: '2.5vw', backgroundColor: props.scrollColor }}>
       <div className="ArticleTileWrapper">
         <a href={props.article.link} target="_blank" rel="noreferrer noopener" className="StoryAttribute" onClick={clickHandler}>
           <div className="RowOne">
