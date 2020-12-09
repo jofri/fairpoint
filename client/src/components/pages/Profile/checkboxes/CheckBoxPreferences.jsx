@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(3),
+    marginBottom: '0px',
   },
   formControlLabel: {
     fontSize: 17,
