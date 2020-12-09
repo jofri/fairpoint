@@ -3,6 +3,7 @@ import './Article-scroll.css';
 import ArticleTile from './article-tile/Article-tile';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Card from '@material-ui/core/Card';
 
 function ArticleScroll (props) {
   const [scrollLeft, setScrollLeft] = useState(true);
@@ -55,7 +56,13 @@ function ArticleScroll (props) {
   return (
     <div className="ArticleScrollWrapper"  onScroll={handleScroll}>
       {scrollLeft && <ArrowBackIosIcon style={{ position: 'absolute', left: '0.6vw', fontSize: '4.8vw', opacity: '0.50' }}></ArrowBackIosIcon>}
-      {articleState ? <>{renderArticles}</> : <><h1>TO RENDER SOMETHING MEANINGFUL</h1></> }
+      {articleState ? <>{renderArticles}</> : <><Card className="ArticleTileCardWrapper" style={{ marginLeft: '2.5vw', backgroundColor: props.scrollColor}}>
+        <div className="ArticleTileWrapper">
+          <div className="tileText">
+            <h2 className="emptyTileText">No {props.scrollDescription} Stories Available</h2>
+          </div>
+        </div>
+      </Card></> }
       {scrollRight && <ArrowForwardIosIcon style={{ position: 'absolute', right: '-0.3vw', fontSize: '4.8vw', opacity: '0.50'}}></ArrowForwardIosIcon>}
     </div>
   );
