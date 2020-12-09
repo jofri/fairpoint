@@ -13,6 +13,7 @@ import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
 import About from './components/pages/about/About';
+import Terms from './components/pages/terms/Terms';
 
 
 import './App.css';
@@ -133,7 +134,7 @@ function App () {
             <Route exact path='/terms' >
               {userIsLoggedIn ?
                 <><Navbar loginUser={loginUser}/>
-                  <FourOFour /></>
+                  <Terms /></>
                 : <Loader/>}
             </Route>
             {/* TODO: make an alert or redirect   */}

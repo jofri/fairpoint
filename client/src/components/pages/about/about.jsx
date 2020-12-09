@@ -31,18 +31,3 @@ function About () {
 
 export default About;
 
-
-
-{/* <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh'}}></Divider>
-<Card>
-  <div className="profileRow"><h4 className="objectiveScore">Objective Score</h4><h5 className="objectiveScoreNumber">5</h5></div>
-</Card>
-<Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh'}}></Divider>
-<Card>
-  <div className="profileColumn">
-    <h5 className="ProfileHeaderNews">Newsletter Preferences</h5>
-    <div className="profileCheckBoxWrap">
-      <CheckBoxPreferences></CheckBoxPreferences>
-    </div>
-  </div>
-</Card> */}
