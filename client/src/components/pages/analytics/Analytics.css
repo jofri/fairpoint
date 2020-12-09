@@ -8,7 +8,6 @@ h1 {
 h2{
   color: var(--color-black);
   font-size: var(--midfont);
-  padding-bottom: 10px;
 }
 
 h3{
@@ -112,4 +111,13 @@ canvas {
   border-radius: 15px;
   margin-right: 10px;
   margin-top: 10px;
+}
+
+.comment-box{
+  justify-content: center;
+  padding: 10px;
+  margin-top: 5px; 
+  border-top: 1px dotted #c2c2c2;
+  border-bottom: 1px dotted #c2c2c2;
+  width: 90%
 }

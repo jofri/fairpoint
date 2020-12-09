@@ -19,6 +19,7 @@ const useStyles = makeStyles({
   headlineImage: {
     width: '100%',
     height: '24vh',
+    objectFit: 'cover',
   },
   actionArea: {
     height: '90%',
@@ -33,11 +34,16 @@ const useStyles = makeStyles({
   },
   headlineText : {
     fontWeight: '600',
-    fontSize: '1.5rem',
+    fontSize: '2.15vh',
     width: '95%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '0.5vh',
+    marginTop: '0.7vh',
+    height: '10vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: 'red'
   }
 });
 

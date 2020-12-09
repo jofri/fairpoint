@@ -20,22 +20,29 @@ function Feed (props) {
   useEffect(() => {
     async function loadedStories () {
       setStoryLoaded(false);
-      console.log('Fetch');
       const response = await props.setStoryApi();
       props.setStories(response);
       if (response) {
         setStoryLoaded(true);
-        console.log('virtuoso ref', props.clickedFromSwipe);
-        console.log('props.clickedFromScroll', props.clickedFromScroll);
         if (virtuoso !== null && virtuoso.current !== null) {
           virtuoso.current.scrollToIndex({
-            index: props.clickedFromScroll[props.clickedFromSwipe]
+            index: props.clickedFromScroll[props.tabIndex]
           });
         }
       } ///MAYBE RENDER A NO RESPONSE PAGE??
     }
     loadedStories();
   }, []);
+
+  useEffect(()=>{
+    setStoryLoaded(false);
+    if (virtuoso !== null && virtuoso.current !== null) {
+      virtuoso.current.scrollToIndex({
+        index: props.clickedFromScroll[props.tabIndex]
+      });
+      setStoryLoaded(true);
+    }
+  },[props.tabIndex]);
 
   const GenerateItem = index => {
     const story = props.stories[index];
