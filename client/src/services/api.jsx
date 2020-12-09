@@ -69,7 +69,6 @@ function createArticle (articleInfo) {
   }
 }
 
-
 function createUserHistory (userId, articleInfo) {
   try {
     return fetch('/api/createUserHistory',{
@@ -87,7 +86,23 @@ function createUserHistory (userId, articleInfo) {
   }
 }
 
-
+function updateUserNewsSettings (userId, settings) {
+  console.log('in api service', userId, settings);
+  try {
+    return fetch('/api/updateUserNewsSettings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId,
+        settings
+      })
+    });
+  } catch (error) {
+    console.log(err);
+  }
+}
 
 
 export {
@@ -101,5 +116,6 @@ export {
   getTechnology,
   getWorld,
   createArticle,
-  createUserHistory
+  createUserHistory,
+  updateUserNewsSettings
 };

@@ -106,7 +106,7 @@ exports.createArticle = async (req, res) => {
   }
 };
 
-exports.createUserHistory = async (req, res) => {
+exports.updateUserHistory = async (req, res) => {
   try {
     const {userId, articleInfo} = await req.body;
     const filter = {googleId: `${userId}`};
@@ -119,11 +119,12 @@ exports.createUserHistory = async (req, res) => {
   }
 };
 
-exports.createUserNewsSettings = async (req, res) => {
+exports.updateUserNewsSettings = async (req, res) => {
   try {
-    const settings = await req.body;
-    console.log('settings', settings);
-    //TODO: fix this
+    const { userId, settings} = await req.body;
+    const filter = {googleId: `${userId}`};
+    const newSettings = await User.findOneAndUpdate(filter, {settings:{newssettings: settings}}, {new: true});
+    res.status(201).send(newSettings);
   } catch (error) {
     console.log('err', err);
     res.sendStatus(500);

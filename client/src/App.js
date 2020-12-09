@@ -48,7 +48,7 @@ function App () {
         setLoginUser(userInfo);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [setLoginUser]);
 
   useEffect (()=> {
     setClickedFromScroll(new Array(numberOfTabs).fill(0));
@@ -91,6 +91,8 @@ function App () {
                   setClickedFromScroll={setClickedFromScroll}
                   clickedFromSwipe={clickedFromSwipe}
                   clickedFromScroll={clickedFromScroll}
+                  loginUser={loginUser}
+                  setNumberOfTabs={setNumberOfTabs}
                 ></CategoryTabs>
               </div>
             </Route>
@@ -114,7 +116,7 @@ function App () {
                 : <FourOFour loginUser={loginUser}/>}
               {userIsLoggedIn ?
                 <div className="content">
-                  <Profile setNumberOfTabs={setNumberOfTabs} loginUser={loginUser}/></div>
+                  <Profile setNumberOfTabs={setNumberOfTabs} loginUser={loginUser} setLoginUser={setLoginUser}/></div>
                 : <></>}
             </Route>
             <Route exact path='/analytics' >

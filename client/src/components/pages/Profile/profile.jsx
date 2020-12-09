@@ -36,7 +36,7 @@ function Profile (props) {
         <div className="profileColumn">
           <h5 className="ProfileHeaderNews">News Settings</h5>
           <div className="profileCheckBoxWrap">
-            <CheckBox></CheckBox>
+            <CheckBox loginUser={props.loginUser} setLoginUser={props.setLoginUser}></CheckBox>
           </div>
         </div>
       </Card>
