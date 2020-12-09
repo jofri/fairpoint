@@ -22,10 +22,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Slide from '@material-ui/core/Slide';
+// import Slide from '@material-ui/core/Slide';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Avatar from '@material-ui/core/Avatar';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import LogoBrain from './logoBrain.svg';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import './Navbar.css';
@@ -39,7 +39,7 @@ import { Link } from 'react-router-dom';
 const assert = require('assert');
 
 
-const menuWidth = '55vw';
+const menuWidth = '58vw';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,16 +96,17 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function HideOnScroll (props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+// function HideOnScroll (props) {
+//   // const { children, window } = props;
+//   // const trigger = useScrollTrigger({ target: window ? window() : undefined });
+//   // console.log(trigger, 'TRIGGER NAV');
 
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
+//   return (
+//     <Slide appear={false} direction="down" in={!trigger}>
+//       {children}
+//     </Slide>
+//   );
+// }
 
 export default function NavBar (props) {
   //**Prop drilling check
@@ -144,13 +145,13 @@ export default function NavBar (props) {
       <Divider />
       <List>
 
-        <ListItem button key="home" component={Link} to="/" > 
+        <ListItem button key="home" component={Link} to="/" >
           <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
         </ListItem>
       </List>
       <List>
-        <ListItem button key="Analytics" component={Link} to="/analytics" > 
+        <ListItem button key="Analytics" component={Link} to="/analytics" >
           <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
         </ListItem>
@@ -170,7 +171,7 @@ export default function NavBar (props) {
       </List>
       <List>
         {/* T&C ALSO EMPTY */}
-        <ListItem button key="Terms & Conditions">
+        <ListItem button key="Terms & Conditions" component={Link} to="/terms">
           <ListItemIcon><DescriptionOutlinedIcon style={{fontSize: iconSize}}></DescriptionOutlinedIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Terms & Conditions" />
         </ListItem>
@@ -187,28 +188,28 @@ export default function NavBar (props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar)}
-          style={{ background: '#FAF9F8' }}
-        >
-          <Toolbar>
-            <a href="/">
-              <img src={LogoBrain} alt="logo" className="NavBarLogo"/>
-            </a>
-            <Typography variant="h6" noWrap className={classes.title}>
-              <a className="brandLink" href="/">
+      {/* <HideOnScroll {...props}> */}
+      <AppBar
+        position="fixed"
+        className={clsx(classes.appBar)}
+        style={{ background: '#FAF9F8' }}
+      >
+        <Toolbar>
+          <a href="/">
+            <img src={LogoBrain} alt="logo" className="NavBarLogo"/>
+          </a>
+          <Typography variant="h6" noWrap className={classes.title}>
+            <a className="brandLink" href="/">
                   Anchored News
-              </a>
-            </Typography>
-            <IconButton onClick={toggleDrawer('right', true)}>
-              <MenuIcon className={classes.menubutton}></MenuIcon>
-            </IconButton>
-          </Toolbar>
-          <div className="NavBarColorLine"></div>
-        </AppBar>
-      </HideOnScroll>
+            </a>
+          </Typography>
+          <IconButton onClick={toggleDrawer('right', true)}>
+            <MenuIcon className={classes.menubutton}></MenuIcon>
+          </IconButton>
+        </Toolbar>
+        <div className="NavBarColorLine"></div>
+      </AppBar>
+      {/* </HideOnScroll> */}
       <div>
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>

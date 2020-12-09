@@ -4,34 +4,43 @@ import { Avatar } from '@material-ui/core';
 import CheckBox from './checkboxes/CheckBox';
 import CheckBoxPreferences from './checkboxes/CheckBoxPreferences';
 import Divider from '@material-ui/core/Divider';
+import Card from '@material-ui/core/Card';
 
 function Profile (props) {
   return (
     <div className="ProfileWrapper">
-      <div className="profileRow">
-        <span className="AvatarName">
-          <Avatar src={props.loginUser.photo}></Avatar>
-          <h4 className="ProfilePageName">{props.loginUser.username}</h4>
-        </span>
-        <p>{props.loginUser.email}</p>
-      </div>
-      <Divider></Divider>
-      <div className="profileRow"><h5>Objective Score</h5><h1>5</h1></div>
-      <Divider></Divider>
-      <div className="profileColumn">
-        <h5 className="ProfileHeaderNews">NewsLetter Preferences</h5>
-        <div className="profileCheckBoxWrap">
-          <CheckBoxPreferences></CheckBoxPreferences>
+      <Card>
+        <div className="profileRow">
+          <span className="AvatarName">
+            <Avatar src={props.loginUser.photo}></Avatar>
+            <h4 className="ProfilePageName">{props.loginUser.username}</h4>
+          </span>
+          <p className="profileEmail">{props.loginUser.email}</p>
         </div>
-      </div>
-      <Divider></Divider>
-      <div className="profileColumn">
-        <h5 className="ProfileHeaderNews">News Settings</h5>
-        <div className="profileCheckBoxWrap">
-          <CheckBox></CheckBox>
+      </Card>
+      {/*    <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
+      <Card>
+        <div className="profileRow"><h4 className="objectiveScore">Objective Score</h4><h5 className="objectiveScoreNumber">5</h5></div>
+      </Card> */}
+      <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
+      <Card>
+        <div className="profileColumn">
+          <h5 className="ProfileHeaderNews">Newsletter Preferences</h5>
+          <div className="profileCheckBoxWrap">
+            <CheckBoxPreferences></CheckBoxPreferences>
+          </div>
         </div>
-      </div>
-      <Divider></Divider>
+      </Card>
+      <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
+      <Card>
+        <div className="profileColumn">
+          <h5 className="ProfileHeaderNews">News Settings</h5>
+          <div className="profileCheckBoxWrap">
+            <CheckBox></CheckBox>
+          </div>
+        </div>
+      </Card>
+      <Divider style={{ marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
     </div>
   );
 }

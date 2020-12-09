@@ -1,36 +1,48 @@
+// import SettingsIcon from '@material-ui/icons/Settings';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+// import Slide from '@material-ui/core/Slide';
+//import ShareIcon from '@material-ui/icons/Share';
+// import MailIcon from '@material-ui/icons/Mail';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import LogoutIcon from '@material-ui/icons/ExitToApp';
+// import Typography from '@material-ui/core/Typography';
+// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
+// import Drawer from '@material-ui/core/Drawer';
+
+
+
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
-// import Slide from '@material-ui/core/Slide';
 import Avatar from '@material-ui/core/Avatar';
-// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import './Navbar.css';
-import LogoutIcon from '@material-ui/icons/ExitToApp';
-import SettingsIcon from '@material-ui/icons/Settings';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
-//import ShareIcon from '@material-ui/icons/Share';
 import { useHistory } from 'react-router-dom';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import InfoIcon from '@material-ui/icons/Info';
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import LogoutIcon from '@material-ui/icons/ExitToApp';
+import HomeIcon from '@material-ui/icons/Home';
+import { Link } from 'react-router-dom';
 
 
 
-const menuWidth = '45vw';
+
+const menuWidth = '58vw';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,8 +66,9 @@ const useStyles = makeStyles((theme) => ({
   },
   open: {
     backgroundColor: 'black',
-    opacity: 0.5,
+    opacity: 0.6,
     justifySelf: 'flex-end',
+    marginRight: '0vw'
   },
   arrowBackIcon: {
     color: 'white',
@@ -65,8 +78,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
     justifyContent: 'space-between',
-    width: '95%',
-    backgroundColor: 'transparent',
+    width: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
@@ -94,8 +106,12 @@ const useStyles = makeStyles((theme) => ({
   },
   backButton: {
     backgroundColor: 'black',
-    opacity: 0.5,
-    justifySelf: 'flex-start'
+    opacity: 0.6,
+    justifySelf: 'flex-start',
+  },
+  list: {
+    width: menuWidth,
+    overflow: 'hidden',
   },
   content: {
     flexGrow: 1,
@@ -113,23 +129,99 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: 0,
   },
+  fullList: {
+    width: 'auto',
+  },
+  listItemText: {
+    fontSize: 15,
+    fontWeight: '400',
+  },
+  listItemTextMain: {
+    fontSize: 18,
+    fontWeight: '500',
+  }
 }));
 
 
 export default function NavBarTransparent (props) {
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  // const theme = useTheme();
+  const [state, setState] = React.useState({
+    right: false,
+  });
+
+  let iconSize = 25;
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
+  };
 
   let history = useHistory();
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const renderDrawer = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <ListItem button component={Link} to="/profile" key="profile">
+          <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemTextMain }} primary="Edward Chan" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        {/* HARD CODE ANALYTICS! */}
+        <ListItem button key="home" component={Link} to="/" >
+          <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
+        </ListItem>
+      </List>
+      <List>
+        {/* HARD CODE ANALYTICS! */}
+        <ListItem button key="Analytics" component={Link} to="/analytics" >
+          <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
+        </ListItem>
+      </List>
+      <List>
+        <ListItem button key="Donate" component={Link} to="/donate" >
+          <ListItemIcon><LoyaltyIcon style={{ fontSize: iconSize }}></LoyaltyIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Donate" />
+        </ListItem>
+      </List>
+      <List>
+        {/* ABOUT US EMPTY ATM */}
+        <ListItem button key="About us" component={Link} to="/about" >
+          <ListItemIcon><InfoIcon style={{ fontSize: iconSize }}></InfoIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="About us" />
+        </ListItem>
+      </List>
+      <List>
+        {/* T&C ALSO EMPTY */}
+        <ListItem button key="Terms & Conditions">
+          <ListItemIcon><DescriptionOutlinedIcon style={{ fontSize: iconSize }}></DescriptionOutlinedIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Terms & Conditions" />
+        </ListItem>
+      </List>
+      <List>
+        {/* FOR SOOYEON! */}
+        <ListItem button key="Log Out">
+          <ListItemIcon><LogoutIcon style={{ fontSize: iconSize }}></LogoutIcon></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemText }} primary="Log Out" />
+        </ListItem>
+      </List>
+    </div>
+  );
+
 
   return (
     <div className={classes.root}>
@@ -142,67 +234,34 @@ export default function NavBarTransparent (props) {
       >
         <Toolbar className={classes.toolbar}>
           <IconButton className={classes.backButton} onClick={history.goBack}>
-            <ArrowBackIcon className={classes.arrowBackIcon}></ArrowBackIcon>
+            <ArrowBackIcon className={classes.arrowBackIcon} style={{fontSize: 18}}></ArrowBackIcon>
           </IconButton>
           <div>
-            {/* <IconButton className={classes.shareIcon}>
-              <ShareIcon className={classes.shareIconPic}></ShareIcon>
-            </IconButton> */}
+        
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="end"
-              onClick={handleDrawerOpen}
+              onClick={toggleDrawer('right', true)}
               className={classes.open}
             >
-              <MenuIcon className={classes.menubutton} />
+              <MenuIcon className={classes.menubutton} style={{ fontSize: 18 }} />
             </IconButton>
           </div>
         </Toolbar>
       </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="right"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {['Edward Chan'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
-              <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
-            </ListItem>
-          ))}
-        </List>
-        <List>
-          {['Analytics', 'Settings'].map((text, index) => (
-            <ListItem button key={text}>
-              <SettingsIcon></SettingsIcon>
-              <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['Donate', 'About Us', 'Terms & Conditions', 'Logout'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon><LogoutIcon></LogoutIcon></ListItemIcon>
-              <ListItemText primary={<Typography type="body2" style={{ fontSize: 14, fontWeight: '700' }}>{text}</Typography>} style={{ fontSize: 20, }} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
+      {['right'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <SwipeableDrawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            onOpen={toggleDrawer(anchor, true)}
+          >
+            {renderDrawer(anchor)}
+          </SwipeableDrawer>
+        </React.Fragment>
+      ))}
     </div>
   );
 }
-
-//profile, logout analytics

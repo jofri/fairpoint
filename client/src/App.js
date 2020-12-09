@@ -12,11 +12,14 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
+import About from './components/pages/about/About';
+import Terms from './components/pages/terms/Terms';
 
 
 import './App.css';
 import NavBarUnauth from './components/navbar/NavBarUnauth';
 import NavBarTransparent from './components/navbar/NavbarTransparent';
+import NavBarTransparentUnauth from './components/navbar/NavbarTransparentUnauth';
 import CategoryTabs from './components/navbar/CategoryTabs';
 
 // Set background color of app according to user stance
@@ -37,6 +40,10 @@ function App () {
   const [technology, setTechnology] = useState([]);
   const [clickedStory, setClickedStory] = useState({});
 
+  const [clickedFromSwipe, setClickedFromSwipe] = useState(0);
+  const [clickedFromScroll, setClickedFromScroll] = useState([]);
+  const [numberOfTabs, setNumberOfTabs] = useState(8);
+
   useEffect (() => {
     getUser()
       .then((userInfo) => {
@@ -45,9 +52,13 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
-  const userIsLoggedIn = 
-    loginUser !== undefined 
-    && loginUser !== {} 
+  useEffect (()=> {
+    setClickedFromScroll(new Array(numberOfTabs).fill(0));
+  }, [numberOfTabs]);
+
+  const userIsLoggedIn =
+    loginUser !== undefined
+    && loginUser !== {}
     && loginUser._id !== undefined;
 
   return (
@@ -57,8 +68,8 @@ function App () {
         <Router>
           <Switch>
             <Route exact path='/'> {/* If user visits root, redict to homepage/News-feed */}
-              {userIsLoggedIn ? 
-                <Navbar loginUser={loginUser}></Navbar> 
+              {userIsLoggedIn ?
+                <Navbar loginUser={loginUser}></Navbar>
                 : <NavBarUnauth></NavBarUnauth>}
               <div className="content">
                 <CategoryTabs setClickedStory={setClickedStory}
@@ -78,36 +89,52 @@ function App () {
                   setSports={setSports}
                   technology={technology}
                   setTechnology={setTechnology}
+                  setClickedFromSwipe={setClickedFromSwipe}
+                  setClickedFromScroll={setClickedFromScroll}
+                  clickedFromSwipe={clickedFromSwipe}
+                  clickedFromScroll={clickedFromScroll}
                 ></CategoryTabs>
               </div>
             </Route>
             <Route exact path='/story'>
-              {clickedStory._id ? <><NavBarTransparent></NavBarTransparent>
+              {clickedStory._id ? <>{userIsLoggedIn ? <NavBarTransparent></NavBarTransparent>:<NavBarTransparentUnauth></NavBarTransparentUnauth>}
                 <NewsStory
                   clickedStory={clickedStory}
                   loginUser={loginUser}
                   setLoginUser={setLoginUser}/></> : <FourOFour loginUser={loginUser}/>}
             </Route>
             <Route exact path='/donate'>
-              <Navbar 
+              <Navbar
                 loginUser={loginUser}/>
               <div className="content">
                 <Donate></Donate>
               </div>
             </Route>
             <Route exact path='/profile'>
-              {userIsLoggedIn ? 
-                <Navbar loginUser={loginUser}/> 
+              {userIsLoggedIn ?
+                <Navbar loginUser={loginUser}/>
                 : <FourOFour loginUser={loginUser}/>}
-              {userIsLoggedIn ? 
+              {userIsLoggedIn ?
                 <div className="content">
-                  <Profile loginUser={loginUser}/></div> 
+                  <Profile setNumberOfTabs={setNumberOfTabs} loginUser={loginUser}/></div>
                 : <></>}
             </Route>
             <Route exact path='/analytics' >
-              {userIsLoggedIn ? 
+              {userIsLoggedIn ?
                 <><Navbar loginUser={loginUser}/>
                   <Analytics loginUser = {loginUser}/></>
+                : <Loader/>}
+            </Route>
+            <Route exact path='/about' >
+              {userIsLoggedIn ?
+                <><Navbar loginUser={loginUser}/>
+                  <About /></>
+                : <Loader/>}
+            </Route>
+            <Route exact path='/terms' >
+              {userIsLoggedIn ?
+                <><Navbar loginUser={loginUser}/>
+                  <Terms /></>
                 : <Loader/>}
             </Route>
             {/* TODO: make an alert or redirect   */}

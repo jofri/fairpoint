@@ -64,12 +64,15 @@ const useStyles = makeStyles((theme) => ({
   indicator: {
     backgroundColor: '#0195df',
   },
+  test: {
+    backgroundColor: 'green'
+  }
 }));
 
 export default function CategoryTabs (props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(props.clickedFromSwipe);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -107,28 +110,116 @@ export default function CategoryTabs (props) {
         containerStyle={{backgroundColor:'transparent'}}
       >
         <TabPanel value={value} index={0} dir={theme.direction} style={{backgroundColor:'transparent'}}>
-          <NewsFeed setClickedStory={props.setClickedStory} stories={props.stories} setStories={props.setStories} setStoryApi={getStories}></NewsFeed>
+          <NewsFeed
+            tabIndex={0}
+            setClickedFromSwipe={props.setClickedFromSwipe}
+            setClickedFromScroll={props.setClickedFromScroll}
+            setClickedStory={props.setClickedStory}
+            stories={props.stories}
+            setStories={props.setStories}
+            setStoryApi={getStories}
+            clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
+          >
+          </NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <NewsFeed setClickedStory={props.setClickedStory} stories={props.world} setStories={props.setWorld} setStoryApi={getWorld}></NewsFeed>
+          <NewsFeed
+            tabIndex={1}
+            setClickedFromSwipe={props.setClickedFromSwipe}
+            setClickedFromScroll={props.setClickedFromScroll}
+            setClickedStory={props.setClickedStory}
+            stories={props.world}
+            setStories={props.setWorld}
+            setStoryApi={getWorld}
+            clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
+          >
+          </NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          <NewsFeed setClickedStory={props.setClickedStory} stories={props.business} setStories={props.setBusiness} setStoryApi={getBusiness}></NewsFeed>
+          <NewsFeed
+            tabIndex={2}
+            setClickedFromSwipe={props.setClickedFromSwipe}
+            setClickedFromScroll={props.setClickedFromScroll}
+            setClickedStory={props.setClickedStory}
+            stories={props.business}
+            setStories={props.setBusiness}
+            setStoryApi={getBusiness}
+            clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
+          >
+          </NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-          <NewsFeed setClickedStory={props.setClickedStory} stories={props.entertainment} setStories={props.setEntertainment} setStoryApi={getEntertainment}></NewsFeed>
+          <NewsFeed
+            tabIndex={3}
+            setClickedFromSwipe={props.setClickedFromSwipe}
+            setClickedFromScroll={props.setClickedFromScroll}
+            setClickedStory={props.setClickedStory}
+            stories={props.entertainment}
+            setStories={props.setEntertainment}
+            setStoryApi={getEntertainment}
+            clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
+          >
+          </NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={4} dir={theme.direction}>
-          <NewsFeed setClickedStory={props.setClickedStory} stories={props.health} setStories={props.setHealth} setStoryApi={getHealth}></NewsFeed>
+          <NewsFeed
+            tabIndex={4}
+            setClickedFromSwipe={props.setClickedFromSwipe}
+            setClickedFromScroll={props.setClickedFromScroll}
+            setClickedStory={props.setClickedStory}
+            stories={props.health}
+            setStories={props.setHealth}
+            setStoryApi={getHealth}
+            clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
+          >
+          </NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={5} dir={theme.direction}>
-          <NewsFeed setClickedStory={props.setClickedStory} stories={props.sports} setStories={props.setSports} setStoryApi={getSports}></NewsFeed>
+          <NewsFeed
+            tabIndex={5}
+            setClickedFromSwipe={props.setClickedFromSwipe}
+            setClickedFromScroll={props.setClickedFromScroll}
+            setClickedStory={props.setClickedStory}
+            stories={props.sports}
+            setStories={props.setSports}
+            setStoryApi={getSports}
+            clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
+          >
+          </NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={6} dir={theme.direction}>
-          <NewsFeed setClickedStory={props.setClickedStory} stories={props.technology} setStories={props.setTechnology} setStoryApi={getTechnology}></NewsFeed>
+          <NewsFeed
+            tabIndex={6}
+            setClickedFromSwipe={props.setClickedFromSwipe}
+            setClickedFromScroll={props.setClickedFromScroll}
+            setClickedStory={props.setClickedStory}
+            stories={props.technology}
+            setStories={props.setTechnology}
+            setStoryApi={getTechnology}
+            clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
+          >
+          </NewsFeed>
         </TabPanel>
         <TabPanel value={value} index={7} dir={theme.direction}>
-          <NewsFeed setClickedStory={props.setClickedStory} stories={props.science} setStories={props.setScience} setStoryApi={getScience}></NewsFeed>
+          <NewsFeed
+            tabIndex={7}
+            setClickedFromSwipe={props.setClickedFromSwipe}
+            setClickedFromScroll={props.setClickedFromScroll}
+            setClickedStory={props.setClickedStory}
+            stories={props.science}
+            setStories={props.setScience}
+            setStoryApi={getScience}
+            clickedFromScroll={props.clickedFromScroll}
+            clickedFromSwipe={props.clickedFromSwipe}
+          >
+          </NewsFeed>
         </TabPanel>
       </SwipeableViews>
 
