@@ -14,6 +14,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import Snackbar from '@material-ui/core/Snackbar';
 import { FacebookShareButton, FacebookIcon, TwitterIcon, TwitterShareButton } from 'react-share';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
+import ReactGA from 'react-ga';
 
 
 
@@ -97,6 +98,10 @@ function NewsStory (props) {
     setMenuState(false);
   };
 
+  // Initialize Google Analytics
+  ReactGA.initialize('UA-185114095-1');
+  ReactGA.pageview(props.clickedStory.title);
+
 
   return (
     <div>
@@ -115,10 +120,10 @@ function NewsStory (props) {
           loginUser={props.loginUser}
           setLoginUser={props.setLoginUser}
           scrollColor={'white'}></ArticleScroll>
-        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 10)} 
+        <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 10)}
           setClickedArticle={setClickedArticle}
-          setMenuState={setMenuState} 
-          loginUser={props.loginUser} 
+          setMenuState={setMenuState}
+          loginUser={props.loginUser}
           setLoginUser={props.setLoginUser}
           scrollColor={ '#dbecff'}></ArticleScroll>
       </div>

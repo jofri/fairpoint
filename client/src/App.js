@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //*API service
 import { getUser } from './services/api';
+import ReactGA from 'react-ga';
 
 //*Components
 import Loader from './components/helpers/loader/Loader';
@@ -12,8 +13,8 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
-import About from './components/pages/about/About';
-import Terms from './components/pages/terms/Terms';
+import About from './components/pages/about/about';
+import Terms from './components/pages/terms/terms';
 
 
 import './App.css';
@@ -21,6 +22,7 @@ import NavBarUnauth from './components/navbar/NavBarUnauth';
 import NavBarTransparent from './components/navbar/NavbarTransparent';
 import NavBarTransparentUnauth from './components/navbar/NavbarTransparentUnauth';
 import CategoryTabs from './components/navbar/CategoryTabs';
+import UnauthCategoryTabs from './components/navbar/UnauthCategoryTabs';
 
 // Set background color of app according to user stance
 import backgroundCalc from './components/helpers/backgroundCalc';
@@ -50,7 +52,7 @@ function App () {
         setLoginUser(userInfo);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [setLoginUser]);
 
   useEffect (()=> {
     setClickedFromScroll(new Array(numberOfTabs).fill(0));
@@ -60,6 +62,10 @@ function App () {
     loginUser !== undefined
     && loginUser !== {}
     && loginUser._id !== undefined;
+
+  // Initialize Google Analytics
+  ReactGA.initialize('UA-185114095-1');
+  ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
     /* Sets background color corresponding to user stance */
@@ -72,28 +78,56 @@ function App () {
                 <Navbar loginUser={loginUser}></Navbar>
                 : <NavBarUnauth></NavBarUnauth>}
               <div className="content">
-                <CategoryTabs setClickedStory={setClickedStory}
-                  stories={stories}
-                  setStories={setStories}
-                  world={world}
-                  setWorld={setWorld}
-                  business={business}
-                  setBusiness={setBusiness}
-                  entertainment={entertainment}
-                  setEntertainment={setEntertainment}
-                  health={health}
-                  setHealth={setHealth}
-                  science={science}
-                  setScience={setScience}
-                  sports={sports}
-                  setSports={setSports}
-                  technology={technology}
-                  setTechnology={setTechnology}
-                  setClickedFromSwipe={setClickedFromSwipe}
-                  setClickedFromScroll={setClickedFromScroll}
-                  clickedFromSwipe={clickedFromSwipe}
-                  clickedFromScroll={clickedFromScroll}
-                ></CategoryTabs>
+                {userIsLoggedIn ?
+                  <CategoryTabs setClickedStory={setClickedStory}
+                    stories={stories}
+                    setStories={setStories}
+                    world={world}
+                    setWorld={setWorld}
+                    business={business}
+                    setBusiness={setBusiness}
+                    entertainment={entertainment}
+                    setEntertainment={setEntertainment}
+                    health={health}
+                    setHealth={setHealth}
+                    science={science}
+                    setScience={setScience}
+                    sports={sports}
+                    setSports={setSports}
+                    technology={technology}
+                    setTechnology={setTechnology}
+                    setClickedFromSwipe={setClickedFromSwipe}
+                    setClickedFromScroll={setClickedFromScroll}
+                    clickedFromSwipe={clickedFromSwipe}
+                    clickedFromScroll={clickedFromScroll}
+                    loginUser={loginUser}
+                    setNumberOfTabs={setNumberOfTabs}
+                  ></CategoryTabs>
+                  :
+                  <UnauthCategoryTabs setClickedStory={setClickedStory}
+                    stories={stories}
+                    setStories={setStories}
+                    world={world}
+                    setWorld={setWorld}
+                    business={business}
+                    setBusiness={setBusiness}
+                    entertainment={entertainment}
+                    setEntertainment={setEntertainment}
+                    health={health}
+                    setHealth={setHealth}
+                    science={science}
+                    setScience={setScience}
+                    sports={sports}
+                    setSports={setSports}
+                    technology={technology}
+                    setTechnology={setTechnology}
+                    setClickedFromSwipe={setClickedFromSwipe}
+                    setClickedFromScroll={setClickedFromScroll}
+                    clickedFromSwipe={clickedFromSwipe}
+                    clickedFromScroll={clickedFromScroll}
+                    setNumberOfTabs={setNumberOfTabs}
+                  ></UnauthCategoryTabs>
+                }
               </div>
             </Route>
             <Route exact path='/story'>
@@ -116,7 +150,7 @@ function App () {
                 : <FourOFour loginUser={loginUser}/>}
               {userIsLoggedIn ?
                 <div className="content">
-                  <Profile setNumberOfTabs={setNumberOfTabs} loginUser={loginUser}/></div>
+                  <Profile setNumberOfTabs={setNumberOfTabs} loginUser={loginUser} setLoginUser={setLoginUser}/></div>
                 : <></>}
             </Route>
             <Route exact path='/analytics' >
