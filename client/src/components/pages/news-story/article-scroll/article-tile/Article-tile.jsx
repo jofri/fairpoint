@@ -8,6 +8,16 @@ import {createArticle, createUserHistory} from '../../../../../services/api';
 
 function ArticleTile (props) {
 
+  let articleText = props.article.title;
+
+  if (articleText.split('').length > 100) {
+    articleText = articleText.split('');
+    articleText = articleText.slice(0, 100);
+    articleText.push('.', '.', '.');
+    articleText = articleText.join('');
+    console.log('long');
+  }
+  
   const ShareClick = () => {
     props.setClickedArticle(props.article);
     props.setMenuState(true);
@@ -37,9 +47,9 @@ function ArticleTile (props) {
           <div className="RowOne">
             <div className="TextOne">
               <p className="ArticleTileSource">{props.article.source}</p>
-              <h2 className="ArticleTileTitle">{props.article.title}</h2>
+              <h2 className="ArticleTileTitle">{articleText}</h2>
             </div>
-            <img src={props.article.image.replace('-rw', '')} alt={props.article.subtitle} className="ArticleTileImage"></img>
+            <img src={props.article.image.replace('-rw', '')} alt={props.article.subtitle.split('').slice(0, 110).join('')} className="ArticleTileImage"></img>
           </div>
         </a>
 
