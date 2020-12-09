@@ -4,9 +4,9 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
+import {updateUserNewsSettings, getUser} from '../../../../services/api';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,32 +18,36 @@ const useStyles = makeStyles((theme) => ({
   formControlLabel: {
     fontSize: 17,
   },
+  button: {
+    margin: theme.spacing(1),
+  },
 }));
 
-export default function CheckBox () {
+export default function CheckBox (props) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    world: false,
-    business: false,
-    health: false,
-    tech: false,
-    sport: false,
-    entertainment: false,
-    science: false,
-  });
-
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+  const handleChange = async (event) => {
+    const eventName = event.target.name;
+    const oldUser = props.loginUser;
+    oldUser.settings.newssettings[eventName] = event.target.checked;
+    await props.setLoginUser(oldUser);
+    await updateUserNewsSettings(props.loginUser.googleId, oldUser.settings.newssettings);
+    getUser().then((userInfo) => {
+      props.setLoginUser(userInfo);
+    })
+      .catch(err => console.log(err));
   };
 
-  const { world, business, health, tech, sport, entertainment, science } = state;
-  //   const error = [world, business, health].filter((v) => v).length !== 2;
-
+  const { UK, world, business, health, tech, sport, entertainment, science } = props.loginUser.settings.newssettings;
+  console.log(UK);
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>
         <FormLabel component="legend">Select News to Display</FormLabel>
         <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={UK} onChange={handleChange} name="UK" />}
+            label={<Typography className={classes.formControlLabel}>UK</Typography>}
+          />
           <FormControlLabel
             control={<Checkbox checked={world} onChange={handleChange} name="world" />}
             label={<Typography className={classes.formControlLabel}>World</Typography>}
