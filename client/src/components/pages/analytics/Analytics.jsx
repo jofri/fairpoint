@@ -7,6 +7,7 @@ import Doughnut from '../analytics/graphs/Doughnut';
 import Polar from '../analytics/graphs/Polararea';
 import Wordcloud from '../analytics/graphs/Wordcloud';
 import AnalyticsPlaceholder from '../analytics/graphs/AnalyticsPlaceholder';
+import BackgroundCalc from '../../helpers/backgroundCalc';
 
 function Analytics (props) {
   const [userData, setUserdata] = useState([]);
@@ -14,6 +15,7 @@ function Analytics (props) {
   const [publisherData, setPublisherData] = useState([]);
   const [interestData, setInterestData] = useState([]);
   const [fontColour, setFontColour] = useState('');
+  const [summary, setSummary] = useState('');
 
   // Gets dataset from props and converts it into array with stance/source key value pair
   const getDataset =  () => {
@@ -178,8 +180,31 @@ function Analytics (props) {
       setFontColour('#6b04da');
     }
   }, [stanceData]);
-  
 
+  // const [summary, setSummary] = useState('');
+  useEffect(() => {
+    const objectiveScore = BackgroundCalc(props.loginUser)[2];
+    // eslint-disable-next-line default-case
+    switch (objectiveScore) { 
+    case 5:   
+      setSummary('🎉 Congratulations! you read news objectively from all over the political spectrum 😎 ');
+      break;
+    case 4:   
+      setSummary('💡 Not bad, you read news from different sources and political affiliation 🧐');
+      break;
+    case 3: 
+      setSummary('🔔 You tend to read a good mix of left and right articles, but challenge yourself to swing the other way 🤔');
+      break;
+    case 2:    
+      setSummary('💣 You mostly read news from one side of the political spectrum - try to incorporate a greater variety in your mix 😉');
+      break;
+    case 1:   
+      setSummary('🔥 You only read news from one side of the political spectrum which might create a bias view on current issues. Incorporate a greater variety of articles in your mix to improve your score!🤗');
+      break;
+    }
+
+  }, [summary]);
+  
   if (props.loginUser.article.length < 10) {
     return <AnalyticsPlaceholder userData={userData}/>;
   } else {
@@ -190,10 +215,18 @@ function Analytics (props) {
         </div>
         <Card style={{marginBottom: 10, marginTop: 10, paddingTop: 10}}>
           <div className="total-summary">
+            <h1>Total Summary</h1>
             <div className="comment" style={{display: 'inline-block'}}>
               <h2 style={{display: 'inline-block'}}>You have read a total of </h2>
               <h2 style={{display: 'inline-block', marginLeft: 5, marginRight: 5, color: fontColour}}>{' '+ userData.length + ' '}</h2>
-              <h2 style={{display: 'inline-block'}}> articles so far</h2>
+              <h2 style={{display: 'inline-block'}}> articles so far.</h2>
+            </div>
+            <div className="comment" style={{display: 'inline-block'}}>
+              <h2 style={{display: 'inline-block'}}>Your objective score is </h2>
+              <h2 style={{display: 'inline-block', marginLeft: 5, marginRight: 5, marginBottom: 5, color: fontColour}}>{BackgroundCalc(props.loginUser)[2]}</h2>
+            </div>
+            <div className="comment-box">
+              <h2 style={{textAlign: 'center'}}>{summary}</h2>  
             </div>
           </div>
         </Card>
