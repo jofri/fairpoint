@@ -38,6 +38,9 @@ const useStyles = makeStyles({
   },
   button: {
     fontSize: 12,
+  },
+  storyTitle : {
+    fontSize: '1.8vh'
   }
 });
 
@@ -67,7 +70,7 @@ export default function SubStory (props) {
       <CardActionArea className={classes.actionArea}>
         <CardContent>
           <div className={classes.rowOne}>
-            <h3>{props.story.title}</h3>
+            <h3 className={classes.storyTitle}>{props.story.title}</h3>
             <img src={matches ? props.articleThumbnail.replace('-rw', '').replace('h100', 'h300').replace('w100', 'w300') : props.articleThumbnail.replace('-rw', '')} alt="News Img" className={classes.image}></img>
           </div>
         </CardContent>
