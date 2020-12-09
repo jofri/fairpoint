@@ -4,8 +4,6 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import SaveIcon from '@material-ui/icons/Save';
-import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import {updateUserNewsSettings, getUser} from '../../../../services/api';
@@ -80,16 +78,6 @@ export default function CheckBox (props) {
           />
         </FormGroup>
         {/* <FormHelperText>Be careful</FormHelperText> */}
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          className={classes.button}
-          onClick={() => { alert('Your preferences have been saved.'); }}
-          startIcon={<SaveIcon />}
-        >
-        Save
-        </Button>
       </FormControl>
     </div>
   );

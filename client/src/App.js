@@ -19,6 +19,7 @@ import NavBarUnauth from './components/navbar/NavBarUnauth';
 import NavBarTransparent from './components/navbar/NavbarTransparent';
 import NavBarTransparentUnauth from './components/navbar/NavbarTransparentUnauth';
 import CategoryTabs from './components/navbar/CategoryTabs';
+import UnauthCategoryTabs from './components/navbar/UnauthCategoryTabs';
 
 // Set background color of app according to user stance
 import backgroundCalc from './components/helpers/backgroundCalc';
@@ -70,30 +71,56 @@ function App () {
                 <Navbar loginUser={loginUser}></Navbar>
                 : <NavBarUnauth></NavBarUnauth>}
               <div className="content">
-                <CategoryTabs setClickedStory={setClickedStory}
-                  stories={stories}
-                  setStories={setStories}
-                  world={world}
-                  setWorld={setWorld}
-                  business={business}
-                  setBusiness={setBusiness}
-                  entertainment={entertainment}
-                  setEntertainment={setEntertainment}
-                  health={health}
-                  setHealth={setHealth}
-                  science={science}
-                  setScience={setScience}
-                  sports={sports}
-                  setSports={setSports}
-                  technology={technology}
-                  setTechnology={setTechnology}
-                  setClickedFromSwipe={setClickedFromSwipe}
-                  setClickedFromScroll={setClickedFromScroll}
-                  clickedFromSwipe={clickedFromSwipe}
-                  clickedFromScroll={clickedFromScroll}
-                  loginUser={loginUser}
-                  setNumberOfTabs={setNumberOfTabs}
-                ></CategoryTabs>
+                {userIsLoggedIn ?
+                  <CategoryTabs setClickedStory={setClickedStory}
+                    stories={stories}
+                    setStories={setStories}
+                    world={world}
+                    setWorld={setWorld}
+                    business={business}
+                    setBusiness={setBusiness}
+                    entertainment={entertainment}
+                    setEntertainment={setEntertainment}
+                    health={health}
+                    setHealth={setHealth}
+                    science={science}
+                    setScience={setScience}
+                    sports={sports}
+                    setSports={setSports}
+                    technology={technology}
+                    setTechnology={setTechnology}
+                    setClickedFromSwipe={setClickedFromSwipe}
+                    setClickedFromScroll={setClickedFromScroll}
+                    clickedFromSwipe={clickedFromSwipe}
+                    clickedFromScroll={clickedFromScroll}
+                    loginUser={loginUser}
+                    setNumberOfTabs={setNumberOfTabs}
+                  ></CategoryTabs>
+                  :
+                  <UnauthCategoryTabs setClickedStory={setClickedStory}
+                    stories={stories}
+                    setStories={setStories}
+                    world={world}
+                    setWorld={setWorld}
+                    business={business}
+                    setBusiness={setBusiness}
+                    entertainment={entertainment}
+                    setEntertainment={setEntertainment}
+                    health={health}
+                    setHealth={setHealth}
+                    science={science}
+                    setScience={setScience}
+                    sports={sports}
+                    setSports={setSports}
+                    technology={technology}
+                    setTechnology={setTechnology}
+                    setClickedFromSwipe={setClickedFromSwipe}
+                    setClickedFromScroll={setClickedFromScroll}
+                    clickedFromSwipe={clickedFromSwipe}
+                    clickedFromScroll={clickedFromScroll}
+                    setNumberOfTabs={setNumberOfTabs}
+                  ></UnauthCategoryTabs>
+                }
               </div>
             </Route>
             <Route exact path='/story'>

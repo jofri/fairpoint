@@ -216,7 +216,6 @@ export default function CategoryTabs (props) {
       </NewsFeed>
     </TabPanel>);
   }
-
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
