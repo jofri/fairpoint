@@ -5,7 +5,6 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 function ArticleScroll (props) {
-  // let scrollColor = props.scrollColor;
   const [scrollLeft, setScrollLeft] = useState(true);
   const [scrollRight, setScrollRight] = useState(false);
   const [articleState, setArticleState] = useState(true);
@@ -41,6 +40,7 @@ function ArticleScroll (props) {
     return (
       <div className="ArticleTile" key={article.title}>
         <ArticleTile 
+          scrollColor={props.scrollColor}
           article={article} 
           setMenuState={props.setMenuState} 
           setClickedArticle={props.setClickedArticle}
@@ -54,9 +54,9 @@ function ArticleScroll (props) {
 
   return (
     <div className="ArticleScrollWrapper"  onScroll={handleScroll}>
-      {scrollLeft && <ArrowBackIosIcon style={{ position: 'absolute', left: '0.6vw', fontSize: '4.5vw' }}></ArrowBackIosIcon>}
+      {scrollLeft && <ArrowBackIosIcon style={{ position: 'absolute', left: '0.6vw', fontSize: '4.8vw', opacity: '0.50' }}></ArrowBackIosIcon>}
       {articleState ? <>{renderArticles}</> : <><h1>TO RENDER SOMETHING MEANINGFUL</h1></> }
-      {scrollRight && <ArrowForwardIosIcon style={{ position: 'absolute', right: '-0.3vw', fontSize: '4.5vw'}}></ArrowForwardIosIcon>}
+      {scrollRight && <ArrowForwardIosIcon style={{ position: 'absolute', right: '-0.3vw', fontSize: '4.8vw', opacity: '0.50'}}></ArrowForwardIosIcon>}
     </div>
   );
 }
