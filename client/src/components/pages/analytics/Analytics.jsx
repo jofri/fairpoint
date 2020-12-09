@@ -184,7 +184,6 @@ function Analytics (props) {
   // const [summary, setSummary] = useState('');
   useEffect(() => {
     const objectiveScore = BackgroundCalc(props.loginUser)[2];
-    console.log(objectiveScore);
     // eslint-disable-next-line default-case
     switch (objectiveScore) { 
     case 5:   
@@ -206,9 +205,6 @@ function Analytics (props) {
 
   }, [summary]);
   
-  const objectiveScore = BackgroundCalc(props.loginUser)[2];
-  console.log(objectiveScore);
-
   if (props.loginUser.article.length < 10) {
     return <AnalyticsPlaceholder userData={userData}/>;
   } else {

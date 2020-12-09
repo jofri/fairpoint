@@ -173,8 +173,8 @@ export default function NavBarTransparent (props) {
     >
       <List>
         <ListItem button component={Link} to="/profile" key="profile">
-          <ListItemIcon><Avatar>Ed</Avatar></ListItemIcon>
-          <ListItemText classes={{ primary: classes.listItemTextMain }} primary="Edward Chan" />
+          <ListItemIcon><Avatar src={props.loginUser.photo}></Avatar></ListItemIcon>
+          <ListItemText classes={{ primary: classes.listItemTextMain }} primary={props.loginUser.username} />
         </ListItem>
       </List>
       <Divider />

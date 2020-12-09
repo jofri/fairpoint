@@ -102,7 +102,7 @@ function App () {
               </div>
             </Route>
             <Route exact path='/story'>
-              {clickedStory._id ? <>{userIsLoggedIn ? <NavBarTransparent></NavBarTransparent>:<NavBarTransparentUnauth></NavBarTransparentUnauth>}
+              {clickedStory._id ? <>{userIsLoggedIn ? <NavBarTransparent loginUser={loginUser}></NavBarTransparent>:<NavBarTransparentUnauth></NavBarTransparentUnauth>}
                 <NewsStory
                   clickedStory={clickedStory}
                   loginUser={loginUser}
