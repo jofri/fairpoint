@@ -12,6 +12,7 @@ import FourOFour from './components/helpers/404';
 import Profile from './components/pages/Profile/profile';
 import Donate from './components/pages/donate/Donate';
 import Analytics from './components/pages/analytics/Analytics';
+import About from './components/pages/about/About';
 
 
 import './App.css';
@@ -50,13 +51,10 @@ function App () {
       .catch(err => console.log(err));
   }, []);
 
-<<<<<<< HEAD
-=======
   useEffect (()=> {
     setClickedFromScroll(new Array(numberOfTabs).fill(0));
   }, [numberOfTabs]);
 
->>>>>>> 7b4c47a1528dd4335958f5b833622a2ae63bb83d
   const userIsLoggedIn =
     loginUser !== undefined
     && loginUser !== {}
@@ -126,17 +124,17 @@ function App () {
                   <Analytics loginUser = {loginUser}/></>
                 : <Loader/>}
             </Route>
-            <Route exact path='/about'>
-              <Navbar />
-              <div className="content">
-                <Profile></Profile>
-              </div>
+            <Route exact path='/about' >
+              {userIsLoggedIn ?
+                <><Navbar loginUser={loginUser}/>
+                  <About /></>
+                : <Loader/>}
             </Route>
-            <Route exact path='/terms'>
-              <Navbar />
-              <div className="content">
-                <Profile></Profile>
-              </div>
+            <Route exact path='/terms' >
+              {userIsLoggedIn ?
+                <><Navbar loginUser={loginUser}/>
+                  <FourOFour /></>
+                : <Loader/>}
             </Route>
             {/* TODO: make an alert or redirect   */}
             <Route exact path='/404'> {/* Specify 404 route */}
