@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {Doughnut} from 'react-chartjs-2';
-import './Doughnut.css';
-
 
 function Doughnutchart (props) {
   const publisherLabel = [];
@@ -33,11 +31,6 @@ function Doughnutchart (props) {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    // title:{
-    //   display: true,
-    //   text: 'Top 10 most read publisher',
-    //   fontSize: 15
-    // },
     legend: {
       position: 'bottom',
       labels: {

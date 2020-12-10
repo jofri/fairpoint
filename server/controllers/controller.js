@@ -90,7 +90,6 @@ exports.createArticle = async (req, res) => {
     const {title, subtitle, link, source, stance} = await req.body;
 
     const uniqueLink = await Article.findOne({link: `${link}`});
-    console.log('uniqueLink', uniqueLink);
 
     if (!uniqueLink) {
       const newarticle = await Article.create({title, subtitle, link, source, stance});
@@ -101,7 +100,7 @@ exports.createArticle = async (req, res) => {
       res.status(200).send(response);
     }
   } catch (err) {
-    console.log(error);
+    console.log('err', err);
     res.sendStatus(400);
   }
 };
@@ -125,7 +124,7 @@ exports.updateUserNewsSettings = async (req, res) => {
     const filter = {googleId: `${userId}`};
     const newSettings = await User.findOneAndUpdate(filter, {settings:{newssettings: settings}}, {new: true});
     res.status(201).send(newSettings);
-  } catch (error) {
+  } catch (err) {
     console.log('err', err);
     res.sendStatus(500);
   }
