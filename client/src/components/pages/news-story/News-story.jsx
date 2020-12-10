@@ -113,19 +113,22 @@ function NewsStory (props) {
           setMenuState={setMenuState}
           loginUser={props.loginUser}
           setLoginUser={props.setLoginUser}
-          scrollColor={'#ffeceb'}></ArticleScroll>
+          scrollColor={'#ffeceb'}
+          scrollDescription={'left leaning'}></ArticleScroll>
         <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 5 || article.stance === 11 )}
           setClickedArticle={setClickedArticle}
           setMenuState={setMenuState}
           loginUser={props.loginUser}
           setLoginUser={props.setLoginUser}
-          scrollColor={'white'}></ArticleScroll>
+          scrollColor={'white'}
+          scrollDescription={'center leaning'}></ArticleScroll>
         <ArticleScroll articles={props.clickedStory.articles.filter(article => article.stance === 10)}
           setClickedArticle={setClickedArticle}
           setMenuState={setMenuState}
           loginUser={props.loginUser}
           setLoginUser={props.setLoginUser}
-          scrollColor={ '#dbecff'}></ArticleScroll>
+          scrollColor={ '#dbecff'}
+          scrollDescription={'right leaning'}></ArticleScroll>
       </div>
       <Modal
         open={menuState}

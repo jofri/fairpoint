@@ -1,4 +1,3 @@
-// import React from 'react';
 import React, {useEffect, useState} from 'react';
 import {Polar} from 'react-chartjs-2';
 import './Polararea.css';
@@ -50,12 +49,6 @@ function Polarchart (props) {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    // title:{
-    //   display: true,
-    //   text: 'Political stance',
-    //   fontSize: 15,
-    //   fontColor: '#3f454d'
-    // },
     legend: {
       position: 'right',
       labels: {

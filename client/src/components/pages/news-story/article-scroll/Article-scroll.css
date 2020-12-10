@@ -21,3 +21,14 @@
     scroll-snap-align: start;
 }
 
+.tileText {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emptyTileText {
+    font-size: 3.4vw;
+}
+
