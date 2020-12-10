@@ -15,9 +15,8 @@ function ArticleTile (props) {
     articleText = articleText.slice(0, 100);
     articleText.push('.', '.', '.');
     articleText = articleText.join('');
-    console.log('long');
   }
-  
+
   const ShareClick = () => {
     props.setClickedArticle(props.article);
     props.setMenuState(true);
@@ -33,12 +32,12 @@ function ArticleTile (props) {
         if (existingArticle.length === 0) {
           createUserHistory(props.loginUser.googleId, articleInfo)
             .then((res) => res.json())
-            .then(res => props.setLoginUser(res)); 
+            .then(res => props.setLoginUser(res));
         }
       });
-      
+
   }
-  
+
 
   return (
     <Card className="ArticleTileCardWrapper"  style={{marginLeft: '2.5vw', backgroundColor: props.scrollColor }}>
