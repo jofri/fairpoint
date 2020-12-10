@@ -53,11 +53,13 @@ setInterval( () => {
 }, 300000);
 
 
+
 /*
 
 // Import scraper scripts
 const newsScraper = require('./server/scrapers/index');
 const categoriesScraper = require('./server/scrapers/categories');
+
 
 // Start Top-line/UK news scraping
 setInterval(() => {
@@ -106,8 +108,8 @@ setTimeout(() => {
   setInterval(() => {
     categoriesScraper('Health');
   }, 2400000);
-}, 2400000); */
-
+}, 2400000);
+ */
 
 
 // Connect to MongoDB and listen for new requests
