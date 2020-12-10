@@ -175,7 +175,7 @@ export default function NavBar (props) {
             </a>
             <Typography variant="h6" noWrap className={classes.title}>
               <a className="brandLink" href="/">
-                            Anchored News
+                  FairPoint
               </a>
             </Typography>
             <Button style={{fontSize: 14, border: '1px solid #0195DF', color: 'rgb(1, 149, 223)'}} onClick={handleSignIn}>

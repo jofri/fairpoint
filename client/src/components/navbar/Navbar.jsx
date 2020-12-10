@@ -200,7 +200,7 @@ export default function NavBar (props) {
           </a>
           <Typography variant="h6" noWrap className={classes.title}>
             <a className="brandLink" href="/">
-                  Anchored News
+                  FairPoint
             </a>
           </Typography>
           <IconButton onClick={toggleDrawer('right', true)}>
