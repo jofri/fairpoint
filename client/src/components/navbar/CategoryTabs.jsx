@@ -89,8 +89,9 @@ export default function CategoryTabs (props) {
   }, [views]);
 
   if (props.loginUser.settings && props.loginUser.settings.newssettings.UK) {
-    views.push(<TabPanel value={value} index={value} dir={theme.direction} style={{backgroundColor:'transparent'}}>
+    views.push(<TabPanel key='UK' value={value} index={value} dir={theme.direction} style={{backgroundColor:'transparent'}}>
       <NewsFeed
+        key='UK'
         tabIndex={value}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll}
@@ -105,8 +106,9 @@ export default function CategoryTabs (props) {
     </TabPanel>);
   }
   if (props.loginUser.settings && props.loginUser.settings.newssettings.world) {
-    views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+    views.push(<TabPanel key='world' value={value} index={value} dir={theme.direction}>
       <NewsFeed
+        key='world'
         tabIndex={value}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll}
@@ -121,8 +123,9 @@ export default function CategoryTabs (props) {
     </TabPanel>);
   }
   if (props.loginUser.settings && props.loginUser.settings.newssettings.business) {
-    views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+    views.push(<TabPanel key='business' value={value} index={value} dir={theme.direction}>
       <NewsFeed
+        key='business'
         tabIndex={value}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll}
@@ -137,8 +140,9 @@ export default function CategoryTabs (props) {
     </TabPanel>);
   }
   if (props.loginUser.settings && props.loginUser.settings.newssettings.entertainment) {
-    views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+    views.push(<TabPanel key='entertainment' value={value} index={value} dir={theme.direction}>
       <NewsFeed
+        key='entertainment'
         tabIndex={value}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll}
@@ -153,8 +157,9 @@ export default function CategoryTabs (props) {
     </TabPanel>);
   }
   if (props.loginUser.settings && props.loginUser.settings.newssettings.health) {
-    views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+    views.push(<TabPanel key='health' value={value} index={value} dir={theme.direction}>
       <NewsFeed
+        key='health'
         tabIndex={value}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll}
@@ -169,8 +174,9 @@ export default function CategoryTabs (props) {
     </TabPanel>);
   }
   if (props.loginUser.settings && props.loginUser.settings.newssettings.sport) {
-    views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+    views.push(<TabPanel key='sport' value={value} index={value} dir={theme.direction}>
       <NewsFeed
+        key='sport'
         tabIndex={value}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll}
@@ -185,8 +191,9 @@ export default function CategoryTabs (props) {
     </TabPanel>);
   }
   if (props.loginUser.settings && props.loginUser.settings.newssettings.tech) {
-    views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+    views.push(<TabPanel key='tech' value={value} index={value} dir={theme.direction}>
       <NewsFeed
+        key='tech'
         tabIndex={value}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll}
@@ -201,8 +208,9 @@ export default function CategoryTabs (props) {
     </TabPanel>);
   }
   if (props.loginUser.settings && props.loginUser.settings.newssettings.science) {
-    views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+    views.push(<TabPanel key='science' value={value} index={value} dir={theme.direction}>
       <NewsFeed
+        key='science'
         tabIndex={value}
         setClickedFromSwipe={props.setClickedFromSwipe}
         setClickedFromScroll={props.setClickedFromScroll}

@@ -49,10 +49,7 @@ app.get('*', function (req, res) {
 // Ping Heroku server every 5 min to prevent sleep
 setInterval( () => {
   serverFetch.get('https://front-pages-dev.herokuapp.com/');
-  console.log('Heroku server ping sent');
 }, 300000);
-
-
 
 /*
 

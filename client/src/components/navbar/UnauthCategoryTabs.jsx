@@ -89,8 +89,9 @@ export default function UnauthCategoryTabs (props) {
   }, [views]);
 
 
-  views.push(<TabPanel value={value} index={value} dir={theme.direction} style={{backgroundColor:'transparent'}}>
+  views.push(<TabPanel key='UK' value={value} index={value} dir={theme.direction} style={{backgroundColor:'transparent'}}>
     <NewsFeed
+      key='UK'
       tabIndex={value}
       setClickedFromSwipe={props.setClickedFromSwipe}
       setClickedFromScroll={props.setClickedFromScroll}
@@ -104,8 +105,9 @@ export default function UnauthCategoryTabs (props) {
     </NewsFeed>
   </TabPanel>);
 
-  views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+  views.push(<TabPanel key='world' value={value} index={value} dir={theme.direction}>
     <NewsFeed
+      key='world'
       tabIndex={value}
       setClickedFromSwipe={props.setClickedFromSwipe}
       setClickedFromScroll={props.setClickedFromScroll}
@@ -119,8 +121,9 @@ export default function UnauthCategoryTabs (props) {
     </NewsFeed>
   </TabPanel>);
 
-  views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+  views.push(<TabPanel key='business' value={value} index={value} dir={theme.direction}>
     <NewsFeed
+      key='business'
       tabIndex={value}
       setClickedFromSwipe={props.setClickedFromSwipe}
       setClickedFromScroll={props.setClickedFromScroll}
@@ -134,8 +137,9 @@ export default function UnauthCategoryTabs (props) {
     </NewsFeed>
   </TabPanel>);
 
-  views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+  views.push(<TabPanel key='entertainment' value={value} index={value} dir={theme.direction}>
     <NewsFeed
+      key='entertainment'
       tabIndex={value}
       setClickedFromSwipe={props.setClickedFromSwipe}
       setClickedFromScroll={props.setClickedFromScroll}
@@ -149,8 +153,9 @@ export default function UnauthCategoryTabs (props) {
     </NewsFeed>
   </TabPanel>);
 
-  views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+  views.push(<TabPanel key='health' value={value} index={value} dir={theme.direction}>
     <NewsFeed
+      key='health'
       tabIndex={value}
       setClickedFromSwipe={props.setClickedFromSwipe}
       setClickedFromScroll={props.setClickedFromScroll}
@@ -164,8 +169,9 @@ export default function UnauthCategoryTabs (props) {
     </NewsFeed>
   </TabPanel>);
 
-  views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+  views.push(<TabPanel key='sport' value={value} index={value} dir={theme.direction}>
     <NewsFeed
+      key='sport'
       tabIndex={value}
       setClickedFromSwipe={props.setClickedFromSwipe}
       setClickedFromScroll={props.setClickedFromScroll}
@@ -179,8 +185,9 @@ export default function UnauthCategoryTabs (props) {
     </NewsFeed>
   </TabPanel>);
 
-  views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+  views.push(<TabPanel key='tech' value={value} index={value} dir={theme.direction}>
     <NewsFeed
+      key='tech'
       tabIndex={value}
       setClickedFromSwipe={props.setClickedFromSwipe}
       setClickedFromScroll={props.setClickedFromScroll}
@@ -194,8 +201,9 @@ export default function UnauthCategoryTabs (props) {
     </NewsFeed>
   </TabPanel>);
 
-  views.push(<TabPanel value={value} index={value} dir={theme.direction}>
+  views.push(<TabPanel key='science' value={value} index={value} dir={theme.direction}>
     <NewsFeed
+      key='science'
       tabIndex={value}
       setClickedFromSwipe={props.setClickedFromSwipe}
       setClickedFromScroll={props.setClickedFromScroll}
