@@ -31,6 +31,7 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-twitter": "^1.0.4",
     "puppeteer": "^3.2.0",
+    "react-swipeable-views": "^0.13.9",
     "rss-parser": "^3.9.0"
   },
   "devDependencies": {

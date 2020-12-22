@@ -5,46 +5,146 @@ function getUser () {
     .catch(error => console.log('in here', error));
 }
 
-function getStories () {
-  return fetch('/api/getStories')
+const cache = {
+  stories : null,
+  business : null,
+  sports : null,
+  science : null,
+  health : null,
+  entertainment : null,
+  tech : null,
+  world : null
+};
+
+const timers = {
+  stories : false,
+  business : false,
+  sports : false,
+  science : false,
+  health : false,
+  entertainment : false,
+  tech : false,
+  world : false
+};
+
+async function getStories () {
+  if (cache.stories) return cache.stories;
+  cache.stories = await fetch('/api/getStories')
     .then(response => response.json())
     .catch(err => console.log(err));
+  if (timers.stories === false) {
+    timers.stories = true;
+    setTimeout(() => {
+      cache.stories = null;
+      timers.stories = false;
+    }, 480000);
+  }
+  return cache.stories;
 }
 
-function getBusiness () {
-  return fetch('/api/getBusiness')
+async function getBusiness () {
+  if (cache.business) return cache.business;
+  cache.business = await fetch('/api/getBusiness')
     .then(response => response.json())
     .catch(err => console.log(err));
+  if (timers.business === false) {
+    timers.business = true;
+    setTimeout(() => {
+      cache.business = null;
+      timers.business = false;
+    }, 960000);
+  }
+  return cache.business;
 }
-function getSports () {
-  return fetch('/api/getSports')
+
+async function getSports () {
+  if (cache.sports) return cache.sports;
+  cache.sports = await fetch('/api/getSports')
     .then(response => response.json())
     .catch(err => console.log(err));
+  if (timers.sports === false) {
+    timers.sports = true;
+    setTimeout(() => {
+      cache.sports = null;
+      timers.sports = false;
+    }, 960000);
+  }
+  return cache.sports;
 }
-function getScience () {
-  return fetch('/api/getScience')
+
+async function getScience () {
+  if (cache.science) return cache.science;
+  cache.science = await fetch('/api/getScience')
     .then(response => response.json())
     .catch(err => console.log(err));
+  if (timers.science === false) {
+    timers.science = true;
+    setTimeout(() => {
+      cache.science = null;
+      timers.science = false;
+    }, 960000);
+  }
+  return cache.science;
 }
-function getHealth () {
-  return fetch('/api/getHealth')
+
+async function getHealth () {
+  if (cache.health) return cache.health;
+  cache.health = await fetch('/api/getHealth')
     .then(response => response.json())
     .catch(err => console.log(err));
+  if (timers.health === false) {
+    timers.health = true;
+    setTimeout(() => {
+      cache.health = null;
+      timers.health = false;
+    }, 960000);
+  }
+  return cache.health;
 }
-function getEntertainment () {
-  return fetch('/api/getEntertainment')
+
+async function getEntertainment () {
+  if (cache.entertainment) return cache.entertainment;
+  cache.entertainment = await fetch('/api/getEntertainment')
     .then(response => response.json())
     .catch(err => console.log(err));
+  if (timers.entertainment === false) {
+    timers.entertainment = true;
+    setTimeout(() => {
+      cache.entertainment = null;
+      timers.entertainment = false;
+    }, 960000);
+  }
+  return cache.entertainment;
 }
-function getTechnology () {
-  return fetch('/api/getTechnology')
+
+async function getTechnology () {
+  if (cache.tech) return cache.tech;
+  cache.tech = await fetch('/api/getTechnology')
     .then(response => response.json())
     .catch(err => console.log(err));
+  if (timers.tech === false) {
+    timers.tech = true;
+    setTimeout(() => {
+      cache.tech = null;
+      timers.tech = false;
+    }, 960000);
+  }
+  return cache.tech;
 }
-function getWorld () {
-  return fetch('/api/getWorld')
+
+async function getWorld () {
+  if (cache.world) return cache.world;
+  cache.world = await fetch('/api/getWorld')
     .then(response => response.json())
     .catch(err => console.log(err));
+  if (timers.world === false) {
+    timers.world = true;
+    setTimeout(() => {
+      cache.world = null;
+      timers.world = false;
+    }, 960000);
+  }
+  return cache.world;
 }
 
 function createArticle (articleInfo) {

@@ -17,12 +17,7 @@ const newsScraper = async () => {
     return articles;
   }
   let Parser = require('rss-parser');
-  let parser = new Parser({
-    customFields: {
-      feed: ['otherTitle', 'extendedDescription'],
-      item: ['coAuthor', 'subtitle']
-    }
-  });
+  let parser = new Parser();
 
   (async () => {
     const db = { stories: [] };

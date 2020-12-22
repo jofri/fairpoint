@@ -6,7 +6,6 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-const serverFetch = require('https');
 const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
@@ -47,19 +46,17 @@ app.get('*', function (req, res) {
 });
 
 // Ping Heroku server every 5 min to prevent sleep
+/*
+const serverFetch = require('https');
 setInterval( () => {
   serverFetch.get('https://front-pages-dev.herokuapp.com/');
-  console.log('Heroku server ping sent');
 }, 300000);
-
-
-
+*/
 
 
 // Import scraper scripts
 const newsScraper = require('./server/scrapers/index');
 const categoriesScraper = require('./server/scrapers/categories');
-
 
 // Start Top-line/UK news scraping
 setInterval(() => {
