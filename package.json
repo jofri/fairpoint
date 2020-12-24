@@ -1,7 +1,7 @@
 {
-  "name": "front-pages",
+  "name": "fairpoint-news-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "FairPoint is a news-aggregator that allows you read current news and track the political bias of what you’re reading.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

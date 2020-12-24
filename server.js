@@ -6,7 +6,6 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-const serverFetch = require('https');
 const path = require('path');
 const apiRouter = require('./server/routers/router');
 const authRouter = require('./server/routers/auth_router');
@@ -22,20 +21,19 @@ if (process.env.NODE_ENV !== 'production') {
 // Parse API requests as JSON
 app.use(express.json());
 
-// Login middleware
+// Setup login middleware
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-
 app.use(
   cookieSession({
     maxAge: 1000 * 60 * 60 * 24 * 30, // 1month
     keys: [process.env.COOKIE_KEY]
   })
 );
-
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Specify api & auth routes
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
 
@@ -47,11 +45,12 @@ app.get('*', function (req, res) {
 });
 
 // Ping Heroku server every 5 min to prevent sleep
+/*
+const serverFetch = require('https');
 setInterval( () => {
   serverFetch.get('https://front-pages-dev.herokuapp.com/');
-}, 300000);
+}, 300000); */
 
-/*
 
 // Import scraper scripts
 const newsScraper = require('./server/scrapers/index');
@@ -106,7 +105,6 @@ setTimeout(() => {
     categoriesScraper('Health');
   }, 2400000);
 }, 2400000);
- */
 
 
 // Connect to MongoDB and listen for new requests
