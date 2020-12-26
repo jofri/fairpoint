@@ -3,7 +3,7 @@
 function getUser () {
   return fetch('/auth/current-user')
     .then(response => response.json())
-    .catch(error => console.log('Error when getting user: ', error));
+    .catch(error => console.log('User not logged in / can not get user: ', error));
 }
 
 // Object to cache stories

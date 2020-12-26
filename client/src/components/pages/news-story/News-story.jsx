@@ -83,7 +83,6 @@ function NewsStory (props) {
   const classes = useStyles();
 
   const openSnack = (newState) => () => {
-    console.log('CATCH',clickedArticle.link);
     navigator.clipboard.writeText(clickedArticle.link);
     setSnackBarState({ open: true, ...newState });
   };

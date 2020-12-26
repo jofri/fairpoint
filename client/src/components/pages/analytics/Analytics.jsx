@@ -194,7 +194,7 @@ function Analytics (props) {
   useEffect(() => {
     // Set objectiveness score
     const objectiveScore = BackgroundCalc(props.loginUser)[2];
-    console.log('obj', objectiveScore);
+
     // eslint-disable-next-line default-case
     switch (objectiveScore) {
     case 5:
