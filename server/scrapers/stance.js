@@ -1,3 +1,4 @@
+// Dictionary to determine political stance of news sources
 module.exports = {
   'Sky News' : 5,
   'BBC News' : 5,

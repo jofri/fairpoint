@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import './Feed.css';
 import SubStory from './sub-story/SubStory';
 import LoadingSkeleton from './LoadingSkeleton';
-import brainSquare from '../../../../assets/placeholder_brain_square.png';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Virtuoso } from 'react-virtuoso';
+import brainSquare from '../../../../assets/placeholder_brain_square.png';
+
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 
 function Feed (props) {
 
@@ -29,10 +31,10 @@ function Feed (props) {
             index: props.clickedFromScroll[props.tabIndex]
           });
         }
-      } ///MAYBE RENDER A NO RESPONSE PAGE??
+      }
     }
     loadedStories();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(()=>{
     setStoryLoaded(false);
@@ -42,7 +44,7 @@ function Feed (props) {
       });
       setStoryLoaded(true);
     }
-  },[props.tabIndex]);
+  },[props.tabIndex]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const GenerateItem = index => {
     const story = props.stories[index];

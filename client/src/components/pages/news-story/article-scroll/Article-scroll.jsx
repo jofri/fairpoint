@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Article-scroll.css';
 import ArticleTile from './article-tile/Article-tile';
+
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Card from '@material-ui/core/Card';
@@ -12,13 +13,11 @@ function ArticleScroll (props) {
 
 
   const handleScroll = (e) => {
-    // console.log(e.target.scrollLeft, 'LEFT', e.target.clientWidth, 'RIGHT');
     if (e.target.scrollLeft < 50) {
       setScrollLeft(false);
     } else {
       setScrollLeft(true);
     }
-    // console.log(e.target.scrollLeft, (e.target.scrollWidth- e.target.clientWidth), 'TESTER');
     if (e.target.scrollLeft > e.target.scrollWidth - (e.target.clientWidth*1.2)) {
       setScrollRight(false);
     } else {
@@ -34,23 +33,23 @@ function ArticleScroll (props) {
     if (props.articles.length === 0) {
       setArticleState(false);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  
+
   const renderArticles = props.articles.map((article) => {
     return (
       <div className="ArticleTile" key={article.title}>
-        <ArticleTile 
+        <ArticleTile
           scrollColor={props.scrollColor}
-          article={article} 
-          setMenuState={props.setMenuState} 
+          article={article}
+          setMenuState={props.setMenuState}
           setClickedArticle={props.setClickedArticle}
           loginUser = {props.loginUser}
           setLoginUser = {props.setLoginUser}
         />
       </div>);
   });
-  
+
 
 
   return (

@@ -19,9 +19,7 @@ Live: https://fairpointnews.com
 
 <br/>
 
-![Drivel home](https://i.ibb.co/mh3wqBW/drivel-home-small.png)
-![Drivel broadcast](https://i.ibb.co/vBHxpWh/drivel-broadcast-small.png)
-![Drivel IOS](https://i.ibb.co/m8L6ks3/drivel-all-IOS.png)
+![FairPoint News IOS](https://i.ibb.co/rffv4sr/fairpoint-ios-all-small1.png)
 
 
 ## Getting started

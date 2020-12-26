@@ -51,7 +51,7 @@ setInterval( () => {
   serverFetch.get('https://front-pages-dev.herokuapp.com/');
 }, 300000); */
 
-
+/*
 // Import scraper scripts
 const newsScraper = require('./server/scrapers/index');
 const categoriesScraper = require('./server/scrapers/categories');
@@ -60,7 +60,6 @@ const categoriesScraper = require('./server/scrapers/categories');
 // Start Top-line/UK news scraping
 setInterval(() => {
   newsScraper();
-  console.log('called in server');
 }, 480000);
 
 // Set up category scraping at different life-cycles to run every 40 minutes
@@ -105,7 +104,7 @@ setTimeout(() => {
     categoriesScraper('Health');
   }, 2400000);
 }, 2400000);
-
+ */
 
 // Connect to MongoDB and listen for new requests
 server.listen(process.env.PORT, async (req, res) => { // eslint-disable-line no-unused-vars

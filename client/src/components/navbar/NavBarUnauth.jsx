@@ -1,24 +1,9 @@
-// import LogoutIcon from '@material-ui/icons/ExitToApp';
-// import Avatar from '@material-ui/core/Avatar';
-// import SettingsIcon from '@material-ui/icons/Settings';
-// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
-// import Divider from '@material-ui/core/Divider';
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import Drawer from '@material-ui/core/Drawer';
-// import MailIcon from '@material-ui/icons/Mail';
-// import List from '@material-ui/core/List';
-
 
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import './Navbar.css';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,16 +12,10 @@ import Slide from '@material-ui/core/Slide';
 import Modal from '@material-ui/core/Modal';
 import Fade from '@material-ui/core/Fade';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import LogoBrain from './logoBrain.svg';
-import './Navbar.css';
+import LogoBrain from '../../assets/logoBrain.svg';
 import Backdrop from '@material-ui/core/Backdrop';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import GoogleSignIn from '../../assets/googleButton.png';
-/* import FacebookSignIn from '../../assets/facebookButton.png';
-import TwitterSignIn from '../../assets/twitterButton.png'; */
-
-
-
 import Button from '@material-ui/core/Button';
 
 
@@ -149,12 +128,6 @@ export default function NavBar (props) {
     handleOpen();
   };
 
-  /* const facebookClick = () => {
-    console.log('FB');
-  };
-  const twitterClick = () => {
-    console.log('TW');
-  }; */
   const googleClick = () => {
     // Opens google auth window
     window.open('/auth/google', '_self');
@@ -208,19 +181,6 @@ export default function NavBar (props) {
               </ButtonBase>
               <ButtonBase />
               <ButtonBase />
-
-              {/*  <ButtonBase
-                className={classes.buttonBase}
-                focusRipple
-                onClick={facebookClick}>
-                <img src={FacebookSignIn} alt="facebook" className={classes.facebook}></img>
-              </ButtonBase>
-              <ButtonBase
-                className={classes.buttonBase}
-                focusRipple
-                onClick={twitterClick}>
-                <img src={TwitterSignIn} alt="twitter" className={classes.google}></img>
-              </ButtonBase> */}
             </div>
           </div>
         </Fade>

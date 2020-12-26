@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 
 function About () {
   return (
-    <div className="AboutProfileWrapper"><br></br><br></br><br></br><br></br><br></br>
+    <div className="AboutProfileWrapper">
       <Card>
         <div className="profileRow">
           <span className="AvatarName">

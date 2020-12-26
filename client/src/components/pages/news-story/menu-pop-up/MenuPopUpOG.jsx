@@ -1,5 +1,5 @@
 import React from 'react';
-// import Divider from '@material-ui/core/Divider';
+
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,7 +41,6 @@ function MenuPopUp (props) {
         <h3>{props.selectedStory.source}</h3>
         <h2>{props.selectedStory.title}</h2>
       </div>
-      {/* <Divider className={classes.}></Divider> */}
       <div className="SocialMediaIconsWrap">
         <h1>HOLDER SOCIAL </h1>
       </div>
