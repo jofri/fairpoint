@@ -6,10 +6,9 @@
 # FairPoint - Get all sides of the story
 
 
-
 -  **Your go-to news app** - Instant access to the latest news by category
 
--  **Analyze your news habits** - Sign up for free to access analytics about what newspapers and political opinions you read
+-  **Analyze your news habits** - Sign up for free to access analytics about what newspapers and political opinions you read (UK focus)
 
 -  **A colourful way to track your bias** - Your app changes color based on the news-articles you visit, allowing you to track what political stance you're exposed to
 
@@ -65,10 +64,13 @@ Node.js, Express, MongoDB, Puppeteer, Heroku, React, Google Auth, Material-UI, C
 </br>
 
 ## Contributors
-
-| [<img src="https://avatars0.githubusercontent.com/u/62963670?s=460&u=9582d59a15347500ba8b3efea4e2f53e0de9c07d&v=4" width="100px;"/><br /><sub><b>Oliver Bowen</b></sub>](https://www.linkedin.com/in/oliverbowen/)<br />        | [<img src="https://avatars3.githubusercontent.com/u/34419390?s=460&u=ff60c2a18f97a8b98e807e4d36e39e56377f4670&v=4" width="100px;"/><br /><sub><b>Joanna Kang</b></sub>](https://www.linkedin.com/in/sooyeon-kang-244599112/)<br /> | [<img src="https://avatars1.githubusercontent.com/u/17622438?s=460&u=6d972a510e427effc6c79d5e0686724585342ac2&v=4" width="100px;"/><br /><sub><b>Johan Friedner</b></sub>](https://www.linkedin.com/in/johanfriedner/)<br />          | [<img src="https://avatars0.githubusercontent.com/u/58035488?s=460&u=8214dffedea9e121cc596cf3d43844957a62c34c&v=4" width="100px;"/><br /><sub><b>Edward Chan</b></sub>](https://www.linkedin.com/in/eklchan/)<br /> |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------: |
-
+<table>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/oliverbowen/"><img src="https://avatars0.githubusercontent.com/u/62963670?s=460&u=9582d59a15347500ba8b3efea4e2f53e0de9c07d&v=4" width="100px;"/><br/><sub><b>Oliver Bowen</b></sub></a></td>
+     <td align="center"><a href="https://www.linkedin.com/in/sooyeon-kang-244599112/"><img src="https://avatars3.githubusercontent.com/u/34419390?s=460&u=ff60c2a18f97a8b98e807e4d36e39e56377f4670&v=4" width="100px;"/><br/><sub><b>Joanna Kang</b></sub></a></td>
+      <td align="center"><a href="https://www.linkedin.com/in/johanfriedner/"><img src="https://avatars1.githubusercontent.com/u/17622438?s=460&u=6d972a510e427effc6c79d5e0686724585342ac2&v=4" width="100px;"/><br/><sub><b>Johan Friedner</b></sub></a></td>
+       <td align="center"><a href="https://www.linkedin.com/in/eklchan/"><img src="https://avatars0.githubusercontent.com/u/58035488?s=460&u=8214dffedea9e121cc596cf3d43844957a62c34c&v=4" width="100px;"/><br/><sub><b>Edward Chan</b></sub></a></td>
+  </tr>
 </br>
 
 ## Looking to the future
