@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -18,7 +19,6 @@ import {
   getEntertainment,
   getTechnology,
   getWorld, } from '../../services/api';
-
 
 
 
@@ -86,7 +86,7 @@ export default function UnauthCategoryTabs (props) {
 
   useEffect(()=>{
     props.setNumberOfTabs(views.length);
-  }, [views]);
+  }, [views]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
   views.push(<TabPanel key='UK' value={value} index={value} dir={theme.direction} style={{backgroundColor:'transparent'}}>

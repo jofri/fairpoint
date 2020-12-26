@@ -1,7 +1,6 @@
 import React from 'react';
 import './Story-head.css';
 import Card from '@material-ui/core/Card';
-// import { useEffect, useRef } from 'react';
 
 
 function StoryHead (props) {

@@ -9,7 +9,7 @@ const Science = require('../models/Science');
 const Technology = require('../models/Technology');
 const World = require('../models/World');
 
-//*GET controllers
+// Get controllers (user, UK news, categories)
 exports.getUser = async (req, res) => {
   const googleid = req.params.googleid;
   const result = await User.find({googleId: `${googleid}`});
@@ -62,7 +62,7 @@ exports.getArticle = async (req, res) => {
   res.status(200).send(result);
 };
 
-//*POST controllers
+// Post controllers (create story, article, user)
 exports.createStory = async (req, res) => {
   try {
     console.log(req.body);
@@ -105,6 +105,8 @@ exports.createArticle = async (req, res) => {
   }
 };
 
+
+// Update article history of user
 exports.updateUserHistory = async (req, res) => {
   try {
     const {userId, articleInfo} = await req.body;
@@ -118,6 +120,7 @@ exports.updateUserHistory = async (req, res) => {
   }
 };
 
+// Update settings / preferences for specific user
 exports.updateUserNewsSettings = async (req, res) => {
   try {
     const { userId, settings} = await req.body;

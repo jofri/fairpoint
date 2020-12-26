@@ -48,7 +48,7 @@ function Doughnutchart (props) {
       publisherPie.push(props.publisherData[i][1]);
     }
     doughnutchart();
-  }, [props]);
+  }, [props]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

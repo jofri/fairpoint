@@ -12,7 +12,7 @@ passport.deserializeUser(async (id, done) => {
   done(null, user.googleId);
 });
 
-
+// Set up new Google Auth Passport strategy, fetch keys from .env file
 passport.use(
   new Strategy(
     {
@@ -21,14 +21,17 @@ passport.use(
       callbackURL: process.env.AUTH_PATH,
       scope: ['profile', 'email']
     },
+
     async (accessToken, refreshToken, profile, done) => {
-       
+
+      // Verify if user exists in MongoDB
       const existingUser = await User.findOne({ googleId: profile.id });
 
       if (existingUser) {
         return done(null, existingUser);
       }
 
+      // If not, create new user in MongoDB
       const user = await User.create({
         googleId: profile.id,
         username: profile.displayName,

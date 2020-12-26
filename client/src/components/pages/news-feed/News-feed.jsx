@@ -1,5 +1,4 @@
 import React from 'react';
-// import Tabs from './tabs/Tabs';
 import Feed from './feed/Feed';
 
 function NewsFeed (props) {

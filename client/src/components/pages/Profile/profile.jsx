@@ -18,10 +18,6 @@ function Profile (props) {
           <p className="profileEmail">{props.loginUser.email}</p>
         </div>
       </Card>
-      {/*    <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
-      <Card>
-        <div className="profileRow"><h4 className="objectiveScore">Objective Score</h4><h5 className="objectiveScoreNumber">5</h5></div>
-      </Card> */}
       <Divider style={{marginTop: '0.9vh', marginBottom: '0.9vh', height: '0px'}}></Divider>
       <Card>
         <div className="profileColumn">

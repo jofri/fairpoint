@@ -1,20 +1,19 @@
-// import TwitterIcon from '@material-ui/icons/Twitter';
-// import FacebookIcon from '@material-ui/icons/Facebook';
-// import { makeStyles } from '@material-ui/core/styles';
 
 import React, {useState} from 'react';
 import ArticleScroll from './article-scroll/Article-scroll';
 import StoryHead from './story-head/Story-head';
 import './News-story.css';
+
 import Divider from '@material-ui/core/Divider';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import LinkIcon from '@material-ui/icons/Link';
 import Snackbar from '@material-ui/core/Snackbar';
-import { FacebookShareButton, FacebookIcon, TwitterIcon, TwitterShareButton } from 'react-share';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import ReactGA from 'react-ga';
+import { FacebookShareButton, FacebookIcon, TwitterIcon, TwitterShareButton } from 'react-share';
+
 
 
 

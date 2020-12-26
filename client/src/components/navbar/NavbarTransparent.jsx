@@ -1,21 +1,12 @@
-// import SettingsIcon from '@material-ui/icons/Settings';
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-// import Slide from '@material-ui/core/Slide';
-//import ShareIcon from '@material-ui/icons/Share';
-// import MailIcon from '@material-ui/icons/Mail';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-// import LogoutIcon from '@material-ui/icons/ExitToApp';
-// import Typography from '@material-ui/core/Typography';
-// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
-// import Drawer from '@material-ui/core/Drawer';
-
 
 
 import React from 'react';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import './Navbar.css';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,9 +18,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
-import './Navbar.css';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { useHistory } from 'react-router-dom';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
@@ -37,9 +26,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
-import { Link } from 'react-router-dom';
-
-
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
 
 const menuWidth = '58vw';
@@ -145,7 +132,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBarTransparent (props) {
   const classes = useStyles();
-  // const theme = useTheme();
   const [state, setState] = React.useState({
     right: false,
   });
@@ -179,14 +165,18 @@ export default function NavBarTransparent (props) {
       </List>
       <Divider />
       <List>
-        {/* HARD CODE ANALYTICS! */}
         <ListItem button key="home" component={Link} to="/" >
           <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
         </ListItem>
       </List>
+      {props.loginUser ? <List>
+        <ListItem button component={Link} to="/profile"  key="profile">
+          <ListItemIcon><AccountBoxIcon style={{ fontSize: iconSize }}></AccountBoxIcon></ListItemIcon>
+          <ListItemText classes={{primary: classes.listItemTextMain}} primary={'Profile'} />
+        </ListItem>
+      </List> : null}
       <List>
-        {/* HARD CODE ANALYTICS! */}
         <ListItem button key="Analytics" component={Link} to="/analytics" >
           <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Analytics" />
@@ -199,21 +189,18 @@ export default function NavBarTransparent (props) {
         </ListItem>
       </List>
       <List>
-        {/* ABOUT US EMPTY ATM */}
         <ListItem button key="About us" component={Link} to="/about" >
           <ListItemIcon><InfoIcon style={{ fontSize: iconSize }}></InfoIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="About us" />
         </ListItem>
       </List>
       <List>
-        {/* T&C ALSO EMPTY */}
         <ListItem button key="Terms & Conditions">
           <ListItemIcon><DescriptionOutlinedIcon style={{ fontSize: iconSize }}></DescriptionOutlinedIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Terms & Conditions" />
         </ListItem>
       </List>
       <List>
-        {/* FOR SOOYEON! */}
         <ListItem button key="Log Out">
           <ListItemIcon><LogoutIcon style={{ fontSize: iconSize }}></LogoutIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Log Out" />
@@ -237,7 +224,7 @@ export default function NavBarTransparent (props) {
             <ArrowBackIcon className={classes.arrowBackIcon} style={{fontSize: 18}}></ArrowBackIcon>
           </IconButton>
           <div>
-        
+
             <IconButton
               color="inherit"
               aria-label="open drawer"

@@ -1,9 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
-import { useHistory } from 'react-router-dom';
+
 
 const useStyles = makeStyles({
   root: {
@@ -42,8 +44,7 @@ const useStyles = makeStyles({
     height: '10vh',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    // backgroundColor: 'red'
+    justifyContent: 'center'
   }
 });
 

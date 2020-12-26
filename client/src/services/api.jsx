@@ -1,10 +1,12 @@
 
+// Get current user from backend
 function getUser () {
   return fetch('/auth/current-user')
     .then(response => response.json())
-    .catch(error => console.log('in here', error));
+    .catch(error => console.log('Error when getting user: ', error));
 }
 
+// Object to cache stories
 const cache = {
   stories : null,
   business : null,
@@ -16,6 +18,7 @@ const cache = {
   world : null
 };
 
+// Object to store timers
 const timers = {
   stories : false,
   business : false,
@@ -27,6 +30,7 @@ const timers = {
   world : false
 };
 
+// Get UK news and cache results
 async function getStories () {
   if (cache.stories) return cache.stories;
   cache.stories = await fetch('/api/getStories')
@@ -147,6 +151,7 @@ async function getWorld () {
   return cache.world;
 }
 
+// Store atricle user clicked on in DB
 function createArticle (articleInfo) {
   try {
     return fetch('/api/newarticle', {
@@ -158,9 +163,7 @@ function createArticle (articleInfo) {
         title: articleInfo.title,
         subtitle: articleInfo.subtitle,
         link: articleInfo.link,
-        // image: articleInfo.image,
         source: articleInfo.source,
-        // time: articleInfo.time,
         stance: articleInfo.stance
       })
     });
@@ -169,6 +172,7 @@ function createArticle (articleInfo) {
   }
 }
 
+// Store atricle history in DB
 function createUserHistory (userId, articleInfo) {
   try {
     return fetch('/api/createUserHistory',{
@@ -186,8 +190,8 @@ function createUserHistory (userId, articleInfo) {
   }
 }
 
+// Update user profile settings
 function updateUserNewsSettings (userId, settings) {
-  console.log('in api service', userId, settings);
   try {
     return fetch('/api/updateUserNewsSettings', {
       method: 'POST',

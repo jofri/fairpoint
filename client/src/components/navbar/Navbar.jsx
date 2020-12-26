@@ -1,16 +1,10 @@
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import SportsTennisIcon from '@material-ui/icons/SportsTennis';
-// import Button from '@material-ui/core/Button';
-// import MailIcon from '@material-ui/icons/Mail';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-// import SettingsIcon from '@material-ui/icons/Settings';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import Drawer from '@material-ui/core/Drawer';
 
 import React from 'react';
-// import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -22,23 +16,19 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import Slide from '@material-ui/core/Slide';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Avatar from '@material-ui/core/Avatar';
-// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import LogoBrain from './logoBrain.svg';
+import LogoBrain from '../../assets/logoBrain.svg';
 import AssessmentIcon from '@material-ui/icons/Assessment';
-import './Navbar.css';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import InfoIcon from '@material-ui/icons/Info';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
-import { Link } from 'react-router-dom';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+
 
 const assert = require('assert');
-
-
 const menuWidth = '58vw';
 
 const useStyles = makeStyles((theme) => ({
@@ -96,21 +86,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-// function HideOnScroll (props) {
-//   // const { children, window } = props;
-//   // const trigger = useScrollTrigger({ target: window ? window() : undefined });
-//   // console.log(trigger, 'TRIGGER NAV');
-
-//   return (
-//     <Slide appear={false} direction="down" in={!trigger}>
-//       {children}
-//     </Slide>
-//   );
-// }
-
 export default function NavBar (props) {
-  //**Prop drilling check
-  assert(props.loginUser !== undefined, 'Dont render a navbar without props.loginUser!!');
+  // Prop drilling check
+  assert(props.loginUser !== undefined, 'Error: loginUser is not defined');
 
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -138,18 +116,23 @@ export default function NavBar (props) {
     >
       <List>
         <ListItem button component={Link} to="/profile"  key="profile">
-          <ListItemIcon><Avatar style={{height:'6vw', width:'6vw'}} src={props.loginUser ? props.loginUser.photo : null}></Avatar></ListItemIcon>
+          <ListItemIcon><Avatar src={props.loginUser ? props.loginUser.photo : null}></Avatar></ListItemIcon>
           <ListItemText classes={{primary: classes.listItemTextMain}} primary={props.loginUser ? props.loginUser.username : null} />
         </ListItem>
       </List>
       <Divider />
       <List>
-
         <ListItem button key="home" component={Link} to="/" >
           <ListItemIcon><HomeIcon style={{ fontSize: iconSize }}></HomeIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Home" />
         </ListItem>
       </List>
+      {props.loginUser ? <List>
+        <ListItem button component={Link} to="/profile"  key="profile">
+          <ListItemIcon><AccountBoxIcon style={{ fontSize: iconSize }}></AccountBoxIcon></ListItemIcon>
+          <ListItemText classes={{primary: classes.listItemTextMain}} primary={'Profile'} />
+        </ListItem>
+      </List> : null}
       <List>
         <ListItem button key="Analytics" component={Link} to="/analytics" >
           <ListItemIcon><AssessmentIcon style={{ fontSize: iconSize }}></AssessmentIcon></ListItemIcon>
@@ -163,14 +146,12 @@ export default function NavBar (props) {
         </ListItem>
       </List>
       <List>
-        {/* ABOUT US EMPTY ATM */}
         <ListItem button key="About us" component={Link} to="/about" >
           <ListItemIcon><InfoIcon style={{ fontSize: iconSize }}></InfoIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="About us" />
         </ListItem>
       </List>
       <List>
-        {/* T&C ALSO EMPTY */}
         <ListItem button key="Terms & Conditions" component={Link} to="/terms">
           <ListItemIcon><DescriptionOutlinedIcon style={{fontSize: iconSize}}></DescriptionOutlinedIcon></ListItemIcon>
           <ListItemText classes={{ primary: classes.listItemText }} primary="Terms & Conditions" />
@@ -188,7 +169,6 @@ export default function NavBar (props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      {/* <HideOnScroll {...props}> */}
       <AppBar
         position="fixed"
         className={clsx(classes.appBar)}
@@ -209,7 +189,6 @@ export default function NavBar (props) {
         </Toolbar>
         <div className="NavBarColorLine"></div>
       </AppBar>
-      {/* </HideOnScroll> */}
       <div>
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>

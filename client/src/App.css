@@ -1,5 +1,52 @@
-/* Container w/ all content */
+
+/* Container w/ all content below navbar */
 
 .content {
   margin-top: 8.5vh;
 }
+
+
+/* Desktop overlay */
+
+.desktopOverlay {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.desktopOverlayBox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+@media (min-width: 500px) {
+
+  .desktopOverlay {
+    position: absolute;
+    background: #f5f5f5;
+    opacity: 1;
+    width: 100vw;
+    height: 120vh;
+    z-index: 1101;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .desktopOverlayBox {
+    opacity: 1;
+    width: 50vw;
+    text-align: center;
+    margin-bottom: 60vh;
+  }
+
+  .desktopOverlay img {
+    width: 10vw;
+    margin-bottom: 2vh;
+  }
+
+}
+
+

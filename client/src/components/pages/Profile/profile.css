@@ -8,12 +8,10 @@
 }
 
 .profileRow {
-    /* height: 12vh;  */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: auto 2vw;
-    /* background-color: cadetblue; */
     width: 82vw;
     margin: 1.5vh 6vw;
 }
