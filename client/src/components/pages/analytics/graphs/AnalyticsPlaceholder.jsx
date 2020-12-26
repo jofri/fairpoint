@@ -3,7 +3,6 @@ import Card from '@material-ui/core/Card';
 import Loader from '../../../helpers/loader/Loader';
 
 function AnalyticsPlaceholder (props) {
-  console.log(props);
   return props ?
     <div className='totalsummary-wrapper'>
       <Card>

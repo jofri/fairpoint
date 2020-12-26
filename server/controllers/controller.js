@@ -65,7 +65,6 @@ exports.getArticle = async (req, res) => {
 // Post controllers (create story, article, user)
 exports.createStory = async (req, res) => {
   try {
-    console.log(req.body);
     const story = await Story.create(req.body);
     res.status(201).send(story);
   } catch (error) {
@@ -76,7 +75,6 @@ exports.createStory = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   try {
-    console.log(req.body);
     const newuser = await User.create(req.body);
     res.status(201).send(newuser);
   } catch (error) {

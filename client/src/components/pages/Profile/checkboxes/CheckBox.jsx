@@ -38,7 +38,6 @@ export default function CheckBox (props) {
   };
 
   const { UK, world, business, health, tech, sport, entertainment, science } = props.loginUser.settings.newssettings;
-  console.log(UK);
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>
