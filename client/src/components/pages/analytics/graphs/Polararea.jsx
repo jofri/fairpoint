@@ -61,7 +61,7 @@ function Polarchart (props) {
 
   useEffect(() => {
     linechart();
-  }, [props]);
+  }, [props]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

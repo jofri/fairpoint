@@ -36,13 +36,11 @@ module.exports = async (config) => {
 
   const content = await page.content();
   const $ = cheerio.load(content);
-  // const imgs = $('c-wiz img');
   const articles = $('c-wiz article');
   let results = [];
   let i = 0;
 
   $(articles).each(function () {
-    // console.log('$(this).children("h4".text())', $(this).children('h4').text());
     results.push({
       title: $(this).find('h4').text() || false,
       subtitle: $(this).find('span').first().text() || false,

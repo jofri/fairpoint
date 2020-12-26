@@ -1,7 +1,7 @@
 h1 {
   color: var(--color-black);
   font-size: var(--headfont);
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 h2{
@@ -37,7 +37,7 @@ h3{
   flex-direction: column;
   background-color: white;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 10px;
@@ -54,7 +54,7 @@ h3{
   background-color: white;
   flex: 0.6;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -66,7 +66,7 @@ h3{
   background-color: white;
   flex: 0.8;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -80,7 +80,7 @@ h3{
   background-color: white;
   flex: 0.8;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -115,8 +115,47 @@ canvas {
 .comment-box{
   justify-content: center;
   padding: 10px;
-  margin-top: 5px; 
+  margin-top: 5px;
   border-top: 1px dotted #c2c2c2;
   border-bottom: 1px dotted #c2c2c2;
   width: 90%
 }
+
+
+
+/* Adjustments to Material UI */
+
+/* @media (min-width: 500px) {
+
+  .makeStyles-listItemText-56 {
+    font-size: 1.5vw !important;
+  }
+
+  .makeStyles-listItemTextMain-57 {
+    font-size: 1.5vw !important;
+  }
+
+  .MuiIconButton-root {
+    padding: 14px 10px 14px 10px !important;
+  }
+
+}
+
+@media (min-width: 600px) {
+
+  .makeStyles-storyTitle-89 {
+    font-size: 3vh !important;
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 5vh !important;
+  }
+
+  .MuiIconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+
+} */
+
+
+

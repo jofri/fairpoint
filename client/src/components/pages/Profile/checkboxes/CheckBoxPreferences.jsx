@@ -4,7 +4,6 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 
@@ -33,7 +32,6 @@ export default function CheckBox () {
   };
 
   const { weeklyNews, monthlyNews, } = state;
-  //   const error = [weeklyNews, monthlyNews, health].filter((v) => v).length !== 2;
 
   return (
     <div className={classes.root}>
@@ -49,7 +47,6 @@ export default function CheckBox () {
             label={<Typography className={classes.formControlLabel}>Monthly</Typography>}
           />
         </FormGroup>
-        {/* <FormHelperText>Be careful</FormHelperText> */}
       </FormControl>
     </div>
   );

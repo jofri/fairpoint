@@ -1,7 +1,25 @@
-.DS_Store
+
+# dependencies
 node_modules/
-.env
-.vscode/
-package-lock.json
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# misc
 merge.sh
 config.js
+package-lock.json
+.DS_Store
+.vscode/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json

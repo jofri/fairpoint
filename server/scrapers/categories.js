@@ -87,7 +87,6 @@ const categoriesScraper = async (category) => {
         itemobj.links = links;
         itemobj.story = story[0] === '_' ? false : true;
         if (itemobj.story === true) {
-          // console.log(item.title);
           itemobj.articles = await getarticles(story);
         } else {
           itemobj.articles = [];
@@ -105,14 +104,11 @@ const categoriesScraper = async (category) => {
     }
 
     for (let i = 0; i< db.stories.length; i++) {
-      // console.log('insideforloop');
       for (let j = 0; j < db.stories[i].articles.length; j++) {
         if (stance[db.stories[i].articles[j].source]) {
           db.stories[i].articles[j].stance = stance[db.stories[i].articles[j].source];
-          // console.log('on list: ', db.stories[i].articles[j].source);
         } else {
           db.stories[i].articles[j].stance = 11;
-          // console.log('NOT on list: ', db.stories[i].articles[j].source);
         }
       }
 
