@@ -51,7 +51,7 @@ setInterval( () => {
   serverFetch.get('https://front-pages-dev.herokuapp.com/');
 }, 300000); */
 
-
+/*
 // Import scraper scripts
 const newsScraper = require('./server/scrapers/index');
 const categoriesScraper = require('./server/scrapers/categories');
@@ -102,7 +102,7 @@ setTimeout(() => {
   setInterval(() => {
     categoriesScraper('Health');
   }, 2400000);
-}, 2400000);
+}, 2400000); */
 
 
 // Connect to MongoDB and listen for new requests
